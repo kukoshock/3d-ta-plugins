@@ -35,19 +35,12 @@ A tutor for learning Substance Designer through the "Designer First Steps" cours
 
 1. Add this marketplace to Claude Code:
    ```
-   claude /plugin add-marketplace kukoshock/3d-ta-plugins
+   /plugin marketplace add kukoshock/3d-ta-plugins
    ```
 
-2. Install the plugin:
-   ```
-   claude /plugin install substance-designer-tutor@3d-ta-plugins
-   ```
+2. Install the plugin from the Discover tab, or search for "substance-designer-tutor"
 
-Or use the interactive UI:
-1. Run `/plugin` in Claude Code
-2. Go to **Marketplaces** tab → Add `kukoshock/3d-ta-plugins`
-3. Go to **Discover** tab → Search for "substance-designer-tutor"
-4. Click to install
+3. Restart Claude Code to load the skill
 
 ### Manual Installation
 
