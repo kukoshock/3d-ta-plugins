@@ -52,6 +52,21 @@ Audio and video transcription using whisper.cpp CLI with FFmpeg preprocessing.
 - "speech to text"
 - "extract transcript"
 
+### youtube-transcript
+
+Download transcripts from YouTube videos using yt-dlp.
+
+**Features:**
+- Extract subtitles/captions from any YouTube video
+- Auto-generated and manual caption support
+- Integrates with substance-designer-tutor for course transcripts
+
+**Trigger phrases:**
+- "get youtube transcript"
+- "download transcript"
+- "extract subtitles"
+- "youtube captions"
+
 ## Installation
 
 ### Via Claude Code Marketplace (Recommended)
