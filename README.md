@@ -29,12 +29,15 @@ A tutor for learning Substance Designer through the "Designer First Steps" cours
 - **Root Cause Troubleshooting**: Learn underlying principles, not just copy-paste solutions
 - **Critical Techniques**: Scale Map vs Mask Input, Height Blend contrast, fiber density
 
-**Trigger phrases:**
-- "explain Tile Sampler"
-- "how does Height Blend work"
-- "troubleshoot my Substance Designer graph"
-- "why isn't my embroidery working"
-- "why use scale 3.8?"
+**Skills:**
+
+1. **Tutor** - Interactive learning companion for Designer First Steps course
+   - Trigger phrases: "explain Tile Sampler", "how does Height Blend work", "troubleshoot my graph"
+
+2. **FAQ Generator** - Scans 3D artist forums (Reddit, Adobe Community, Polycount) for common questions
+   - Extracts high-engagement FAQs about visual quality, nodes, tiling, export issues
+   - Focus: Artist perspective (visual outcomes), NOT scripting/automation
+   - Trigger phrases: "find common questions", "scan forums for FAQs", "what do beginners struggle with"
 
 ### whisper-transcription
 
