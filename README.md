@@ -31,29 +31,42 @@ A tutor for learning Substance Designer through the "Designer First Steps" cours
 
 ## Installation
 
-### Option 1: Clone and symlink
+### Via Claude Code Marketplace (Recommended)
+
+1. Add this marketplace to Claude Code:
+   ```
+   claude /plugin add-marketplace kukoshock/3d-ta-plugins
+   ```
+
+2. Install the plugin:
+   ```
+   claude /plugin install substance-designer-tutor@3d-ta-plugins
+   ```
+
+Or use the interactive UI:
+1. Run `/plugin` in Claude Code
+2. Go to **Marketplaces** tab → Add `kukoshock/3d-ta-plugins`
+3. Go to **Discover** tab → Search for "substance-designer-tutor"
+4. Click to install
+
+### Manual Installation
 
 ```bash
 git clone https://github.com/kukoshock/3d-ta-plugins.git
 cd 3d-ta-plugins
 
-# Windows (run as admin)
-mklink /D "%USERPROFILE%\.claude\plugins\substance-designer-tutor" "%CD%\substance-designer-tutor"
-
-# macOS/Linux
-ln -s "$(pwd)/substance-designer-tutor" ~/.claude/plugins/substance-designer-tutor
+# Copy plugin to Claude plugins directory
+cp -r plugins/substance-designer-tutor ~/.claude/plugins/
 ```
-
-### Option 2: Direct copy
-
-Copy any plugin folder to `~/.claude/plugins/`
 
 ## Usage
 
-Once installed, Claude Code will automatically activate the relevant skill when you ask related questions. You can also invoke directly:
+Once installed, Claude Code will automatically activate the relevant skill when you ask related questions:
 
 ```
-/substance-designer-tutor:tutor How do I make ornaments look less uniform?
+"How does Tile Sampler work?"
+"My ornaments look too uniform, how do I fix this?"
+"Explain Height Blend parameters"
 ```
 
 ## Contributing
