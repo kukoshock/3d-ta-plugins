@@ -1,0 +1,232 @@
+when you reach the end of the creation
+process in substance designer most of
+the times you want to export your work
+in order to use it in other apps and by
+exporting I don't mean just saving the
+outputs I mean leveraging the power of
+the procedural graph you just built by
+making some of its parameters editable
+outside of substance designer this
+process is called exposing and in this
+video I'm going to teach you all there
+is to know about it the reason why it's
+so important is because you don't want
+to be stuck in designer designer is just
+a tool in your pipeline and you need to
+be able to quickly take a material out
+of it while keeping the ability to
+interact with it it sounds a little bit
+like magic when you put it that way
+after all when you create something in
+other node Bas interfaces like blender
+or unreal your work usually remains
+there and can be taken out to other apps
+so how does substance designer overcomes
+that the answer is substance archive or
+SBS you can think of a substance archive
+as a sort of compressed version of your
+substance package remember the package
+is this box here where the graphs and
+everything related to our project live
+so when you're done with your material
+instead of just exporting the outputs
+you can publish it as one single file
+one substance archive which will give
+you the ability to interact with it
+outside of designer But first you need
+to decide which parameters you want to
+interact with in other words you need to
+expose them so let's do it together but
+this is where being methodical and
+organized in your work really helps
+because now I can easily read the
+structure of my material and spot the
+pivotal notes that would be interesting
+to expose let's start with the beginning
+of the graph I'm going to assume that
+this material will be used by other
+people that don't necessarily know how I
+build it or maybe don't know about
+substance designer so it needs to be
+simple and intuitive really focusing on
+the key parameters and not overwhelming
+the final user with dozens of micro
+parameters that don't make a big
+difference for that reason I don't think
+we should expose anything in the weave
+structure itself we found a good balance
+here and I don't want the final user to
+break anything what I would like to
+expose though is the ornament mask that
+drives the second weave this is
+something that has a strong visual
+impact and it's easy to change we
+already have two ornaments coming from
+our subgraph here all we need now is a
+way to toggle them there is a note
+dedicated to that it's the switch node
+this node is basically a big button that
+returns one one of two inputs so it's
+super simple to use and really the best
+Noe when you want to choose between two
+things the problem is that like I said
+it only takes two inputs and I would
+actually like to add one more ornament
+to the mix no worries the switch node
+has a big brother with more options the
+multi
+switch it works the same way but instead
+of a single button you get a slider that
+lets you cycle through different
+inputs and now let's talk about this
+this third option that I wanted to add
+I'm not going to add it here like I'm
+not going to create another ornament or
+import another image instead I would
+like to give that option to the final
+users so that they can input whatever
+they want so what we need here is to
+open a little window so to say that will
+let them add their own information even
+though they won't have access to the
+graph itself and the way we do that is
+by adding an input
+node so input great scale there we go
+this node is empty because it just acts
+as a vessel for whatever image will be
+loaded in it so of course it doesn't
+have any specific parameters but it has
+some attributes that will help identify
+it so let's call it custom ornament
+here and
+here now here we need to put ourselves
+in the final users shoes assuming he
+doesn't know much about how a graph is
+built maybe he will try to input a color
+image or maybe something with gradients
+that just wouldn't work and to prevent
+that we can give him a Little Help by
+filling out the description box so I
+would just clarify things here say that
+it acts as a mask the image needs to be
+square and black and white all right now
+let's get back to our multi switch node
+connect it and we can finally start to
+expose some parameters in the case of
+the multi switch the only thing the user
+needs to have access to is the input
+selection how can we expose this well
+it's very simple just click on that
+little icon here next to the parameter
+and select expose as new graph input it
+will then open up a window where you can
+customize the behavior of this new
+Option we're not going to touch the
+identifier here but we should give the
+label a sensible name like ornament
+type by default the multi switch comes
+with sliders and I don't know but I
+don't find it very convenient to select
+things I can change that here where it
+says type editor and go for a nice drop
+down menu what we can now do is give
+each input a name so we know that input
+one is our flowers so let's call it
+floral then we click on the little plus
+button here input two geometri
+call and input three will be
+custom all right then click okay now
+you'll notice that our initial slider
+has disappeared from the multi switch
+parameters instead we just have the name
+highlighted in blue and it looks like we
+can't interact with it anymore don't
+worry that's perfectly normal when you
+expose a parameter it gets promoted to
+the graph level meaning it now belongs
+to the graph and not the node so to
+access it all you need to do is double
+click anywhere in the
+background and you will find it here in
+the input
+parameters and you see if I expand it
+here are my options I can always change
+them afterwards like give the inputs
+different names change the type of
+editor it's all up to you so notice that
+we have three tabs here parameters
+preview and presets we'll go over the
+presets later but the preview tab is
+important because it shows you how
+things will look to the final user you
+can think of it as the front end of your
+material so this for example is how our
+multi switch will appear we have this
+nice drop down menu and we can test it
+making sure everything works
+properly all right what is nice about
+this preview state is that it doesn't
+affect your graph you can always revert
+back to the default settings and as soon
+as you leave the tab you go back to your
+normal editing all right before we move
+on to the other parameters I would like
+to quickly show you how it looks in
+another app such as substance Stager I
+will explain how to send the material
+there in the next video but for now let
+me just show you how it looks here I'm
+just using another cloth meesh to
+display our Fabric and you see that in
+the material tab we have substance and
+our onet fabric is here we can change it
+resolution and below that we have our
+exposed parameters so we can change the
+ornament just as expected and switch to
+custom then we can use that little
+window that we opened by adding an input
+and you see that I can now load any
+image for example let me grab this
+one and there we go everything works
+that's perfect I can switch back to
+Floral
+geometrical
+awesome now there's one thing that
+bothers me it's the fact that the custom
+input slot is displayed even when we are
+using the default ornaments ideally I
+would like it to appear only when the
+user selects custom in the drop- down
+menu but let's get back to our graph to
+fix this what we're going to do is we're
+going to select our custom input here
+and you see that towards the bottom we
+have this condition tab with a visible
+if field what this does is that it let
+us write a logical expression see the
+input will be visible if the condition
+is verified in other words we can give
+designer an instruction that would go
+something like show this only if this is
+true we have to write it following
+certain conventions that you can find in
+this page of the documentation that I'm
+linking here so this is how you should
+write it so visible if if the input so
+here it's the
+identifier equals
+3 okay now let's check if it
+works and yep the custom input only
+appears when we choose custom in the
+list
+perfect so in this video we learned how
+to expose a parameter and we even went
+further than that by creating a custom
+input that will allow the future users
+to load their own masks in the next
+video we will continue this work by
+exposing parameters that can be a little
+bit more tricky like the color and we
+will try to find a way to control both
+the trim and the gemstones with just one
+button I see you in a bit

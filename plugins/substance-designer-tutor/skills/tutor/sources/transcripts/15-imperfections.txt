@@ -1,0 +1,240 @@
+what makes a material convincing and
+pleasing to look at often lies in the
+small details the little somethings that
+just breathe life and personality into
+it in this video I'd like to walk you
+through a couple of techniques to make
+your work look more realistic and
+organic so here's our current height map
+it's looking decent but we can push it
+further with a few tricks first I feel
+like things look a bit flat in the trim
+area it looks like if it was just pasted
+on top of the fabric instead of being
+sewn into it and that's a flow I often
+see in materials where you feel like the
+various elements are just put on top of
+each other without really interacting
+with one another which often results in
+that fake CG Loop so typically in the
+case of our trim I would expect some
+tension and bulging around here how can
+we do that by now you should feel
+familiar with the grayscale logic of
+height Maps so what I have in mind is to
+make the borders here lighter that is
+higher than what is directly under the
+trim so that we get some sort of raised
+lip around it let's first see if we can
+reuse something um we have the trim mask
+here that could be a good starting point
+because it traces perfectly the bits
+that need to be lower but we can't use
+it as is because if we were to subtract
+it from the main
+height like so you see that it would
+just remove the trim Al together so
+here's what we're going to do if we blur
+this mask enough the shape will sort of
+bleed out see how it
+expands okay so let's keep it at
+0.8 now again we can't use it like that
+because it would remove the trim and we
+don't want that so in order to protect
+it we could take the non-blood version
+and subtract it from
+this like so let's put that in a blend
+subtract and so you see the black areas
+here are protected they're going to stay
+at the same level these outlines though
+are going to pull the fabric down giving
+hopefully more depth and volume to our
+trim so let's try it oh my look at that
+it's exactly what we wanted see if I
+mute the node with shift
+d so you see it's not a lot of efforts
+but it really makes a difference and add
+realism to a
+material now let's talk about
+imperfections no material in real life
+is perfectly straight or smooth or
+uniform there will always be subtle
+variations see about specks of dust tiny
+fibers sticking out from clothing dents
+and scratches on a heart surface and so
+on all these irregularities do not make
+a material flawed but it makes it real
+and so if we aim at realism in our work
+we need to pay attention to this now if
+we look back at what we did in the
+previous episodes we already try to take
+that into account for example when we
+sprinkled a bit of Randomness here and
+there in the tie generators that was a
+good start but let's push things a bit
+further I would like to do two things
+the first one is to apply micro
+distortions to The Weave now when it
+comes to distorting you already know
+what kind of node we need yes we need a
+warp but instead of using the basic warp
+we're going to use the directional warp
+the one with that Arrow
+here it works the same way it takes an
+input and a gradient map but it also
+comes with an angle parameter and you
+can distort in a specific Direction
+which is very useful because then we'll
+be able to align the Distortion with a
+weave and so avoid having something too
+jaring okay now let's plug it and that's
+actually a good question where should we
+put that war if we put it for example
+here then it will also distort the trim
+which we don't want so we need to make
+sure we add it before all that so right
+after the height plan here okay now for
+the intensity input I like to have
+something very directional but also with
+a lot of control the directional
+scratches would be perfect I think so
+let's rotate it and plug it to a
+directional warp to explain quickly how
+it works so like I said the directional
+warp pushes the input in a set Direction
+so by default it will push horizontally
+like that but we can change that so
+let's go for
+90° all right now it feels really strong
+and overwhelming as is that's because
+our intensity input here is quite noisy
+so let's adjust it I'm going to start by
+decreasing the pattern amount to 02
+something very low then increase the
+scale to nine so that we have more
+shapes but smaller then we can refine
+the scaling with the X and Y slider so
+I'm going to thicken them a little on
+the X and shorten them on the
+Y we can also add a bit of
+Randomness okay let's try with a warat
+one
+and shift d to compare before and
+after all right that's very subtle but
+it really helps breaking that uniformity
+without getting too
+distracting then last but not least I'd
+like to add a feature that is specific
+to fabrics and soft materials in general
+and that is bolds and wrinkles it's a
+fascinating topic and we could spend
+hours on it but let's make it quick and
+easy for this video since it concerns
+the base Fabric and obvious L not the
+gemstones or the trim we might be
+tempted to add it right after the warp
+here but I'm not going to do that and
+for several reasons one reason is that
+our current height map is well balanced
+it works well everything fits nicely and
+if I were to add large variations here
+it may disrupt some of the things that
+we added later the other reason is that
+it's often simpler and more efficient to
+add these kinds of finishing touches as
+a separate normal map let me show you
+how we're going to take that space just
+above our main normal map and start
+building a small FS generator here let's
+start with a noise creas is usually a
+solid base for that with these soft
+lines um it's a bit too straight for me
+so I'm going to quickly warp it so warp
+and take a PE in scale it up and push
+the
+warp okay then I'm going to soften all
+this with a blur
+all right and now let's turn this into a
+normal map so just take a normal note
+plug it in and here increase the
+strength quite a lot like six or
+seven so we now have two normal maps how
+can we combine them well if you type in
+combine here's your answer so let's take
+this normal
+combine going to take this one
+first and this second one here and you
+see what it does it's a bit hard to tell
+because it's super noisy but it
+essentially keeps our original normal
+information and just adds the folds to
+it so let's plug it to our base material
+to see how it looks in
+3D not bad we can adjust the effect by
+playing with the normal intensity of a
+fult and balance it with the
+blur okay I'm pretty happy with it
+there's one problem though since we
+added off folds at the very end of a
+node Arrangement it means they also
+affect the trim and the
+gemstones fixing this problem shouldn't
+be too hard what we could do is blur
+this edge here so that we don't get any
+intense folds in this area so far we've
+only been using the high quality blur
+and this node blurs uniformly the whole
+input but when we need something more
+selective we can use the nonuniform blur
+as you would expect it's using an
+intensity map a bit like the warp to
+determine what part of the image to blur
+and now we need to search for an
+intensity input that could do the trick
+again no need to create anything from
+scratch we can probably get away with
+one of the masks we already
+made so let's see there was that trim
+mask here and with a few adjustments it
+probably can work now remember we dock
+this to a DOT node meaning we don't have
+to drive the connection across instead
+we're going to call for a DOT node here
+then select the trim mask from
+there now to make it work obviously we
+need to expand it we could do it with a
+blur but I think a bevel would be more
+efficient let's push it up to
+0.1 and you see that since we're
+expanding something that sits on the
+very edge of the tile well it repeats on
+the other side we don't really want that
+so you know the real by now tiling
+absolute and keep vertical tiling only
+now okay let's plug that to the
+intensity input of our non-uniform
+blur and this is what we get we need to
+make a few adjustments um I'm going to
+push the samples to the max to have a
+very smooth
+transition then push the intensity to 25
+or
+something now let's reroot
+everything and voila now no matter the
+intensity of the fold you see they will
+not affect this edge here so our problem
+is fixed
+let's frame
+that call it fold there we
+go all right so in this video we saw the
+importance of details and Imperfections
+when it comes to achieving realism in
+your work we went over a couple of
+techniques such as adding depth and
+volume where two elements meet creating
+micro distortions and finally creasing
+the fabric a little with all these
+details taken care of we can at last
+move on to the other maps that make up
+on material and I'll see you in the next
+video to tackle the base color

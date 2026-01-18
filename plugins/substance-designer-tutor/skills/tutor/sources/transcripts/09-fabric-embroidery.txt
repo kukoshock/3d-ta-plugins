@@ -1,0 +1,226 @@
+hello again the time has finally come to
+add the ornaments to our plain fabric so
+in this video we will see how we can
+combine two weaves using masks like the
+one we created in the previous episode
+but before we do that I'd like to come
+back to this part of the graph and
+address a question that you may have so
+in the beginning we started by creating
+our thread and we added quite a few
+details to it like this directional
+noise here to give the look of fibers
+but after that we tiled it heavily and
+in the process it seems like like we
+lost most of the work we put into it
+like if we zoom in super close you
+realize that our thread is now barely
+taking up a dozen pixels and we can't
+see any variations there are two things
+to consider here the first is the fact
+that this individual thread we carefully
+built is now at our disposal and we can
+reuse it for many different things
+throughout this project so it's
+important to have something that looks
+good at every scale the second thing to
+keep in mind is resolution
+so far we've been working with the
+default 2048x 2048 resolution which is
+fine for most of what we want to do it's
+pretty light so there is no lag the 2D
+view is very responsive and we can still
+see most of the details so that's a good
+trade-off but at some point we may want
+to uprise everything to 4K to get even
+more details typically if you wanted to
+render close-ups of your material for
+example if that's the case it's a good
+idea to change your graph resolution
+from time to time just to check how
+things things look with a higher
+resolution and you do that by going at
+the top of your graph here and by
+clicking on whatever resolution you want
+to test uh except 8K maybe I would say
+keep away from this one as it will make
+everything extremely heavy and slow so
+let's click on
+496 and you see that Designer instantly
+recomputes all the nodes and now I can
+see the new result in my 2D and 3D View
+and the threads in my tile generator are
+much more detailed now I can even make
+out some of the fibers so it just goes
+to show that adding details to a small
+element can totally be worth it because
+it might be reused for different
+purposes or simply show better at higher
+resolutions with that being said let's
+switch the resolution back to 2K because
+it just makees things a bit faster and
+since all of this is fully
+nondestructive we can always go back and
+forth between different resolutions if
+we want to all right now let's tackle
+that additional weave we want to sort of
+embroider on top of this space we have
+our ornament mask here that we created
+in a dedicated subgraph and we can
+preview them by double clicking on the
+outputs we have floral ornament and
+geometrical ornament perfect Now to
+create another weave we could reuse one
+of the techniques we already covered
+such as tiling the thread at this time
+instead of using a tile generator for
+that we're going to use a tile
+sampler okay okay let's face it this
+node is a bit dating but it's also one
+of my very favorites so let's break it
+down real quick now you see if we look
+at its thumbnail and first input it
+looks very much like a tile generator
+basically takes an input and tiles it so
+why is it so much bigger well if we look
+at the description it says that the
+style generator can sample in a texture
+to parameterize each pattern properties
+size position rotation Etc and you see
+that indeed we have inputs for each of
+these properties and that's why the node
+is so big now what does that mean
+exactly well it means that we can drive
+any of these parameters using a texture
+so let me give you a quick example I'm
+going to take a good old peing
+noise and connect it to I don't know uh
+the size parameter for instance now if I
+go in the tile sampler and enable the
+scale map multiplier the squares get
+resized dynamically based on that noise
+so basically where the map is white the
+squares are scaled up and where it is
+black they are shrunk down hopefully you
+grasp how powerful this is now let's
+reset
+this and start building a simple wave
+with it we can reuse of course our base
+thread for that switching to pattern
+input and now let's make a few changes
+for the amount I'm going to go with
+something pretty high like 600 on the X
+and and 700 on the
+Y okay let's increase the scale to
+3.8 rotate the whole thing 90° because I
+want the threads to go
+vertically and finish with a nice
+offset all right so far nothing very
+different from what we've been doing
+with a child generator but this is where
+things get interesting what I like is to
+use the mask we prepared last time and
+tell the tile sampler to keep the
+threads only in the white areas and that
+should be easy all we have to do is take
+the mask I'm going to take the flowers
+for this and plug it where it makes the
+most sense now we have a mask input here
+that could work perfectly but I'm
+actually going to plug it in the scale
+map input because it gives a softer
+result that I like better now let me
+enable the multiplier once more in the
+size
+section and there we go you see that
+where the mask is white the threads keep
+their original size whereas they become
+so tiny that they disappear where it's
+black now what is very interesting here
+is the transition the mask is not acting
+like a cookie cutter that just knocks
+off chunks of fabric but it's actually
+acting at the thread level so it's
+removing bits by bits which is exactly
+how it works in real life so that's
+perfect all right to finish this up I'm
+just going to add a bit of Randomness
+here and
+there uh just a bit in the luminance
+here
+too just so that it's not perfectly
+uniform okay I also feel like the result
+is a bit too contrasted so I'm going to
+make quick level pass
+here pushing the gamma to the
+left and reducing the overall
+Luminosity just to have something a bit
+more
+flat all right so we have a second weave
+and it comes already masked so all that
+is left to do now is to blend it with
+our base we could use a simple blend for
+that but the thing is we need to be very
+precise and subtle here and it may
+actually be a lot of work where we would
+need to use levels blurs and so on but
+there is a note that can handle all
+these tedious adjustments for us and
+that is the height
+blend this node looks a bit like a
+regular blend like we have the three
+outputs with the foreground the
+background and a mask input but it also
+comes with very handy sliders that will
+make our life easier and it outputs a
+mask on top of everything which will be
+very useful later on so let's take our
+base weave and put it in the
+background and add the ornament weave in
+the
+foreground and okay the result is very
+subtle at first but that's exactly what
+we want we don't want big grayscale
+variations that would make our ornaments
+pop out too much they need to be almost
+at the same level as the rest of the
+fabric so let's check how it looks in 3D
+by re-rooting the Conn
+connections all right it's very faint in
+the 3D view as well but it's definitely
+there see now we can make it a t more
+obvious by playing with these two
+sliders the offset slider controls how
+far above the background your input will
+be so in our case we can go slightly
+above
+0.5 but not too
+much then if we drop the contrast a
+little we get these blurred edges that
+just help highlighting the shape
+I let you play with this until you reach
+something that you like here again
+there's no right or wrong I would say
+that the visual feedback from the 3D
+view is super important so don't
+hesitate to inspect your mesh under
+different angles move the light around
+zoom in zoom out Etc in a project such
+as this one I would even suggest
+changing the display mesh so you go to
+scene then try the cloth mesh it's just
+nice to preview fabric on actual cloth
+geometry and you get a better idea of
+how your material will look and feel in
+its final form
+perfect all right so in this video we
+finally added ornaments to a plain weave
+we saw how we can Leverage The Power of
+the tile sampler to do Advanced tiling
+and masking and how the height blend can
+help us be more precise and efficient
+when it comes to blending height
+information in the next video we will
+tackle the shiny trims that ored the
+edges so be ready for more shape
+explorations for

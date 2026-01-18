@@ -1,0 +1,197 @@
+in this video we will see how we can
+import images in substance designer and
+how this can lead to very interesting
+workflows now in the previous episode we
+saw how we can create such images
+procedurally and also the benefits that
+come with it such as being able to
+iterate easily on the shapes but
+sometimes you already have an image that
+matches exactly what you want so how can
+you bring it into designer well that's
+actually very simple so I have this
+image here and I think it would work
+well for a fabric all I have to do is
+drag and drop it into my graph now the
+second I do that Designer prompts me
+with these two options you can either
+link it or import it let's go for import
+first when you import a file designer
+will create a duplicate of that file and
+store it in the substance package and
+this duplicate is no longer linked to
+the original meaning you can change it
+or remove it from your disk it will not
+affect the resource in designer this is
+the option I would recommend when you
+don't need to update the original file
+and you just want to work in designer
+from there now let's say I want to
+import another image for instance this
+one that I've been drawing in Photoshop
+I'm not yet sure about these petals here
+and I might want to change them
+eventually so knowing that I would
+rather link the image and by doing so I
+actually created a live link between my
+Photoshop export and my designer graph
+so now I can go go back to photoshop
+make a few
+changes save and my node automatically
+updates which is amazing because you can
+really see it happen in real time see I
+just love it the other cool thing about
+linking your resources this way is that
+you can build a dynamic node Arrangement
+around them so in this case I could
+let's say add a blur to my flower to
+just soften the edges maybe level it a
+little ADD the
+warp a miror too why
+not and now my Photoshop project is at
+the root of a procedural setup and I can
+manually control the main input like so
+while relying on non-destructive
+operations afterwards it's really The
+Best of Both Worlds and not enough
+people use it so I strongly encourage
+you to explore this workflow so far it
+all seems pretty easy and
+straightforward but there are few two
+caveats that we need to mention the
+first has to do with ratios you may have
+noticed that all the images I showed are
+square and this is very important
+designer is not really built to handle
+non-square ratio so make sure that
+whatever you choose to import is square
+you can technically import non-s Square
+images but it just make things more
+complicated and we won't dive into that
+for this tutorial in my case I just make
+sure that I have the right ratio
+beforehand for example in Photoshop I
+usually use a template that is 2048x
+2048 which is usually my working
+resolution in designer the second
+Pitfall I wanted to mention concerns the
+distinction between color and gray scale
+now you now know that most of your work
+in designer is going to happen in Gray
+scale and we already saw that we can't
+mix gray scale and color but most of the
+images you will import even when they
+appear black and white will actually
+come out as color and as soon as you
+will try to use them you will get this
+error connection and it can be confusing
+because your image looks like it's
+grayscale but if you pay close attention
+to it you will see that it has this
+yellow dot telling us that Designer
+reads it as color and fixing this is
+super simple you just click on your
+imported image and in the properties you
+will find these two buttons letting you
+switch from color to gray scale so just
+click on Gray scale and you're good to
+go all right so you now know how to
+import images in substance designer and
+now it's up to you to decide whether you
+want to use a specific image for the
+ornament mask we're currently building
+or if you want to stick with the
+procedural shapes we created in the
+previous video in my case I think I'd
+like to make something out of this styze
+flower we have here so let's do it
+together I first need to make sure it
+looks good when it's repeated in a
+pattern and I'm going to use a simple
+tile generator for that switching to
+image input making it larger
+then offsetting
+everything okay I think I like it
+there's just two things I'd like to
+change um first i' like to flip the
+pattern every other flower so that they
+don't all face the same direction and in
+order to do that I can simply take a
+transform 2D and use it to flip the
+image by clicking here on this small
+horizontal mirror all right now I need
+to find a way to fit it to the ti
+generator and the problem is I don't
+have any inputs left see the pattern
+input is already taken but if I go in
+the property panel of the tie generator
+I can actually increase the number of
+patterns here where it says pattern
+input number so let's just push that to
+two and plug our flipped version now we
+have a mix between these two versions
+and if I zoom out we can definitely see
+that the repetition looks more varied
+now but it's a bit too random for me so
+in the pattern section I will switch the
+pattern distribution from random to by
+pattern number now to refine the overall
+look we can take a moment to adjust the
+blades a little uh feel free to
+experiment on your own I would just
+tighten up these spines towards the
+bottom like
+so and now that I look at it I think we
+can also distort the flower way
+more something like that
+okay we now have a nice floral pattern
+that is fully procedural and that can be
+used as a mask in our main graph so how
+can we connect the two right now you see
+that we still have this warning telling
+us that we have no outputs and that's a
+problem because it means that nothing
+can come out of this graph it's like a
+closed box since we only want to Output
+our mask here all we have to do is type
+in
+output and plug our final image to it
+okay so now when you click on the output
+you see that it comes with a bunch of
+spaces for you to fill out the ones that
+matter the most are the identifier and
+the label the label is what the user
+will see and interact with and the
+identifier is what the software will use
+to classify the node in this case uh it
+doesn't really matter I'm just going to
+rename both floral
+ornament and that's it this is how you
+create custom outputs from a subgraph
+you could have several outputs if you
+wanted for for example in this case I
+actually made a second pattern out of
+the random shape we created last time I
+just twiced it a bit then I tiled it and
+I think it looks okay and maybe I will
+want to reuse it later in our main graph
+so let's just create another output for
+it and let's call this one geometrical
+pattern all right so to sum up or
+ornament subgraph here now has two
+outputs that can be called upon in our
+main graph here and the way you do that
+is very simple let's double click the
+main graph to enter it all right and now
+we can just click the ornament graph
+drag it in here then let go and now we
+have this new node with the two outputs
+we just created easy right so in this
+video you learned how to bring in new
+Resources by either importing them or
+linking them remember use only Square
+images and switch them to Grays scale
+when needed
+and in the next video we will use this
+ornament mask we made to add an
+additional weave to our fabric

@@ -1,0 +1,293 @@
+all right we're now ready to go in this
+video we will see how to create and set
+up a new substance designer project as
+well as a few tips and tricks to quickly
+get you started so let's open up
+designer and on the top left corner
+we're going to click on new substance
+graph we are presented with this window
+and the first thing it asks us is to
+name that new graph that we are creating
+I'm going to call this one ONN it fabric
+you don't have to worry too much about
+the information below the default
+settings are fine in most cases and
+these properties can all be changed
+later on see you can change these values
+at any time the 2048 resolution is also
+a good starting point so let's just
+leave it as is below are the template
+information they are directly referring
+to the template that is selected on the
+left in this case it's the default PBR
+metallic roughness template what this
+means is that if you choose this
+Template Designer will automatically set
+up output notes for each of these
+channels for the sake of this tutorial
+we'll set our template to empty so that
+we can start from scratch then simply
+press
+okay and here we go we now have this
+beautiful blank canvas to start working
+from exciting don't you think now before
+we begin let's just have a look at our
+File Explorer on the left as you can see
+our graph is here with the name we gave
+it and it sits within a substance
+package that is yet unnamed and unsaved
+so let's do that first select the
+package and click on the save icon now
+everything we will add to this project
+be resources other graphs 3D meshes Etc
+it will all be stored in that package so
+let's just go back to our graph by
+double clicking it all right here we are
+in the middle of our main working space
+it is completely empty so now it's
+finally the time to start building
+things you may have noticed that our
+graph comes with a little warning sign
+in the file explorer if we hover over it
+it displays the same message as the one
+at the bottom here saying that we have
+no output it's fine and you can totally
+start working without them but setting
+up outputs can be useful to preview or
+work in the 3D view right now if I add
+any node for example a uniform color
+node I can only see it as a 2D image
+here in my 2D view while my default Cube
+remains gray so one of the first things
+we will need is a setup that allows us
+to preview in that preview the
+information we manipulate there are
+different ways to do this for example if
+I right click my node and drag it all
+the way down to the 3D View and let go
+designer will ask me which channel it
+belongs to there's a bunch of them as
+you can see if I choose base color now
+my color node is reflected both in the
+2D View and in the 3D view this is one
+way of doing it but it can be tedious to
+repeat this step each time for each
+Channel instead we will go for a simpler
+method and add a note that will pack all
+the channels we need for us and generate
+corresponding outputs so how can we do
+that now would be a good time to learn
+learn how to add nodes in our working
+space you actually saw me doing it just
+a moment ago I went over to the toolbar
+at the top grabbed one of these and
+placed it in the graph this colorful row
+that you see right here contains what we
+call the atomic nodes they are the
+fundamental bricks of substance designer
+all the other nodes are made with a
+combination of these and they cannot be
+broken down into smaller elements this
+toolbar is very handy but we won't find
+all the nodes available here for that we
+need to go to the library if I need for
+example a noise or a grung map I can
+come over to the texture category to see
+what I have and just grab whatever note
+I find interesting now these two methods
+are especially useful in the beginning
+when you first start exploring substance
+designer they will help you grasp the
+different tools as well as their
+underlying logic so I really encourage
+you to just navigate the library and try
+out random notes also don't forget that
+you can find tool tips pretty much
+everywhere in designer so if you're not
+sure what a note does just hover over it
+to find out all right let's just get rid
+of these by dragging a selection around
+them and pressing delete there is one
+more way to add nodes that I haven't
+talked about and this is how we'll be
+adding nodes most of the times
+throughout this course make sure your
+graph is active by clicking anywhere in
+the working space then press space bar
+or tab this will open up a quick search
+where you can type in anything by
+default it will display the atomic node
+the same as here but as soon as you
+start typing in something like let's say
+blur for example it will filter out all
+the blurring nodes available so we not
+only have the atomic blur but also
+several other nodes like slow blur
+radial blur non-uniform blur Etc using
+this quick search is also a great way to
+discover new nodes you can't know the
+whole Library by heart I certainly don't
+yet I've been using designer for years
+now so when I'm looking for a certain
+effect but don't know if there is a Noe
+for that I just type and approach name
+in the quick search so these were three
+ways of adding nodes in your graph
+grabbing them from the toolbar from the
+library or searching for them in the
+quick search most of the times we'll
+just use that last method now let's look
+for the first note to add to our current
+project I'm going to press space bar and
+type in
+base here we want to bring in the base
+material note it may seem
+counterintuitive but this note that we
+are adding first is actually going to be
+the very last of our graph and it's
+going to sit at the very right of a node
+Arrangement the reason for that is that
+we want to use it as a mean to quickly
+and easily preview our work so
+everything we're going to build will
+converge towards it to be displayed in
+the 3D view since it's a material node
+it contain all the different channels we
+need so we won't have to create
+individual outputs for each of them and
+we'll have everything neatly packed in
+one Noe which I find easier to handle
+now do you remember how we can dis
+display a node in the 3D view we right
+click it and drag and drop it in the 3D
+view this time no need to assign
+anything the node does it for us
+alternatively we could right click it
+and select view in 3D view now what we
+are seeing in our 3D view is the result
+of this material node we added so if we
+change anything in its parameters it
+will update in real time which is
+exactly what we wanted let's just take a
+moment to go over the parameter
+remember that this panel on the right is
+context sensitive so it will display the
+properties of the element that is
+currently active at the top we have the
+base parameters that are common to all
+the nodes and that we won't touch for
+now then we have the attributes we don't
+need to look into those right now so you
+can just collapse them and finally the
+instance parameters that are specific to
+this node now if we scroll down a little
+we can see that we have options and
+Sliders corresponding to each map first
+we have the color it's set to gray by
+default which is actually perfect for a
+start as we don't want to be distracted
+with bright Hues in the beginning next
+up is the metallic slider you may have
+noticed that as soon as we dropped our
+material in the 3D view it turned the
+cube metallic and that's because the
+metallic map is set to White which means
+fully metallic so let's just turn it off
+completely for now the roughness is fine
+maybe a tad too smooth so let's just
+increase it a little by pushing the
+slider to the right again these early
+adjustments are just meant to get us
+started we will change them later on
+during this course now if we keep
+scrolling down we have this userdefined
+map section at the bottom what this
+means is that for each Channel we can
+decide if we want it to be driven by one
+of the built-in sliders like the one we
+just tweaked or by a custom map that we
+could plug into the node so for example
+if I activate the base color by setting
+it to True an input automatically pops
+up on the left letting me plug a custom
+image here the yellow dot indicates that
+it's expecting a color input so let's
+just grab a uniform color node like so
+or we could just type in color in the
+search bar and now let's make our first
+connection shall we to do so just click
+once on the output and let go you don't
+have to hold just release your click and
+the connection will follow you can now
+pan holding your middle Mouse button
+while keeping the connection attached
+and now let's just connect it by
+clicking once more on the input taada
+congratulations you just connected two
+nodes you see that the color of a base
+material node is now driven by this node
+and that our original color palette has
+disappeared now we said earlier that we
+don't want a bright color to begin with
+so let's just delete this and deactivate
+the base color Once More by setting it
+to four if you followed the First videos
+of this series you know that we usually
+start by building the height of a
+material before tackling its color or
+roughness so which Maps should we enable
+here you may be tempted to say well the
+height map obviously but we'll actually
+let this one turned off at first the
+reason for that is that the height
+channel in designer is used to drive the
+displacement which is a heavy process
+that we'll introduce a bit later so yes
+we are going to build the height map but
+we are going to preview it through two
+other Maps the normal map and the amban
+occlusion map let's just enable both of
+these all right we're almost set and
+ready to go there's one last step we
+need to perform these two inputs we
+enabled require specific data and we
+can't Feit them grayscale information
+directly so we need to bring two little
+companion nodes to fix this let's start
+with the normal you see that it's
+expecting a color input if we look for
+normal in our search bar we have a
+normal node that computes a normal map
+from a grayscale image which is ex
+exactly what we need let's add it and
+let's just increase its intensity to
+three here in the specific
+parameters as for the Aman occlusion it
+will create Shadows based on height
+information since the input is empty it
+has turned the cube fully black but if
+we search for occlusion we see that we
+have two amban occlusion nodes I'm going
+to go for the rt1 which is R traced
+ambient occlusion it's the most accurate
+but it's also a bit heavy so feel free
+to use the Horizon based one instead
+let's connect
+it okay and so from now on any
+information we create will be fed to
+these two nodes that converge to a final
+base material letting us see in real
+time what our height looks
+like all right let's recap what we just
+saw in this video you now know how to
+create a new substance graph remember
+that the default settings are fine in
+most cases and that you can always
+change them later on your new graph will
+be placed in a substance package that
+contains everything related to your
+project just don't forget to save it
+when you start you also learned how to
+add and connect your first nodes I see
+you in the next video where we will
+start working on the fabric itself

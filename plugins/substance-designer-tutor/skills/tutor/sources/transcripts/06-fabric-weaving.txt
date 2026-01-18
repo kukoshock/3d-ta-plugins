@@ -1,0 +1,380 @@
+okay we are now ready to take the thread
+that we created in the previous video
+and weave it into a complex fabric now
+you'll notice that my three view looks
+different from where we left off see my
+thread is completely flat and that's
+because I closed and reopened my project
+and when you do that in designer the
+viewport will just reverse back to its
+default settings to access these
+settings again you need to come over to
+the material menu here go to default
+edit and in the material properties find
+the height section see in my case it's
+set to the default one but if I push it
+up I can see my displacement again now
+at this stage of the project we don't
+really need any displacement plus keep
+in mind that it can also make things
+slower so I'm just going to turn it off
+completely also now that I'm looking at
+my node arrangement I realized that I
+forgot to connect that last node we
+added so let's just replug it quickly by
+clicking here while holding shift then
+letting go over the new
+output okay we're now good to go there's
+just one last thing I'd like to do
+before we continue and that is
+organizing our graph a little even if it
+looks simple things can quickly get out
+of hand and if you don't pay attention
+you can end up with one of those
+spaghetti fests that you may have seen
+on the internet and we don't want that
+Designer ships with tools to help you
+keep things neat and tidy you will find
+them in the toolbar here at the top we
+can for example add commands to a graph
+which is pretty useful if you want to
+guide either a different user or future
+yourself then we have the dot nod we'll
+talk about this one later and we have
+the frame tool now the way it works is
+that you select the nodes you want a
+group then you click on the frame icon
+and boom all your nodes now belong to
+that frame and you can move them around
+like so you can of course rename your
+frame I'm going to call this one base
+rad and you can change it color which is
+quite important because it means you can
+color code your graph I personally tend
+to use specific spefic colors for
+specific parts for example I always use
+gray frames for grayscale maps like the
+roughness of the metallic and bright
+Violet for the normal and so on and with
+that logic in mind I can read any of my
+graphs at first glance which is very
+handy now for this project feel free to
+choose whatever color you want uh I'm
+going to stick with the default blue
+what matters is that we have that first
+group of nodes bundled in one box we'll
+try to do it for every logical step of
+our process so you can try to guess
+ahead when it makes sense to add a frame
+and when it doesn't all right when I
+ready to turn this individual bit of
+thread into a fully woven fabric it
+sounds a bit intimidating when you put
+it that way but uh remember again you
+can always break down complex structures
+into simple elements so when we look at
+any kind of weave what we see is
+actually a repetition of the same
+element over and over again and to be
+more specific we have two repetitions
+going on in a fabric we have the warp
+that is the threads that go vertically
+and the weft that is the threads that go
+horizontally and we can just tackle one
+at a time so let's start with the WID it
+should be easier because our thread is
+already in the right position and all we
+need is find a way to repeat it or in
+designer lingual to tile it so let's
+just type tile in our quick search and
+see what we got so we have these orbs at
+the top of the list they're just
+readymade materials that you can use
+when you don't want to create something
+from scratch so let's just skip those
+and below are the tile nodes we're
+looking for we have tile generator TI
+random tile sampler and each of them is
+available both in Gray scale and color
+and here again you might wonder how do I
+know which one to pick and the answer is
+you don't not in the beginning anyway so
+the key here is really to experiment and
+play around with the notes you encounter
+also read that descriptions for example
+in this case we know that tire random is
+probably not what we're looking for it
+leaves us with tile generator and tile
+sampler both are very similar but the
+tile sampler is a bit more advanced so
+we'll deal with it later for now let's
+just bring in a tile generator
+grayscale okay as you can see it looks
+pretty harmless with just these two
+inputs we have a pattern input and a
+background input and we won't use that
+one much the pattern input is expecting
+the element that you want to tile so in
+our case it's it's the thread so let's
+just plug it there all right let's talk
+about the properties first because as
+you can see this node has lots of them
+and it can be a little overwhelming at
+first so I'm just going to collapse all
+the different
+sections so that we can tackle them one
+by one so at the top of the list we have
+the X and Y sliders that let us choose
+how much we want the pattern to be
+repeated in both axes they are clamped
+to 64 by default but as you now know we
+can always dial in any number we want
+for now let's just keep them at 64 next
+is the pattern section this one is
+important because as you can see even if
+we plugged our thread in the pattern
+input here it still doesn't show in the
+2D View and that's because the pattern
+here is set to the default brick so we
+need to change it to image
+input there you go we can leave the rest
+as is so let's scroll down to the size
+section this one is a bit more tricky to
+navigate because you have all these
+options we have middle size interstice
+you can skip those at first and focus on
+the scale because it's the most familiar
+it just resizes the pattern uniformly
+like that now you see that as I make my
+threads bigger they start to overlap and
+it's giving me these weird bright
+intersections that can be annoying
+that's because by default the tile
+generator Blends patterns in ad mode if
+you want to change that you need to come
+over to the color section and change the
+blending mode to
+Max all right now the repetition we have
+right here is still missing something
+all the threads are perfectly aligned
+and this is not how Fabrics work so what
+I would like is to offset them and I can
+do this by going to the position section
+here where I have this offset slider now
+I could eyeball it like that or if I
+want a perfect offset I can just type in
+0.5 okay it looks better now but we
+still have the problem of these big gaps
+between each row ideally I would like
+this tining to be very tight and dense
+and you can see that I can't really get
+there with the size parameters only so
+this is where you need to balance the
+effects between different parameters in
+our case we will need to play with both
+the number of repetitions here and the
+scale here so let's jump back to the X
+and Y amount what I'm going to do is
+first I'm going to break that 64 limit
+by typing in a large number like 200 for
+example and you see that when I do that
+it also expands the slightest range
+accordingly now what I want is to add
+more threads on the vertical axis which
+is the Y AIS so let's just push that
+slider until there are almost no gaps
+left I think somewhere around 800 is
+fine I may also take the X down a little
+to I don't know 120 for example now you
+see that because I increased the tiling
+on one axis and not on the other it has
+distorted the threads and it also made
+them much smaller and darker that's why
+we need to go back to the size
+parameters and make a few changes so
+first I'm going to drastically increase
+the scale set it to five then to get the
+shape of the thread back I can simply
+play with the X and Y
+interstices like so all right we are
+almost there for the WFT but now that I
+look at it I feel like the results we
+have here is a bit too uniform so I'm
+going to break that uniformity by first
+decreasing the offset so that we have a
+more Dynamic
+structure see like so then you see that
+in almost all the sections we have an
+option to
+randomize you can get crazy with it but
+in our case we want to add just a pinch
+of Randomness to make things look more
+natural and realistic the f free to
+experiment with it just keep in mind
+that usually you need to aim at very low
+values like 01 02 something like
+that all right it took us some time but
+we made the first half of our fabric now
+it's time to tackle the war so the
+threads that go vertically we could
+reuse the same technique creating
+another tile generator and just rotating
+the threads but instead I'd like to show
+you another approach in the search bar
+let's type in directional and choose one
+of the directional noises I'm going to
+go with that light one here directional
+noise 3 if you zoom on it a bit you will
+see that it looks a little like wood
+fibers right with these thin strips
+going all in the same direction that's
+exactly what I want we have a few
+parameters to play with and the first
+thing I want to change is the rotation
+because remember it needs to go
+vertically for warp so let's just type
+in 90° and I'd also like to scale it up
+let's say up to three okay so it doesn't
+really look like fabric yet but with a
+few adjustments we can make it work so
+one thing stands out in particular when
+I zoom out you see we have these large
+luminance variations like this Light
+patch here these darker areas here and I
+just know by looking at it that it's
+going to make our height look very
+grungy and not very textile like so I
+need to somehow remove these large
+variations while keeping the details
+sharp and to achieve this we will use a
+very handy node that is the high pass
+gray
+scale this node is great at removing
+large scale variations see when I
+compare the two these big blotches are
+completely gone and we can push the
+effect even further by reducing the high
+pass radius to I don't know
+0.2 okay so we got rid of the main
+discrepancy but we also lost some
+contrast in the process to get it back
+I'm going to use the sharpen node so
+let's just bring it in and there you go
+see how it makes the edges pop out let's
+just soften it a little maybe somewhere
+around 6 perfect and you see with just
+two notes we went from this sort of
+lumpy directional noise to something
+nice and flat with the highpass Yet full
+of detail
+thanks to the
+sharpen this will act as our warp so we
+now have the two halves of our fabric
+with our warp here and a w here and all
+that is left to do is to bring them
+together and for that we will use of
+course a
+blend so let's take our warp first and
+hook it to the background then take our
+W and connect it to the
+foreground now we need to think about
+the blending mode because right now
+we're in copy mode so that means means
+the WFT here just overrides everything
+what we want is for the warp to show up
+in the darker areas of the WFT in other
+words when the W threads sink in we want
+the warp threads to come out there is a
+blending mode that would be perfect for
+that and that is the max mode you may
+know it as lighten this mode essentially
+compares the two inputs and keeps the
+lighter values but for some reason we
+still don't see a warp can you guess why
+just look at the two images we're
+blending again we are telling the blend
+to display all the pixels in this image
+that are lighter than this image but you
+see that there are no such pixels our
+weft is just too dark and the warp is
+just too bright so how do you think we
+can fix this take a moment to think
+about it the solution is to modify the
+grayscale values of one of these two
+using levels for example we could either
+darken the wart or lighten the WFT I'm
+going to go with with that first option
+now I could just go on the side here add
+my levels then reconnect everything but
+what I can also do is select the
+connection so that it's highlighted like
+that then press space bar and select the
+levels here and if I do that it will
+automatically add the levels to the
+connection so I don't need to replug
+anything alternatively if I want to
+remove a node there's two ways I can do
+it I can simply select it and press
+delete but if I do that it will also
+break the connection or I can press
+backspace and it will just remove the
+node while keeping the connection pretty
+handy now I can adjust the levels to
+make the warp darker and to see more
+clearly the effect of what I'm doing I'm
+going to double click the blend itself
+to preview it in the 2D view while
+playing with the
+levels in this case I'm not interested
+in remapping the input values I just
+want to uniformly darken the whole image
+so I can just take the out Arrow here
+here and decrease the lightness like so
+and you see that as I bring down the
+light values of the warp the weft starts
+to appear now at this point it's hard to
+tell if what we did looks good in 3D or
+not so let's reconnect everything by
+left clicking while holding shift and
+redocking
+here okay wow it's definitely making a
+difference but it's so dark and noisy
+that it's hard to tell and the reason
+why it's so dark has to to do with how
+our ambient occlusion Works remember the
+ENT occlusion is that node we added at
+the very beginning with the normal and
+it's role is basically to create shadows
+in the hollows and Cavities of our
+material and you see that it's now
+mostly black Fabrics tend to darken
+easily because the threads are so tiny
+so let's just go in the properties of
+the ambient occlusion and they decrease
+the height to a very low value like
+0.01 much better
+all right there's one last note I'd like
+to add to wrap up this base fabric when
+I look at the result in the 3D view I
+realize that the scale is still a bit
+off it's a bit too large actually for
+what I have in mind so I'm going to add
+a transform 2D and divide the whole
+thing by
+two perfect we'll discuss the question
+of the scale in the next episodes but
+for now let's call this one done and the
+best way to do it is to to frame or work
+remember so let me select the nodes
+click on frame and let's call this one
+base
+weave so in this video we saw how you
+can tile an element using the tile
+generator and how you can play with both
+the amount and the scale to build
+something very specific we also saw how
+we can refine a noise by using tools
+like the highpass and the
+sharpen in the next video we'll see how
+we can create all oraments procedurally
+to add them to our weave

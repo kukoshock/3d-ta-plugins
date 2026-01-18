@@ -1,0 +1,74 @@
+so you want to learn substance designer
+because you've seen the amazing
+materials and all the tools that you can
+create with it but you don't know where
+to start and maybe you bit DED by the
+nodes and the whole interface if that's
+the case you're in the right place
+because this course is for absolute
+beginners my name is Louise I'm a
+technical artist and together we're
+going to create this beautiful fabric
+material in sepson designer we'll start
+from the very Basics and slowly make a
+way up to more Advanced Techniques there
+will be a lot of pauses and repetitions
+so that you can experiment and practice
+by yourself and what matters here is not
+the material itself but the skills that
+you will develop as You Follow The
+Creation process so even if you're not
+into fancy Fabrics this tutorial should
+get you up and running for your own
+personal project so this is the type of
+fabric that we'll try to recreate has a
+nice shine to it and as you can see the
+ornaments are created in the weave
+itself which makes it subtle but very
+interesting from a technical point of
+view now we won't be creating an exact
+copy of this but this is the overall
+look and feel that will try to achieve
+we'll start by creating a simple thread
+and see how we can weave it into a
+complex structure you will then learn
+how to make your own ornament base both
+procedurally and by importing images
+once this base is finished we will give
+it a little twist by sewing a trim on
+the edge which will let us cover some
+hard surface techniques that you can
+reapply to your own projects and once
+we're done with the material creation
+itself I will show you how to expose and
+organize parameters so that you can
+interact with the material outside of
+substance designer now just a few words
+about the course itself this series is
+for beginners but even if you already
+know a little bit the software you might
+still find a few tips and tricks in it
+so feel free to jump ahead to later
+videos if you are a beginner though I
+would strongly encourage you to follow
+each episode chronologically and if
+possible to have substance designer open
+on the side so that you can follow and
+experiment with each step I'll be using
+substance designer 13.1 for this project
+so if you have an older version some
+nodes might missing it's not a big issue
+and you can still follow along 90% of
+the time and of course you can download
+the project file so that you can study
+things at your own pace I will also try
+to keep an eye on the comments so if you
+hit a ro block or have a question just
+post it in the comments and I will do my
+best to answer and let me finish by
+saying that substance designer is my
+favorite software ever and it is not as
+complex as it looks so I really hope
+that we'll grow to love it as much as I
+do and with that said let's jump into
+it for

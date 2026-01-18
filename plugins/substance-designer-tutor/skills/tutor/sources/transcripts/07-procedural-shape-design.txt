@@ -1,0 +1,454 @@
+so we made our thread we made our weave
+and now we'd like to embroider ornaments
+on top of this plain base to make it
+look more appealing and interesting we
+have two tasks ahead of us we need to
+create the embroidery weave that will be
+added to our base Fabric and we need to
+create an ornament mask that will
+basically tell designer where the
+embroidery should appear and since all
+you need in the end is a black and white
+image you could also simply load
+something that you got elsewhere or just
+draw it manually in Photoshop for
+example this is important I will go back
+to this later but you don't necessarily
+have to do everything procedurally in
+designer now for the sake of this
+tutorial we're going to create our
+ornament mask from scratch by ourselves
+just because it's a great exercise to
+get used to shape creation and
+manipulation but in the next video I
+will also show you the other technique
+where you just import a bit map and use
+it as a readymade mask and at the end
+we'll weigh the pros and cons of each
+method all right let's just see how we
+can make this mask procedurally we need
+some space for that and I could just
+move away from the main Arrangement here
+and start building something on the side
+or if I want to keep things really tidy
+and you know I don't want this node
+arrangement to get in the way what I
+could do is build it in a separate graph
+or what we call a subgraph now you
+remember when we started a project
+designer created for us a substance
+package and this package is like a box
+in which we can add as many resources as
+we like in our case we only have this
+ornate fabric graph here that is just
+our main graph now in order to add a new
+graph to our project we need to come
+over to the package here where it says
+SBS make sure you're clicking the
+package and not the graph people often
+get confused by that so on the package
+right click go to new substance graph
+it's going to ask you the same thing
+that when we first started a project so
+which temp you want to use uh what
+resolution you want to work on and so on
+we're going to keep everything at
+default and just rename the graph
+ornaments don't be confused by that it's
+not going to create a new project it's
+just going to add another graph inside
+your current project and there we go we
+now have a nice clean slate to start
+building our mask and the good thing
+about doing it this way in a separate
+space like that is well first we're not
+going to clutter our main graph so
+that's always a good thing and second
+the fact that the ornament mask is now
+its own entity means we can always bring
+it in other projects okay so let's start
+building it now it's time to ask
+ourselves what kind of ornament do we
+want to make it could be flowers it
+could be Stars Hearts geometrical
+patterns but even if you don't know
+exactly what you want to make designer
+can be a good starting point so let's
+say I don't really know where I'm
+heading and I just want to Doodle until
+I find something that sticks I'm going
+to start with a simple shape like a disc
+for instance but apart from changing its
+size I'm pretty limited when it comes to
+deforming it or creating something new
+out of it so let's search for a note
+that could help us with that if we type
+in warp you see that we have a whole
+family of notes dedicated to just that
+let's start with the simple warp the one
+with that wobbly grid here all right so
+what the warp does if we look at its
+description is that it displaces the
+pixel of an image following an intensity
+map that you plug right here so let me
+show you an example real quick if I
+connect my disc to it and use another
+shape as the intensity
+input and use a transform 2D to move it
+around you can see that the pixels of my
+dis are shifted based on where my shape
+is now notice that I'm using a bell
+shape for that because it has a nice
+soft gradient and if you look at the
+intensity input of the war it actually
+says gradient input and what that means
+is that it's not going to work very well
+with sharp inputs see if I change my
+belt to something harsher I lose the
+clean distortions that I had so keep in
+mind when using the warp you need to
+choose soft shapes and noises for the
+intensity now when it comes to noises I
+already know that something like the
+peine noise would work well because it
+has these large blobs with gentle slopes
+it's the perfect candidate for warp so
+let's just plug it in now if I play with
+the pein properties while previewing the
+warp for example let's say I changed the
+disorder well I can now see it Ripple
+through the dis outline in real time
+which is awesome now I'd like to make a
+few adjustments uh first I'd like to
+make the pein
+larger and the warp more intense by
+typing in two
+here okay now at this stage it's just
+just a shapeless blob and I wouldn't
+call it an ornament really but here's a
+few tricks we can do to turn it into
+something interesting the main thing
+that is missing here is harmony if we
+think of Harmony as a balance between
+Chaos and Order right now we have a lot
+of chaos here coming from the noise
+Randomness and we have zero order one
+quick and easy way to structure this
+would be to add a mirror the mirror node
+does exactly what it says it will mirror
+the input on the axis of your choice or
+you can also mirror the corners so I'm
+just going to cycle through this until I
+have something
+interesting okay now let's move that
+note to the side and what we will do to
+refine this result is add a couple more
+nodes in between here let's select the
+connection first then search for
+swirl this one will distort your input
+like so like following a spiral shape
+and I usually scale it up by two by
+clicking here so it's taking in the
+whole image then play with the amount to
+make it more or less
+intense okay I'm not going to Twig it
+too much now because I first want to
+finish my little setup and I will do
+that by just adding a transform 2D here
+just to be able to test different looks
+simply by moving around my shape before
+it enters the mirror now with everything
+set up I can finally double click my
+mirror to display it in the 2D view then
+start playing with some of the previous
+notes so I can move the shape
+[Music]
+around experiment with the
+swirl I can even go back to the very
+beginning and change the base
+disc also maybe play with the
+pein and just keep going like that now
+this really illustrates the power of
+making things procedurally because here
+we didn't create one static image but we
+actually made a dynamic generator that
+can produce endless variations and it's
+also a good illustration of what we mean
+when we say that the workflow in
+designer is nonlinear we can act upon
+any point of the graph and it would just
+update everything that is connected to
+it so I can go back and forth between my
+mirror my transform the noise and so on
+and now I have this nice shape all right
+so that was one way of creating custom
+shapes in substance designer now let's
+say you don't want to generate just
+random shapes because you have a
+specific design in mind and you want to
+be able to reproduce it procedurally
+with more control you could get there
+using warps but it would quickly get
+tedious instead I'm going to introduce
+you to a new family of nodes so let's
+move away from this first setup and type
+in spline now the spline nodes are a big
+family you can spot them with that
+yellow color code to get started let's
+bring in the spline poly quadratic
+node okay now this one looks very
+different from what we've been using so
+far and with all these inputs and
+outputs it can be a bit intimidating but
+let me reassure you right away you don't
+have to worry about them you will not
+have to use them separately uh speaking
+of it if I want to grab any of the
+outputs you see that they all come
+together for me but you may have a
+different Behavior where they only come
+one by one if that's the case it's
+because you are in the wrong connection
+mode that's a setting you can change by
+going at the top of the tool bar here
+where it says link creation mode and we
+have different modes here and if I set
+it to standard you see it will only let
+me grab connections one by one and we
+don't want that so make sure you are in
+material mode if you want to follow
+along okay back to our spline now like I
+said you can ignore these inputs for now
+so let's focus on the 2D view so we have
+a spline here we can just pose it
+however we want with these four points
+can just drag them around like so so and
+that's mostly it you can just draw any
+shape by moving points we can go up to
+10 points in our poly quadratic uh you
+can even go above it using the pointless
+node we won't get into that for now I
+just encourage you to spend a few
+minutes just messing around with the
+points to familiarize yourself with the
+node now in my case I like to create
+some kind of stylized Leaf shape or
+blade I'm just going to experiment with
+it a bit
+something
+nice all right now at this point all we
+see in the 2D view is a preview it is
+not the actual output that we are going
+to use and you can already tell that if
+you scroll at the bottom of the
+properties panel here you have all this
+preview setting like the point size the
+thickness and so on it's just here to
+help us see what we're doing so I made
+this sort of leaf blade thing and I'd
+like to see it in its final form and not
+just as preview so how can I get out of
+preview mode there are different nodes I
+can use for that so we have spline
+render spline mapper but I'm going to
+use the scatter on spline Grays scale
+for that that's another big node but
+don't worry we're not going to dive too
+deep into it now to connect our spline
+to it all we have to do is take one
+input and it would just hook the whole
+bundle here all right now it's giving us
+this result with all these discs
+scattered along along the spine that's
+not exactly what we want so we are going
+to take that shape spacing slider and
+push it down to zero and now we have
+something nice and smooth the second
+parameter we need to change is in the
+size section so we need to switch the
+size mode here at the top from normal to
+use thickness from spline now all of a
+sudden our image has disappeared and
+that's because the spline we use doesn't
+have any thickness yet so we just need
+to go back to it and see that's some
+nonlinear workflow in action here and if
+we take a look at the properties we see
+that each point of the spine actually
+has its own properties including
+thickness and if I start gently pushing
+some of these sliders I instantly see
+the results updating in my
+scatter so now let me twig these a bit
+until I have the desired
+look nice and tapered
+okay something like that all right so I
+made a first blade using this fly node
+but what if I wanted to have some sort
+of Clump with several blades I would
+need several splines for that now you
+might be thinking sure no problem we can
+just create another one and blend them
+together but the thing is splines are a
+separate category of object in designer
+and you can't really blend them like you
+would with ordinary shapes or noises
+instead what you can do is append them
+in a list now it sounds complex but it's
+actually very simple all you have to do
+is first you need several splines so let
+me just duplicate this one by pressing
+contrl D and now to assemble these you
+can just take the outputs of the first
+spline and connect it to the second one
+and now our two splines are grouped in
+one list I can render them all together
+like so but there are still separate
+entities that I can readjust IND
+so I'm going to do that a couple more
+time
+duplicating
+reconnecting giving different
+poses all right so you now know how to
+create specific shapes using splines
+it's a bit more advanced but definitely
+worth it when you want to have more
+control over your shapes to finish this
+little plant setup I'd like to add a
+flower somewhere in the middle something
+really simple and stylized a bit like
+the famous Rose designed by Mac which is
+just a round base that is crisscrossed
+with petal lines that should be fairly
+easy I'm going to start with a disc then
+add a transform 2D to place
+it and here I'm just using a blend to
+guide me and see things better somewhere
+around
+here okay now for the petal lines I'm
+going to use two more notes first I like
+to be able to extract the outline of
+this disc here just to have a nice nice
+empty circle and I can use an edge
+detect for that this note just traces
+the Contour of the input and is very
+handy there's not much to change here uh
+we can invert it can adjust the
+thickness if needed and now what I would
+like is to take this circle and Scatter
+it randomly and I'm going to use a tile
+generator for that because we already
+know that note so it will be a good
+practice remember we need to change the
+pattern to image input then and I'm
+going to reduce the number something
+like
+three and play with the scale and
+position until I get something nice and
+random okay now once it's done I can
+take the very basic bird we've been
+making and blend these random circles on
+top of it in subtract
+mode and now we can adjust and fine-tune
+things for example I could play with the
+tile generator random
+seed now it still feels a bit too
+uniform and to be honest it just reminds
+me of a basketball a quick fix for that
+would be to throw a warp somewhere in
+here to just break that perfect round
+shape uh so let's just grab a
+warp grab a pearing noise as well and
+experiment with them a
+bit Twix the
+scale and adjust the
+intensity all
+right now if I redirect it here like so
+we have to keep in mind that it's going
+to affect the edge detector as well so
+in this case it's fine but sometimes you
+have to think ahead about where you want
+a certain effect to
+appear now let's twig the tile random
+seed one last
+time okay our stylized flower is now
+finished and all that is left to do is
+to combine it with our little setup here
+and this time we can use a blend for
+that so let's set it to Max because we
+want to add of flour and voila one thing
+bothers me though now that I look at it
+and that's the fact that we can see the
+blades behind the flower and I wish the
+flower would just completely hide what's
+behind there are different ways we can
+fix this but the one I would like to
+show you is by using the opacity input
+of the blend so far we haven't really
+used it but it can really take your work
+in designer to the next level so you
+better get used to it early on so the
+first thing I will do is actually change
+the blending mode and set it back to
+copy copy is basically saying that the
+foreground will completely take over the
+background you can think of it as a
+replace mode now our flower replaces the
+blades but I'd like to be more precise
+I'd like to tell the blend okay let the
+flower take over the rest but only in a
+certain area I don't want it to override
+everything I just want it to happen in a
+small portion what I could do is take
+the flower itself and use it as a mask
+but since the mask here and the input
+here are exactly the same we can't see
+any difference from when we were
+blending in Max mode so in order for it
+to work I would need to expand the mask
+a little so that it floods these
+interstices here and this is something
+that is actually pretty easy to do if I
+take a blur so blur HQ here HQ for high
+quality and connect my flower to it I
+now have these gradients on the edges
+that I can scan so to say so I could use
+a levels for that but since it's pretty
+basic I'm going to use a smaller and
+very handy node that is the threshold
+node this node just picks a grayscale
+value and turns white everything that is
+above it and black everything that is
+under it and so you can easily adjust
+the effect with this
+slider all right I now have a nice
+inflated mask that I can use to drive
+the blend here so let's just try it and
+there you go you can really see how it's
+cutting out the background where the
+flower is and now I can just move it
+around and The Mask will keep
+following I can also adjust it by either
+playing with the
+blur or with the
+threshold all right so in this video we
+saw how you can create custom shapes by
+warping them and by leveraging the nois
+randomness we also went through a more
+controlled and advanced process using
+splines which let us achieve more
+precise results and both of these
+examples are great at showing how
+working in designer is really a back and
+forth process it's not linear it's all
+about building a small setup then
+testing it then going back to the
+previous noes making a few changes and
+seeing how it impacts your final result
+so it may look like a lot of work but
+it's definitely worth it when you want
+to have something that is dynamic and
+customizable in the next video we will
+see how you can import readymade images
+if you want to skip that procedural
+phase

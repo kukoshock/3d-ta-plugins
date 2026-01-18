@@ -1,0 +1,420 @@
+hello everyone in this video we will see
+how we can add colors to our material
+using the height information that we
+created in the previous episode before
+we dive into it I'd like to touch on a
+few Concepts regarding PBR materials if
+you're not familiar with what PBR is it
+stands for physically based rendering
+you can think of it as a set of
+guidelines that aim at accurately
+representing how objects react to light
+as a matter of fact materials in real
+life follow certain rules and we as 3D
+artists are trying to account for these
+r rules to avoid inconsistencies we
+won't really delve into that topic in
+this video but if you want to learn more
+about it West mcdot brought a thorough
+introduction to PBR that can really help
+grasping The Core Concepts as well as
+the science behind it so if you want to
+check it out I'll put the link in the
+description box below now the reason I
+mention PBR now is because some of these
+guidelines are about the base color
+color in general is a complex topic but
+it can be even more so if you come from
+a two deep background where you sometime
+use color to convey information that do
+not normally belong to it such as
+shadows and Reflections but in 3D text
+string these information are driven by
+specific maps that are not related to
+color for example occlusion is handled
+by the emod occlusion map and so you do
+not need to make your base color darker
+in these areas it means that the base
+color of your material should be devoid
+of Shadows or lighting information
+giving it this sort of flat look that
+you see here another important rule to
+keep in mind is to avoid extremely light
+or extremely dark values as no material
+in real life is purely black or white
+we'll see how we can check these values
+later all right let's set that aside for
+now and start building our base color
+map so we are finally leaving behind us
+this big chunk of the graph that makes
+up the height and hopefully you now
+understand why I called it the backbone
+of our material so let's take that space
+up here now where do we start your first
+impulse might be to search for color and
+see what shows up so let's do that color
+and you see that it filters out a lot of
+nodes basically most of the grayscale
+nodes that we encountered so far have a
+color twin that you can find here but
+let's start with something simple we're
+going to click on that familiar bucket
+icon the uniform color now we already
+know how this one works just pick a
+color from the gradient here or play
+with the HSV
+sliders if you have a specific color you
+want to use you can also type in the hex
+code here now in my case I have a
+reference image that I would like to
+follow I have it pinned in my pure ref
+board and with the uniform color
+selected I can click on the ey dropper
+and Sample any pixel on my screen now if
+I want to capture that General green Hue
+I need to find an area that is not too
+light not too dark something pretty
+neutral like this for example okay now
+let's say we want to test that green on
+our fabric the problem is we don't have
+any color input in our base material and
+and that's because when we created this
+little setup here we want it to focus on
+the height and so we kept the default
+gray that comes with the node if we want
+to enable a custom input for that we
+need to scroll down to the user Maps Tab
+and switch the base color from false to
+true and it turns everything black
+because right now the color input is
+empty so let's plug our green
+here all right so this is how you add a
+color to your material obviously this is
+quite limited we're only inputting one
+solid color so it feels very uniform and
+basic to add variety and details to this
+base we need to talk about blending
+colors so far we've only been blending
+grayscale nodes and it was fairly
+straightforward because we could take
+any of these nodes and just blend them
+together without thinking too much about
+it so how can we approach it when it
+comes to color let's make a blend and
+put that first green in the background
+since we have a yellow connection coming
+in here it means the foreground is also
+going to expect C color so let's
+duplicate this color give it a different
+Hue all right and we are now blending
+these two greens and sure we can play
+with the opacity of the blending mode
+but in the end we only getting a uniform
+result because well we blend two uniform
+inputs the only way to add variations is
+to use that mask input here and since
+this one is always grayscale we can use
+pretty much anything so if if I take a
+random grunge map let's go for galvanic
+large and let's make this
+lighter well you see that the grayscale
+information that I have here is now
+driving the distribution of the colors
+here so that's one of the main ways to
+build up details in your color map just
+blend two color inputs and use a
+grayscale mask to break that down and to
+get something complex and intricate you
+would of course have to repeat that
+operations as many times as necessary
+just layering color upon color you get
+the idea this method has its Bren cons
+but it can be a bit tedious so I'd like
+to show you another technique to quickly
+get a complex color map this time we're
+going to start from a grayscale input
+and I like to reuse something from our
+height because we put a lot of effort
+into it uh we could take the final
+height map directly there's a fair
+amount of details in there we have the
+warp the W the ornaments the trim each
+with its own set of grayscale values so
+that a lot of information to build upon
+that could work but designer actually
+ships with filters that help you extract
+even more information from your height
+map so there's one in particular that I
+love and it's the cat your note you have
+two versions of it but I find the cover
+just smooth a bit easier to work with so
+let's bring it in now this note is a bit
+special because you see that it actually
+expects normal information so let's
+fetch on normal I'm going to take this
+one here because I don't want the fold
+to have an impact on the
+collar okay looks like we have a problem
+here everything is kind of drawn in that
+vertical gradient and this is something
+that you might encounter more than once
+when using this node in designer so I'd
+like to quickly show you how to fix this
+I won't get into the technical details
+here but the reason it's doing that is
+because the curvature smooth samples
+each pixel from the normal here using a
+downscaled version of it and when for
+some reason the node doesn't diee
+properly then the interpolation breaks
+so to troubleshoot this issue you need
+to look for a node that doesn't pile and
+see this is where it's important to have
+a few Notions about inheritance because
+a cure smooth here has its styling set
+to relative to input it means the
+problem must come from somewhere
+Upstream so not here not here and okay I
+think I know what caused it so we have
+this last blend for our height and you
+now know that it takes its base
+parameters from the primary input that
+is the background here and if we trace
+this back we see that indeed we have
+this transform in which we had removed
+the vertical tiling and this new
+parameter then propagates to this node
+which passes it to this node until it
+finally breaks our curvature smooth here
+to prevent that we have two options the
+first one is ridiculously simple see for
+some reason I had plugged the gemstones
+in the background of the blend and since
+the blend is set to Max and has full
+opacity the order of the inputs does not
+matter the blend is commutative so I can
+simply swap them by selecting them then
+press X and boom AR cature is fixed
+because the blend now takes its styling
+from here and not from here if for some
+reason you can't invert this order you
+can simply fix the problem by directly
+overriding The Inheritance and setting
+the node back to absolute you can do it
+here or directly in the curvature node
+itself so again if you ever encounter
+this weird Behavior make sure your node
+is set to full tiling this problem
+should be fixed in the coming versions
+of designer so stay tuned now if we zoom
+in on the curvature you see that it
+outputs this gorgeous grayscale map that
+highlights all the edges and Cavities of
+our height and I'd like to use that as a
+base for my color I can do that in just
+a few clicks with a very powerful node
+the gradient map you see that this not
+is a bit special because it takes a
+grayscale input but outputs color so you
+can think of it as some sort of
+converter node it comes with this
+default Grays scale ramp and if you
+click on the gradient editor here it
+opens up a separate window in which you
+can do a lot of things so let's take a
+moment to explore it first you have this
+ramp here and if you click on it it will
+place two keys at each end which you can
+move and adjust as you want and you see
+that by doing so the node is essentially
+remapping my grayscale values to the
+colors that I'm picking up now you can
+of course add more key
+move them around invert the position or
+color you can also change the type of
+interpolation which can be very handy
+especially if you want to have a hard
+set of
+colors like
+that okay but what's awesome about this
+node is that you can sample gradients
+from anywhere on your screen let me show
+you I'm going to grab my reference
+again and simply drag a line like that
+now if you cover a lot of space the
+result can be quite nor poising give you
+too many keys you can balance it by
+playing with the Precision slider or
+simply by removing Keys manually just
+dragging them upwards like
+so so I'm going to try that a few
+times until I have something that is
+detailed enough but not too
+crazy all right I think this is good so
+this is how you can create a complex
+color map out of a gray scale input
+really powerful technique this is a note
+that you'll find yourself using a
+lot now if I want to soften it a little
+I could blend it with the uniform green
+that we kept
+here and just play with the opacity
+that's up to you I'm going to keep this
+just in case then last but not least I'd
+like to add a little bit of Randomness
+in the color you know so that things
+look more natural and less regular to do
+so I'm going to take a note that has
+lots of Randomness options the tile
+generator this time we're going to to go
+with the tile generator
+color all right let's start with a bell
+shape something soft increase the amount
+to
+200 then scroll down to the color
+section here I'm going to max out the
+saturation and then randomize the
+Hue it's giving me this nice random
+noise can play with the main color and
+let's now adjust the size parameters a
+little going I increase the
+scale then reduce the Y okay no need to
+spend too much time on this because the
+final result is going to be very subtle
+I just want it to have a nice random
+color base now to blend it better with
+the fabric weave I'm going to warp it
+using a directional warp and for the
+intensity input I can simply reuse the
+curvature because it has all the
+information I need I'm just going to
+blur it a bit so that it's not too
+noisy then do a quick level pass to get
+some contrast
+back there we go now let's take this
+very colorful output and blend it with
+our green fabric the key here is to find
+the right blending mode I'm going to go
+with soft light it works a little like
+overlay but with smoother Transitions
+and now let's drop the opacity to a very
+low value somewhere around
+0.1 it should be very subtle
+like
+that if I compare before and after you
+see that it's definitely adding depth
+and variety to a green base I really
+like it now if I wanted the effect to be
+even more subtle I could add a noise in
+The Mask input actually let me try it
+with something directional like an
+isotropic
+noise like
+that okay again it's very discrete but
+it adds an extra layer of complexity
+I think we can call the fabric color
+done so let's frame
+this fabric
+color and now let's tackle the trim and
+gemstones here the best approach would
+be to assemble their colors in a
+separate group of nodes then blend the
+result with the green fabric when it's
+done so let's start with a golden base
+now when creating gold or any metal for
+that matter you need to keep in mind
+that the color is one thing and the
+metalness is another so even though gold
+in real life can look like it has a very
+warm or dark Hue the actual color is in
+fact pretty light and if you don't want
+to eyeball it the best is to find a good
+chart online such as this one that I'm
+going to use and you see it just gives
+me straight away the accurate values for
+gold so I'm just going to take a uniform
+color and simple
+this all right now let's blend this with
+another color I'm going to duplicate
+this one and go for a bright red this is
+going to be the color of our gems so
+feel free to choose whatever you prefer
+and now to distribute these two colors
+we're going to need a mask that tells
+what goes where since the red is on top
+we need a mask that tells where are the
+gemstones and it seems we already have
+that so let's take a DOT
+node
+gemstones here we go now it's hard to
+tell how it looks because right now we
+only see the color itself we don't see
+it in context let's add a blend
+here and here we need another mask that
+will include both the trim and the
+radial ornaments and we actually don't
+have that right now so let me just make
+one quickly we need a mask that takes
+the assembled ornaments so both the gems
+and the
+mountings and to get that result quickly
+I can simply take this assembled result
+here and run a threshold like that then
+I'd like to add the trim to it so blend
+and
+trim Max
+mode okay let's save that in a
+DOT call it trim and
+ornaments and we can now use that mask
+to drive the final Blend
+here okay now it's working really well
+for the trim but not so much for the
+gemstones can you guess what's wrong
+here it looks like the mask that control
+the red is too large let's navigate back
+to where we created it and okay we have
+this threshold that needs to be adjusted
+so let's increase it until the red
+nicely fits within the
+gems perfect we can also check how
+things look in
+4k all right everything stays in place
+awesome so it looks like we are done
+with the base color let's frame this
+second
+group call it
+ornaments and you could of course refine
+all this and layer in more details and
+subtle variations for example for this
+bit I decided to go for solid uniform
+colors because the height is stronger in
+this area and so it doesn't need extra
+details in my opinion but of course feel
+free to polish it further now before we
+wrap up this video I'd like to show you
+one last trick remember when I told you
+that the base color had to follow
+certain rules in PBR workflows well one
+of them was to stay within a certain
+value range so nothing too dark or
+nothing too bright designer ships with a
+little tool that checks these values for
+you it's called the PBR validate node
+the way it works is super simple just
+plug your base color and if it Returns
+Green you're good to go now if I were to
+add dark values and test it well you see
+that I now have these red spots telling
+me that my base color is not PB are
+compliant now these are not hard set
+rules you can get away with a little red
+but overall it's best to keep in the
+green all right so this concludes our
+exploration of Base color in substance
+designer we saw how to colorize Grays
+scale information either by blending
+colors and using grayscale as a mask or
+by remapping grayscale to color using
+the gradient map node in the next video
+we will cover the roughness and metallic
+Maps for

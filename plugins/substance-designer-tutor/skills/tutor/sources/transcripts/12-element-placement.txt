@@ -1,0 +1,102 @@
+all right you now know everything about
+base parameters and inheritance so let's
+get back to our trim and let me just
+reassure you most of the times you won't
+have to touch the base parameters or
+think about inheritance at all but in
+some cases you need to understand at
+least the basics and the use case at
+hand here was to fix our tiling problem
+and tiling is a base parameter so we had
+to go through this right now it's grade
+out because it's set to relative to
+input so let's switch that to Absolute
+and now we can choose what type of
+tiling we want get disable the
+repetition completely or just on one
+axis so let's go for vertical tiling and
+there we go we have a nice single row of
+threads all we have to do now is to
+place it where we want here I'm just
+using the offset slider because it's
+more
+convenient all
+right somewhere around the edge here
+okay we can now blend this with our
+base let's go for Max mode
+okay let's maybe scale down the threads
+one more
+time put them back into
+place you see that here I'm struggling
+to re-root the connection after the
+height blend that's actually because of
+the connection mode I'm in when you're
+in material mode it can sometimes
+prevent some outputs to be properly re
+rooted um I could switch to standard
+mode to fix this but I'm just going to
+do it manually this
+time okay I think it's tends out a bit
+too much like the profile is too rounded
+so I'm just going to fix this quickly
+with the
+levels Shifting the
+gamma perfect we added the first row of
+our
+trim now we just have to repeat these
+steps for the next rows and that
+shouldn't be too hard for the sequence
+we can use the exact same technique so
+offset duplicate
+recenter blend then adjust the size so
+that they overlap
+nicely then we take another transform to
+tile them in a row switching the tiling
+to Absolute then to Vertical only and
+dividing all right you see with practice
+you get pretty fast at it now let's
+blend this with our
+base then place it next to the threads
+now it's a bit hard to see because it
+sits on the very edge of the tile but we
+can fix this in the material property of
+the 3D view simply shift the u a little
+with this tiling slider don't worry it's
+not going to change the actual tiling of
+the material it's just about the
+preview all right it's already looking
+pretty good if you ask me of course if
+we look at it up close well we see some
+artifacts due to the resolution but if
+we switch to 4K you see that the result
+is very decent
+so we can go back to our 2K resolution
+without worrying too much about it we
+have one last row to add and you know
+the drill by now so why don't you pause
+the video and try it I'm just going to
+do it quickly on my
+side maybe rescaling a
+little this time we don't need to do all
+that duplicating and blending we can
+just tile it directly removing the
+horizontal
+tiling then adding it to the main
+connection
+okay and here again I think I'm going to
+adjust the levels a
+little like
+so and when I look at it I still feel
+like we're losing too much details even
+in 2K I'd like it to be more crisp so
+I'm just going to add a sharpen
+here all right see the difference it
+makes if I mute the not with shift d it
+really
+helps all right so we made good progress
+on our Trim in this video we learned how
+to use the dot node to organize our
+connections we practiced a little or
+shape creation skills in the next video
+we will add the gemstones to wrap up the
+trim

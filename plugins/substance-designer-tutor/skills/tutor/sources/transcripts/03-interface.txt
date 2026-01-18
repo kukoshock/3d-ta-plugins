@@ -1,0 +1,123 @@
+before we get started on our project
+let's take a moment to introduce
+substance designer interface all these
+panels can be a lot to take in so the
+first thing I'd like to point out is
+that you don't need to know them all to
+start working in designer there are
+menus and tabs that you will barely use
+at first and as you grow more confident
+and experienced you will have your own
+preferred way of doing things so don't
+feel like you have to know all the ins
+and outs of the interface to get started
+note also that these panels can all be
+moved and shuffled to your own liking so
+if you have multiple screens for example
+it's really easy to create an
+interesting layout you can at any point
+revert to the default layout by clicking
+on Windows reset
+layout all right let's start with the
+top left corner you will find there your
+file manager this is where everything
+related to your project is stored for
+each project that you create you get
+that box that you can collapse like so
+this box is what we call the package as
+you save your project you save an SBS
+file that contains all these elements so
+you can access them later on when you
+reopen it so for example in this project
+we have three elements we have two
+graphs and one imported bit map it's
+worth mentioning here that not
+everything has to be done from scratch
+in designer and that you can always
+bring in external resources to speed up
+your work we'll come back to this later
+in this course below the file manager is
+the library where you will find all the
+substance designer resources that are
+available to you I strongly encourage
+beginners to explore it as it helps
+grasping what to tools are available and
+what are the possibilities you can for
+example preview all the noises at your
+disposal explore the different filters
+and learn what each of them does as you
+hover over them really useful now let's
+move on to the Beating Heart of the
+interface the graph view the graph view
+is that large checkered area in the
+middle of your screen this is where you
+will spend most of your time in designer
+as you start adding and connecting noes
+navigating the gra view is very simple
+press your middle Mouse button to pan
+use your Mouse whe to zoom in and out
+and if you accidentally get lost
+pressing F will take you back to your
+noes right above the cph view sits a
+toolbar where you can access the core
+nodes as well as some tools and
+utilities to inspect your graph on the
+right hand side is a very important
+panel in which we will spend a lot of
+time this is the properties panel it's a
+context sensitive panel that changes
+based on what is selected there are lots
+of information displayed here and it may
+feel overwhelming at first but we can
+break it down easily the base part
+parameters at the top are parameters
+common to all the nodes and you won't
+have to worry about them in the
+beginning below them are the specific
+parameters which show the settings of
+the particular node that you have
+selected and this is where you can
+control Its Behavior finally we have two
+important Windows below the graph the 3D
+View and the 2D view they're important
+because they're giving you the visual
+feedback that you will need to examine
+and balance your work the 3D view
+displays your outputs in real time
+giving you an interactive overview of
+your material press your left Mouse
+button to rotate the model middle Mouse
+button to pan and right Mouse button to
+zoom in and out or simply use the scroll
+wheel to rotate the environment light
+hold contrl shift and right click while
+dragging your mouse sideways like so you
+will find yourself doing this quite
+often because it lets you see how your
+material behaves under different
+lighting angles by default designer will
+display your material on a rounded Cube
+but you can change that in the scene
+menu right here there are more menus and
+parameters to explore in the 3D view but
+let's skip that for later next to it is
+the 2D view it displays you guess it 2D
+images most specifically it shows the
+current state of any node you double
+click on and it really complements the
+3D view by letting you inspect up close
+the result of any operation this is
+great for monitoring the gray scale
+values searching for artifacts and
+errors but also making sure your
+material tiles properly so to sum up
+when you create a project in designer it
+gets stored in a package that contains
+your graphs and resource and sits in the
+project manager on the left most of your
+work will then take place between those
+four Windows you add and connect nodes
+in your graph view you adjust their
+settings in the properties panel and you
+check the result in real time in your 3D
+and 2D view now let's set up our project

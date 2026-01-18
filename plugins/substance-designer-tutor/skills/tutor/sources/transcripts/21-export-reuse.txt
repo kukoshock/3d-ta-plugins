@@ -1,0 +1,283 @@
+in this video we're going to see how we
+can export a substance designning
+material and use it in other apps we
+already brushed over this in the
+previous videos we mentioned SBS files
+and SBS files but we also have the
+outputs here so how does that all work
+exactly there are two ways you can
+approach it the first one is to Simply
+export the outputs and load them as
+regular Textures in whatever app you're
+working in this method is quick and easy
+but it's also a bit limited as you will
+not be able to iterate on the textures
+directly the second way is to publish
+your material as a substance archive and
+then to load it using the substance
+integration that you will find in most
+dcc's and game engines this method is a
+bit heavier and requires more work but
+it allows you to interact with the
+material directly we're going to cover
+both techniques in this video and we
+will also see how we can send our work
+to other substance apps such as
+substance painter and Stager so let's
+get started and we can begin with the
+most straightforward option which is to
+export the outputs directly now remember
+that one of the first things we did when
+we set up our project was to create
+these outputs that are sitting at the
+very end of our graph and each output
+corresponds to a map so we have the
+translucency map here the Amun occlusion
+map the height map and so on if we want
+to save these we can do it from the 2D
+view directly by simply clicking on the
+save icon but this is obviously not the
+smartest way to handle this as you will
+have to repeat this step for each output
+so if you want to export your outputs
+all at once you need to come over to the
+toolbar and click on that wrench here
+then go to export outputs it will prompt
+you with this export window and there's
+a few interesting things going on here
+so let's break it down together first
+there's of course the location where you
+want to save your outputs to I'm going
+to create a folder for that onet
+fabric all right then you have the
+format depending on the quality you're
+looking for you can change that uh I'm
+going to stick with PNG then below that
+you have your outputs listed and so you
+can decide to uncheck some of these in
+case you don't want to export them all
+you can change the color space as well
+but the default is usually fine so I
+wouldn't touch that and when you're
+happy with your settings you can simply
+click on export outputs now notice that
+right above it we have this automatic
+export option this is extremely useful
+because it will allow you to create a
+live link between your graph and
+whatever third party software you're
+going to render in so I'm going to check
+that box too and click on export and now
+if I navigate to the folder I created I
+have all my maps properly exported and
+ready to be
+used all right let's now go over a
+couple of scenes that I have opened here
+first I have this blender project very
+simple just a cloth mesh and a basic
+lockout around it now to import my
+designer outputs here it's very simple
+I'm going to click on the mesh create a
+material click on the main bsdf here and
+to make things quicker I have the node
+Wrangler activated and so if I press
+control shift and T with my bsdf
+selected it will open up my file
+explorer I can then navigate to my
+outputs folder and here I'm going to
+select everything except two maps uh the
+ENT occlusion I'm not going to use that
+one because blender doesn't really read
+it by default so we can skip this and
+the translucency map this one we could
+use but it needs its own Shader so you
+would have to import it separately and
+use a mix Shader note for that all right
+so with all my maps selected I can just
+click on principal texture setup and
+then node Wrangler will automatically
+connect each map to the matching input
+here and that's it you don't need to do
+anything else really now the cool thing
+about this setup is that say I go back
+to my graph and change my mind about
+something for example I want to go for a
+different preset then if I go back to
+blender and refresh
+textures it all updates accordingly so
+this is how you create a live link
+between your designer graph and your
+material in another app of course the
+same logic applies everywhere so here
+for instance I have an unreal project
+open I have all my maps here in the
+content browser and here again I can
+just iterate on my graph then reimport
+the maps in unreal like so and there you
+go everything updates very simple now
+what if I don't want a simple live link
+but the actual substance archive with
+all its parameters directly in the app
+I'm using well for that I would need two
+things first I need to publish my
+material as an sbsr which we haven't
+done yet
+and second I need to use the substance
+integration to load it in my final
+software so let's first go over the SBS
+publishing process the hardest is behind
+us now with all the exposing process
+done so all we need to do now is to
+publish it as an archive now a few
+caveats here so remember we have two
+graphs in our package and we're now in
+our main graph right and if I take a
+look at its attribute which is a tab we
+haven't really covered we have quite a
+few important things like like the name
+of the graph then we have the type which
+is set to UNS specified by default it's
+not a huge deal you could leave it this
+way but it's best to sort it in the
+right group especially if you're going
+to use it in another substance app like
+painter so let's go for standard
+material then you have the physical size
+sliders now this is interesting we
+haven't really touched upon this but if
+you want your material to stay at scale
+with your model this is the way you do
+it you would obviously need to keep this
+information in mind from the start like
+saying okay so 800 threads in the warp
+equals I don't know 100 cm and so on and
+so forth the z-axis in this case
+corresponds to the depth of the
+displacement so we're not going to
+bother with that but this is the kind of
+metadata that can be useful in certain
+workflows okay so let's scroll down a
+little to this bit here this exposed in
+sbsr button it said to yes which is
+perfect but if we click on our subgraph
+now you see that it's also set to yes
+and we don't really want that because
+this graph is just an internal utility
+and not something that we want to
+interact with so let's set it to no all
+right we're good to go now ready to
+publish this whole thing as a substance
+archive to do so just click on the
+package so if the option is grayed out
+it's because you clicked on the graph so
+on the package then on that little arrow
+icon here and publish as sbsr or contrl
+P we're going to leave everything at
+default and simply choose a location
+all right done now if you change
+something in your project and you want
+it to be updated in your sbsr you would
+have to do it manually because it
+doesn't auto update like the outputs
+export so just click on that circling
+Arrow here or control shift p all right
+so I have my sbsr file here now what can
+I just drag and drop it in blender or
+unreal the answer is yes but to be able
+to use an sbsr outside of substance you
+will need to rely on the integration
+that substance has so this integration
+is usually like small plugins that you
+can install for free in blender for
+instance it comes as an add-on that you
+can just download and install I'm not
+going to show you the process for that
+here but we have a dedicated video that
+you can check out so with the add-on
+activated you see that I now have this
+substance tab on the side in my Shader
+editor and I can load my sbsr directly
+here all right and you see that below
+that I now have all my parameters at
+hand so let me just click on
+apply and then I can interact with the
+parameters directly here in blender so
+this is really powerful just a quick
+warning in case you tried it and it
+doesn't work make sure you use the
+latest version of these plugins as our
+material uses notes that rely on
+designer's latest engine so if you have
+an error message or your material simply
+doesn't load it's very likely that your
+integration is not up to date as I'm
+recording this I'm in blender 4.0 and
+the substance add-on is 2.0 same goes
+with unreal where we have this plugin
+that you can find in the marketplace so
+substance 3D for Unreal Engine once it's
+installed and activate you will be able
+to drag and drop any sbsr in your
+content browser and play with the
+parameters directly in
+unreal other softwares like CL or
+Marvelous Designer have the integration
+already installed for you so you can
+just load your material there and start
+customizing it on the
+spot so this is how you export and reuse
+your SBS R there is one more scenario
+that I like to cover and that's using
+your sbsr within the substance ecosystem
+so typically sending it to painter or
+Stager if we come over to the publish
+button you'll notice that we have these
+send to options here and if I were to
+click on any of these it would just open
+up the app for me with my material
+already imported and ready to be used
+it's really convenient I use it all the
+time so for instance I have this painter
+project and if I do a s to
+painter there we go my material
+automatically pops up in the shelf and I
+can start using it right away and of
+course all my parameters are available
+here as well so if I want to for example
+get rid of the trim I can do it in one
+click another thing that can be very
+interesting is that with this kind of
+setup you can take advantage of your
+layers to customize your material for
+instance let me show you I'm going to
+add a pattern real quick below my fabric
+layer to do this in a
+mask grab something nice in the
+textures all right and now if I add an
+anchor Point here it will let me reuse
+that information as a custom input
+anywhere above this layer so if I switch
+the ornaments type here to custom I can
+then scroll down and load this Anchor
+Point and use it to drive my ornament
+weave I can even paint in there if I
+want to
+too like so look at that how cool is
+that that's a really powerful
+combination between proceduralism and a
+more manual approach so you now know how
+to export your work both in the
+substance ecosystem and out of it and
+this concludes our journey through
+substance designer I hope you feel both
+inspired and empowered to experiment
+with your own ideas now substance
+designer is a fascinating software that
+offers endless possibilities and most
+importantly it is very forgiving you
+don't have to know everything about it
+to get started so give it a try play
+experiment and stay creative also don't
+forget to share your first works with
+the community we would love to see what
+you create

@@ -1,0 +1,200 @@
+with our fabric mostly done we can focus
+on the trim and start to plan things out
+and so in this episode we will see how
+we can create custom shapes like sequins
+Loops seams and so on now you might be
+thinking wait a minute our fabric is not
+done it's all flat and gray and we can
+barely see the ornaments that's true but
+remember that at this stage of the
+project we're still working on the
+height and we won't be dealing with the
+collor or the roughness until it's done
+so we first need to finish this properly
+and right now it means tackling the trim
+now there's a lot going on here and it
+may feel a bit overwhelming like how am
+I going to make all this and the key
+here again is to break it down into its
+different parts so we have one two three
+four rows and each row is just made out
+of a few elements so the Hem here for
+example is just a series of threads then
+we have a sequin then a loop then these
+radial ornaments which in turn can be
+broken down into one two three gemstones
+you get the idea one way we could
+approach this is by creating each
+individual piece first and the idea is
+really to focus on small simple tasks
+and not letting ourselves get distracted
+or discouraged by the broader picture so
+let's get on with it I'm going to take
+that space here above our main
+connection and start assembling the
+different elements we need the first
+element is that seam here and to get
+this look we could simply take a thread
+and tile it vertically we already have
+one that we can reuse so let me just
+grab that output and I don't know
+exactly how I'm going to do it yet but I
+would still like to keep that connection
+around just to have it close at hand
+what I could do is pin it using a DOT
+note it's a small tool that helps
+keeping your graph clean by re rooting
+connections there are different ways you
+can add it you could simply click on it
+and dock your connection it also works
+with the quick search just by typing it
+dot but that's a simpler way if you
+press alt while hovering over a
+connection
+you see that we have this yellow dot
+that follows my cursor and if I click it
+just adds it automatically and now I can
+move it around to reorganize things if I
+click on it and hold alt again I can
+also group the connections that share
+the same origin very useful and to
+remove a DOT you just press backspace
+like any other Noe you can do more with
+a DOT node but let's skip that for later
+right now all I want is to pin the
+output of the thread somewhere up here
+because this is I'm going to create all
+the trim elements so with the connection
+still attached to my cursor I'm just
+going to hit alt and there we go all
+right I don't think we need to tweak
+This Thread too much um I will maybe
+narrow it a little with a transform
+2D holding control to resize from the
+middle and that's it now what do we have
+next let's take a look at the reference
+okay we have this row of sequence that's
+actually a good exercise if you've been
+following this course so far you should
+should be able to make one sequin by
+yourself so pause the video have a good
+look at the reference and give it a try
+all right let's do it together a sein is
+basically just a small disc of plastic
+so we can start with a shape and go for
+dis this dis should have a hole in it to
+let a thread through we can do that by
+duplicating that first disc contrl D
+making it
+smaller and subtracting it from the
+first dis
+all right then we have this interesting
+feature where the sequence gets slightly
+tilted due to the overlap see this bit
+is higher than this bit that's easy to
+make we need to darken the Grays scale
+value towards the bottom here and to do
+that I'm going to take another blend put
+the squin in the background and subtract
+from it the part that I want to
+lower I could use a shape for that and
+place it with a transform 2D but this
+actually better solution for this kind
+of use case if you type in gradient you
+see that we have this collection of
+grayscale gradients we can pick from and
+I'm going to go with gradient axal
+because this one comes with handles that
+just makes the placement
+easier now let's put it into
+place and voila we made ourselves a nice
+sequin shape next up are these looped
+threads now this is interesting because
+it brings us to Circular operation in
+substance designer there are a couple of
+notes that let you revolve inputs or tie
+them in circle there is for example the
+splatter circular this one works like a
+tile generator it takes a pattern and
+repeats it but it does so in circles so
+it comes with specific parameters for
+you to play with like the radius the
+amount of rings and so on very useful
+note for ornaments we'll come back to it
+later now if you want to bend an input
+into a circle which is our okay there
+are other options but let's just mention
+the main one the shape
+mapper this one works a little like a
+splatter circular but if you reduce the
+amount to one it will actually distort
+the input like
+so now to get the desired look we could
+simply play with another
+transform until we have something that
+works all right so we have the thread
+the sequin the loop and we should take a
+moment to place and assemble all this
+before we tackle the radial ornaments
+let's start with the thread we need to
+find a way to repeat it on one axis so
+that we get some sort of line how could
+we do that your first impulse might be
+to use a tile generator or a tile
+sampler and it could definitely work but
+I would say it would maybe be an
+Overkill we can get a good enough result
+using only transform 2D let me show you
+how we start by taking another transform
+and rotating our thread 90° you can do
+that using the handles remember holding
+shift or simply by pressing that 90
+button here now we could tile it right
+now simply by hitting repeatedly this
+divide by two button the problem is if
+we do that it leaves us with these gaps
+between each thread and it's not exactly
+the kind of look we are aiming for we
+want something that is tight so to fill
+these gaps here's a knit trick we can do
+we're going to take that thread and
+offset it vertically by going to this x
+slider here and typing in
+0.5 you see that if I display the tiling
+in the 2D view by pressing space bar and
+now move the thread around it keeps
+tiling perfectly and that's because we
+apply the safe rotation to it if I were
+to rotate it manually see the seam
+instantly shows up all right let me undo
+all that now we're going to take that
+offset thread and hook it to a blend
+then create a duplicate of it remove the
+offset and put that in the foreground
+this will just allow us to feel that Gap
+I was mentioning if I change the
+blending mode to Max see now I have a
+nice continuous line of threads may even
+be too uniform so I'm just going to Twig
+the middle thread to make it more varied
+keeping an eye on the tile view
+always okay now let's Zoom back on our
+texture and disable the tiling so at
+this point we only have two and a half
+threads in a one to one square it's
+clearly not enough so it's time to
+repeat all this let's add another
+transform and start dividing this a
+bunch of
+time like
+five six maybe okay but we have a
+problem here the threads tile vertically
+all right but they also tile
+horizontally and we don't want that we
+only want one line being able to control
+how an image ties is critical in
+substance designer and since styling is
+part of the base parameters present in
+each node we should make a quick detour
+into this parameter and The Inheritance
+system behind it

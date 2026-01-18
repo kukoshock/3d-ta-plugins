@@ -1,0 +1,333 @@
+in this video we're going to see how we
+can expose the rest of the parameters in
+our graph and I think that after the
+ornament mask this highight blend where
+we combine the base weave with the
+ornaments could be a good candidate I'm
+thinking in particular this offset
+slider that controls the emboss level so
+let's click here and expose as new graph
+input I'm going to call this one
+ornament emboss intensity all right now
+this this time we're going to stick with
+the slider editor and let's take a
+moment to go over these different
+sliders that we have here so default is
+the value that we had before exposing
+the parameter and it means that it's
+always going to start from this value
+which is perfect because it means you
+don't lose your settings when you expose
+something then we have the Max and mean
+sliders they indicate the maximum and
+minimum values that the user will be
+able to pick and you see that we have
+this clamp option set to true meaning he
+will not be able to override these
+values by typing in something else you
+could give more Freedom by disabling
+that but in the case of this offset
+slider I would rather not give too much
+freedom because we want the effect to
+remain quite subtle so not only will I
+keep the range clamped but I will even
+narrow it by saying that the value
+should stay somewhere between 0.5 and
+0.6 all right then we have the steps
+options that just indicate the slider
+increments we're not going to change
+that okay now let's test this by double
+clicking in the graph going to the
+preview Tab and just playing with the
+slider all right you see I think the
+range is just right not too much not too
+little okay what's next let's take a
+step back and ask ourselves what other
+users might want to play with now
+obviously we have the trim and ornaments
+that take up a big part of our graph but
+these elements won't be so easy to
+expose because they are arranged in a
+way that makes it hard to change again
+this is something to keep in mind while
+you build your node Arrangement if you
+want a certain feature to be dynamic and
+highly customizable you need to build it
+in a way that makes it easy to change so
+I'm not going to expose anything in the
+trim or the gemstones right now because
+they work well as they are but I'd like
+to come back to a little problem that we
+had remember with these three transform
+nodes that are duplicates but not
+synchronized
+and I told you then that the issue with
+this setup is that if we wanted to move
+the gemstones here the mask just
+wouldn't follow and so it would break
+everything well it happens that exposing
+can help with that because it allows to
+link nodes to one another let me show
+you let's take this main transform here
+and decide that this is going to be the
+one that leads the other what we're
+going to do is find what controls the
+position so the offset sliders here and
+simply expose
+them call it gemstone
+position okay now here's the trick if
+you want these other transforms to have
+the same value as this one all you need
+to do is come over to the offset here
+and instead of exposing the parameter we
+can decide to reuse an existing value
+and the offset that we previously
+exposed is listed here so you just click
+on it
+it okay let's do the same for that
+second
+one and now look if we twick this main
+transform that we exposed here well the
+other transforms just follow and
+everything stays in place this is
+incredibly useful as you will often need
+a node to share its settings with other
+nodes so remember just expose the main
+node then reuse its value wherever you
+need and we're actually going to put
+that into practice right now there is
+one thing that I would like the user to
+be able to do in one click and that is
+disabling the trim and gemstones all
+together to have just a plain fabric
+this sounds like a tricky thing to do
+because everything now is interconnected
+see if I select all the dots that we are
+using oh boy so how are we going to
+approach this the solution I have in
+mind is to use switch node so for
+instance let's focus on the height I can
+use a switch to toggle two two versions
+of the height one version with just the
+plain Fabric and one version with all
+the ornaments I'm going to put the final
+height in the first
+slot and take the plain wave so just
+before the trim using Dots here to keep
+the connection clean and
+readable all right and now I can toggle
+the ornaments on and off in just one
+click easy right so let's reconnect this
+now you can probably guess what the
+problem will be yes we can change the
+height but our other maps are using
+masks that do not directly rely on it so
+when we disable the ornaments in the
+height they still remain in the color
+the roughness the metallic and so on the
+easiest way to fix this is simply to
+repeat that switch operation in each
+Channel and since we still want the user
+to have only one button to click on to
+disable everything we're going to start
+by exposing using that first switch
+which is going to be our master switch
+if you will so I'm going to call it trim
+and rename the default true false to yes
+no which is a bit easier to understand
+in my
+opinion okay now we need to repeat that
+operation for each Channel and don't
+worry it's going to be quick and easy
+let's start with the color this time
+we're going to add a switch color
+obviously and here we need to follow the
+same structure so the final version will
+go on top and the plain fabric so right
+before the ornaments will go here okay
+now all we have to do is to link it with
+our main switch by selecting it
+here and if we test it now by going to
+the graph parameters you see that they
+are now synced perfect and now we need
+to do the same for the other channels so
+I'm going to speed up the process here
+you get the idea metallic
+roughness what's important is to keep
+the same order with the final version on
+top and the plain version at the bottom
+and for the displacement and
+translucency I'm simply using a uniform
+black as the plain
+input like
+so all right we're done with our switch
+setup Let's test it
+again there we go we can now deactivate
+the whole Trim in one click how cool is
+that all right there are a few more
+parameters that I think we should expose
+before we move on for instance we should
+be able to interact with
+theault so I could just expose the fold
+intensity here so expose as new graph
+input folds
+intensity all
+right then we have the colors which is
+probably the first thing that people
+want to change in a material now colors
+can be tricky let me explain why I'm I'm
+going to start with the ornament frame
+here this setup is easy to expose
+because all we have to do is click on
+the colors then Expose and the user will
+be able to pick the color he wants with
+the ey dropper or using the sliders so
+I'm going to call this one gemston
+color all right can do the same for the
+metal okay so that was easy but what if
+I want to change the color of the fabric
+itself this is where things get a bit
+more
+complicated at the root of our fabric
+color we have this gradient map node
+remember with this color ramp and all
+the keys this node is great but the main
+drawback is that you can't expose any of
+it so whatever you set up here has to
+stay in the graph and can't be accessed
+from the front end there are different
+ways around this um if you want to have
+full control over the colors the best
+would be to only blend uniform colors
+like what we did here
+if you still want to work with gradients
+then you could use an hsl node so hsl to
+control the Hue I'm not a big fan of
+this solution as I find the slide is a
+bit hard to control but it can
+definitely be a good option depending on
+what you're looking for now in this case
+what I'm going to use is a color match
+node I'm going to make it default to our
+original Green just picking the same
+green
+like
+that and now I can expose this color
+just like we did with the
+ornaments and that's it we can now
+change the fabric color in one
+click okay so we're done with the colors
+do we have anything more to
+expose um let me see yes I would like to
+be able to edit the roughness now
+remember when we created this base out
+of the curvature map I told you that
+using a histogram range would prove
+useful all I have to do now indeed is to
+expose that position slider that
+controls how dark or light the fabric is
+so let's expose
+that fabric
+roughness maybe limit the range here
+let's say between 3 and
+6 okay I think all the important
+parameters are exposed so it's time to
+check how things look in the preview tab
+making sure everything works
+pushing all the
+buttons and you see that it gets busy
+pretty quickly so it's important that we
+tidy this up as much as possible the
+first thing we should improve is the
+order for instance I think the trim
+switch should come first as it controls
+the main feature of a
+material to move it in the list we need
+to go to the parameters Tab and here we
+can drag and reshuffle anything so I'm
+going to take this and put it at the
+very beginning of the list
+then I think it would make more sense to
+place all the parameters related to the
+trim after this button so gemston
+position
+color this one too and I also think I
+would put the false parameter at the
+bottom they're not as important it's
+more of a finishing
+path all right that's already better
+there's one more thing that I'd like to
+do before we move on to the presets when
+I de table the trim you notice that the
+trim parameters remain and that's not
+ideal but you now know how to fix this
+remember at the bottom of each parameter
+we have the visible if section so we
+just need to write the proper
+instruction here if you forgot what the
+logical expression should look like
+don't worry you're not the only one uh
+you have an example in the tool tip here
+or you can just be lazy like me and copy
+it from the list in the documentation
+since in our case we want to tie it to a
+switch which is a Boolean operator
+I'm going to copy this one
+here paste it in the visible if field
+and just add the proper identifier which
+in this case is
+Twitch let's test
+this there we go it just goes away when
+I deactivate the
+trim we can now copy this expression and
+paste it in all the train
+parameters so here
+and
+here let's
+see
+perfect we are now done with the
+exposing process you see that our
+parameters are much better this way with
+a clear hierarchy and structure they are
+easy to use and let us interact with
+important feature of the material so we
+can stop here let's finish by talking
+about the presets you may have notice
+that when we tweak parameters in preview
+mode the drop down menu at the top
+changes from default to unsaved settings
+it means that we can configure things in
+a specific way then save that
+configuration to apply it later on so
+let's customize our Fabric in the preset
+tab I would like to have a plain version
+so no
+trim um geometrical
+pattern and a bright golden
+hue maybe lower the roughness a little
+and with all these adjustments done I
+can simply give it the name so I don't
+know golden
+plane and click on new and now these
+settings are saved and when I'm in
+preview mode I can switch between the
+default preset and this new preset that
+I just made it's just a neat way to
+showcase the possibilities that come
+with your material I'm going to make
+another one
+quickly give it a nice blue
+hue make it a bit rougher
+enable the
+trim make it silver instead of
+gold adjust the
+gemstones all right let's call this one
+called
+Blue then we can test
+this
+awesome all right so material is now
+ready to be exported and reused
+elsewhere congratulations if you've made
+it so far in this course in the next and
+last video we will see how we can
+publish this and bring it to other apps

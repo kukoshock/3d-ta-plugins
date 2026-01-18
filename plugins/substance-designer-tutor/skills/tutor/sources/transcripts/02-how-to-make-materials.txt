@@ -1,0 +1,109 @@
+since everything in designer is based on
+nodes let's answer that simple question
+first what is a node nodes are the
+building blocks of a graph you can think
+of them as operators that transform in a
+specific way any information you give
+them so if we zoom on a node we can see
+this little dots on each side on the
+left is the input that is the image you
+feed the node and on the right is the
+output that is the result of the nodes
+operation so for example here we're
+plugging a dis in a swirl node the dis
+is the input and the Twisted result that
+I'm previewing here is the output I can
+then take that output and run it through
+another node and so on and so forth okay
+so how exactly do you build a material
+with nodes what's the typical workflow
+and where do you even start to find out
+let's examine this graph that we have
+right here and break it down into its
+different components now a graph reads
+from left to right which means that this
+is the very beginning of the work
+whereas this is the final result and we
+can already grasp how it's organized
+thanks to the frames and you see that
+the main ones are dedicated to specific
+channels of the material we have
+everything related to the base color
+here the roughness is here and that big
+gray box is for the height map notice
+how it sits at the very beginning of the
+graph the main takeaway here is that
+when you build a material inp sance
+designer you almost all always start
+with the height so if I grab this big
+block it highlights everything that is
+connected to it and as you can see the
+height information really flows into all
+the different sections of the graph it's
+not only converted into normal and
+ambient occlusion Maps but it's also
+used to create custom masks and drive
+the roughness the color basically any
+other map that's needed now as you may
+know height maps are grayscale images it
+means that most of the work that we'll
+be doing in designer will be in gray
+scale you can already see it simply by
+looking at the colors of the
+connections gray connections mean
+grayscale nodes yellow connections mean
+color nodes we will go over this later
+in this course don't worry so let's
+focus on the height we have here we can
+easily display the result of any node
+simply by double clicking it and as you
+can see the graph really starts with
+this basic brick structure and as we
+move Downstream this simple structure is
+slowly broken down into something more
+complex and organic see we're adding
+gradients warping the
+edges blending in large noises Etc and
+if we move further to the right we start
+to see all the minute details appearing
+such as this thin layer of dirt these
+small bends and so on this demonstrates
+The Importance of Being methodical and
+organized when you tackle your height
+typically here we started with the large
+shapes or macro structure and gradually
+move towards medium than small details
+this workflow is well known and is
+usually a safe guide to follow when you
+build your material you can still go for
+other methods for example when your
+material is composed of one element that
+is repeated multiple times then working
+on the base unit first makes more sense
+this is typically the case when you
+create Fabrics you start by working on
+the yarn shaping it in the right
+position then tiling it into one large
+woven piece once your height is finished
+you can derive from it all the
+information you need for the rest of
+your Maps so for example if we want the
+end of our tile here to be more Mossy
+than the rest what we have to do is to
+grab one of the masks from our height
+section and use it in our color section
+same goes for the roughness and
+everything else so let's recap what we
+just saw to create a material in
+designer you typically start with the
+height map building up grayscale
+information in a methodical manner this
+information can then be used to drive
+and refine the other maps that make up
+the material if you want to test your
+understanding of this workflow a good
+exercise would be to Simply look at some
+materials and ask yourself how are they
+built what's the main structure what
+comes first and what comes last give it
+a try and I'll see you in the next video

@@ -1,0 +1,136 @@
+in this video I'd like to make a quick
+degression into inheritance in substance
+designer what is it how does it work and
+why do you need to understand it to make
+the most of your graph now you remember
+that each node comes with base
+parameters and these parameters are
+present in all the nodes see if I click
+on any of these nodes they remain the
+same we have things like the size the
+bit depth the tiling Etc they can be
+changed locally but before doing so it's
+important to understand the logic behind
+it next to each of these parameters
+there is a little icon that indicates
+the method of inheritance basically says
+from which source the parameter gets its
+value if we click on the icon you see
+that there are three methods of
+inheritance relative to input relative
+to parent and absolute now please bear
+with me here it's not that hard and it's
+important that you feel comfortable with
+these Notions so relative to input means
+that the node takes its parameters from
+its primary input what is piped into it
+if you will you can spot the primary
+input by these dark dots in the middle
+so this one takes after this one which
+takes after this one and so on and this
+is how it goes for most nodes now please
+note that it's important to keep track
+of the primary input especially when it
+comes to blending the primary input in a
+blend is always the background I have
+two notes here that I wish to blend a
+gradient that has a 512 resolution and a
+peine that has a 2048 resolution if I BL
+blend the two by putting the gradient on
+the top here my blend will inherit its
+parameters from the pein and these
+parameters will then be passed over to
+the next node and so on and so forth but
+if I swap the input and by the way
+there's a need shortcut for that you
+just press X so X to invert the
+connections well if I do that my
+gradient is now the primary input and so
+the blend takes on that new 512
+resolution which can cause issues down
+the way this is especially true when it
+comes to bit depth variations for
+example if you blend an 8 Bits image
+with a 16 bits image now we won't dive
+into the bit depth topic but let me show
+you a quick example I have this very
+basic setup here and you see that I'm
+blending an imported bitm that happens
+to be 8 Bits if I plug it into the
+primary input of my blend this bit depth
+now propagates to the whole setup and it
+results in these normal artifacts that
+you see here because eight8 bits often
+struggle with smooth
+transitions so if you ever end up with
+bending or stepping issues it's very
+likely that you have an 8 Bits note
+somewhere in your graph that messes with
+the final result there are two ways you
+can fix it the first solution would be
+to Simply demote that image to the
+foreground input so that the blend picks
+its bit depth from here but if your
+blend is not commutative meaning if your
+inputs have to follow a certain order
+then you will have to change the bit
+depth of the culprit manually and I will
+show you how in a second okay then we
+have relative to parent the parent here
+is the graph itself so if a node has its
+base parameters relative to parent it
+means that it's taking them after the
+graph parameters which we had set
+remember when we created the project now
+I just said that most nodes were set to
+relative to input but when there's no
+input for example here we have a uniform
+color where information only goes out
+and nothing comes in well in this case
+the node gets it space parameters from
+the graph and finally we have absolute
+this one is very straightforward it lets
+you override any inheritance and change
+the parameter yourself for a specific
+node people are often confused as to why
+these parameters are grayed out but it
+actually Mak sense they are deactivated
+as long as they get their value from an
+external Source if you want to take over
+this you just need to switch to Absolute
+so block The Inheritance and set the
+parameter yourself and this is what
+we're going to do for this node here to
+fix our bending issue just toggle the
+bit depth to Absolute then manually set
+it to 16 bits and now our artifacts are
+gone let me illustrate quickly what we
+just saw by getting back to our graph
+and going to the very first node which
+is this fibers one here and just by
+looking at it I know that it must
+inherit its space parameters from the
+graph because it has no input so it
+cannot be relative to input and if I
+check the icon here it's indeed set to
+relative to parent I'm going to switch
+this to Absolute to set a lower
+resolution and see what happens
+Downstream and just as expected the
+other nodes now take on that new
+resolution because they inherited from
+this guy here but for some reason our
+tile generator has kept its original
+2048 resolution can you guess why yes
+well spotted the primary input here is
+empty and so the node just falls back to
+the graph resolution which in this case
+is still 2048 by 2048 I hope it all
+makes more sense to you now if you'd
+like to know more about inheritance or
+have other practical examples or use
+cases I invite you to check out the
+documentation page on that topic it's
+really clear and helpful so go check the
+link in the description and with that
+said let's get back to our main graph

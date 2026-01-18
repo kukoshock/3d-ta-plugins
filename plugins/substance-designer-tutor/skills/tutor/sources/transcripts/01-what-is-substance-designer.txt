@@ -1,0 +1,61 @@
+so what exactly is substance designer
+well at its core it's a software that
+generates textures when you work in
+designer your end product is a
+collection of bit Maps they can be
+exported separately aesthetic images or
+bundled in what we call a substance
+archive packed together these textures
+form a material that can be applied to
+any 3D object but what makes substance
+designer special is that the materials
+created inside it are parametric you're
+not only saving static bit Maps but also
+the dynamic recipe to create them it
+means that any feature can be changed
+and adjusted later on through what we
+call exposed parameters and these
+parameters can be accessed not only in
+designer but also in any application
+that supports substance like Blend or
+unreal for example another distinctive
+feature of substance designer is that
+unlike other applications that are layer
+based like painter or sampler designer
+works with nodes everything here is
+created in a graph where you connect
+nodes together to generate certain
+effects like warping tiling blurring
+multiplying and so on now all of this
+can seem a little bit scary at first so
+don't worry we're going to explain it
+all in this series what's important to
+understand is that this branching
+structure is what makes material's
+dynamic in designer a change to the
+settings of one node will propagate to
+all the nodes that are connected to it
+allowing for a powerful non-destructive
+workflow another question that often
+gets asked is what's the difference
+between sub designer and the other
+substance apps like painter for example
+while they have some features in common
+their purposes are different designer is
+very versatile but it's primarily a
+material authoring tool it's meant to
+create tileable base materials that can
+be applied to various meshes whereas
+painter is meant to generate effects on
+specific meshes using generators and
+brushes you can think of it as the
+difference between a paint bucket and a
+brush in designer you create the paint
+and in painter use the brush to apply it
+to specific areas of a model so to sum
+up substance designer is a material
+authoring software that uses procedural
+operations to create Dynamic materials
+and much more now let's move on to the
+typical workflow that we follow when we
+create materials in substance designer

@@ -1,0 +1,270 @@
+it is now time to add the radial
+ornaments that run along the trim so in
+this video we will see how we can create
+various gemstones and put them together
+in this nice star shape that we have
+here if we look at our graph we see that
+it has become quite populated we have
+the thread The Weave the ornaments the
+trim elements and all of that comes
+together in this main pipe that runs in
+the middle and that makes up the height
+of a material all right let's get on
+with the gemstones I'm going to take
+that space here for that and now let's
+do one element at a time we have this
+bead in the center and we could start
+from there and use it as a sort of guide
+for the rest I'm just going to take a
+bell shape for that and you will soon
+understand why I'm choosing such a soft
+and fuzzy
+shape let's move it downwards using the
+offset slider to make sure we stay right
+in the
+center all right then we have this diam
+shapes it would be interesting to see
+how you would approach it based on the
+knowledge you gathered in the previous
+videos
+what I like personally about this shape
+is that there are different ways to make
+it and they are all perfectly valid I'm
+going to show you a few of them the
+first that comes to mind for me is
+taking a solid
+Square rotating it
+45° then squeezing it with a
+transform okay and when I do that the
+shape is repeating on both sides and I
+don't want that so do you remember how
+we can fix this we go to the base
+parameters of the node switch the tiling
+inheritance to Absol abolute then select
+none so we now have a diamond shape but
+it's completely flat just pure white
+we're missing this nice bevel you see
+here on the gemstones but if I search
+for bevel well I have a note that does
+just that so let's connect this and we
+have a bunch of options to play with but
+we're not going to worry too much about
+them the most important parameter is
+this slider at the top it controls the
+strength of the bevel and you can decide
+to Bevel inwards or out outwards I'm
+going to Bevel inwards because it works
+best with pointy end like that okay so
+minus 2 okay so that was one way of
+creating this diamond shape but you
+could do it differently and that's what
+I love about substance designer let me
+show you how we can keep these two steps
+so I'm just going to duplicate them but
+instead of going for a flat Square this
+time we're going to choose the pyramid
+shape and you see that the pyramid is
+just a beveled Square now the the
+problem is that it's fully beveled and
+so we have this point at the top which
+we don't want but we could easily
+flatten it using well levels so you just
+crush the white and that's it or third
+option instead of using the well-known
+shape node we could use the polygon node
+which lets you create and customize
+polygons can choose how many sides it
+has so let's go four four then rotate it
+and what's cool with this note is that
+it comes with some some sort of scan
+slider built in so we can decide how
+much slope we
+want and there you have it three
+different ways to achieve the same
+result now let me get rid of all that so
+now we need to repeat this gemstone in a
+circle we already saw what node can help
+us with that if we type in circular we
+have the splatter circular let's plug
+our shape switch to image
+input and now it's time to think about
+how to achieve this kind of
+design but first off let's set the
+amount right now we have 10 but we don't
+need as many so let's go for six then
+let's scroll down to the position tab
+and we have two important sliders here
+the
+radius and the spread this one is very
+useful because we only want a half
+circle right so if one is full circle
+then 0.5 should fix that problem there
+we go next up we have the size let's
+scale these diamonds up quite a lot I'm
+going to go with
+4.5 we could even play with the
+non-uniform scaling I think I will
+elongate them a little with 0.15 on the
+Y maybe now by playing with the spread
+slider we end it up with this rotation
+that we don't want and you could of
+course fix that manually with the
+transform you know just doing it this
+way after the fact but generally
+speaking it's good practice to first
+check if you have an option to do that
+in the node itself
+and if you have a look at the different
+parameters of the splatter well it looks
+like we have everything we need so let's
+first fix the rotation we want to rotate
+the ring and not the
+pattern perfect and I'd also like to
+move it downwards so in the position tab
+I should have here we go this Global
+offset
+okay now let's place the last row of
+gemstones the one that go in between
+here we first need to make the shape
+itself and you see that here it's not a
+simple square but an actual polygon so
+let's call for a polygon node polygon 2
+let's keep the default hexagon maybe
+rescale it a little then most
+importantly flatten the top with the
+gradient
+slider then we have to go through the
+whole splatter process again so to save
+time I'm actually going to duplicate
+this one and fix a few things and to see
+better how they both fit together I'm
+going to use that blend trick again you
+remember when I just compare things by
+lowering the
+opacity okay let's first scale the gems
+down to see things
+better and so what we want is to place
+each of these gems in that space here
+between the diamonds and we have 1 2 3
+four five of them so we need five
+gemstones let's increase the
+radius and there you see that the
+spreading is off so we need to tighten
+it a little now it can be hard to play
+with very small increments like this so
+if you hold shift it will actually slow
+down the scrub in speed and it's much
+easier this way so something like 42 all
+right we now have the three parts of our
+ornament all we need is to combine them
+I'm going to keep that blend here and
+switch it to Max reset the
+opacity and then do the same for the
+central sphere
+okay now you see we have a problem here
+the sphere appears too large but also
+its grayscale values are not really
+working well like the edges here look
+like they are under the other gemstones
+and that's not what we want now take a
+moment to think about the different
+solutions we could come up with the way
+I see it we should darken that middle
+area here to let the bead stick out more
+there's a reason why I chose a bell
+shape in the first place because it has
+a very soft gradient it will be perfect
+in subtract mode let me show you I'm
+going to change the blending mode to
+subtract and you see that it has cleared
+this area meaning I can now do another
+blend this time in Max
+mode and you see that the subtract
+definitely helped but we're not quite
+there yet we still have overlap issues
+and we can fix this easily with a simple
+levels pushing the low values and
+Shifting the gamma to have a flat L
+surface all right all the elements of
+our ornaments are in place there's only
+one thing missing and that's the
+mounting that goes around each Gem and
+to do that we're going to rely on the
+edge detect note I'm first going to deal
+with these part because I want a
+different mounting for the beads so
+let's keep them separate now if we plug
+this into an edge detect you see that
+well we get something interesting but
+not really what we want we just want the
+outline of the stones and the reason why
+the edge detect is giving us this result
+is because it detects the gray scale
+variations and so it reads the input and
+assigns a border to each area for
+example here is not the same as here and
+so it puts an edge in between so if we
+wanted to extract only the silhouette of
+the shape all we would have to do is to
+get rid of these inner variations and we
+can do that easily by adding a threshold
+node before the edge detect there we go
+we can now play with the threshold
+slider to offset the outline which is
+very handy all right let's invert The
+Edge detect thicken it a little and we
+need to refine this shade because right
+now it's all flat so to help with that
+I'm just going to add a
+blur and
+levels okay now let's do the same for
+the
+Bell here I'm going to take the original
+one to have more slope to play with so
+to say
+so
+threshold Edge detect blur and
+levels okay now let's combine all this
+I'm going to add this to my bead in Max
+mode maybe adjust it a
+little okay then blend it with the
+rest then finally add the other
+mountings
+perfect now you see that we have some
+parts sticking out here it's not a big
+problem we can adjust the whole thing
+with
+levels you see like
+so okay when I'm ready to place this and
+add it to our height we need a transform
+for that let's divide it 1 2 3 four
+maybe switch to horizontal tiling so
+that we have only one line and and
+rotate and to place it let's first blend
+it with the main
+connection Max
+mode all
+right let's maybe move it a
+little okay now it's finally time to see
+how it looks in 3D so let's reroot
+everything now the resolution is
+definitely a limitation here but we can
+already start to make a few adjustments
+for examp example I think the top gems
+are too small so let's go back to fix
+this play with the
+levels tweak some of the
+thresholds like
+so okay let's also check the result in
+4k because it needs to work at both
+resolutions okay I think I'm pretty
+happy with it
+and this wraps up our video on ornament
+creation we learned how to create
+gemstones and how to assemble them using
+Advanced nodes like the splatter
+circular our height is now mostly done
+so in the next video we will see how we
+can extract useful masks from it in
+order to tackle the color and the
+roughness

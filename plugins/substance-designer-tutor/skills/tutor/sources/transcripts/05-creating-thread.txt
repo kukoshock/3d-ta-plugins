@@ -1,0 +1,467 @@
+in this video we will start building a
+fabric material beginning with the base
+unit that makes up any fabric the thread
+now this is a small note Arrangement
+that we're going to create it may not
+look like much but it's going to take us
+through some of the most important
+actions that you will need to master in
+designer so go grab yourself a cup of
+coffee and let's jump into it so this is
+where we left off we have a base
+material Noe that we used to preview our
+height in the 3D View and we are not
+relying on displacement yet but only on
+normal and occlusion data right now we
+don't really see anything because well
+we haven't created any height map yet
+notice that we still have that annoying
+warning telling us to create output so
+let's just do it now if you go to your
+base material node and right click it
+you will see that we have a create menu
+here click on output nodes and say no to
+this and that's it designer
+automatically created outputs for each
+Channel now we don't have to worry about
+it anymore and we'll go back to this
+later when it will be time to export our
+work so I'm going to give myself a bit
+more space to work from because as you
+now know a graph reads from left to
+right so what we are going to create
+today will be a starting point and what
+we created in the previous video will
+actually be our finish so all of our
+work will have to fit between these two
+but no worries we can Shuffle and
+rearrange nodes as we go now at this
+point you may experience the blank page
+syndrome and yes that wide empty space
+can be dating if you don't know where to
+start this is what you need to remember
+every complex structure is made out of
+simple elements so the key here is to
+really break down the difficulty in
+smaller simpler steps in the case of a
+fabric what you need to ask yourself is
+what is the simplest element what is the
+building block and the answer to this is
+of course the
+thread all right so let's hit that space
+bar and search for first node to build
+our thread now you may be tempted to
+type in thread or something to see if
+anything shows up but yeah you see that
+we don't really have anything except
+that threshold node there is actually a
+good node for what we want to do and if
+you search fiber there is this fibers
+one node so let's bring it in to have a
+closer look what this node does is that
+it recreates the look of fibers woven in
+a yarn with that slanted rep ition you
+see here so you see in the parameters on
+the right that this node doesn't have
+many options apart from The Styling
+slider we don't need to tile it yet so
+let's keep it at one but it's still
+worth noting that this note does tile
+seamlessly by default and this is
+something we can check by clicking in
+the 2D view then pressing space bar this
+hotkey is what will show you how a
+texture repeats so you can investigate
+the seams if needed with that red line
+and as you do so sometimes times you
+might zoom in or zoom out too far and
+lose the Central Square if that happens
+no worries just press F to focus back on
+the main Square then press space bar
+again to disable the til view now this
+fibers one is going to be our starting
+point so we may as well connect it to
+the little setup we built last time
+right just to see how things look in 3D
+remember we left click on the output and
+let go then simply navigate to where you
+want to put it and as you bring it close
+enough to an input it will just snap to
+it like that then you click again to
+dock it there now if we move the cube a
+little we start to see something's
+happening but it's still very faint
+right so what I'd like to do is crank up
+the normal a little just so we can see
+better what we're doing so let's click
+on the normal node to access its
+properties on the right and boost the
+intensity to something like I don't know
+five or six up to you now we also need
+to connect our first note to the ambion
+occlusion how do we do that we could
+navigate all the way back to the
+beginning grab the connection again then
+travel back to the emion occlusion node
+uh but thankfully there's an easier way
+of doing it when we want to reuse a
+connection that is used somewhere near
+we can just control click it and it will
+create a duplicate of that connection
+for us then plug it again again control
+click to borrow a connection
+we are now previewing on one thread in
+the 3D view so we can rotate the cube to
+inspect it and different angles uh we
+can move the light around by pressing
+control shift and dragging from left to
+right so now we need to refine it
+because obviously it doesn't look great
+here's two thing I'd like to do the
+first would be to narrow it a bit on the
+vertical axis to make it smaller and
+more dense and this is something you
+will find yourself needing all the time
+in designer just moving things around
+but the thing is you can't select
+elements and move them like you would do
+on a canvas in illustrator or photoshop
+for example instead we have a node
+dedicated to just that and this is
+transform
+2D this note is very handy and you will
+quickly get familiar with it so as soon
+as I select it see we have a manipulator
+that shows up in the 2D View and that
+lets me rotate scale move the input now
+just a few shortcuts to know here um
+pressing shift will keep your scaling
+uniform slap the rotation and keep the
+translation to one
+axis if you hold control and shift at
+the same time it will scale from the
+middle and if you want to get into fancy
+effects pressing alt will let you skew
+the
+image now not everything has to be done
+with these handles you can also use the
+sliders in the properties panel if you
+want to to be more precise and these two
+buttons here let you scale up or down
+with power of two so it's very quick but
+it also retains the tiling and this is
+actually quite important most of your
+work in designer will aim at producing
+diable materials right and the thing is
+the transform 2D can break the tiling if
+you're not careful so if I display the
+repetition remember how by pressing
+space bar and start moving and rotating
+randomly you see what happens even if I
+try to be careful seams are bound to
+appear if you really want to make sure
+you're not breaking anything you can use
+the safe transform 2D node it is more
+limited but it will also protect your
+tiling in our case tiling shouldn't be a
+problem because we're going to remove
+the borders anyway so let me start a
+fresh with a new transform 2D all I want
+is to squash it down a little so I'm
+going to grab this handle I'm going to
+hold control and gently pull it
+down and to make it more dense I might
+also just divide the whole thing by
+two all right now how can we connect
+this new result with our main stream
+that we have here now the good news is
+that we don't have to take that output
+and replug everything manually to each
+node so instead I'm going to show you a
+very simple trick to save you some time
+if you press shift while left clicking
+on the main output it will attach to
+your cursor the whole bundle of
+connections and you can can reroot them
+all by sort of jumping over the output
+of the new node that you want to include
+so again let me do it one more time I
+press shift while clicking on the output
+and then I let go over the new output
+our three view is now updated and we can
+start deciding what to do next I think
+the next thing I should do is find a way
+to taper it on both ends to create that
+sort of
+Overlook the one way of doing it would
+be to take well an oval shape and
+multiply it on top so that everything
+outside of the oval would be dark this
+is something that is very easy to do in
+substance designer to do it we need to
+bring in two nodes that you will use all
+the time we will bring the blend Noe and
+we will bring the shape
+Noe let's have a look at that blend Noe
+first you see that it has three inputs
+the first two one are half yellow half
+gray which means that you can either
+blend color nodes or grayscale nodes but
+keep in mind you can't blend a color
+node with a grayscale node if you do so
+you will get that Red Connection
+signaling an error there's also a
+hierarchy between these two inputs while
+the foreground input is the one that
+will act upon the background so the
+background comes first and the
+foreground comes on top of it let's have
+a quick look at the parameters to
+demonstrate what they do I will make a
+simple blend between two colors so we
+first have an opacity slider that
+controls how much the foreground acts
+upon the background see as I decrease
+the opacity the blue Fades back to red
+and vice
+versa as you may have guessed we can
+also control it using the opacity input
+here this one is basically a mask input
+so it's expecting grayscale information
+even if you are blending colors so if I
+were to use well for example let's take
+our fibers one here and plug it into the
+opacity input what do you think will be
+the result take a moment to think about
+it you can even pause the video if you
+want as you may have guessed it's giving
+us this image where opacity input is
+white that is around the middle here the
+blue foreground takes over whereas the
+black areas mask it out and let the red
+background appear hopefully you get the
+logic of it we'll be repeating this kind
+of operations a lot during this course
+so don't worry if it still feels a bit
+abstract and last but not least the
+blend node comes with blending modes
+like multiply add subtract and so on if
+you're not familiar with what blending
+modes are and how they work you can
+check out this video on the topic but
+again we will keep things very simple in
+the beginning so no need to worry too
+much about it all right let's get back
+to our thread like I said what we need
+is to blend this base with some kind of
+oval shape so we first plug this into to
+the background input because we want it
+to be affected by whatever we put on top
+right and now let's take a look at that
+shape note we added that second node at
+first side it looks like an empty white
+node but if we look at its properties we
+see that it's actually a library of
+Primitives we can scale them we can
+rotate them tie them we can also scale
+them non uniformly which is perfect to
+create an oval all we have to do now is
+choose a nice soft round shape like I
+don't know a bell for
+example then we can squash it slightly
+on the Y and I would maybe elongate it
+on the X a little but huh it seems that
+we're stuck at one and we can't go any
+further well actually we are not in
+substance designer you can override most
+of the limits by typing in the values
+you want so in this case I'm going to
+type something slightly above one like
+1.2 or something all right now all we
+have to do is take that shape that nice
+oval shape we made and plug it above of
+fibers in the blend node like
+so then we will change the blending mode
+to multiply and here we go you see that
+we now have these nicely tapered ends
+just like we wanted let us reroot our
+connections once more to preview the
+result holding shift and moving it back
+into place
+okay now we start to see our oval shape
+appearing with that nice bulge in the
+middle it's still too faint though so
+one way we can fix this is by tweaking
+the grayscale values of our thread now
+if you're not familiar with what these
+values mean let's do a quick recap so
+the way a height Map works is basically
+the lighter the value the higher the
+area and the darker the value the lower
+the area so where our map is white it
+means the texture will be pushed up and
+where it is black it means it will be
+pulled down so to demonstrate this more
+clearly I'm going to activate the
+displacement on our rounded Cube here to
+do so I need to activate two things
+first I need to activate the height
+input in the base material node right
+set it to true and plug our last node
+directly into it this one doesn't need
+any companion node nothing changes yet
+in the 3D view but if I come over to the
+material properties and go to material
+default edit I can access the parameters
+that control how the material is
+displayed in the 3D view I'm just going
+to scroll down to the height section and
+push the height scale to I don't know 10
+maybe
+20 all right now hopefully you see that
+the whites here are being pulled up and
+that the gray gradient that we have here
+in the 2D view is translated to a height
+slope here in in the 3D view now that we
+have this good illustration let's see
+how we can change the look of our
+current displacement by playing with the
+grayscale values themselves designer
+comes with a lot of tools to do it
+histogram highpass contrast but we're
+going to start with the most important
+one the levels note if you have any
+experience with image editing softwares
+this view should feel familiar levels
+basically allow you to remap the values
+of an input image bending or reducing
+the high and low points as well as
+Shifting the transition between the two
+now in our case all we want is to
+tighten up that shape a little so we
+have a more rounded profile so I'm just
+going to take that low pin at the top
+here and push it slightly to the right
+and I'm going to move the middle pin to
+the left in order to shift that
+transition between high and low like
+so see how we changed our thread
+profile perfect and we can easily
+compare the difference it makes by
+temporarily muting the levels if I
+select it and press shift and D the node
+becomes disabled see it's still there
+but it's sort of invisible and I can
+toggle it on and off with that same
+shortcut to check the result which is
+often very useful especially when you
+have very subtle effects all right looks
+good to me now don't worry if the levels
+notes still seem a little abstract to
+you it's one of these notes that just
+becomes more and more intuitive as you
+use it and we will use it a lot in this
+project all right our base thread starts
+to look okay but it still misses a
+little something in my opinion if I take
+a look at my reference you see that yarn
+is usually very fibrous and if you look
+at it up close you will see all these
+tiny fibers tightly spent together now
+we do have this slanted structure but
+it's pretty basic so what we can do is
+add an extra level of complexity simply
+by blending in a noise on top of this
+current state and we need two things for
+that first we need some kind of noise
+obviously so let's open up our quick
+sarch by pressing space bar and see what
+we have if we type in noise and we have
+a lot of options and with practice you
+will get to know most of these by heart
+in my case I already know exactly what
+kind of noise we need so I'm going to
+scroll down until I reach the
+directional noises these are great for
+everything that has a very directional
+or layer structure uh think about wood
+brushed Metals fabrics and so on I'm
+going to go with directional scratches
+and place it right next to our last note
+we now need to somehow mix these two
+together how can we do it I suggest you
+post the video if you've been following
+along and try to find the solution by
+yourself done you probably guess that we
+need a blend node for that so let's just
+take our base
+thread put it in the background of the
+blend and put the directional scratches
+on top as for the blending mode let's
+stick with multiply for this one now the
+effect is way too strong by default so
+we can turn it down by decreasing the
+opacity by half but it still doesn't
+look quite right the noise that we
+picked is too detailed and small
+compared to our thread and it's going in
+the wrong direction too the good news is
+that it's a procedural noise meaning
+that it's not a still bit map but a
+dynamic recipe that we can interact with
+so let's just click on it to access its
+properties and you can see that we have
+quite a few parameters uh the first one
+I'd like to change is the scale let's
+take that down to
+one it's better but still not enough so
+what we can do next is reduce the
+pattern amount to somewhere around 02 it
+would just give us more space to enlarge
+these long Stripes which we can do using
+these X and Y sliders here I'm just
+going to take a second to fiddle with
+them
+elongating on the Y thickening on the X
+until that empty space is mostly filled
+the last thing we need to do is adjust
+the rotation and i' like to align it
+with a thread structure the thing is
+when I want to edit the noise properties
+all I see is the noise itself but
+designer actually allows you to edit a
+noes properties while previewing another
+node in the 2D view so just bear with me
+on this see when I I double click on a
+node I get these two little icons on the
+top the sheet icon indicates that this
+node properties are currently displayed
+here on the right panel and the Checker
+icons means that this node output is
+also displayed in the 2D view now if I
+were to single click another node you
+will see that the properties icon
+follows wherever I click but I'm still
+previewing my directional scratches this
+doesn't look like much but it's actually
+super handy so let's put it into
+practice right now what I want is to
+change the noise rotation while
+previewing the result of the blend in
+real time all I need to do for that is
+to double click the blend to display it
+in the 2D view then single click the
+noise to access its properties and now I
+can easily align the scratch's rotation
+while using the thread structure as a
+guide all right we made it we made the
+base thread that will support a whole
+fabric material not bad this no
+Arrangement may look very simple but it
+took us through some of the most common
+techniques in designer creating shapes
+moving blending leveling and adding
+noise in the next video we will see how
+we can turn this individual thread into
+a complex woven
+structure e

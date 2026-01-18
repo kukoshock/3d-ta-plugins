@@ -1,0 +1,177 @@
+before we wrap up this fabric material
+I'd like to add two more things to make
+it a bit more interesting one of them is
+displacement now we've touched upon this
+in the beginning of this course when I
+told you that height could mean
+different things in the broadest sense
+the height map is just that grayscale
+image we've been building for most of
+the episodes and that feeds into the
+normal node so what we see on our model
+right now is not the height but just the
+normal map but when it comes to
+displaying the height itself what we
+actually mean by that is displacement
+now displacement is a heavy process
+because it relies on subdivision of the
+geometry so for that reason I usually
+turn it off unless I really need it and
+materials like fabric are mostly flat
+anyway so I knew we wouldn't need it
+until we reach the very end now let me
+show you what our displacement looks
+like if we turn it back on and remember
+right now it's taking in the Raw height
+map that we built
+here okay so material default edit and
+hide designer actually went back to it
+display settings with a little bit of
+displacement you can see it if we look
+at it at very low angles we had this
+sort of bumpiness on the edge here and
+to see it better we need to crank up the
+Desolation otherwise designer will not
+have enough geometry to displace that's
+one very common mistake that beginners
+do often when they try to increase the
+displacement and nothing happens that's
+because they forgot to tesate the mesh
+so let's type in a large number like
+50 and push the scale to
+10 okay there are a few things that I'd
+like to show you here first you see that
+we get this sort of spikes here around
+the edges that's due to the
+Desolation see if I move the
+slider now you might be thinking okay
+then we just need to increase the
+Desolation until it's all nice and
+smooth but the thing is you will end up
+with a crazy geometry that will make
+everything extremely slow without fixing
+all the artifacts so it's not the
+smartest way around this and I'd like to
+draw your attention to another problem
+see if I look at the weave well it
+appears that even the threads are
+getting displaced which is way too much
+the only thing that is worth displacing
+here are the trim and the gemstones
+these are the bits that should really
+stick out the rest can remain flat and
+rely on normal information only it means
+that to get a good displacement map we
+need to create it separately and we can
+do that easily by just reusing different
+bits from our graph okay since we are
+want to displace the trim and ornaments
+I'm going to take a
+DOT and start from this mask here
+everything else is black meaning flat
+which is exactly what we want one other
+way we can avoid these spikes and
+artifacts that I mentioned and that you
+often get when you use displacement is
+by simply blurring a little the input to
+avoid hard edges let's take a
+blur and set it to
+0.2 just to have a bit of slope here
+okay that's already much better the only
+problem is that it makes everything a
+little Blobby and the gemstones in
+particular don't stand out enough you
+can try to find your own solution to
+this what I'm going to do is simply
+lower this with a level then do a
+blend and add the gemstones mask on
+top like that
+okay you might argue that even though
+it's a little bit better we still have
+Jagged outlines and artifact and this is
+due to the resolution if we check how it
+looks in
+4k well all of a sudden everything
+becomes nice and sharp so it's a balance
+to find between details and
+efficiency in any case we now have a
+good displacement map all right the
+second property I wanted to mention is
+translucency right now the gemstones
+look like they are made out of plastic
+or some sort of opaque material which is
+not exactly the look I was after and
+translucency looks like the answer to
+this problem but if I go to the base
+material Maps you see that we don't have
+any translucency slots and so I wanted
+to walk you through this situation where
+you work in a template that is made for
+certain Maps but then you realize that
+you need something more that is not in
+the template in our case translucency
+now the good news is that it's not
+really a problem because designer lets
+you play with as many channels As You
+Wish no matter what template you chose
+in the
+beginning and you see that if I were to
+take any Noe right click and drag it
+into the viewport I would get to choose
+between all these different channels
+including channels that I don't have in
+my base material like mive coating
+anisotropy and so on now the thing is I
+don't want to just display a new channel
+in the 3D view I want it to be a part of
+my material something that will be
+packed and exported with it at the end
+so the way we can do it is very simple
+you see we have all these final outputs
+After Base material the color the normal
+the roughness and so on and all we have
+to do is to create just one more output
+so let's type in
+output here we go and now we're going to
+replicate that structure we see on the
+other output so identifier label group
+and usage okay so identifier let's call
+it
+translucency same for
+label group it's important that we place
+it under the material umbrella just like
+the rest and finally usage this is going
+to tell designer how to use that
+information we're going to plug in there
+so here all we have to do is to scroll
+down until we find translucency
+here and that's it now of course we need
+to plug something in there translucency
+Maps work a little like metallic Maps
+they are basically masks that tell the
+Shader what is translucent and what is
+not so in our case since we only want
+the gemstones to be translucent it's
+going to be very easy just take a DOT
+grab the gemstone mask and connect it to
+your output and that's it translucency
+usually need a bit more information to
+work properly like the absorption color
+and distance but I'd rather deal with
+that directly in the final rendering app
+than create Maps just for this in
+designer it's up to you but I just find
+it a bit more flexible and with that
+said we can finally call this material
+done however like I said in the
+introduction what makes parametric
+materials special is that they are not a
+static collection of maps but a dynamic
+system that you can interact with even
+after closing designer so in the next
+video we will see how we can expose some
+of these parameters to the final user so
+that he doesn't end up with just the
+current green fabric but also with the
+power to change it however it
+liks for

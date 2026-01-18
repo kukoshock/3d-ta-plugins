@@ -1,0 +1,309 @@
+in this video we're going to take a look
+at how to create the roughness and
+metallic maps of a material in substance
+designer these two maps usually come
+last in the creation process we first
+had to build up the height then apply
+some colors and now it's finally time to
+add the finishing touches if we look at
+what we achieved so far let me just
+switch the preview cloth
+mesh so if we look at this we see that
+even though all the elements are in
+place and the colors are done it still
+misses something like it looks a bit
+flat right and this is where roughness
+and metallic information can help the
+roughness map determines if a surface is
+smooth or irregular if it is smooth the
+reflections are going to be focused and
+bright and the more we shift towards a
+rough surface the more the reflections
+are going to be spread out and dim here
+again we'll need to play with Grays
+skill values the darker the value the
+smoother the surface and the lighter the
+value the rougher the surface there is
+no real rules when it comes to roughness
+Maps so you have a lot of creative
+leeway here the metallic map on the
+other hand is a bit more constrained it
+essentially works like a black and white
+mask that tells the Shader what is raw
+metal and what is dialectric which means
+non-metallic technically a surface is
+either fully metallic or fully
+dialectric there's no in between and so
+your metallic map should look a little
+bit like this now in reality metallic
+surfaces are often mixed with
+non-metallic elements such as dust rust
+dirt and and so on so you need to
+account for these when you create your
+metallic map now in the case of our
+material it should be fairly
+straightforward the golden trim and the
+mountings are going to be metallic
+obviously so fully white but what about
+the fabric well if we follow the PBR
+textbook it should be completely black
+so fully dialectric but we are going to
+make an exception here because adding a
+bit of metalness will help giving that
+shimmery look that you often see in
+Fabrics such as satin or silk this
+effect is actually caused by a
+phenomenon called anisotropy this is
+something that we can replicate in
+substance designer but it's a bit more
+complex and advanced and we will not
+deal with this in this tutorial we will
+use instead the metallic trick because
+it's just faster and easier but be aware
+that you will need to control the look
+of your material in the final engine
+just to make sure it reacts properly to
+lighting okay let's jump into it I'm
+going to start by enabling the metallic
+mapping or base material node and now we
+need a grayscale base to start from I'm
+going to go with something very simple
+because again we need to think of it as
+some sort of mask so no need for fine
+gradients or noise we can start with a
+uniform color node switch it to Grays
+scale obviously and pick a medium
+gray let's plug
+this and now you see that right away a
+material gets darker and we have some
+nice Reflections going
+on okay then i' like to make the
+ornament weave pop out a bit more and
+the way I'm going to do this is by
+making it more metallic so that it looks
+shinier than the rest so in this case
+what we're going to do is blend this
+base with the ornament weave mask that
+we can find in our portal list here and
+to make it more metallic all we have to
+do is choose an additive mode like Max
+then gently further down the opacity
+here let me just switch the connection
+mode to standard because otherwise it's
+going to be a pain to reot these last
+nodes so if you want to follow along
+just go to connection so to
+standard all right next up we have the
+trim and ornaments that's easy because
+these bits are expected to be fully
+metallic so just grab the appropriate
+mask that's trim and ornaments here then
+add it on top with full
+opacity now there's a catch here by
+doing this we also made the gemstones
+metallic and we don't really want that
+this is the part where I tell you to
+post the video and try to figure out the
+solution for yourself
+finished all right let me take another
+blend this time fetch the gemstone
+mask and simply subtract it from the
+rest now we have a good metallic map if
+we read what we have here it gives
+something like slightly metallic fabric
+with a bit more metallic ornaments fully
+metallic trim and non-metallic
+gemstones
+perfect we can now frame this
+metallic
+okay now let's move on to the roughness
+enable the roughness map in the base
+material which gives this wet look to
+our fabric because no input means full
+black and full black means perfectly
+smooth this map is going to be a bit
+more detailed than the metallic map
+because here we can play with the full
+range of grayscale values so I'm
+actually going to take the curvature map
+and adjusted a little to use it as a
+roughness base I have two adjustments in
+mind the first one is to invert its
+levels let me explain why if I zoom up
+close and try to read this image in
+terms of roughness information I see
+that the cavities are darker and so will
+look smoother right than the edges that
+are highlighted here and so we look
+rougher and usually in real life it's
+the other way around cavities have more
+surface irregularities because they
+collect dust or microfibers whereas the
+beads that stand out are smoother
+because they are brushed or polished
+more often I hope it makes sense so to
+invert an input you could type in invert
+in your search bar and grab that node
+here that does just that but you could
+also do it with levels and I actually
+forgot to draw your attention to this
+but on the tab itself you have this row
+of icons that helps speed up some
+actions so you have invert here and auto
+LEL here I'm just going to click on
+invert you could also do it manually by
+dragging the keys but it just make
+things a bit faster all right so we now
+have a more convincing distribution of
+value where the dark areas here are
+going to look smoother than the light
+bits here there's one more thing I like
+to do though and it's toning down the
+contrast because as it is things will
+look too intense and noisy I could do it
+with the levels note itself but I'd like
+to introduce you to another interesting
+note if we type in range we have this
+histogram range note now the histogram
+range does two things and to better
+illustrate it I'm going to click on the
+little tool that you have in the 2D view
+the sort of bargraph icon that lets you
+display the
+histogram okay now what is the histogram
+it's something that represents the
+amount of pixels in your image for each
+grayscale value where left means black
+and right means white knowing that we
+understand that this image for instance
+has most of its pixels in the middle GD
+here and so it's not very
+contrasted if I take another one let me
+grab for example this cell now this
+image on the other hand has its pixels
+spread out across the whole range and so
+we have a more balanced distribution of
+values here if you want to learn more
+about histogram and levels I really
+encourage you to check out this great
+beginner friendly video we have on the
+topic it's full of very intuitive
+examples and it will just help you grasp
+The Core Concepts now back to our node
+here it comes with two sliders one that
+can reduce the
+range and one that can move it so keep
+an eye on the histogram why I do that
+see reducing the range is just shrinking
+that
+distribution until all the pixels in the
+image share the same midg gray value
+represented by that one line in the
+middle and if I want to shift that line
+so that instead of an average gray I
+have something darker or lighter then I
+can play with the position
+slider easy right so let's just reset
+this and let's say I want to lower the
+contrast of our curvature all I have to
+do is to drag this a little to the left
+like so and depending on the look I'm
+trying to achieve I can either darken it
+or lighten it and what I like about
+these two parameters is that they're
+very easy to use and so when the time
+comes to expose your parameters to the
+final User it's just going to make
+things easier all right let's disable
+the histogram view for now next up we
+have the ornament weave to tackle if we
+follow the same step as in the metallic
+map so let's add a blend and this time
+all the Blends are going to be inverted
+compared to the metallic so in the
+metallic we wanted to add these elements
+but in the roughness we will need to
+remove them or rather to lower their
+value so that they look more shiny so
+here for the ornament weave we're going
+to blend it in subtract mode
+just so that it shimmers a bit
+more all right then we have the
+trim same
+thing
+subtract play with the
+opacity and finally the
+gemstones there we go we can now frame
+this and col the roughness and metallic
+Maps
+done at this point of the process with
+all the channels in place I like to take
+a step back and find some things that
+may not look right this is when I
+usually start checking my material in
+Ray traced mode to troubleshoot
+issues we can do that in designer by
+going to the 3D View and here you see we
+have two renderers we have openg the one
+we're currently using and that is here
+for preview purposes only and then we
+have Ira which is Ray Trace now you see
+that when I switch to Ray tracing the
+fabric looks really dark and rough all
+of a sudden and we lose all the nice
+Reflections that we had in preview mode
+and that's because the normal is too
+strong when we started building our hype
+map we deliberately set pretty high
+intensity to see things better now it's
+making the weave too noisy and it kind
+of breaks the shading so the first thing
+we're going to do is drop the normal
+intensity to two
+okay that's already better then I think
+we should maybe soften the base weave a
+little because it still feels a bit too
+intense and noisy in my
+opinion now there are many ways I can do
+it first I will blur the WFT threads a
+little point
+two okay then I will reduce the contrast
+of the weave with a histogram range
+again and here I need to make sure that
+I stay roughly in the same values so
+that the height blend that comes after
+keeps the same
+balance all right see the difference
+we're just removing some of these spikes
+here that made the fabric too noisy I
+think it's better this way maybe one
+more thing before we wrap this up I like
+to make the pattern like the ornament
+weave pop out just a little bit more in
+the color so I'm going to add a quick
+blend here just after the base weave
+take the ornament weave mask and use the
+same
+input and just play with the blending
+mode I think AD should work well if we
+set up a very low
+value all right it definitely
+helps something that I like to do at
+this stage is to put the material under
+different lights you can find them in
+the library down here in the HD section
+so all you have to do is pick the hdri
+you want to test drag and drop it in the
+view port and then you know the drill
+control shift right click to rotate and
+inspect how your material behaves it's
+probably my favorite thing to do in
+designer
+okay so in this video we went over the
+creation of the roughness and metallic
+Maps two important properties that help
+bringing a fabric to life it looks like
+we're done with the material creation
+itself but there are actually two more
+maps that I'd like to tackle in the next
+video translucency and displacement it's

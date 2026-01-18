@@ -1,0 +1,170 @@
+in this video we will see how we can
+extract masks from a height map such as
+the one we built in the previous episode
+substance designer is all about reusing
+and combining useful information so it's
+really important that you get into that
+mindset where you ask yourself will I
+have a use for that later or hey maybe I
+can reuse that bit I made earlier it
+means you need to both anticipate your
+next steps and make the most of your
+previous steps again think nonlinear to
+make it more clear let's get back to
+where we left off at this point the
+height map of a fabric material is more
+or less done the key elements are all in
+place uh we have the embroidered
+ornament here the trim is here the
+gemstones as well and right now we're
+seeing all of this in this gray and flat
+sort of preview state but soon we'll
+have to add color roughness metallic
+information and so on and for that we'll
+need to be able to treat each of these
+elements separately so for example maybe
+I want the embroidered ornament to be a
+bit darker than the rest of the fabric
+maybe they're made out of a different
+yarn I don't know so I need to be able
+to isolate them to tell designer okay do
+this but only to this element same goes
+for every part that I want to
+distinguish from the rest hopefully you
+now understand why we need to do this so
+let's get to it all right let's start
+with the embroidered ornaments that
+should be fairly easy you may be tempted
+to reuse this mask here that drive the
+tile sampler that wouldn't be a good
+idea remember remember we wanted to have
+these sort of jagged outlines that are
+much more realistic and we don't have
+that here now we could also take that
+level here adjust it and call it a day
+but there's an even simpler way remember
+we use the height blend to add this
+second weave and I told you then that
+it's a very handy node because it also
+outputs a mask and this mask is perfect
+because it accurately reflects how much
+of the foreground sticks out from the
+background so we're just going to reuse
+that
+now to save this for later we can use
+the dot node again but this time let's
+make it more interesting so sure I have
+this spin that I can drag to wherever I
+need it but the thing is we're going to
+need that mask in the very last steps so
+all the way up there and if I were to
+drag a connection to the other end like
+that chances are it will cross other
+connections and turn my graph into a
+zigzagging mess so instead what we're
+going to do we're going to keep it next
+to its input
+and with the dot note selected you see
+that we have a few parameters and we can
+give it a name so let's call it ornament
+weave
+mask okay then let's move away from
+there and here's what you can do now
+grab another dot then in that drop down
+menu here select the input you want to
+call and this new DOT now indicates
+which input is referencing to see it
+more clearly we can also zoom out and
+select the node and we can see it
+Connection in the form of this hashed
+line
+here and what we did here is use the dot
+node as a portal portals are great to
+avoid overlapping or crossing
+connections and really help keeping your
+graph
+tidy I personally like to be able to
+visualize the connections and see at one
+glance what goes where but when two
+nodes are really far apart I tend to
+rely on Portals
+now all right let's delete that for now
+so we extract did one mask from the
+ornament weave let's now move on to the
+trim I'd like to handle all the trim
+elements as one entity so that we can
+turn them all into the same golden hue
+the problem is that we dealt with them
+separately like we added this Row first
+then this one then this one and that was
+probably a mistake because now if we
+want to create one mask out of all that
+it's just a bit more complex but no
+worries there are many ways we can get
+away with it the tedious solution would
+be to reassemble them all with
+Blends like
+that and then
+that and then use a threshold to get a
+clean black and white
+mask that's one two three nodes it's not
+that bad but when you think about it the
+threshold could work just as well on the
+actual height here see because the trim
+is much lighter than the rest of the
+fabric the threshold should work just
+fine here we go the only thing is that
+it's picking up on bits of fabric as
+well and to prevent that we can just
+soften a little the input with a
+blur like so and that's it we now have
+our trim mask let's dug this to a DOT
+node trim mask all right last but not
+least we have the radial ornaments these
+ones are a bit trickier because there's
+a lot going on and we definitely want a
+more differentiated approach the first
+thing that comes to mind is that we need
+separate mask for the mountings and for
+the gemstones because they're going to
+have very different properties so let's
+blend the mountings
+together run a threshold
+again then do the same for the
+gemstones so this
+one and this
+one okay so far so good but you see that
+we run into a problem here our masks are
+not placed or tied like the final row
+here so what we can do for now is just
+duplicate that transform here control D
+so that we have the exact same values
+and plug on masks to it now this is a
+makeshift solution because as you
+probably guess if we move this here it's
+not going to update here and so these
+three transforms are actually not
+synchronized for now it's okay because
+we don't intend to move anything but
+that's still something we'll need to
+address when the time comes to expose
+parameters okay let's just add our DOT
+nodes so
+mountings
+mask and gemstones
+mask and that's
+it so in this video we saw why and how
+to extract masks from a node Arrangement
+and we saw it poses some challenges when
+you want to single out specific elements
+so that's something to keep in the back
+of your mind when you build your
+material all right is our height map
+done yet not really but we're almost
+there before we move on to the color I
+like to take a moment to refine a thing
+or two with you so in the next episode
+we'll see how we can make things a bit
+more realistic by adding small
+imperfections and paying attention to
+details for
