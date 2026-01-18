@@ -638,11 +638,13 @@ Example: Show custom input only when "Custom" selected
 
 The official sample project files for this tutorial are available from Adobe:
 
-**Source**: [Substance Designer for Beginners - Official Tutorial](https://www.adobe.com/learn/substance-3d-designer/web/substance-designer-for-beginners)
+**Direct Download**: [substance-designer-for-beginners.zip](https://learndownload.adobe.com/pub/learn/substance-3d-designer/substance-designer-for-beginners.zip)
 
-This includes:
+**Tutorial Page**: [Substance Designer for Beginners - Official Tutorial](https://www.adobe.com/learn/substance-3d-designer/web/substance-designer-for-beginners)
+
+This ZIP file includes:
 - Complete `Ornate_Fabric.sbs` project file
-- All dependencies and referenced materials
+- All dependencies and referenced materials (48 SBS files)
 - Example exports and presets
 
 ### Local Project Structure
