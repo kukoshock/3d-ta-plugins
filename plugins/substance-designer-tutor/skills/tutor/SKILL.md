@@ -451,6 +451,7 @@ For detailed information, consult these files in `${CLAUDE_PLUGIN_ROOT}/skills/t
 - `node-parameters.md` - Comprehensive node parameter reference (45+ nodes)
 - `troubleshooting.md` - Extended problem/solution guide (40+ scenarios)
 - `workflows.md` - Step-by-step workflow guides (15 workflows)
+- `gemini-integration.md` - Gemini YouTube video analysis integration
 - `project-analysis.md` - Complete Ornate_Fabric.sbs analysis
 
 ### Sources (`sources/`)
@@ -582,3 +583,59 @@ To add or update transcripts for new videos, use the **youtube-transcript** skil
    - Step-by-step workflows
    - Troubleshooting tips
    - Instructor quotes and insights
+
+---
+
+## Gemini Integration for Video Analysis
+
+For questions requiring video-specific details not captured in transcripts, use Google Gemini's YouTube analysis capability.
+
+### Gemini Conversation URL
+
+```
+https://gemini.google.com/app/af593c9b8450255c
+```
+
+This is a pre-configured "Gem" (custom Gemini assistant) with context about the entire Designer First Steps course.
+
+### When to Use Gemini
+
+- **Visual parameters** shown but not spoken in videos
+- **Step-by-step breakdowns** of complex node sequences
+- **Clarifying details** from specific timestamps
+- **Cross-referencing** techniques across different parts
+
+### Query Workflow (Browser Automation)
+
+1. Navigate to the Gemini conversation URL
+2. Click the "Ask Gemini" input field
+3. Type question with specific Part reference
+4. Submit and wait 5-10 seconds for video analysis
+5. Extract information from response
+
+### Effective Query Patterns
+
+**For specific parameters:**
+```
+In Part 9 about fabric embroidery, what are the key parameters for the Tile Sampler node?
+```
+
+**For workflows:**
+```
+What are the step-by-step instructions for creating the diamond gemstone in Part 13?
+```
+
+**For troubleshooting:**
+```
+In Part 16, how does the instructor fix the Curvature Smooth vertical artifact?
+```
+
+### Response Quality
+
+Gemini analyzes videos in real-time and provides:
+- Exact parameter values (e.g., X: 600, Y: 700, Scale: 3.8)
+- Explanations of WHY each setting is used
+- Node connection details
+- Step-by-step procedures
+
+See `references/gemini-integration.md` for complete documentation including browser automation code examples.
