@@ -4,6 +4,23 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 
 ---
 
+## Quick Reference: Top 10 Most Common Issues
+
+| # | Issue | Quick Fix | Full Details |
+|---|-------|-----------|--------------|
+| 1 | Normal map banding/stepping | Set Output Format to Absolute 16-bit | Scenario #7 |
+| 2 | Material different in Unreal | Convert normals to DirectX format | Scenario #29 |
+| 3 | Tile Sampler scale map ignored | Connect to Scale Map input (not Pattern Input) | Scenario #33 |
+| 4 | Curvature vertical gradient | Fix upstream tiling setting | Scenario #9 |
+| 5 | Ornaments too uniform | Add rotation_random (0.02-0.1) | Scenario #1 |
+| 6 | Graph extremely slow | Reduce resolution to 2K during editing | Scenario #12 |
+| 7 | No visible displacement | Increase tessellation to 50+ in 3D view | Scenario #22 |
+| 8 | PBR Validate shows red | Avoid pure black (<30) or pure white (>240) | Scenario #17 |
+| 9 | Height Blend edges mushy | Increase contrast to 0.96 | Scenario #34 |
+| 10 | Ornaments too prominent | Add Levels node, set Output High to 0.3-0.5 | Scenario #2 |
+
+---
+
 ## Pattern & Distribution Issues
 
 ### 1. Ornaments look too uniform/regular
@@ -42,28 +59,46 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 **Symptom**: Distribution looks like obvious grid
 
 **Solutions**:
-- Change Tile Sampler Pattern mode (try mode 2 = brick)
-- Increase Position Random significantly
-- Use Offset slider to stagger rows
-- Add **Warp** with subtle Perlin Noise as intensity
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Change Pattern mode to brick | Set Pattern parameter to 2 | Brick mode offsets alternating rows by 50%, breaking the vertical alignment. Human eyes easily detect perfect grid alignment - even slight offsets make patterns feel more natural |
+| Increase Position Random | Set position_random to 0.1-0.3 | Adds jitter to each tile's X/Y position, breaking rigid grid. Natural materials don't align to mathematical grids - this mimics real-world irregularity |
+| Use Offset slider | Adjust Offset parameter (0.25-0.5) | Shifts entire rows/columns relative to each other. Works with brick mode to create staggered patterns |
+| Add Warp node | Insert Warp with Perlin Noise (intensity 0.05-0.1) | Creates organic, flowing distortion across the entire pattern. Like fabric warping under tension - breaks grid without destroying the underlying structure |
+
+**WHY Grid Patterns Look Artificial**: The human visual system evolved to detect patterns in nature, which are rarely perfectly regular. Even a 5% position variance is enough to break the "computer-generated" appearance. The key is subtle variation - too much randomness creates chaos, too little still looks CG.
 
 ### 4. Tiled elements don't connect smoothly
 
 **Symptom**: Visible seams where repeated elements meet
 
 **Solutions**:
-1. Offset element by 0.5 on tiling axis
-2. Blend with original using Max mode
-3. Ensure tiling is set correctly (Vertical only, Horizontal only, etc.)
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Offset by 0.5 on tiling axis | Use Transform 2D, set Offset X or Y to 0.5 | Moves the element exactly half a tile width. When tiled, the right edge of one tile meets the left edge of the offset tile, creating continuity. 0.5 is exactly half because UV space goes 0-1 |
+| Blend with original using Max | Add Blend node, mode = Max Lighten | Max takes the brightest pixel from both inputs. Where original and offset overlap, you get the combined result. Creates the "bridge" between tiles without dark seams |
+| Set tiling correctly | Enable only Horizontal OR Vertical tiling as needed | If tiling both axes when you only need one, you get unwanted repetition. Vertical-only tiling creates horizontal stripes/threads. Horizontal-only creates vertical elements |
+
+**WHY 0.5 Offset Works**: In UV space (0-1 range), 0.5 is exactly half. When you offset by 0.5 and enable tiling, the element wraps around - what exits the right edge at 1.0 re-enters at 0.0, perfectly aligned with the offset version at 0.5. This creates seamless connections for continuous patterns like threads or chains.
+
+**Common Pattern**: This technique is essential for creating continuous horizontal/vertical elements like warp threads in weaving, where threads must connect edge-to-edge infinitely.
 
 ### 5. Elements cut off at edges
 
 **Symptom**: Shapes get clipped at tile boundaries
 
 **Solutions**:
-- Use **Safe Transform 2D** instead of regular Transform
-- Check tiling mode (should NOT be "None" if tiling needed)
-- Reduce element scale so it fits within tile
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Use Safe Transform 2D | Replace Transform 2D with Safe Transform 2D node | Safe Transform samples beyond the 0-1 UV boundary when tiling is enabled, pulling in the wrapped content. Regular Transform treats out-of-bounds as black/empty, causing hard cutoffs |
+| Enable tiling mode | Set Tiling to Horizontal/Vertical/Both as needed | Without tiling, there's no "wrap-around" data to sample. The node can't pull content from the opposite edge if wrapping isn't enabled |
+| Reduce element scale | Lower scale parameter to fit within tile | If an element is larger than the tile itself, even Safe Transform can't help - there's simply not enough space. Scale down so the element plus offset fits in 0-1 range |
+
+**WHY Safe Transform Exists**: Regular Transform 2D is optimized for speed - it doesn't look beyond the 0-1 UV boundary. This is fine for non-tiling content. But when you offset or scale tiling content, you often need to sample "around the corner" where the texture wraps. Safe Transform specifically handles this edge-wrapping case by sampling the tiled repetition.
+
+**When to Use Each**:
+- **Transform 2D**: Non-tiling content, or when you're certain content stays within bounds (faster)
+- **Safe Transform 2D**: Tiling content with offsets/scaling (slightly slower, handles edge wrapping)
 
 ### 6. Ornaments too sparse or too dense
 
@@ -104,9 +139,17 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 **Symptom**: Output appears wrong size or blurry
 
 **Solutions**:
-1. Check primary input resolution
-2. Set Output Size to Absolute with desired resolution
-3. Verify parent graph resolution settings
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Check primary input resolution | Preview the primary input node (dark connection dot) | Resolution inherits from the primary input automatically. If primary is 512px, all downstream defaults to 512px. Find where low resolution originates |
+| Set Output Size to Absolute | Change Output Size from "Relative to Parent" to Absolute, select resolution (2K, 4K, etc.) | Breaks inheritance chain and forces this specific node to a fixed resolution regardless of inputs. All downstream nodes inherit this new resolution |
+| Verify parent graph resolution | Check the graph properties (right-click graph background) | If working in a subgraph, the parent graph's resolution setting can override. Subgraph set to "Parent Resolution" inherits from the main graph |
+
+**WHY Resolution Inheritance Matters**: Substance Designer uses inheritance to keep graphs resolution-independent. One node can adapt to different output sizes automatically. But this means a single low-resolution node early in the chain can contaminate everything downstream. It's like a low-quality photocopy - making copies of copies never increases quality.
+
+**The Primary Input Rule**: Nodes inherit from their PRIMARY input (the connection with the dark dot). If you have two inputs - one at 4K and one at 512px - whichever is primary determines the resolution. Swapping inputs (X key) can fix this if the higher-res input should be primary.
+
+**Common Cause**: Imported bitmap images at low resolution. If you import a 512px reference image and connect it as primary input, everything inherits 512px resolution even if your graph settings are 4K.
 
 ### 9. Vertical gradient in Curvature Smooth
 
@@ -134,18 +177,34 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 **Symptom**: Material that should tile has seams
 
 **Solutions**:
-- Check inheritance chain for tiling settings
-- Find Transform 2D with partial tiling disabled
-- Set affected nodes to Absolute full tiling
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Check inheritance chain | Trace backwards from seam location, preview each node to find where tiling breaks | Tiling propagates through inheritance like resolution and bit depth. One node with tiling disabled contaminates all downstream nodes |
+| Find Transform 2D culprit | Look for Transform 2D nodes - they often have partial tiling disabled by default | Transform 2D defaults can disable tiling on specific axes. If you offset on X-axis with Horizontal tiling off, you create a seam. Common mistake when copying nodes |
+| Set to Absolute full tiling | Change Tiling Mode to Absolute, enable both H and V checkboxes | Breaks the inheritance chain and forces this node to tile regardless of upstream settings. All downstream nodes then inherit correct tiling |
+
+**WHY Transform 2D is the Common Culprit**: Transform 2D has separate tiling controls for Horizontal and Vertical. It's easy to accidentally disable one axis while working. For example, if you're offsetting horizontally and forget to enable Horizontal tiling, the content doesn't wrap around - it just clips, creating a vertical seam.
+
+**The Inheritance Contamination**: Like a broken link in a chain, one node with "No Tiling" breaks tiling for everything downstream unless explicitly overridden. This is especially insidious because the seam might not appear until several nodes later, making it hard to trace back to the source.
+
+**Quick Test**: If you see unexpected seams, set the suspected node to Absolute with full tiling. If seams disappear, you've found the culprit - now trace upstream to find the root cause.
 
 ### 11. Node ignores parameter changes
 
 **Symptom**: Adjusting sliders has no effect
 
 **Solutions**:
-- Check if parameter is exposed (blue highlight = controlled elsewhere)
-- Right-click → Recompute
-- Check inheritance (might be overridden by input)
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Check if parameter is exposed | Look for blue highlighting on parameter name or value | Exposed parameters are controlled by the parent graph or external input. When you move the slider locally, it's immediately overridden by the exposed value. Blue = "locked from above" |
+| Right-click → Recompute | Right-click the node, select Recompute | Forces Designer to recalculate from scratch. Sometimes the node cache gets stale or computation is deferred for performance. Recompute clears the cache and triggers immediate recalculation |
+| Check connection inputs | See if a connection is driving this parameter | Some parameters can be controlled by input connections (like Scale Map). If there's a connection, it overrides the manual slider. Disconnect to test manual control |
+
+**WHY Exposed Parameters Lock Values**: When a parameter is exposed to the parent graph (for use in SBSAR or subgraph), the parent becomes the "source of truth." Your local slider adjustment is recorded, but instantly overwritten by the parent's value. This is intentional - it allows centralized control, but can be confusing when you forget the parameter is exposed.
+
+**How to Fix**: Right-click the parameter → "Un-expose" to break the external connection and regain local control. Or adjust the value at the parent graph level where the exposure is connected.
+
+**Cache vs Computation**: Substance Designer aggressively caches results to maintain performance. Sometimes this cache doesn't invalidate when you'd expect. The "Recompute" command bypasses all caching and forces fresh calculation - it's like "Refresh" in a browser.
 
 ---
 
@@ -351,13 +410,42 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 
 ### 29. Material looks different in external software
 
-**Symptom**: Material in Blender/Unreal doesn't match Designer
+**Symptom**: Material in Blender/Unreal doesn't match Designer - lighting appears inverted, colors look wrong, or details face the wrong direction
 
-**Solutions**:
-- Check normal map orientation (DirectX vs OpenGL)
-- Verify color space settings
-- Review roughness interpretation
-- Compare under similar lighting
+**Problem**: Multiple export and interpretation differences between Substance Designer and game engines.
+
+**Causes & Solutions**:
+| Cause | Solution | WHY This Works |
+|-------|----------|----------------|
+| Normal map format mismatch | Add "Normal Convert" node before output, or flip green channel on import | Unreal uses DirectX (Y-down), Blender/Maya use OpenGL (Y-up). Green channel is inverted between them - same data, opposite interpretation |
+| Color space incorrect | Export Base Color as sRGB, data maps (Normal/Roughness/Metallic) as Linear | sRGB applies gamma curve for perceptual brightness (display colors). Linear has no gamma - required for data maps that represent physical values |
+| Roughness interpretation | Invert roughness map if engine uses "Smoothness" | Some engines (Unity Standard) use Smoothness (inverted). White = smooth in Smoothness, White = rough in Roughness |
+| Lighting environment differs | Compare under neutral HDRI or match lighting | Different HDRIs create drastically different reflections - test with similar environment before debugging material |
+
+**WHY DirectX vs OpenGL Matters**:
+Both are valid conventions - neither is "wrong." The difference:
+- **DirectX**: Green channel positive = surface curves DOWN (used by Unreal, DirectX)
+- **OpenGL**: Green channel positive = surface curves UP (used by Blender, Maya, OpenGL)
+
+When you use the wrong format, all your bumps become dents and vice versa - like reading a topographic map upside-down where hills become valleys.
+
+**Quick Engine Reference**:
+| Engine | Normal Format | Notes |
+|--------|---------------|-------|
+| Unreal Engine | DirectX | Default for Substance |
+| Unity | OpenGL (or DirectX option) | Check import settings |
+| Blender | OpenGL | Cycles and Eevee both expect OpenGL |
+| Maya | OpenGL | Arnold expects OpenGL |
+
+**WHY sRGB vs Linear Matters**:
+- **Base Color/Albedo**: sRGB - represents what the eye sees, needs gamma curve for correct display
+- **Normal/Roughness/Metallic/Height**: Linear - represent physical data values, gamma would corrupt the math
+
+If you export Normal maps as sRGB, the gamma curve distorts the vector values, causing incorrect lighting calculation.
+
+**From Course**: "Make sure you use the latest version of these plugins as our material uses nodes that rely on designer's latest engine"
+
+**Related**: See scenario #17 (PBR Validate shows red) for color range issues
 
 ### 30. Missing maps in export
 
