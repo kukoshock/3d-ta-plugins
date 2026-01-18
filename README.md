@@ -15,7 +15,7 @@ This marketplace provides specialized tutoring and assistance plugins for 3D art
 
 ### substance-designer-tutor
 
-A tutor for learning Substance Designer through the "Designer First Steps" course by Adobe Substance 3D.
+A tutor for learning Substance Designer through the "Designer First Steps" course by Adobe Substance 3D. Features deep "WHY" explanations that teach the reasoning behind parameter choices, not just the values.
 
 **Covers:**
 - Thread creation (Part 5)
@@ -23,11 +23,18 @@ A tutor for learning Substance Designer through the "Designer First Steps" cours
 - Procedural shape design (Part 7)
 - Fabric embroidery with Tile Sampler & Height Blend (Part 9)
 
+**Key Features:**
+- **WHY Explanations**: Understand why 600x700 creates dense weave, why Scale Map creates tapered edges
+- **Parameter Decision Trees**: Choose appropriate values based on artistic intent (Low/Medium/High density guides)
+- **Root Cause Troubleshooting**: Learn underlying principles, not just copy-paste solutions
+- **Critical Techniques**: Scale Map vs Mask Input, Height Blend contrast, fiber density
+
 **Trigger phrases:**
 - "explain Tile Sampler"
 - "how does Height Blend work"
 - "troubleshoot my Substance Designer graph"
 - "why isn't my embroidery working"
+- "why use scale 3.8?"
 
 ### whisper-transcription
 
