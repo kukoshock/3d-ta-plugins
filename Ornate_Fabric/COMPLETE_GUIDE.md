@@ -90,19 +90,21 @@ Save immediately (Ctrl+S)
 **Step 1: Create Thread Cross-Section**
 ```
 Add: Shape node
-Select: Bell or Paraboloid shape
+Select: Bell shape (video mentions "a nice soft round shape like a bell")
+Alternative: Paraboloid or other rounded shapes work similarly
 Adjust: Width/height for oval cross-section
 ```
 
 **Step 2: Add Fiber Strands**
 ```
 Add: Fibers node
-Parameters:
+Parameters (recommended ranges from project analysis):
   - Samples: 128-256
   - Distribution: 0.5
   - Curve: 0.5
   - Maximum Distance: 0.7
   - Spread Angle: 25°
+Note: Video uses default Fibers settings; values above are from final project file
 ```
 
 **Step 3: Position Fibers**
@@ -145,9 +147,10 @@ Add: Tile Generator
 Connect: Thread as Pattern Input
 Parameters:
   - Pattern: Horizontal bar
-  - X Amount: 800 (high)
-  - Y Amount: 100 (low)
+  - X Amount: High value for many horizontal repeats
+  - Y Amount: Low value for thread thickness
   - Enable: Non Square Expansion
+Note: Video discusses concept; specific values (e.g., X=800, Y=100) from project file
 ```
 
 **Step 2: Create Weft (Vertical) Threads**
@@ -266,12 +269,17 @@ Add: Height Blend
 Background: Base weave
 Foreground: Flattened ornaments
 Offset: Slightly above 0.5
-Contrast: 0.96 (crisp edges)
+Contrast: 0.96 (crisp edges) or lower for soft blending
 
-WHY 0.96 Contrast?
-- Real embroidery has distinct thread boundaries
-- Low contrast (<0.7) creates mushy transitions
-- 0.96 is near-maximum without harsh artifacts
+Understanding Contrast Values:
+- High contrast (0.96): Crisp, distinct edges
+  - Real embroidery has sharp thread boundaries
+  - Near-maximum value without harsh artifacts
+  - Best for realistic embroidery effect
+- Low contrast (<0.7): Soft, blurred transitions
+  - "If we drop the contrast a little we get these blurred edges"
+  - Creates gradual blending between layers
+  - Use for weathered or aged materials
 ```
 
 **Key Insight**: Height Blend analyzes which layer is physically "higher" and blends based on elevation - creates realistic occlusion.
@@ -340,7 +348,73 @@ Fix: Swap blend inputs OR set node to Absolute full tiling
 
 ---
 
-### 3.2 Radial Gemstones (Part 13)
+### 3.2 Element Placement (Part 12)
+
+**Goal**: Position trim elements using tiling modes and create multiple decorative rows.
+
+**Step 1: Set Absolute Tiling**
+```
+Problem: Tiling is grayed out (inheriting from input)
+Fix:
+  1. Set inheritance to Absolute
+  2. Enable vertical tiling only (disable horizontal)
+  3. Creates single row instead of full tile
+```
+
+**Step 2: Position Using Offset**
+```
+Add: Transformation 2D
+Use: Offset slider to move row to desired edge
+Tip: More convenient than manual positioning
+```
+
+**Step 3: Blend with Base**
+```
+Add: Blend node
+Mode: Max
+Background: Base fabric/trim
+Foreground: Positioned row
+```
+
+**Step 4: Adjust Profile with Levels**
+```
+Problem: Thread profile too rounded
+Add: Levels node
+Adjust: Gamma slider
+Effect: Shifts height profile shape
+```
+
+**Step 5: Preserve Detail with Sharpen**
+```
+Problem: Losing crispness at 2K resolution
+Add: Sharpen node
+After: All blending operations
+Effect: Restores crisp edges
+Tip: Toggle with Shift+D to see difference
+```
+
+**Creating Multiple Rows**:
+```
+1. Duplicate existing row chain
+2. Adjust offset to position next row
+3. Scale elements to overlap nicely
+4. Blend with previous result (Max mode)
+5. Repeat for additional rows
+```
+
+**Tiling Mode Summary**:
+| Mode | Result |
+|------|--------|
+| Absolute (both axes) | Full tiling pattern |
+| Vertical only | Single horizontal row |
+| Horizontal only | Single vertical column |
+| Disabled | Single element, no repetition |
+
+**Workflow Tip**: With practice, creating and positioning rows becomes very fast - duplicate, offset, blend, adjust.
+
+---
+
+### 3.3 Radial Gemstones (Part 13)
 
 **Diamond Shape - Method A (Square + Bevel)**:
 ```
@@ -371,7 +445,7 @@ Parameters:
 
 ---
 
-### 3.3 Mask Extraction (Part 14)
+### 3.4 Mask Extraction (Part 14)
 
 **Anticipate Needs While Building Height**:
 - Ornament area (from Height Blend mask output)
@@ -396,7 +470,7 @@ Parameters:
 
 ---
 
-### 3.4 Imperfections & Details (Part 15)
+### 3.5 Imperfections & Details (Part 15)
 
 **Lip/Border Effect**:
 ```
@@ -683,10 +757,8 @@ The graph is organized into 14 logical sections:
 
 | Parameter | Purpose |
 |-----------|---------|
-| **Ornament type** | Multi-switch for pattern selection |
-| **Floral ornament** | Enable/disable floral pattern |
-| **Geometrical pattern** | Enable/disable geometric pattern |
-| **Custom ornament** | User-provided mask input |
+| **Ornament type** | Multi-switch dropdown: Floral, Geometrical, or Custom pattern |
+| **Custom ornament** | User-provided mask input (visible when Custom selected) |
 | **Ornament emboss intensity** | Height blend offset control |
 | **Fabric color** | Base fabric color selection |
 | **Fabric roughness** | Surface roughness adjustment |
@@ -715,9 +787,9 @@ The graph is organized into 14 logical sections:
 |-------|------|---------|
 | 8 | Blur HQ | Smoothing/softening |
 | 7 | Threshold | Binary mask creation |
+| 7 | Switch | Toggle options (5 grayscale + 1 color + 1 multi-switch) |
 | 7 | Shape | Basic primitives |
-| 5 | Switch | Toggle options |
-| 4 | Tile Generator | Pattern tiling |
+| 5 | Tile Generator | Pattern tiling (4 grayscale + 1 color) |
 | 4 | Spline Poly Quadratic | Custom curves |
 | 3 | Perlin Noise | Organic variation |
 | 3 | Edge Detect | Outline extraction |
