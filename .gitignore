@@ -1,0 +1,10 @@
+# Substance Designer project files (large binaries)
+Ornate_Fabric/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "3d-ta-plugins",
+  "description": "Claude Code plugin marketplace for 3D Technical Artists. Tutoring and troubleshooting for Substance Designer and other 3D tools.",
+  "owner": {
+    "name": "Anastasia Kukosh",
+    "email": "kobi.kadosh+il@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "substance-designer-tutor",
+      "description": "A tutor for learning Substance Designer through the Designer First Steps course. Explains Tile Sampler, Height Blend, procedural shapes, and fabric embroidery. Helps troubleshoot when tutorials don't work on your computer.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anastasia Kukosh"
+      },
+      "source": "./plugins/substance-designer-tutor",
+      "category": "learning",
+      "homepage": "https://github.com/kukoshock/3d-ta-plugins"
+    }
+  ]
+}
