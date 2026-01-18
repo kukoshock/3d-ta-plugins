@@ -1,0 +1,6 @@
+{
+  "name": "whisper-transcription",
+  "version": "1.0.0",
+  "description": "Audio and video transcription using whisper.cpp CLI with FFmpeg preprocessing",
+  "keywords": ["transcription", "whisper", "speech-to-text", "audio", "video", "subtitles"]
+}
