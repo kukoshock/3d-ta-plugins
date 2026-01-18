@@ -1,6 +1,6 @@
 # Roadmap
 
-## Current Coverage Status (v1.1.0)
+## Current Coverage Status (v1.2.0)
 
 ### Documented Parts
 
@@ -33,13 +33,25 @@
 
 ## Version Milestones
 
-### v1.1.0 (Current)
+### v1.2.0 (Current)
+- **NEW**: Substance Designer API Integration skill
+  - Multi-API support: pysbs (offline), sd.api (in-app), CLI tools
+  - XML parsing fallback - fully functional without pysbs
+  - 11 diagnostic rules with WHY explanations
+  - Complete API references with 50+ code examples
+  - Standalone analysis script with text/JSON output
+  - Installation guide for enterprise vs individual licenses
 - Proper attribution to Adobe Substance 3D course
 - Course overview with all 22 video URLs
 - Coverage status tracking
 - Source material structure
 
-### v1.2 (Planned)
+### v1.1.0 (Previous)
+- Enhanced tutor skill with comprehensive WHY explanations
+- Added FAQ generator skill
+- Core course coverage (Parts 5, 6, 7, 9)
+
+### v1.3 (Planned)
 - Document Part 8 (Importing Images) - fills the gap
 - Add Parts 1-4 (Foundations) for beginner onboarding
 - Estimated coverage: 9 of 22 parts (41%)
