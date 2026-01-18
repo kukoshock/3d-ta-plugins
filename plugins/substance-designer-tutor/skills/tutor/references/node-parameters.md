@@ -10,24 +10,27 @@ Comprehensive parameter reference for 45+ Substance Designer nodes, extracted fr
 
 The main distribution node for pattern creation. "A very important node" that takes an input shape and tiles it across the material.
 
-| Parameter | Value | Purpose |
-|-----------|-------|---------|
-| pattern | 1 | Pattern mode (square grid) |
-| x_amount | **600** | Horizontal tile count |
-| y_amount | **700** | Vertical tile count |
-| scale | **3.8** | Base scale of each tile |
-| rotation | 0.25 | Base rotation (radians) |
-| offset | 0.5 | Offset between rows |
-| color_random | 0.29 | Color variation per instance |
-| rotation_random | **0.02** | Subtle rotation variation |
-| scale_random | **0.19** | Moderate size variation |
-| position_random | **0.01** | Very subtle position jitter |
+| Parameter | Value | Purpose | WHY This Value |
+|-----------|-------|---------|----------------|
+| pattern | 1 | Pattern mode (square grid) | Square grid provides even distribution for fabric embroidery |
+| x_amount | **600** | Horizontal tile count | High density creates dense "weave" structure rather than scattered shapes |
+| y_amount | **700** | Vertical tile count | Slightly more vertical than horizontal creates embroidery grain direction |
+| scale | **3.8** | Base scale of each tile | Large enough for threads to overlap and form solid surface coverage |
+| rotation | 0.25 | Base rotation (radians, ~90°) | Embroidery runs vertically, contrasting with horizontal weave direction |
+| offset | 0.5 | Offset between rows | Breaks rigid grid pattern for natural woven look instead of mechanical alignment |
+| color_random | 0.29 | Color variation per instance | Moderate variation creates realistic thread color inconsistency |
+| rotation_random | **0.02** | Subtle rotation variation | Small value prevents chaotic look while adding organic imperfection |
+| scale_random | **0.19** | Moderate size variation | Enough variation to look hand-made without losing uniformity |
+| position_random | **0.01** | Very subtle position jitter | Minimal offset maintains pattern while breaking perfect grid |
 
 **Input Slots:**
-- **Pattern Input**: The shape to tile
-- **Scale Map**: Connect Perlin Noise for dynamic sizing
-- **Position Map**: Drive position with grayscale map
-- **Rotation Map**: Drive rotation with grayscale map
+- **Pattern Input**: The shape to tile (reuses thread shape for fabric consistency)
+- **Scale Map**: Connect Perlin Noise for dynamic sizing (creates organic size variation across surface)
+- **Position Map**: Drive position with grayscale map (controls where tiles appear)
+- **Rotation Map**: Drive rotation with grayscale map (directional control of tile orientation)
+
+> **CRITICAL TECHNIQUE - Scale Map vs Mask Input:**
+> Connecting the ornament mask to **Scale Map** (not Mask Input) creates tapered transitions. Scale Map shrinks threads to zero where the mask is black, making threads "dive into" the fabric with realistic tapers. Mask Input would create harsh "cookie-cutter" cutout edges.
 
 **Pattern Modes Reference:**
 | Value | Pattern Type |
@@ -232,22 +235,25 @@ Combines two inputs with various modes.
 
 ### Height Blend
 
-Intelligent height-based blending.
+Intelligent height-based blending that combines layers realistically based on their height values.
 
-| Parameter | Value | Purpose |
-|-----------|-------|---------|
-| Contrast | **0.96** | Edge sharpness (0.9-1.0 = crisp) |
-| Offset | 0.5 | Foreground height offset |
+| Parameter | Value | Purpose | WHY This Value |
+|-----------|-------|---------|----------------|
+| Contrast | **0.96** | Edge sharpness (0.9-1.0 = crisp) | Near-maximum value creates crisp ornament edges that "sit on top" of fabric instead of blending into mush |
+| Offset | 0.5 | Foreground height offset | Controls how much ornament "sinks into" vs "rises above" the fabric base |
 
 **Contrast Values Effect:**
-| Range | Effect |
-|-------|--------|
-| 0.0-0.3 | Very soft, gradual blending |
-| 0.3-0.6 | Moderate blending |
-| 0.6-0.9 | Sharp but smooth edges |
-| **0.9-1.0** | Very crisp ornament edges |
+| Range | Effect | Use Case | WHY Choose This |
+|-------|--------|----------|-----------------|
+| 0.0-0.3 | Very soft, gradual blending | Subtle overlays, organic merges | Simulates gradual material transitions like melting wax |
+| 0.3-0.6 | Moderate blending | Weathered surfaces, worn edges | Mimics erosion and natural wear patterns |
+| 0.6-0.9 | Sharp but smooth edges | Most fabric details, general use | Balanced realism without harsh artifacts |
+| **0.9-1.0** | Very crisp ornament edges | Embroidery, applied trim, sequins | Ornaments are physically ON TOP of fabric, not blended into it - creates clear separation like real sewn-on elements |
 
-**Key Feature:** Has **Mask Output** - perfect for extracting ornament area later.
+**Key Feature:** Has **Mask Output** - perfect for extracting ornament area later for color/roughness masks.
+
+> **WHY Use Height Blend (Not Regular Blend):**
+> Height Blend analyzes which layer is "higher" at each pixel and blends accordingly. This creates realistic overlaps where tall ornament threads naturally cover the lower fabric weave, just like physical embroidery. Regular Blend would create unrealistic transparency or flat overlays.
 
 ---
 
@@ -286,13 +292,16 @@ Organic, cloud-like noise pattern.
 
 ### Directional Noise
 
-Adds directional variation while maintaining structure.
+Adds directional variation while maintaining structure - crucial for organic fabric appearance.
 
-| Parameter | Value | Purpose |
-|-----------|-------|---------|
-| Turns | 2-4 | Number of direction changes |
-| Distance | 0.1-0.3 | Displacement amount |
-| Angle Random | 0.1-0.2 | Angular variation |
+| Parameter | Value | Purpose | WHY This Value |
+|-----------|-------|---------|----------------|
+| Turns | **2-4** | Number of direction changes | 3 turns creates gentle wave pattern that mimics fabric tension variations without creating chaotic distortion. Too few (1) = boring straight lines, too many (> 5) = messy tangles. |
+| Distance | **0.1-0.3** | Displacement amount | 0.15 provides subtle weave irregularity visible at close inspection but not overwhelming from normal viewing distance. Real fabric has micro-variations in thread paths from weaving tension. |
+| Angle Random | 0.1-0.2 | Angular variation | Small angular changes prevent perfectly parallel threads (machine-like) while keeping overall weave direction coherent. |
+
+> **WHY Directional Noise for Fabric:**
+> Real woven fabric never has perfectly straight, uniform threads. Weaving tension, fiber elasticity, and settling create subtle directional variations. Directional Noise maintains the overall weave pattern (unlike random warp which destroys structure) while adding these micro-scale organic deviations that separate hand-crafted from CG-generated appearance.
 
 ---
 
@@ -326,15 +335,18 @@ Creates fold/wrinkle patterns.
 
 ### Fibers
 
-Generates directional strand patterns.
+Generates directional strand patterns for thread, hair, scratches, and other linear details.
 
-| Parameter | Typical Value | Purpose |
-|-----------|---------------|---------|
-| Samples | 64-256 | Number of fiber strands |
-| Distribution | 0.5 | Spread of fibers |
-| Curve | 0.3-0.7 | Fiber curvature |
-| Maximum Distance | 0.5-1.0 | Fiber length |
-| Spread Angle | 15-45 | Angular spread (degrees) |
+| Parameter | Typical Value | Purpose | WHY This Value |
+|-----------|---------------|---------|----------------|
+| Samples | 64-256 | Number of fiber strands | 128-256 provides enough strands for realistic density without excessive performance cost. Too few (< 64) looks sparse and artificial. |
+| Distribution | 0.5 | Spread of fibers | 0.5 creates balanced coverage across the shape. Lower values cluster at center, higher spreads to edges. |
+| Curve | 0.3-0.7 | Fiber curvature | Moderate curvature mimics natural fiber relaxation. 0 = straight (artificial), 1.0 = excessive loops. |
+| Maximum Distance | 0.5-1.0 | Fiber length | Full length (1.0) ensures fibers span the entire thread cross-section for continuous coverage. |
+| Spread Angle | **15-45°** | Angular spread (degrees) | 25° creates natural fiber divergence - not perfectly parallel (robotic) nor wildly scattered (chaotic). Real threads have slight directional variation. |
+
+> **WHY 25° Spread Angle Specifically:**
+> Real fabric threads aren't laser-straight. Individual fibers naturally diverge slightly due to spinning tension and material properties. 25° provides just enough variation to break perfect alignment while maintaining the thread's overall direction. Lower values (< 15°) look too uniform; higher values (> 45°) look messy and unspun.
 
 ---
 

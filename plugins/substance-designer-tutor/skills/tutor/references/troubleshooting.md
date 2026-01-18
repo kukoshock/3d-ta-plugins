@@ -10,23 +10,32 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 
 **Symptom**: All ornaments appear identical, pattern looks artificial
 
+**Problem**: The pattern looks computer-generated rather than hand-crafted.
+
 **Causes & Solutions**:
-| Cause | Solution |
-|-------|----------|
-| No randomization | Increase `rotation_random` (0.02-0.1) |
-| Static scale | Add `scale_random` (0.1-0.3) |
-| Fixed positions | Increase `position_random` (0.01-0.05) |
-| Uniform sizing | Connect **Perlin Noise** to Tile Sampler's Scale input |
+| Cause | Solution | WHY This Works |
+|-------|----------|----------------|
+| No randomization | Increase `rotation_random` (0.02-0.1) | Each ornament rotates slightly differently, mimicking how embroidery threads don't align perfectly when hand-sewn |
+| Static scale | Add `scale_random` (0.1-0.3) | Natural materials have variation - no two threads are exactly the same thickness |
+| Fixed positions | Increase `position_random` (0.01-0.05) | Breaks the rigid grid alignment; real embroidery has slight placement irregularities from fabric tension |
+| Uniform sizing | Connect **Perlin Noise** to Tile Sampler's Scale input | Creates organic size variation across the surface - larger ornaments in some areas, smaller in others, like natural material density variation |
+
+**WHY Random Variation Matters**: Human eyes are incredibly good at detecting artificial patterns. Even 2% rotation variation is enough to break the "machine-made" look. The key is subtle randomness - too much (> 20%) creates chaos, too little (< 1%) still looks CG.
 
 ### 2. Ornaments too prominent/embossed
 
-**Symptom**: Ornaments stick out too much from the base fabric
+**Symptom**: Ornaments stick out too much from the base fabric, looking like bas-relief instead of embroidery
+
+**Problem**: Raw ornament shapes have too much height range, making them appear sculpted rather than sewn.
 
 **Solutions**:
-1. Add **Levels** before Height Blend
-2. Crush white values: Output High = 0.3-0.5
-3. Reduce Height Blend Offset slider
-4. Decrease Height Blend Contrast
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Add **Levels** before Height Blend | Insert Levels node, set Output High = 0.3-0.5 | Crushes the white values to flatten the height profile. Real embroidery adds minimal physical thickness (fractions of a millimeter) compared to its visual impact. This flattening mimics that subtle elevation. |
+| Reduce Height Blend Offset slider | Lower from 0.5 to 0.2-0.3 | Offset controls how much the ornament "rises above" the base. Lower values make it sit closer to the fabric surface, like threads lying flat rather than standing up. |
+| Decrease Height Blend Contrast | Lower from 0.96 to 0.7-0.8 | Softens the transition edges, making the ornament blend more gradually. Use this if you want a more integrated, less "applied" look. |
+
+**WHY Flatten First**: Without Levels, the ornament retains its full 0-1 height range. When Height Blend combines this with the fabric (which might only range 0.3-0.7), the ornament dominates excessively. Flattening to 0.3-0.5 puts both layers in the same height "ballpark" for realistic blending.
 
 ### 3. Pattern too regular/grid-like
 
@@ -73,16 +82,22 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 
 ### 7. Banding/stepping artifacts
 
-**Symptom**: Visible steps in gradients, like posterization
+**Symptom**: Visible steps in gradients, like posterization - smooth gradients appear as distinct bands
+
+**Problem**: Insufficient color/height precision causing quantization artifacts.
 
 **Causes & Solutions**:
-| Cause | Solution |
-|-------|----------|
-| 8-bit primary input | Swap Blend inputs (X key) |
-| 8-bit propagation | Set Output Format to Absolute 16-bit |
-| Low bit depth source | Check source image bit depth |
+| Cause | Solution | WHY This Works |
+|-------|----------|----------------|
+| 8-bit primary input | Swap Blend inputs (X key) | Blend nodes inherit from their PRIMARY input (dark dot). Swapping makes the 16-bit input primary, so downstream nodes inherit 16-bit precision. 8-bit has only 256 levels - not enough for smooth height gradients. |
+| 8-bit propagation | Set Output Format to Absolute 16-bit | Overrides inheritance, forcing this node and all downstream to use 16-bit (65,536 levels). This provides 256× more precision for smooth gradients. |
+| Low bit depth source | Check source image bit depth | If the original imported image is 8-bit, it can't create more detail. Re-export source at 16-bit or use procedural generation. |
 
 **From Course**: "If your primary input has 8-bit depth, that propagates downstream"
+
+**WHY This Happens**: Height maps need smooth gradients for realistic normal map generation. 8-bit only has 256 discrete values. When you stretch this across a gradient (like a curved surface), each of those 256 levels becomes a visible "step." 16-bit provides 65,536 levels - enough that human eyes can't distinguish individual steps. The banding you see is literally the mathematical resolution limit of 8-bit data.
+
+**Quick Test**: If you see banding, temporarily set the node to Absolute 16-bit. If banding disappears, you've confirmed it's a bit depth issue.
 
 ### 8. Wrong resolution downstream
 
@@ -95,15 +110,24 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 
 ### 9. Vertical gradient in Curvature Smooth
 
-**Symptom**: Curvature map shows gradient bands instead of proper edges
+**Symptom**: Curvature map shows gradient bands instead of proper edge detection - looks like a vertical fade
 
-**Cause**: Tiling disabled somewhere upstream
+**Problem**: Tiling disabled upstream causes Curvature Smooth to see edge artifacts.
+
+**Cause**: Tiling disabled somewhere upstream in the inheritance chain.
 
 **Solutions**:
-1. Find node with tiling disabled (trace upstream from Curvature)
-2. Swap Blend inputs if commutative operation (X key)
-3. Set Curvature Smooth to Absolute full tiling
-4. **From Course**: "Make sure your node is set to full tiling"
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Find node with tiling disabled | Trace upstream from Curvature, check each node's tiling setting | Tiling setting propagates through inheritance just like resolution. One node with "No Tiling" contaminates all downstream nodes unless they override. |
+| Swap Blend inputs if commutative | Press X key on Blend node | If blending two inputs where order doesn't matter (Max, Min, Add), swapping makes the tiled input primary, so tiling propagates downstream. |
+| Set Curvature Smooth to Absolute full tiling | In Curvature node, set Tiling to Absolute, enable horizontal and vertical | Breaks the inheritance chain and forces this node to tile regardless of upstream settings. |
+
+**From Course**: "Make sure your node is set to full tiling"
+
+**WHY This Creates a Gradient**: When tiling is disabled, Substance Designer treats the edges as "undefined" or "empty." Curvature Smooth tries to detect edges/cavities, but at the non-tiled boundary, it sees a sudden transition from "content" to "nothing," which it interprets as a massive edge running along the entire border. This creates the characteristic vertical or horizontal gradient artifact.
+
+**The Real Issue**: Curvature relies on analyzing neighboring pixels to detect edges. Without tiling, pixels at the edge have no valid neighbors on one side, creating false edge detection. Tiling wraps the image so every pixel has valid neighbors in all directions.
 
 ### 10. Tiling breaks unexpectedly
 
@@ -370,28 +394,56 @@ Comprehensive problem/solution reference for Substance Designer (40+ scenarios).
 
 ### 33. Tile Sampler Scale map not working
 
-**Symptom**: Connected noise has no effect on sizing
+**Symptom**: Connected noise has no effect on sizing - all tiles remain the same size
+
+**Problem**: Incorrect connection or parameter settings preventing the scale map from functioning.
 
 **Solutions**:
-- Verify connection is to Scale Map input (not main input)
-- Check noise range (should be 0-1 grayscale)
-- Increase Scale Random to see effect
-- Verify Scale parameter isn't at minimum
+| Solution | Check | WHY This Works |
+|----------|-------|----------------|
+| Verify connection is to Scale Map input (not main input) | Look for the specific "Scale Map" input slot, not the pattern input | Scale Map is a dedicated input that multiplies the base scale parameter. Main pattern input just provides the shape to tile. They're completely different functions. |
+| Check noise range (should be 0-1 grayscale) | Preview the noise - should show gray values, not pure black | Black (0) in scale map = zero size (invisible tiles). If your noise is all black, tiles disappear. If it's inverted (mostly black), most tiles are tiny or invisible. |
+| Increase Scale Random to see effect | Temporarily crank scale_random to 0.5+ | Scale Map works multiplicatively with randomness. If random is 0, all tiles in a given noise region are identical size. Random adds variation ON TOP of the map values. |
+| Verify Scale parameter isn't at minimum | Base scale should be 2.0+ | Scale Map multiplies the base scale value. If base scale is 0.1, even maximum map values produce tiny tiles. Need a reasonable base for multiplication. |
+
+**WHY Scale Map is Powerful**: The Scale Map creates spatial variation - larger tiles in some areas, smaller in others - based on a grayscale map. This is fundamentally different from scale_random which just adds chaos. Scale Map creates intentional, controlled size gradients across the surface.
+
+**Critical Technique - Ornament Masking**: When you connect an ornament mask to Scale Map, black areas (value 0) multiply scale by zero, making tiles disappear. But the gradient edges of the mask create a GRADUAL size reduction, making threads appear to "dive into" the fabric with tapered transitions. This is the key to realistic embroidery edges. If you used the Mask Input instead, you'd get hard cookie-cutter cutouts.
+
+**Debugging Checklist**:
+1. Is Scale Map input connected? (not pattern input)
+2. Is the connected map grayscale with variation? (not solid black/white)
+3. Is base scale parameter large enough? (3.0+)
+4. Does the map have tiling enabled? (if it's non-tiled, edges go black)
 
 ### 34. Height Blend edges too soft
 
-**Symptom**: Ornaments blend too gradually into fabric
+**Symptom**: Ornaments blend too gradually into fabric, looking mushy or unclear
+
+**Problem**: Low contrast creates overly soft transitions that don't match the physical reality of sewn-on elements.
 
 **Solution**: Increase Contrast slider (0.96 = very crisp)
 
+**WHY This Works**: Real embroidery threads are physically on top of the fabric with distinct boundaries. Low contrast (< 0.7) creates a gradual fade that suggests the ornament is melting into the fabric or painted on rather than sewn. High contrast (0.9-1.0) creates the sharp edge separation that matches how physical layers actually interact. The 0.96 value is near-maximum but avoids the potential for aliasing artifacts at exactly 1.0.
+
+**When Soft Edges ARE Correct**: Use lower contrast (0.3-0.6) only when simulating weathered/eroded surfaces, painted details, or materials that genuinely blend together (like melted wax or corroded metal).
+
 ### 35. Height Blend edges too hard
 
-**Symptom**: Ornaments have harsh, unnatural edges
+**Symptom**: Ornaments have harsh, pixelated, or aliased edges that look digitally cut out
+
+**Problem**: Excessive contrast or sharp input creates aliasing artifacts.
 
 **Solutions**:
-- Decrease Contrast slider
-- **Blur** the foreground input slightly
-- Adjust Offset slider
+| Solution | How | WHY This Works |
+|----------|-----|----------------|
+| Decrease Contrast slider | Lower from 1.0 to 0.92-0.96 | Slight reduction smooths the blend algorithm without losing edge definition. Even real physical edges have microscopic softness. |
+| **Blur** the foreground input slightly | Add Blur HQ (0.1-0.2) before Height Blend | Creates anti-aliasing on the ornament edges. Removes pixel-level jaggedness that causes harsh transitions. Very slight blur is invisible to the eye but eliminates aliasing. |
+| Adjust Offset slider | Increase or decrease from 0.5 | Changes the height relationship. Sometimes harsh edges are from extreme height differences. Offset adjustment can help find the sweet spot. |
+
+**WHY This Happens**: At exactly 1.0 contrast, Height Blend uses a very aggressive binary decision - each pixel is EITHER foreground OR background with minimal transition. Combined with pixelated input edges, this creates stair-stepping. The slight blur or contrast reduction introduces just enough gradient to allow smooth anti-aliasing while maintaining crisp appearance.
+
+**The Balance**: You want edges crisp enough to look sewn-on (not painted), but soft enough to avoid digital artifacts. Sweet spot is usually 0.92-0.96 contrast with very slight blur (0.1) on the input.
 
 ### 36. Spline shape not smooth
 

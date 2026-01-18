@@ -388,6 +388,22 @@ Share materials with other applications.
 
 **Pro Technique**: Connect Perlin Noise to the Scale input for organic, non-uniform sizing.
 
+> **WHY 600x700 (not 600x600)?**
+>
+> Asymmetric tile count creates slight vertical elongation mimicking real fabric ornaments that have a bias from the weaving process. Square counts (600x600) look too uniform and artificial. The 600 horizontal vs 700 vertical creates a subtle grain direction, just like embroidery threads naturally align with the fabric weave direction.
+
+> **WHY Connect Ornament Mask to Scale Map (not Mask Input)?**
+>
+> This is a CRITICAL technique for realistic embroidery:
+> - **Scale Map** shrinks threads to zero where mask is black, creating threads that "dive into" the fabric with tapered transitions
+> - **Mask Input** would create a harsh "cookie-cutter" cutout edge with no transition
+> - The gradient in the mask creates a smooth taper as if individual threads are gradually disappearing into the weave
+> - This mimics how real embroidery threads enter and exit the fabric surface
+
+> **WHY Use Scale: 3.8 Specifically?**
+>
+> At scale 3.8, individual thread tiles overlap enough to form a solid, continuous surface without gaps. Lower values (< 3.0) create visible gaps between threads. Higher values (> 5.0) create excessive overlap that looks too thick and loses individual thread definition. The 3.8 value hits the sweet spot where threads touch and blend naturally.
+
 ### Height Blend (Realistic Layer Combination)
 
 Combines ornament layer with base fabric intelligently.
@@ -397,6 +413,22 @@ Combines ornament layer with base fabric intelligently.
 2. Height Blend combines the two height maps
 3. Contrast slider controls edge sharpness (0.96 = very crisp)
 4. **Mask output** - perfect for isolating blended area later
+
+> **WHY Flatten Ornament with Levels First?**
+>
+> Raw ornament shapes often have too much height range, making them stick out excessively. Levels crushes the white values (Output High: 0.3-0.5) to create a flatter profile that sits "on top" of the fabric rather than floating above it. This mimics real embroidery which adds minimal physical thickness compared to the visual impact.
+
+> **WHY Contrast: 0.96 (not 0.5)?**
+>
+> High contrast (0.9-1.0) creates crisp, defined edges where the ornament meets the fabric. This is critical because:
+> - Real embroidery has distinct thread boundaries - ornaments don't fade into the base
+> - Lower contrast (< 0.7) creates mushy, unclear transitions that look like bad Photoshop blending
+> - 0.96 is near-maximum but avoids the harsh artifacts that can appear at exactly 1.0
+> - The ornament should look sewn ON TOP, not blended INTO the fabric
+
+> **WHY Use Height Blend Instead of Regular Blend?**
+>
+> Height Blend analyzes which layer is physically "higher" at each pixel and blends based on elevation. This creates realistic occlusion - tall ornament threads naturally cover the lower fabric weave in the same way physical embroidery does. Regular Blend would use opacity/alpha which creates unrealistic transparency or flat overlays without understanding the 3D relationship between layers.
 
 ### Splatter Circular (Radial Distribution)
 
@@ -411,6 +443,72 @@ Distributes inputs in circular patterns.
 | Size | Scale of each element |
 | Pattern Rotation | Rotate individual elements |
 | Ring Rotation | Rotate entire arrangement |
+
+---
+
+## Parameter Decision Trees
+
+These decision guides help you choose appropriate parameter values based on your artistic intent.
+
+### Choosing Tile Sampler Density (X/Y Amount)
+
+| Density Level | X/Y Values | Use For | Visual Effect | Performance |
+|---------------|------------|---------|---------------|-------------|
+| **Low** | 50-100 | Large motifs, patches, medallions | Individual elements clearly visible with spacing | Fast |
+| **Medium** | 200-400 | Ornamental patterns, decorative borders | Balanced detail and readability | Moderate |
+| **High** | 600-800 | Thread weave, dense embroidery, fabric texture | Dense "woven" texture with thousands of overlapping threads | Slow |
+| **Extreme** | 1000+ | Ultra-fine details, close-up hero assets | Nearly solid coverage, individual tiles barely distinguishable | Very slow |
+
+**Decision Guide:**
+- Can you see individual pattern elements clearly? → Too low, increase density
+- Does it look like a solid texture rather than separate tiles? → Correct for fabric
+- Is it taking forever to compute? → Reduce density or work at lower resolution
+
+### Choosing Height Blend Contrast
+
+| Contrast Range | Value | Edge Appearance | Use Case | Why This Works |
+|----------------|-------|-----------------|----------|----------------|
+| **Soft** | 0.0-0.3 | Very gradual fade, no clear boundary | Weathered overlays, subtle details | Mimics gradual material transitions like paint fading into surface |
+| **Moderate** | 0.4-0.6 | Visible edge with smooth transition | Worn elements, aged surfaces | Natural erosion creates soft but visible boundaries |
+| **Sharp** | 0.7-0.9 | Clear defined edge, slight softness | Most fabric work, general blending | Realistic without harsh digital artifacts |
+| **Crisp** | 0.9-1.0 | Very hard edge, minimal transition | Embroidery, sequins, applied trim | Sewn-on elements have distinct physical boundaries |
+
+**Decision Guide:**
+- Edges look mushy or unclear? → Increase contrast
+- Seeing harsh pixelated edges? → Decrease slightly (0.96 → 0.92)
+- Ornament should look sewn ON or blended IN? → ON = high contrast, IN = low contrast
+
+### Choosing Fiber Samples Count
+
+| Sample Count | Use Case | Quality vs Performance | Thread Appearance |
+|--------------|----------|------------------------|-------------------|
+| **32-64** | Background elements, distant views | Fast, low detail | Sparse, visible gaps between strands |
+| **128-192** | Standard thread work, general fabric | Balanced (recommended) | Realistic strand density, minor gaps acceptable |
+| **256-384** | Hero assets, close-up details | Slower, high detail | Dense, no visible gaps, smooth coverage |
+| **512+** | Extreme close-ups only | Very slow | Diminishing returns, usually overkill |
+
+**Decision Guide:**
+- See gaps between fiber strands? → Increase samples
+- Taking too long to compute? → Reduce to 128 and compensate with blur
+- Is this a background element or hero asset? → Background = 64-128, Hero = 192-384
+
+### Choosing Directional Noise Parameters
+
+**Turns (Direction Changes):**
+| Turns | Effect | Use For |
+|-------|--------|---------|
+| 1-2 | Gentle wave | Smooth fabric, minimal distortion |
+| **3-4** | Organic variation | Standard fabric weave (recommended) |
+| 5-7 | Strong waves | Heavily draped or wrinkled fabric |
+| 8+ | Chaotic tangles | Avoid for fabric - use for hair/vines |
+
+**Distance (Displacement Amount):**
+| Distance | Visibility | Use For |
+|----------|------------|---------|
+| 0.01-0.05 | Barely noticeable | Subtle micro-variation |
+| **0.10-0.20** | Visible at close inspection | Standard fabric irregularity (recommended) |
+| 0.25-0.40 | Obvious distortion | Heavily textured or distressed fabric |
+| 0.50+ | Extreme warping | Special effects, avoid for realistic fabric |
 
 ---
 

@@ -29,6 +29,22 @@ A tutor for learning Substance Designer through the "Designer First Steps" cours
 - "troubleshoot my Substance Designer graph"
 - "why isn't my embroidery working"
 
+### whisper-transcription
+
+Audio and video transcription using whisper.cpp CLI with FFmpeg preprocessing.
+
+**Features:**
+- Transcribe any audio/video file (mp4, mkv, mp3, wav, etc.)
+- Multiple output formats (txt, srt, vtt, json)
+- Model selection from tiny to large-v3
+- Full installation guide for Windows
+
+**Trigger phrases:**
+- "transcribe audio"
+- "transcribe video"
+- "speech to text"
+- "extract transcript"
+
 ## Installation
 
 ### Via Claude Code Marketplace (Recommended)
