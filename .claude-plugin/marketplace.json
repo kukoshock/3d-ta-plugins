@@ -28,6 +28,17 @@
       "source": "./plugins/youtube-transcript",
       "category": "utilities",
       "homepage": "https://github.com/kukoshock/3d-ta-plugins"
+    },
+    {
+      "name": "whisper-transcription",
+      "description": "Audio and video transcription using whisper.cpp CLI with FFmpeg preprocessing",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anastasia Kukosh"
+      },
+      "source": "./plugins/whisper-transcription",
+      "category": "utilities",
+      "homepage": "https://github.com/kukoshock/3d-ta-plugins"
     }
   ]
 }

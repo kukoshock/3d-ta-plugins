@@ -15,6 +15,8 @@ This marketplace provides specialized tutoring and assistance plugins for 3D art
 
 ### substance-designer-tutor
 
+**Current Version:** 1.5.0
+
 A tutor for learning Substance Designer through the "Designer First Steps" course by Adobe Substance 3D. Features deep "WHY" explanations that teach the reasoning behind parameter choices, not just the values.
 
 **Covers:**
@@ -24,7 +26,10 @@ A tutor for learning Substance Designer through the "Designer First Steps" cours
 - Fabric embroidery with Tile Sampler & Height Blend (Part 9)
 
 **Key Features:**
+- **Quick Reference Table**: Top 10 most common issues with instant solutions (v1.5.0)
 - **WHY Explanations**: Understand why 600x700 creates dense weave, why Scale Map creates tapered edges
+- **Comprehensive Troubleshooting**: 47+ scenarios with root cause analysis and pedagogical explanations
+- **Engine-Specific Guides**: DirectX vs OpenGL normal maps, sRGB vs Linear color spaces, engine compatibility tables
 - **Parameter Decision Trees**: Choose appropriate values based on artistic intent (Low/Medium/High density guides)
 - **Root Cause Troubleshooting**: Learn underlying principles, not just copy-paste solutions
 - **Critical Techniques**: Scale Map vs Mask Input, Height Blend contrast, fiber density
@@ -38,6 +43,12 @@ A tutor for learning Substance Designer through the "Designer First Steps" cours
    - Extracts high-engagement FAQs about visual quality, nodes, tiling, export issues
    - Focus: Artist perspective (visual outcomes), NOT scripting/automation
    - Trigger phrases: "find common questions", "scan forums for FAQs", "what do beginners struggle with"
+
+**Recent Updates (v1.5.0):**
+- Added Quick Reference table for instant triage of common issues
+- Comprehensive DirectX vs OpenGL normal map guide with engine compatibility table
+- Enhanced 7 troubleshooting scenarios with detailed WHY explanations
+- All scenarios now provide pedagogical understanding, not just mechanical fixes
 
 ### whisper-transcription
 
@@ -109,6 +120,34 @@ Have a 3D tool you'd like tutoring support for? Open an issue or PR with:
 1. Video tutorial links and timestamps
 2. Key concepts and node/parameter documentation
 3. Common troubleshooting scenarios
+
+### Development Attribution
+
+This plugin is developed collaboratively:
+- **Initial Development & Domain Expertise**: Anastasia Kukosh
+- **Enhancement & Documentation**: Claude Code (Sonnet 4.5)
+- **Community Feedback**: 3D artist community via forums and issue reports
+
+All major versions include both human creative direction and AI-assisted implementation.
+
+## Roadmap
+
+### substance-designer-tutor
+
+**v1.6.0 - Planned**
+- Expand troubleshooting coverage based on FAQ analysis
+- Add visual comparison examples for common issues
+- Create decision trees for node selection
+
+**v2.0.0 - Future**
+- Coverage of remaining Designer First Steps course parts
+- Interactive graph debugging workflows
+- PBR material validation checklists
+
+**Community Requests Welcome!**
+- Open an issue with specific troubleshooting needs
+- Share common problems from your learning journey
+- Suggest additional course coverage
 
 ## License
 
