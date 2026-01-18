@@ -110,11 +110,11 @@ When users have issues, check these common problems:
 
 ## Reference Files
 
-For detailed information, consult:
-- `references/video-tutorials.md` - Video URLs and chapter timestamps
-- `references/node-parameters.md` - Actual parameter values from Ornate_Fabric
-- `references/troubleshooting.md` - Extended problem/solution guide
-- `references/project-analysis.md` - Complete Ornate_Fabric.sbs analysis
+For detailed information, consult these files in `${CLAUDE_PLUGIN_ROOT}/skills/tutor/references/`:
+- `video-tutorials.md` - Video URLs and chapter timestamps
+- `node-parameters.md` - Actual parameter values from Ornate_Fabric
+- `troubleshooting.md` - Extended problem/solution guide
+- `project-analysis.md` - Complete Ornate_Fabric.sbs analysis
 
 ## Tutoring Approach
 
