@@ -121,11 +121,48 @@ When users have issues, check these common problems:
 
 ## Reference Files
 
-For detailed information, consult these files in `${CLAUDE_PLUGIN_ROOT}/skills/tutor/references/`:
+For detailed information, consult these files in `${CLAUDE_PLUGIN_ROOT}/skills/tutor/`:
+
+### References (`references/`)
 - `video-tutorials.md` - Video URLs and chapter timestamps
 - `node-parameters.md` - Actual parameter values from Ornate_Fabric
 - `troubleshooting.md` - Extended problem/solution guide
 - `project-analysis.md` - Complete Ornate_Fabric.sbs analysis
+
+### Sources (`sources/`)
+- `course-overview.md` - Complete list of all 22 videos with URLs
+- `transcripts/` - Plain text transcripts for all 22 course videos
+
+### Video Transcripts
+
+Full transcripts are available in `${CLAUDE_PLUGIN_ROOT}/skills/tutor/sources/transcripts/`:
+
+| File | Part | Topic |
+|------|------|-------|
+| `00-course-overview.txt` | Overview | Course introduction |
+| `01-what-is-substance-designer.txt` | Pt 1 | What is Substance Designer |
+| `02-how-to-make-materials.txt` | Pt 2 | How to make materials |
+| `03-interface.txt` | Pt 3 | Interface overview |
+| `04-first-project.txt` | Pt 4 | First project setup |
+| `05-creating-thread.txt` | Pt 5 | Thread creation |
+| `06-fabric-weaving.txt` | Pt 6 | Fabric weaving |
+| `07-procedural-shape-design.txt` | Pt 7 | Procedural shapes |
+| `08-importing-images.txt` | Pt 8 | Importing images |
+| `09-fabric-embroidery.txt` | Pt 9 | Fabric embroidery |
+| `10-customized-shapes.txt` | Pt 10 | Customized shapes |
+| `11-inheritance.txt` | Pt 11 | Inheritance |
+| `12-element-placement.txt` | Pt 12 | Element placement |
+| `13-radial-gemstones.txt` | Pt 13 | Radial gemstones |
+| `14-mask-extraction.txt` | Pt 14 | Mask extraction |
+| `15-imperfections.txt` | Pt 15 | Imperfections |
+| `16-colors.txt` | Pt 16 | Adding colors |
+| `17-roughness-metallic.txt` | Pt 17 | Roughness & metallic |
+| `18-displacement-translucency.txt` | Pt 18 | Displacement & translucency |
+| `19-exposing-parameters.txt` | Pt 19 | Exposing parameters |
+| `20-parameter-presets.txt` | Pt 20 | Parameter presets |
+| `21-export-reuse.txt` | Pt 21 | Export and reuse |
+
+**When answering questions**, read the relevant transcript(s) to provide accurate, course-specific guidance.
 
 ## Tutoring Approach
 
@@ -182,3 +219,64 @@ This material exposes user-friendly parameters:
 - Metal color
 
 Outputs: Base Color, Normal, Roughness, Metallic, Height, AO, Translucency
+
+## Expanding Course Coverage
+
+To add or update transcripts for new videos, use the **youtube-transcript** skill.
+
+### Workflow: Download New Transcript
+
+1. **Get the video URL** from `sources/course-overview.md`
+
+2. **Use the youtube-transcript skill** to download:
+   ```
+   Use the youtube-transcript skill to download the transcript from [VIDEO_URL]
+   ```
+
+3. **The skill will:**
+   - Check yt-dlp installation
+   - Download auto-generated subtitles (VTT)
+   - Convert to plain text
+
+4. **Move the transcript** to the tutor sources:
+   ```
+   ${CLAUDE_PLUGIN_ROOT}/skills/tutor/sources/transcripts/
+   ```
+
+   Use naming convention: `NN-topic-name.txt` (e.g., `05-creating-thread.txt`)
+
+5. **Analyze the transcript** to extract:
+   - Key concepts and terminology
+   - Node names and parameters
+   - Step-by-step workflows
+   - Troubleshooting tips
+   - Instructor quotes and insights
+
+### Example: Adding Coverage for Part 13 (Gemstones)
+
+```
+1. Get URL: https://www.youtube.com/watch?v=QPD_oASJuUM
+2. Download transcript using youtube-transcript skill
+3. Save as: sources/transcripts/13-radial-gemstones.txt
+4. Read and analyze the transcript
+5. Update references/video-tutorials.md with chapter breakdown
+6. Add node parameters to references/node-parameters.md
+```
+
+### Batch Download All Transcripts
+
+To download all course transcripts at once:
+
+```bash
+# Video URLs from course-overview.md
+VIDEOS=(
+  "https://www.youtube.com/watch?v=At3FoFcuN6k"   # Overview
+  "https://www.youtube.com/watch?v=UyF5Ie-HJ0Q"   # Pt 1
+  "https://www.youtube.com/watch?v=Wg1gzR3rQeY"   # Pt 2
+  # ... (see sources/course-overview.md for full list)
+)
+
+# Download each, convert VTT to plain text, save to sources/transcripts/
+```
+
+This enables the tutor to provide accurate, course-specific guidance for any part of the curriculum.

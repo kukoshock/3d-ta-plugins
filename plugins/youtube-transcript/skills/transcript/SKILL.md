@@ -11,6 +11,24 @@ description: >
 
 Download transcripts from YouTube videos using yt-dlp.
 
+## Integration with Substance Designer Tutor
+
+This skill provides transcripts for the **substance-designer-tutor** skill. When downloading transcripts for the Designer First Steps course:
+
+**Output Directory:**
+```
+../substance-designer-tutor/skills/tutor/sources/transcripts/
+```
+
+**Naming Convention:** `NN-topic-name.txt`
+- `00-course-overview.txt`
+- `05-creating-thread.txt`
+- `09-fabric-embroidery.txt`
+
+**Course Playlist:** https://www.youtube.com/playlist?list=PLB0wXHrWAmCxBw92VSRjqsbqYXgkF8puC
+
+---
+
 ## Prerequisites
 
 ### Check if yt-dlp is installed
@@ -111,3 +129,70 @@ Save the cleaned transcript to the desired location, e.g.:
 3. Download: `yt-dlp --write-auto-sub --sub-lang en --skip-download --convert-subs vtt -o "transcripts/%(title)s" "https://www.youtube.com/watch?v=km-aBsLvG-c"`
 4. Convert VTT to plain text
 5. Done!
+
+---
+
+## Designer First Steps Course Integration
+
+When downloading transcripts for the Substance Designer tutor skill:
+
+### Complete Video List
+
+| # | Part | URL | Output File |
+|---|------|-----|-------------|
+| 1 | Overview | `At3FoFcuN6k` | `00-course-overview.txt` |
+| 2 | Pt 1 | `UyF5Ie-HJ0Q` | `01-what-is-substance-designer.txt` |
+| 3 | Pt 2 | `Wg1gzR3rQeY` | `02-how-to-make-materials.txt` |
+| 4 | Pt 3 | `_KlXkHLH5pc` | `03-interface.txt` |
+| 5 | Pt 4 | `-DlD476pnxQ` | `04-first-project.txt` |
+| 6 | Pt 5 | `km-aBsLvG-c` | `05-creating-thread.txt` |
+| 7 | Pt 6 | `N0zw_owXnfE` | `06-fabric-weaving.txt` |
+| 8 | Pt 7 | `_tLjvmGcEcc` | `07-procedural-shape-design.txt` |
+| 9 | Pt 8 | `eGKl3dcSXxE` | `08-importing-images.txt` |
+| 10 | Pt 9 | `YCKO5P-pCfE` | `09-fabric-embroidery.txt` |
+| 11 | Pt 10 | `caVvzNg-iRI` | `10-customized-shapes.txt` |
+| 12 | Pt 11 | `CYWOKPRnP5o` | `11-inheritance.txt` |
+| 13 | Pt 12 | `bJUoc8GR18E` | `12-element-placement.txt` |
+| 14 | Pt 13 | `QPD_oASJuUM` | `13-radial-gemstones.txt` |
+| 15 | Pt 14 | `yYHTw4IKyAM` | `14-mask-extraction.txt` |
+| 16 | Pt 15 | `EgvCOGkaN9E` | `15-imperfections.txt` |
+| 17 | Pt 16 | `8S2TTbTuqYk` | `16-colors.txt` |
+| 18 | Pt 17 | `TWSXb94wH-Q` | `17-roughness-metallic.txt` |
+| 19 | Pt 18 | `med5kNfGPWk` | `18-displacement-translucency.txt` |
+| 20 | Pt 19 | `6AVxsMTwKrk` | `19-exposing-parameters.txt` |
+| 21 | Pt 20 | `sDy1xYqTMP8` | `20-parameter-presets.txt` |
+| 22 | Pt 21 | `QEoUSOTcM1Q` | `21-export-reuse.txt` |
+
+### Workflow for Tutor Integration
+
+1. **Download VTT** to a temp directory
+2. **Convert to plain text** (remove timestamps, tags, duplicates)
+3. **Save to tutor sources:**
+   ```
+   ../substance-designer-tutor/skills/tutor/sources/transcripts/NN-topic-name.txt
+   ```
+4. **Notify the tutor skill** that new content is available
+
+### VTT to Plain Text Conversion
+
+```bash
+cat input.vtt | \
+  sed '/^WEBVTT/d' | \
+  sed '/^Kind:/d' | \
+  sed '/^Language:/d' | \
+  sed '/^[0-9][0-9]:[0-9][0-9]:[0-9][0-9]/d' | \
+  sed 's/<[^>]*>//g' | \
+  sed '/^[[:space:]]*$/d' | \
+  sed 's/^[[:space:]]*//' | \
+  sed 's/[[:space:]]*$//' | \
+  uniq \
+  > output.txt
+```
+
+### After Download: Tutor Analysis
+
+Once transcripts are in place, the tutor skill can:
+1. Read transcripts to answer user questions
+2. Extract node names, parameters, and workflows
+3. Identify troubleshooting tips from instructor explanations
+4. Quote relevant passages for learning context
