@@ -17,6 +17,17 @@
       "source": "./plugins/substance-designer-tutor",
       "category": "learning",
       "homepage": "https://github.com/kukoshock/3d-ta-plugins"
+    },
+    {
+      "name": "youtube-transcript",
+      "description": "Download transcripts from YouTube videos using yt-dlp. Simple workflow: check installation, list subtitles, download, convert to plain text.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anastasia Kukosh"
+      },
+      "source": "./plugins/youtube-transcript",
+      "category": "utilities",
+      "homepage": "https://github.com/kukoshock/3d-ta-plugins"
     }
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "name": "youtube-transcript",
+  "version": "1.0.0",
+  "description": "Download transcripts from YouTube videos using yt-dlp",
+  "author": {
+    "name": "Anastasia Kukosh",
+    "github": "kukoshock"
+  },
+  "keywords": ["youtube", "transcript", "subtitles", "captions", "yt-dlp"]
+}
