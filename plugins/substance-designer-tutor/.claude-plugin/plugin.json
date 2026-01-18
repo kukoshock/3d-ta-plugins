@@ -1,9 +1,10 @@
 {
   "name": "substance-designer-tutor",
-  "version": "1.0.0",
-  "description": "A tutor skill for learning Substance Designer through the Designer First Steps course",
+  "version": "1.1.0",
+  "description": "A tutor skill for learning Substance Designer through the Designer First Steps course by Adobe Substance 3D",
   "author": {
-    "name": "Claude Code"
+    "name": "Anastasia Kukosh",
+    "github": "kukoshock"
   },
-  "keywords": ["substance-designer", "procedural-textures", "3d", "materials", "tutorial"]
+  "keywords": ["substance-designer", "procedural-textures", "3d", "materials", "tutorial", "adobe"]
 }
