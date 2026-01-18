@@ -1,5 +1,10 @@
 # Substance Designer project files (large binaries)
-Ornate_Fabric/
+Ornate_Fabric/*.sbs
+Ornate_Fabric/.autosave/
+Ornate_Fabric/dependencies/
+
+# Allow documentation in project folders
+!Ornate_Fabric/*.md
 
 # OS files
 .DS_Store

@@ -114,6 +114,23 @@ Once installed, Claude Code will automatically activate the relevant skill when 
 "Explain Height Blend parameters"
 ```
 
+## Example Projects
+
+### Ornate Fabric Complete Guide
+
+A comprehensive written guide covering the entire 22-part "Designer First Steps" video series by Adobe. This guide provides:
+
+- **Step-by-step workflows** for all 4 phases (Foundations, Fabric Creation, Advanced Techniques, Finishing)
+- **Parameter explanations** with WHY reasoning
+- **Quick reference tables** for key nodes and troubleshooting
+- **SBS file analysis** of the completed project
+
+**Location**: `Ornate_Fabric/COMPLETE_GUIDE.md`
+
+**Project File**: `Ornate_Fabric/Ornate_Fabric.sbs`
+
+This guide serves as both a learning resource and a reference manual for recreating the ornate fabric material from scratch.
+
 ## Contributing
 
 Have a 3D tool you'd like tutoring support for? Open an issue or PR with:
