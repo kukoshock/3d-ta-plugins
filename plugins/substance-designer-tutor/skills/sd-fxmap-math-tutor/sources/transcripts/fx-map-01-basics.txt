@@ -1,0 +1,2544 @@
+Hello
+everyone, my name is
+Andre. In this video, I want to talk
+about the FX map
+node. We're going to create a few basic
+to intermediate to advanced
+examples. I already have a few examples
+here. These are basics. And then we're
+going to create from scratch a few
+intermediate and then at the very end uh
+something a bit more
+advanced. Before jumping in, I want to
+thank Marco Vital and Nicolola Wman for
+showing me a few examples of how the FX
+map node works.
+I also recommend uh having a look at
+some of the already existing nodes in
+Substance Designer that use the FX map
+node in order to understand possible use
+cases for it.
+In a nutshell, the FX map
+node, it's taking patterns and
+scattering them into the 2D space.
+It also allowed a
+few actions where you get
+to choose or control the positions of
+the
+patterns, the scale of the patterns, the
+rotation and the color or luminosity of
+those patterns.
+Also, you have the possibility to input
+multiple patterns and
+use gradients or masks to
+control what patterns are scattered in
+in what
+area. Okay. So, let me uh briefly show
+you the examples that I created here.
+In this first
+example, we have a bunch of uh we have a
+grid of squares and then we use this
+pearling noise map to control the scale
+of these patterns.
+If you if you're familiar with the tile
+sampler node, you guessed by this time
+that um you can input this ping noise
+map into the pattern size input of the
+tile sampler and you're going to get
+this
+effect. But here you have the chance to
+actually do this effect on your own.
+So for example, going in here and
+changing the disorder of this pattern,
+you can see that affects the size of the
+pattern here in the FX map node. And as
+you can
+see, for example, in this area where the
+patterns are
+small, this is driven by uh darker
+values in the FX map in the Berlin noise
+texture. So for example, this area here
+where the patterns are small corresponds
+to this darker region
+here. In this example, uh we're using a
+normal map to move the patterns around.
+So this
+actually have this effect. So you can go
+into the normal map node and uh use the
+intensity parameter to
+just control how much uh the patterns
+are pushed in the FX map by this vector
+field
+here. In the following example, we're
+using a grayscale checker map to affect
+the color of the patterns. So you can
+see all the patterns inherit the
+luminosity or the color from this um
+this histogram
+range. In this example, we're inputting
+this gradient to drive the rotation of
+the pattern.
+And here we have a combination of all
+those individual
+effects. So, we're moving things around.
+We're also coloring them. And we're also
+using this
+uh this map for the for the
+rotation. In this example,
+uh we are going to switch between two
+patterns. So we have two input images
+this time. A square and a circle and a
+square. And then we are going to use
+this map to switch between
+uh those
+patterns in this 2D space. So we can
+input any kind of image here and this
+image it's going to control
+uh which pattern it's uh displayed. So
+as you can see here whenever we have a
+brighter values we display the circle
+and whenever we have darker values we
+display the
+square. Here we're doing
+a similar technique but with a few more
+controls. So for example you can see
+that we are
+doing also two patterns a square and a
+circle but uh we added this new
+functionality where we can only affect
+uh and move the patterns uh we can only
+move the squares but leave the circles
+intact.
+So if I play with this parameter, you
+would see that the only the squares are
+affected and the circles are just uh
+left
+untouched. And at the very end I have a
+few other examples that I will um cover
+when I reach those nodes. For example,
+here you can create these kinds of
+alternating patterns of discs and
+squares. And also
+lastly, we use this uh early noise map
+to kind of take this uh image and
+subdivide this grid into
+uh smaller and smaller rectangles based
+on
+um based on the brightness coming from
+this texture. So you can see
+that this darker patch here corresponds
+to a more dense grid while lighter
+regions have a larger grid. So I think
+this u effect is interesting. So maybe
+we can play with this disorder so you
+can see how how things are
+changing. All
+right.
+So let's start with the first example
+and um just for the sake
+um of making sure the learning process
+is complete I'm going to start um from
+scratch.
+So make I'll make a new pearly
+noise. I will uh reduce the
+scale something like that and then just
+create an FX map
+node. In this case, uh we're going to
+use the grayscale version. So check this
+option. And also um we're going to set
+this
+parameter roughness. We're going to set
+it two to zero. Okay. And then uh we're
+going to plug this uh map here into
+image input
+zero. And then with the FX map selected
+node, you can either
+uh go somewhere. Where is the edit?
+Well, I get so used to selecting the
+node and hitting Ctrl +
+E, which is entering the edit mode. So,
+I'm just going to uh do this action in
+order to get inside the FX map node.
+Select the FX map FX map node and hit
+control plus E. Okay. So this is the
+quadrang that we are presented
+with. First things I will go here and
+choose instead of no pattern I will
+choose square. So now we have a square
+filling the entire 2D space. And I will
+go here where it says pattern size. And
+I will just decrease the square a bit.
+So maybe
+0.9 and uh
+0.9. Okay. So so far so good. All right.
+And then
+um kind of um how this things work from
+now on is just you can start and add
+quadrant nodes like so. So plug this
+square into this new quadrant node. And
+now I select this one and set this one
+as a root. And you can see that uh it
+took our uh square and
+um created a grid of four squares. And I
+can continue doing uh the same. Uh not
+this of course. I just want to click
+somewhere here into the canvas and then
+hit uh the quadrant button to get a new
+one. Create uh those connections as
+well. Now set this one as a root. So you
+can see we have a grid of 4x4 and we can
+continue to do so. I'll uh create
+another one and just want to show you a
+faster way to connect these wires. So if
+I hit Ctrl + shift and then drag from
+this to here, then all of my connections
+are created for me. Set this one as a
+root. So again,
+subdivide. And I'll do one more. So
+maybe like so. Ctrl + shift to make all
+the connections in one
+go. And set the root. Good. So now I
+want to use uh this map here to control
+the size of those
+patterns. And uh this is a very simple
+thing to
+do. We go at this node which is at the
+bottom of our tree of nodes and here
+into where it says pattern size. We're
+going to dive inside.
+everything is going to turn white. Uh
+this means our pattern size
+uh got restored to a default value of
+one. If you remember, we set it
+previously to uh 0.9 and 0.9. And now
+it's back to one.
+So here inside this channel, we're going
+to use this input map and we're going to
+use it to drive the pattern size. So
+those value range from zero to one,
+which is something that we want of
+course. And in order to get that image
+and use it here, we need to call in the
+position variable. So, it's a float two.
+And remember, uh, this we're going to
+use the dollar position or dollar post
+variable a lot. Uh, I think it's the
+most used. Uh, it's fair to say it's the
+most used variable in Substance
+Designer. So, if you don't know exactly
+why we're using it,
+um, don't worry. For now, we're going to
+cover or talk about it more. But you're
+also going to see it so often that
+you're just going to uh know by default
+that pretty much all the time this is uh
+what we are going to to use. So the
+dollar position it's actually uh a
+vector field which holds for each pixel
+it's hold its position and uh this is
+looking like a map. I can actually show
+you how it looks uh going into a pixel
+processor and then get the
+position. And in order to see how it
+looks, we need to output either a float
+or a float 4. This is a float two. So in
+order to be able to output it, this one
+uh I need to make a vector float for
+something like this. And this I can't
+output. You can see like set as output
+node it's
+deactivated but uh this one is a float 4
+and it is what substance designer
+expects. So if I right click this one
+and set it as the output node it's going
+to show me this. Now it is transparent
+because I don't have an alpha.
+I can either turn this on or off. But
+maybe for the sake of correctness, I'll
+do another float too and set the alpha
+to one. Okay, so this is how the
+position vector field looks like. Okay,
+now
+um set this aside for a bit. Uh go back
+into the FX map. I'm going to hit Ctrl +
+E to go
+inside. We're working with this quadrant
+node. So into the pattern size, we just
+got the position variable, which if you
+remember, it's just that gradient. And
+we're going to sample with these
+coordinates. We're going to sample from
+our input image. So, uh, sample
+grayscale. And the input image, it's
+zero. That's fine. And this is basically
+just bringing the information from this
+outside texture. It's bringing bringing
+the information inside this channel and
+also it's going to be used to color uh
+not to color but to affect the size of
+those patterns. So great um now we
+should be able to use this information
+and set it as an output to control the
+size of our patterns. But if I want to
+do so again I'm not allowed. So you can
+see set as output node is not available.
+And this is again because the output
+variable type is a float 2. Currently
+this is a float one. It's indicated by
+this green dot here. And we just need to
+make a vector out of it. So vector float
+2. Right? So you can see it's taking as
+an input this and this. And now I can
+set this one as an output. Well, great.
+Now it seems to be that our pattern
+scale is controlled by this map which is
+absolutely amazing. Right? Okay. This is
+the first example. Uh in the second
+example, we're going to use uh a map uh
+a grayscale map, turn it into a vector
+field, and then use this vector field to
+push uh the patterns around in our 2D
+space. Okay.
+So maybe it's going to be a bit
+redundant, but for the sake of repeating
+things, I will recreate things from
+scratch. So, what I usually do is that I
+can take this setup that I already have,
+duplicate it, and then replace this part
+and change a few things
+inside. Uh, and that's a bit faster to
+do, but I want you guys to uh repeat the
+steps a few more times from scratch, and
+I think you're going to understand a bit
+more and also get a bit more comfortable
+if you repeat the process.
+Okay. So then um let me try and
+replicate this uh example here, but
+we're going to use a different
+um a different grayscale input. So just
+want to say that my absolute favorite
+noise and node in Substance Designer is
+the pearly noise, but a similar one to
+it, it's the Gaussian noise.
+So Gaussian noise I think this
+one I will discre decrease the scale
+also something like this then I will put
+a normal
+map and maybe increase the strength of
+the normal to
+three maybe 16 for now just for us to be
+able to see some variation
+here. Maybe 128. That's definitely too
+much. So, we're going to decrease this
+uh value, but just for visibility.
+Something like this. Okay. So, a new FX
+map
+node. Make it
+grayscale. Go to roughness and make it
+zero. Plug this normal map into image
+input zero. Right.
+Then into the quadrant node, I will use
+this time a disk as a
+pattern. Maybe the pattern
+size I will decrease it for a bit. 0.9
+and
+0.9. So not that 0.9.
+Great. Okay. So what I want to do next
+is instead of controlling the size with
+the map, I want to control the pattern
+offset. So go inside here and I want to
+bring in the information from this
+vector field. So how to do that? Well,
+remember we use the position
+variable. And now we need to sample. And
+we're going to sample a color because
+this information is color. And here we
+sample a grayscale because this was a
+grayscale image, right?
+So sample. And then I only need to work
+with the X and Y components. So this is
+a float for, but I only need to access
+the X and Y components of this. So
+swizzle float two. So I'm going to get
+the X and Y. At this point, I need to um
+show you something. So maybe let's say
+that I do this and I would put this and
+you can see like things happened
+somehow. It seems like I got some
+movement. And uh let me just bring this
+down to maybe a value of
+three. Okay. Uh and then uh what I what
+else do I need to do? Well, I need to
+put a few more of those quadrant nodes
+that are going to
+duplicate and it's going to create
+my grid. So, I can also take those
+things and duplicate them like
+so. Okay,
+great. Maybe do another one.
+Okay. So, let me show you something.
+Maybe maybe put this to
+eight and I hope it's going to be
+visible. This is a bit interesting. Let
+me just test this one.
+Okay. Uh this is a bit interesting.
+So let me make sure that
+uh it seems that uh we're not getting
+the effect that we wanted. So, we
+currently have a uh disc here in the
+middle, but we seem to be
+um somehow pushing things from the
+corner, not from the middle. So, if you
+remember our example here was everything
+from the center,
+right? So, we should have the same
+effect here, but instead of having it
+from the center, we have it from the
+corners. and not sure why. So, first of
+all, let me do
+this in here. I want
+to take this vector field and make it to
+range from uh 0 to one. This is uh the
+current range. I want to make
+it in uh to transform it in a new range
+which is from minus1 to one. And uh this
+is important because all the vector
+fields in uh substance designer are
+bound between zero and one but inside uh
+all the other nodes they are kind of
+unpacked and reshaped into this new
+range which is from minus1 to one. So we
+need to do this uh for ourselves right
+now. So in order to do this I can
+multiply this by two. So scalar
+multiplication this is a vector I want
+to multiply it by a number I need to use
+the scalar multiplication node scalar
+multiplication
+float two so remember this was from 0 to
+one and now if I multiply it by two it's
+going to be from zero to
+two okay great so Everything started to
+move correctly to the center. But then
+uh now we need to actually make it from
+minus one to one. So this is from 0 to
+two. And in order to do this
+new range adjustment, we need to
+subtract a float two which is going to
+be one and
+one. So 0 to two. If we subtract one and
+one from it is going to be from minus
+one to
+one. Okay,
+good. So
+now it seems that we have it working
+correctly, which is already interesting.
+So now I want to plug back our original
+texture.
+Okay, delete this one and maybe play
+with this one a bit more. Maybe five.
+Okay, so I want to also do another thing
+which is as you can see
+um when we pushed those
+um circles together, some of them start
+to overlap. And we're using this map
+here
+to to control this effect. And it's
+interesting because we already have some
+information that we can use to drive the
+scale here. So I want you to notice that
+in this area for example where the
+circles are very close
+together actually corresponds with this
+dark region in our Gaussian noise. So
+maybe we can just take this Gaussian
+noise and plug this into the FX map node
+to control the size of the discs. And
+this will allow us
+to avoid as much as possible the
+overlapping of those discs. So let us do
+that. We're going to plug the Gaussian
+noise into this image input
+one. Go inside and also at the very
+bottom of our three
+node. Click this one. Go into pattern
+offset. Not here. Sorry. We're going to
+pattern
+size. Our discs increased a bit to the
+default value of one, but we're going to
+get
+the position variable. And we also going
+to sample this time a grayscale image
+because our information is grayscale.
+But also make sure that the input image
+it's coming from the channel input input
+image
+one. Set this one as an output. Well, I
+want to do so but I can't. And why isn't
+it possible? Well, if you
+remember all the time, make sure that
+you check the expected type of variable
+that you need to output. So this is a
+float and we need to make a vector float
+two out of it. So vector float
+two and make this and uh what really uh
+means is that we're plugging in those
+same values here but this is kind of
+like the width and the height or maybe
+uh the other way around. Maybe this is
+the height and this is the width. No
+actually this is the width and this is
+the height of the pattern. And we if we
+are plugging the same information in
+both, we're just keeping the uh ratio
+the same for both. So we don't stretch
+it in either direction. Okay. So set
+this one as an
+output. And then you can see uh we
+have the patterns in the darker regions
+smaller. Uh maybe I wonder if we can do
+something about it. Maybe we can um if
+you wonder how could we increase the how
+can we increase the size of those
+patterns because they got uh too small.
+Or maybe one way to do it is just put
+like an auto
+levels. So before auto levels, after
+auto levels. So this uh seemed to help.
+And also if you want even more control,
+you can just go inside here and in
+pattern size you can multiply
+uh this value by a lower or larger than
+one number. So maybe scalar
+multiplication. Again this is a vector
+we want to multiply it by a
+number. So one now of course you know
+that if you multiply anything by one
+nothing changes but then uh if uh this
+value goes lower then everything
+decreases in size or if we increase this
+value then we increase the size of the
+patterns. Okay great. So I will leave
+this to one and move
+to the next
+example. So let me try and remember what
+the example
+was. Well, we're going to make a grid of
+patterns and then we're going to color
+or change the luminosity of those
+patterns based on a map. Okay. So I'll
+use again
+my favorite
+noise, which is the pearly
+noise. Something like
+this. Maybe maybe four. I'll also use a
+quantized gray
+scale. If I could type correctly, it
+would be
+good. Something like this.
+Um, yeah, I think this is good. I'll
+create another FX map nodes from from
+scratch. Make it grayscale. Remember to
+set the roughness to zero. Plug the
+pattern into image input zero. I mean,
+plug the noise into image input
+zero. Take this one.
+Um, use a square
+pattern. Change the size a
+[Music]
+bit. Okay. Um, go into the luminosity
+channel. So, by this time we used two
+channels. We used the pattern size and
+the pattern
+offset to control the size. and the
+offset by uh input images. Uh now we're
+going to use the luminosity channel to
+affect the lumin luminosity of the
+pattern. So go inside here, get flow
+tool. You guessed it by now. We're going
+to the dollar position variable and
+we're going to sample from it, which is
+essentially bringing the image inside.
+So our um luminosity has decreased which
+is an indicator that things are working
+and now we just need to subdivide. So
+not this uh when this happens it means
+that you have this node selected and if
+you press this well it was let me try it
+again. So with this selected and with
+this it's going to connect like so. This
+is not what we want. So I'll delete this
+and just click anywhere else in this
+space and then just one click
+here and ct controll + shift to connect
+everything in one go and then I can dup
+duplicate this. So, Ctrl + D to
+duplicate and then Ctrl + Shift and then
+duplicate again and then Ctrl + Shift
+and maybe one more and control plus
+shift. Great. So, now we have this basic
+tree graph. Set this one as an Azer.
+Okay. So you can see we're using this
+map to color our um grid of square
+patterns.
+Next, we're going to move quickly with
+this one. Uh we're using a gradient to
+control the rotation of this pattern.
+So let me use again my favorite noise. I
+will just change the random seed to get
+like a slight variation. Use an FX
+map. Make it
+grayscale roughness to
+zero. And then plug this thing
+here. Go
+inside. Maybe make
+a
+square again. Change the
+size. Maybe
+08. Go inside pattern rotation. So we
+use those channels
+luminosity offset size. And now we're
+going to use pattern
+rotation.
+Okay. So let me do it normally. Get
+float 2. You guessed it. It's the
+position sample.
+Set this as an output. It rotated a bit.
+Now we want to do our
+subdivisions. And maybe this time we're
+going to be
+six. So by this uh time we only used
+five repetitions. Now I added one more
+at the end. doesn't really matter. Set
+this one as a
+root. And you can see maybe it's a bit
+hard to read. It's because maybe there
+are too many patterns. Let me try
+something like
+this. This is I mean you can see the
+rotation, but you kind of can't really
+um see uh the organic pattern under the
+hood. So maybe this one seems to be a
+bit better. And maybe for the sake of
+visibility, I will just go here and into
+the luminosity also bring
+in the same image. So we can see how the
+color of the I mean not the color the
+luminosity or the brightness of the ply
+noise corresponds to
+rotation. Yeah. So now you can see them.
+And also I want to say well maybe you're
+wondering why do we have those bright uh
+corner here. Well this is because the
+blending mode that happens to our
+patterns. So I think here we have it to
+add and sub. And because those patterns
+are overlapping when in these areas the
+brightness of those two squares together
+gets added up. Maybe if I change
+it. I'm not sure, but I hope it's going
+to
+uh make this disappear and just output
+the brightest of those squares. So, this
+is the maximum. And yeah, indeed uh it
+got rid of those things for us. Okay.
+So, now it seems like we're we're able
+to read the pattern and also see how the
+brightness of the image affects the
+rotation of the pattern. Great. We have
+this example out of the way. Now we can
+put all things together. So we're going
+to use everything combined.
+So maybe maybe maybe use
+uh yeah, of course noise. I was thinking
+about
+another favorite noise but I realized
+that I don't have I don't have any other
+favorite noise. How fairly noise it
+is. Just change the random seed
+somehow.
+[Music]
+Maybe okay. Maybe five for
+scale. Put a normal
+map. Make the normal map strength to
+three. How we used before. Make an FX
+map from
+scratch. Grayscale. plug the normal map
+inside. I'll just move the normal map
+above a bit because I also want to use
+this as a scale. So, this is pushing the
+patterns around. This is going to be our
+scale. So go
+inside, use a disk, set the blending
+mode to max maybe. Then uh go into the
+um pattern
+offset, get the
+position, sample the color. This is the
+vector field that tells us how to move
+our
+patterns. So image input zero, it's our
+normal map.
+Okay, go inside. We have it. But you
+remember that this is from zero in the
+range 0 to one. And we want to make it
+always in the range from minus1 to one.
+So we need to multiply this by two. And
+in order to multiply by two, remember
+this is a vector and we need to do a
+scalar multiplication which allows us to
+multiply a vector by a number. So
+scalar well
+scalar yeah it's scalar
+not so I was typing sq instead of d so
+multiply it by
+two and then we
+subtract one from it. So this is a
+float. This is a float too which is
+compatible with this one. So I can plug
+this here and then set this as an
+output. You can see how things offset it
+a bit. Now I need to do my subdivisions
+or duplication depending on how you want
+to think about it.
+Duplicate.
+Duplicate. And one more.
+duplicate. Okay. Move this out of the
+way so we can visually see that we have
+our controls here. Set this as a root.
+So now we have this like so. Now why do
+we see all these patterns in a gray
+value? Well, it's
+because we have this roughness set to
+one. And in all our previous example so
+far, we move the or we change the
+roughness parameter to zero. Great. So
+we have it like so. Then I want to as we
+did here, I want to use this map to
+change the scale of the
+patterns. So go here. We use the offset.
+Now we use the pattern size.
+Get float to position then sample. But
+this is the image input one and then
+make it into a vector flow vector float
+too because this is what Substance
+Designer wants from us in this channel.
+And then set this as an output. Well,
+great. We have it. Uh next, what do we
+want to do? We also want to do color.
+Uh, maybe I'm going to take this one
+from
+here and just plug this thing
+in. Go inside the FX map. Go where we
+control things into the luminosity
+channel. Bringing the
+position. Then sample the information
+that we want which is in image input two
+and set this as an output. So things
+have changed in terms of
+luminosity. And lastly, we want to do
+rotation. Well, kind of you can't see
+the rotation here because uh I
+unfortunately used discs. So if I rotate
+this, you're not going to uh be able to
+see the rotation itself. But then I can
+actually change it to square. So now all
+my squares are not rotated, but I can
+use another pearling
+noise to randomly rotate
+everything. So go here into
+rotation get the
+position and then sample it with the map
+or information that we want which is in
+this image input three and then use it.
+So now everything has randomly rotated.
+So in conclusion uh this example here is
+a combination of all of the examples
+above. Next, uh we're going to use uh
+another uh parameter which allows us to
+for example input two uh patterns and
+then
+um use a
+map
+to basically decide um in which area one
+pattern will be shown and in the other
+area the other pattern will be shown.
+So I will take a
+gradient
+[Music]
+maybe can be a vertical one and I will
+just duplicate these
+two make an FX
+map. Um maybe I can do this. So first of
+all plug in the patterns.
+So like
+this. and then plug in the map that
+we're going to use to define our
+areas. Change it to grayscale. Go inside
+instead of now uh up to this point we
+used predefined patterns but we can use
+actually input image which allows us to
+use patterns from outside the FX map
+node itself.
+So I use this one. And then maybe here
+set it to
+max. And for now just duplicate things.
+So not like this, but like
+this. I didn't know what I done. I think
+I holdtrl + D
+continuously. So that's really good.
+and another one like
+so. Then move this out of the way so we
+know that we're working with that. Now
+we had our
+subdivision. We go here into roughness.
+Make things white again. And then we
+want
+to use this map to control which pattern
+shows where. So, uh, probably we're
+going to have it like this. Maybe
+circles on top and then squares on the
+bottom. Okay.
+So, in this quadrant node, we are going
+to use
+um
+input image index. We're going to use
+this channel
+here and get float
+to position.
+And then we're going to
+sample. And then what we're sampling
+it's uh image input
+two. So this one. But I want you to know
+like okay how to use this information.
+Uh currently what it's saying that
+expected output type is integer. And if
+I go back out of this and select this
+one, you can see that
+um maybe I
+actually just reset the function for a
+bit. And you can see that image input uh
+actually says like hey image input zero
+one this is the square two this is the
+gradient itself. So zero it's the circle
+one it's the square and then two is the
+gradient. So we want to uh select
+between
+the the circle and the square based on
+our gradient. So how to do that? Well,
+we need to go inside and say like, hey,
+get our
+gradient from top to bottom. And then
+we're going to say like hey
+if I mean not uh yet the uh if statement
+but we're going to say like
+greater if the values in our image are
+greater than
+0.5. Right?
+Then we're going to say if so if this
+condition is true
+then an
+integer zero if you remember was the
+circle and
+then one was
+the
+rectangle. So I guess what we're saying
+here is that if the values in this
+gradient that we're inputting are
+greater than 0.5 then display
+uh this index and this index brings in
+the circles otherwise display this index
+uh which brings in
+the squares. So then if I hit this as an
+output, I should be seeing circles at
+the top and then squares at the bottom
+or you never know vice versa because I
+always get confused about this logic.
+But at least we should see squares and
+circles half of the
+image. So, well, we got something
+interesting, which is
+uh this
+um circle and square, but we have this
+disc in the middle. And I think it has
+to do with the fact that I'm sampling
+this image input zero, which totally
+makes sense because image input zero is
+the disk. But what I really want to do
+is sample this image, which is image
+input two. So, back here. So that was a
+short a little mistake that I've made.
+Instead of sampling image input zero, I
+need to sample image input two. Okay. So
+as I mentioned, I'm seeing circles at
+the top and then squares at the bottom.
+Great. Well, now you can think about
+like, hey, we're using just this uh
+gradient. It's not that interesting. I
+can do this with a normal mask and
+things like that. But maybe again use a
+pearly noise.
+and decrease the scale. And maybe change
+the random seed. And decrease the scale
+a bit more.
+Maybe four. And throw in
+a auto levels after this. And now if we
+change this to this, we're going to see
+a more interesting result.
+Okay, perfect. I just want to say that
+up to this point, you can do all of
+these effects
+into using the tile sampler node. Uh,
+that's that's totally fine. So, up to
+this point, everything was just like
+basic things, but maybe you didn't know
+how to do them and you wanted to do them
+from scratch. And I think it's always
+good to just know or understand how
+things work. But then we get into this
+example
+where we have this interesting uh effect
+here where we have circles and squares
+but the circles are
+uh left alone and they're like just
+sitting in the middle and then
+everything else changes. So for example
+only the square changes their position
+but not uh but not
+the the disk themselves. So how can we
+do this? Well, uh I'm going
+[Music]
+to introduce the up to this point we use
+the only the quadrant node, right? Uh
+and uh next we're going to introduce
+this uh node which is the switch node.
+So this is kind of like an if else
+statement, right? Okay. So I'm going to
+show you how to to do this interesting
+effect.
+Well, first of all, do an FX map
+node. Make it
+grayscale. Go into roughness. Make it
+zero. Go
+inside. Make
+discs like
+so. Then, um, duplicate. Not this one.
+Sorry. Uh, maybe not duplicate yet. uh
+make another one and this time do
+squares. So if I output this one, I see
+a square. Let me decrease the size a
+bit. So
+0.9
+and N. Okay. So I want before uh
+subdivision or before duplicating my
+patterns into a grid, I want to put this
+switch uh between them. So here circle
+here square and if I output this one
+it's showing me the uh the disk and uh
+if I play with this button here I switch
+between those two right okay so now I do
+the duplication
+so not here but above it so
+duplicate okay so duplicate
+again. And a few more
+times, right? And another
+one.
+Okay. So, connect everything together
+like so. Good. So, we have again grid of
+discs. If I change this grid of squares,
+grid of discs. Good. Now I want to um
+use this map
+to first of all uh select between the
+two uh like have this the
+the discs showing in one area and um the
+square showing in the other one. So
+maybe I'll use this this disc here. go
+inside and in order to make the switch I
+need to use this node here. So I can go
+into this selector expression and
+um create a condition that will switch
+between uh the inputs based on this
+condition if it's true or false. So get
+flow 2 cuz I want to bring my image
+inside sample if we remember we'll
+sampleing image input zero
+right here go inside and I I will say if
+is
+[Music]
+greater than 0.5.
+Now uh this is like not wrong or right
+to do. So I don't have any you you
+wonder why like hey this image is like
+fully binary.
+It's all white here and all black here.
+Why do I bother to say like, hey, if my
+pixels are greater than 0.5, why didn't
+I say like, hey, uh, if uh my pixels are
+equal to zero or one, right? Cuz I have
+like pixel equal to zero or one uh here.
+And I should base my condition on on
+what I already have here. And that's
+totally right. But sometimes
+u there might be
+um conditions in
+which
+knowing the exact value of the pixel
+might not work all the times or you
+might have errors where the pixel
+actually seems to be one but it's
+actually not one. It's like maybe
+0.99999999. And uh I noticed that uh you
+kind of can get into trouble if you're
+not careful with equality. So for
+example saying like hey if pixels are
+equal to one then this is like a super
+strict condition where it says like hey
+it really needs to be the pixel needs to
+really be equal to one and this needs to
+be strict and sometimes this strictness
+might be causing you problems but here
+as a safety measure I would say like hey
+if the pixels are greater than 0.5 well
+everything I'm pretty sure that
+everything in this this here it's
+greater than 0.5, right? So, I'm not I
+really don't care. Maybe I can put 0.55
+and I'm still okay. So, this is more
+like a safety measure for myself. Maybe
+uh there are better ways to approach it.
+I think the more you play with it, the
+more you'll figure out what and when to
+use it. And of course you'll have
+difficulties and problems when thing
+things are not going to work because
+some minor obscure reason that you
+missed. Okay. But I will set this one as
+an output. And this is a boolean. So uh
+our beautiful node here expects a true
+or false statement. Um and this variable
+here or this node which has this white
+output it's actually a boolean you can
+also do this
+u boolean so true or false if I set this
+one as an output and let me visualize
+the node itself so it's outputting
+circles if I switch this to true it's
+outputting squares circles 12 squares.
+Basically, this it's doing the same
+thing that we had here before when we
+had our buttons. Uh, okay. But now I'm
+going to use this statement
+here. Okay. So, now we got um based on
+this map, we got squares in the middle
+and circles
+uh everywhere else. Now, good. Uh and
+let's say we want based on this uh
+condition map here, we want to affect
+only one pattern and leave the other
+alone. So I'll duplicate this uh noise
+here. Okay. Bring it in inside. And I
+don't remember. I think this one was the
+circles and this one was the
+squares. This one. Yeah, the squares.
+This one is the C circles. Okay. So then
+in this node here, we can go here inside
+the pattern offset, right? And just
+bring
+in our vector field. So sample color its
+image input one. Right? Now extract the
+X and Y components. Remember that
+because it's a normal map, we need to
+change the range from 0 to 1 to minus
+one one. So scalar
+multiplication
+load two and then we need to
+subtract load two one and one okay so I
+like to arrange them like so and then
+output great so you can see that we're
+only affecting those uh circles and not
+the rectangles right and then I can
+change this. Maybe instead of a disk I
+can make it a square and you can see how
+things are adapting. So I think this
+effect it's a bit more interesting and
+maybe it's not. So I
+mean definitely you could do it by with
+the default nodes that we have in
+designer but uh I think it's interesting
+to understand that you can do it uh by
+yourself from scratch. So, let me also
+make the squares a bit less or a bit
+darker. Okay,
+perfect. Okay, so we made this example
+as well. And we have this and this. And
+I want to very briefly touch on this. Uh
+up to this point
+uh this is kind of
+a a way to use the effect FX map node
+which works and I think it's made
+a it's it's kind of very useful to
+create like grids and patterns and
+noises but uh there there's a different
+way to uh to use the FX map node and uh
+I think from for somebody
+So for somebody who who comes from a
+programming uh background
+u with uh loops and things like that, I
+think the the next um way to use the FX
+map node that I will show you. I think
+that it's going to be uh probably going
+to make a bit more sense or feel more
+familiar. Um but yeah, those two
+examples I really didn't have the time
+to figure out or to play too much with
+it. I think it's still pretty pretty uh
+powerful. Um
+maybe maybe I'll just play a bit more
+and try to figure out why and how to to
+use this thing. So I will go inside this
+uh node and kind of uh start from uh the
+bottom and uh try to explain what's
+going on. So you can build this um
+graphs in a in an interesting way. I
+mean let me just bring it or start to do
+it again from scratch. I think that
+should be a
+bit okay. So
+um we're um building from scratch uh a
+new FX map node in which we to uh do an
+example like this. So let me go
+inside choose a disk pattern. Also let
+me preview this one go here to roughness
+set it to zero. Right. Then I will
+duplicate this node here
+and make a square
+instead. Set this one as a note as a
+root for a brief
+moment. Decrease the
+size. Okay.
+So what you can do actually up to this
+point we used uh quadrant nodes and we
+connected them like
+so. And this is our
+uh
+discs. And I can even do uh another one
+like
+so.
+Maybe like that. Uh but then uh maybe
+you want to get creative and instead of
+uh fully connecting a quadrant node to
+all the four inputs, you can maybe
+select
+uh or use this
+uh or use this pattern which currently
+has those four circles and maybe you can
+input them only into the bottom part. So
+if we are to preview this we can see
+that uh this is uh this part and this is
+this part. So maybe just disconnect
+this. Okay. So the last one is this
+quadrant here. The second one from the
+right is this part here. But you
+remember that here we had squares. So
+maybe we can do this one. And also you
+can take another
+one and uh just choose like maybe
+another pattern of
+paraboid something like this. Right? So
+now you made this pattern that you can
+just take
+in and then uh plug it like
+so. So things like
+that. Okay. Right. So you can get
+creative and um I I think this is a
+really powerful way to to work. Uh just
+haven't um play with it much, right?
+Okay. So I encourage you to uh get
+creative and uh also use I don't know
+maybe use switch nodes here in between.
+So for example, we have this and this
+and you can put this here and then maybe
+put like a condition inside this and
+then when it changes it changes between
+these patterns and stuff like this. So I
+think this is a really powerful and uh
+interesting uh workflow that I haven't
+tested so far
+[Music]
+yet. And lastly I want to talk about
+this example. So you can
+um use for example a map like this and
+then uh change
+uh change the disorder of the ply noise
+and it's going to give you like an
+interesting uh effect where the
+tessellation or the subdivision changes
+based on the luminosity here. And uh I
+just went inside and made a few
+patterns. So we're going to preview
+them. It's going to be this pattern and
+this pattern and this pattern. So, we
+have a couple of subdivisions and then
+we're just
+um switching between this, this, and
+this based on these switches. And at the
+very end, I needed to add a couple of uh
+subdivisions like here. Right? So in
+inside of those switches I just take the
+input image which is that pearly noise
+gradient and say like hey if the
+gradient is lower than 0.5 then do
+either one of those and then next I say
+like hey if the gradient again is lower
+than in this case
+0.25 then do either one of those
+connections and then I just need to
+subdivide this and now I'm getting this
+dellation right. So you can add another
+one if you want here and you're going to
+get like even a uh subtle more uh grid
+like so. So I believe this uh needs
+further exploration and I think it's
+going to give you like really cool and
+interesting patterns. Okay, good. So uh
+just wanted to say that um this is one
+way of working with the FX map in which
+you go inside the FX map and you chain a
+bunch of quadrant nodes and then you
+maybe going to use the switch node to
+switch between different branches uh and
+things like that. And uh I think this is
+very powerful and creative but at the
+same time it feels uh a bit I don't know
+maybe a bit unintuitive from a certain
+point of view. Um, so that was like the
+first part and in the second and third
+part we're going to change things and
+we're going to use the FX map in a
+different way and we're going to use
+uh the full range of uh nodes that the
+FX map
+offers. So go inside the FX map and this
+is the quadrant node. We're also going
+to use the switch node and we're also
+going to use the iterate node. Okay, so
+these three nodes uh and I think u in
+this way things are going to uh make a
+bit more sense. Uh this way of working
+is different uh than what we've been
+doing before. I just want to to let you
+know about different ways of working
+with the FX map. That was the first one.
+We're going to switch gear and use a
+different way of using the FX map node.
+I think this one is a bit more
+interesting and more powerful and also
+it's more relatable to people who come
+from a programming uh background. Okay.
+Um
+right let's
+uh do this second part uh by talking
+about how to the uh FX map node uh with
+data. Uh so we're going in this uh
+intermediate part to use the FX map node
+to read and write
+data. Good. Uh let me just do
+this. We're going to use a white noise.
+So what we're going to do right now is
+uh we're going to scatter a bunch of
+random points into this space. So for
+this I will be using a white
+noise like this. And um I want to make
+this as a list of
+points. So this texture contains right
+now 256 x 256. I will just do a 256x1
+texture. So this is a row of random
+values. I'm going to duplicate this one.
+I'm going to take this and uh just
+change the random seed. And then I will
+use a FX not an FX map but like a pixel
+processor
+node to just combine those two things
+into a list of 2D vectors. Right? So
+plug this thing here. Plug this thing.
+This is the X. This is the Y component.
+It's going to create a list of 2D points
+for us. This uh pixel processor node has
+to be the same size as our input nodes.
+So
+absolute the width is 256. It's good,
+but this needs to be one pixel. I'm
+going to go inside, get the
+position,
+sample the first one, sample the second
+image, make a vector out of those. So
+basically you're combining those two
+streams of data in one uh vector and
+then we need remember we need to either
+output a float or a float 4. Currently
+this is a float two. So we need to add
+another float two into the stream of
+information and just make the alpha to
+one. Set this as an output. Right? So
+you see this uh
+random uh fluctuations, those random
+pixels of red and green. These are 2D
+points. And now good. Um let's uh
+actually plot these points and um see
+how they look. Definitely they're going
+to look like um 2D uh cloud of points
+that are just sitting randomly there. So
+FX map
+Right. Uh make it grayscale. Go and make
+the roughness to
+zero. Plug this uh list of position
+inside. Go get the quadrant
+node. I'll be using uh the max blending
+mode. Uh I'll be using the
+um dis
+Let me preview the output of the FX
+map. So let me decrease the size of the
+disk. So
+pattern
+0.01 and uh
+0.01. Okay. Should be one, not
+five. And then uh we're going to use the
+iterate node.
+and we're going to iterate 256 times and
+set this one as an output. Okay. So,
+what we are actually going to do the FX
+map node is going to look into this uh
+texture that it's actually a list of 2D
+points and it's going to read one pixel
+at a time. So, it's going to start here,
+read this pixel, and then draw or place
+a circle into this space at this
+position. And then it's going in the
+next iteration, it's going to move to
+this pixel, and it's going to read the
+position from here and place uh 2D this
+uh like a disc into this space and so
+on. it's going to walk and read the
+entire list pixel by pixel and then
+place a disk in 2D space according to
+the position indicated here. So let us
+do
+this. So we're already iterating 256
+times although you don't know you
+currently have two 56 points sitting on
+top of each other which uh it's great.
+Then we need to go inside of the
+quadrano and if you remember where do we
+want to go to make sure that we're
+moving things around where we need to go
+here into pattern offset. Okay. So then
+we're going to have a way of
+uh reading from that texture. Well,
+previously we used the uh get load to to
+bring in information, right? We use the
+position, but in this case, we want to
+read pixel by pixel from here. So um we
+will use a different method and we're
+going to make use of the iterate node
+and it's the iterate node produces a
+variable that we can use and I want to
+at this point to say that this iterate
+node it's very similar to a loop uh in
+programming language and it's producing
+a variable that it's called dollar
+number but this variable it's very
+similar to like I or I
+++ okay so this is running 256 times and
+it's producing a variable called dollar
+number which starts
+from
+zero
+to
+one
+to dot dot dot until 255. Right? So it
+start with zero, not with one, and it
+ends with n minus one. So this was 256
+and it ends in
+255. Great. So now we want to take and
+use this
+variable that allows us to to read the
+information from the texture. So we need
+to make like uh we need to sample the
+data, right? Uh this is the incoming
+information. Uh we need to
+uh make sure that we're plugging a
+vector 2 cuz this is what it wants. And
+then uh we're going to only use this
+part here cuz of course we're going to
+use like the x coordinate. So we're
+reading from left to right. We're moving
+from index direction from left to right,
+not up and down. So we're going to use
+only this stream here. And we need to
+take in the information which is get
+float dollar number. So a get float and
+dollar number is this. And this starts
+from a zero and ends with 255.
+And we're going to just divide
+this by uh float. And I usually, this is
+like where you can call me out and say
+like, "Hey, this is wrong." And things
+like that. You can divide this by 255
+and then for sure you're going to have a
+range starting from uh 0 to
+one. But I usually do like 256. In this
+case is kind of a simple thing and
+doesn't need like really too much
+precision. We just need to uh take this
+uh range of numbers which is from 0 to
+256 divided by uh 255 divide it by 256
+to just make it from zero uh to one. And
+uh in this texture the coordinates are
+like zero it's here one it's here. So
+that's why we need to kind of step in in
+small increments of one divided or yeah
+in increments of one divided by 256. Uh
+this is basically the the step between
+pixels. So this is what we're doing
+here. This is now uh in the range of 0
+to one. Just plug this thing here. And
+now we want to output this information
+which is like just reading the positions
+from the texture itself. and then
+plotting those points in uh 2D space. Uh
+let me try and output this. So I want to
+but I can't because set as an output
+node it's deactivated. And the reason
+for this is because again the expected
+type output is flow to now this makes
+sense because we have two depositions
+and those information are stored in the
+X and Y components. So this is a float 4
+which has X Y Z and W and we only Y want
+the X and Y. So swizzle float two deco
+composes this float 4 into a vector
+float two. And let me just preview this
+thing. Okay, focus. Currently nothing
+yet happened because I haven't um set
+this as an output. But then if I set
+this as an output, now we get a grid of
+positions. Great. Uh, everything worked.
+But I want to show you something. Uh,
+this, uh, happens when, uh, we use the
+FX map
+node. The FX map node has the 0
+coordinate in the center. uh and uh
+usually the 000 coordinate in the
+substance designer it's here at the top
+left corner. So if I go here and
+deactivate the tiling mode you can see
+that um we're actually uh starting from
+here and we only um fill the space in
+this region because 0 0 is here and
+nothing else is visible. So we always
+when we do when we're like this, we
+always go here into the quadrant node
+and we use the branch offset to offset
+everything with the 0 0 here. So in
+order to do that, we just need to put
+like a minus
+0.5 and minus 0.5 here. Okay, that's
+great. Now we have it correctly. And
+it's good because now we can also use
+textures.
+uh to uh work with the points uh how we
+wanted. So maybe uh we can uh how we did
+before maybe we can we can go and
+uh we can access or change the scale of
+the of the points based on a map. So
+again, you know that I love pearly
+noise and maybe decrease the scale and
+then something like
+this. So how to use uh this pearly noise
+to affect the points based on this
+um uh based on this map here. Uh well
+that's an interesting question cuz uh we
+kind of don't have direct access to how
+we had before which we can't just go
+here inside and say like hey uh get
+position uh get float to position and
+then sample
+uh
+gray and then vector float
+2. I don't think this will actually work
+correctly. So, it seems like it's doing
+something, but uh not entirely sure if
+this correct. Maybe I can just
+um maybe I can just do this.
+Um scale everything down a bit so we can
+see
+more. So, if I do
+this, everything disappear. But now I
+can increase things. So it seems like uh
+even though we're you using right I mean
+should be
+the the texture one not zero. So
+nearest texture one. Okay. And then
+decrease it's it seems like it still
+doesn't work correctly. You can see that
+there seems to be
+the the circle seems to have the same
+the same size everywhere. Okay. Um maybe
+I can try and test it because I
+multiplied all the values uh by this uh
+0.04. Maybe it's making it difficult to
+see. Uh let me try and I don't know just
+uh use the levels to increase the
+contrast. So uh I will make this more
+like contrasty to have like uh very
+sharp contrast between black and white.
+And this should cause some uh of those
+dots to change sign
+sizes. But again seems that it's uh not
+working. It seems like it's affecting
+everything at the same time. So no, not
+individual, not individually.
+Okay.
+So it means that we need to change our
+setup and use a different method. And
+currently you remember that we
+calculated already our position. So our
+position it's read um from the texture
+itself. So what I can uh actually do is
+um take the same logic from here and
+this is reading the information from the
+from this texture here and it's plotting
+uh
+the it's plotting the points into this
+space. But I can use the same
+information. So duplicate one or just
+copy it and move here into the pattern
+size itself. Copy it. And then I want
+cuz this is producing the positions for
+uh my disc. But at those positions, I
+want to read from uh the map of my
+pearly noise and uh resize the discs
+based on the value of the pearly noise
+at each circle position. So I have the
+position here and then I just need to
+sample with this position. I need to
+sample the pearly noise. And now I want
+to visualize this of course and then go
+here and put like a vector float two and
+then probably I should multiply by
+something a scalar
+multiplication maybe a
+08 something like this and just output
+this one. Okay. So now it seems to be
+working and it's working correctly
+actually. And if I change this this
+order, you can see that it's uh it's
+correct. And also I want to test it. So
+I can just
+uh maybe use a blend no uh node. I think
+this is a bit more clear and
+uh in the way we're used to work.
+So what I'm expecting to see is that uh
+in those bright regions I see I should
+see like brighter or not brighter but
+larger discs and in those areas where
+it's dark I need to or I expect to see
+um smaller discs. Okay. So, I'll just be
+decreasing. And you can see that when I
+have discs in the larger region, uh, in
+the brighter region, the discs are
+larger and in darker regions, the discs
+are, uh, smaller. Okay, good. Now,
+changing the
+disorder actually shows that our thing
+looks correctly. Good. So, still, uh,
+why do we work like this? Well, it's
+sometimes useful to have access to uh
+the information like this in a texture
+because for example, let's say you could
+just put a blur node after this and it's
+going to blur between the pixels and
+remember those are positions. So then
+when you read those positions here uh
+that are blurred this uh map of disk
+here it's going to be uh affected by
+that and I think that's a very
+interesting way to to work with. So let
+me uh do um another example or maybe
+continue on this example to show you
+like a different thing uh to
+do uh to work with the data. I'm going
+to just duplicate this and say like hey
+I have the list of position here and
+then uh I'm just plotting things here
+and this is really important to have
+this distinction right now. So it's good
+to introduce it. So let me put a
+frame. Where are the
+frames? So
+data and draw.
+This is a new concept, a new idea that
+is really really powerful. We are
+splitting the data from the actual
+drawing. So we kind of dividing our uh
+work into pieces. Maybe you can think
+about it like data space and draw space.
+This is a critical new new concept that
+is going to be very very powerful. So uh
+make sure that you spend a bit of time
+and try to understand or get you
+yourself more comfortable with this idea
+because it's really really powerful
+separating the data from the draw. You
+work with the data and you work in a
+particular way or you have like specific
+tools for the data and then once you
+work with the data then you get to
+actually read the data and draw it. This
+is really really powerful. So, I can't
+emphasize it enough. So, data and
+draw. Maybe I make data red cuz it's
+critical and important and draw green
+cuz it's very we're going to get the
+green light. Okay. So, I have this
+example here and then I have uh this
+duplicated example here. But I want now
+to work with the data separated from the
+drawing itself. So go here at the data
+and now these are our positions, right?
+And I want maybe to move the points
+around or uh do something to them. I can
+rotate them or stuff like that. Well,
+yeah, I can do this. So this is my list
+of position and I want to maybe scale
+them uh and not have them being spread
+on their entire space but maybe have
+them occup occupy like a smaller region
+in a in the center or towards the
+center. Well, for that I need to do the
+following. I need to do like
+um I really want to scale things but
+from the center. So in order to do this
+I need to uh
+subtract I will do
+subtract 0.5. So this is our pivot of
+scale. Then I will use a scalar division
+node. So scalar division load two. I
+will put a one for now here. So dividing
+by one it's going to do
+nothing. So actually make make the
+connection correctly. And then at the
+end I will add back this pivot. So I
+will be just adding this like so. Okay.
+So maybe make this a bit more visible.
+So this will is what we are doing. I
+will put this in a frame and then say
+like
+scale with
+pivot and then plug this thing here. So
+nothing changed right uh because we
+divided by one. So of course division by
+one live le lives the things as they
+were. But now I can maybe increase
+this and it seems like all our points
+are
+shrinking towards the center. Right?
+That's pretty cool stuff. Uh now let's
+uh try and play with rotation.
+And also this is interesting because the
+order of operation really matter all the
+time. So we scaled things but I want to
+maybe
+um change the rotation of all those
+points together. Uh how to do this and
+where to do this? Well to be completely
+honest even though I've done this so
+many many times I'm still confused about
+the order of operations. So I'm just
+going to guess and check. So, I'll be
+either putting the rotation here between
+the positions and the scale. So, here.
+Or maybe I'm going to put it here.
+First, let's try here and see if it
+works. So,
+rotate. So, we have this rotate
+2D. We're going to put the vector here.
+So, this is the positions that we want
+to rotate. Uh we want to rotate by a
+certain angle. Uh for now, we're going
+to put zero. And uh we also want to
+rotate uh with the pivot. So maybe from
+the
+center maybe 0.5 and 0 five something
+like this right and also sometimes you
+just need to play around. I think
+depending on how much you play with and
+how much you understand your examples or
+the things that you do, you're going to
+figure it out. But sometimes I end up
+changing this from 0.5 and 0.5 to zero.
+Something like this. So it depends.
+Um plugging this thing uh in and then
+use this here. So it seems to be that
+the effect that I wanted it's working
+just fine. Yeah. So it's rotating around
+the center. Uh maybe I can just play
+with this pivot. So you can see like if
+I change the pivot now it seems to be
+rotating around another point. So it
+seems to be rotating around this corner
+but I'm going to just leave it like
+around 0.5 and 0 five. So I have like
+scale uh this is
+rotate and then I also want maybe
+control to move. So I have move scale
+rotate. Those are the most common
+operations that we do. So I can either
+add rotation I'm sorry movement either
+here or here. Well, again I don't
+remember the correct order of operations
+but I will be a testing. So maybe I'll
+add here or here. Let me try here cuz I
+have like an intuition like hey we
+already did the rotation, we already did
+the scaling. Maybe after everything we
+should do the movement. So add for
+movement we just add or
+subtract. Adding nothing does nothing
+but we need to put like a float two and
+then see what's happening. So it seems
+that uh the movement is correct. So
+maybe at the end we should do the
+movement up down left right. Okay. So
+maybe let me move this. And I want
+again. So even if I move so currently uh
+my center of uh points or my center of
+the mass of all the points is in the
+middle of the texture. But if I move
+things around, I still want my points to
+move about their own center. So still
+want to move from here, not from any
+other uh center. So I hope this is going
+to keep my rotation meaningful. And yes
+indeed it's still doing like so which I
+really like. Perfect. So we have
+rotation, scale, and move. Maybe this is
+the order of operation. I always
+encourage you to test things. So
+move. Great. Uh and this is how you work
+with um this is how you work with data
+uh in uh in Substance Designer. And the
+critical point here is that you want to
+split things into data and then you want
+to draw. So great uh let me uh do
+another example in which you're going
+we're going to blur uh the node or blur
+the data. So for this case I will be
+doing a
+um white noise
+again. And we're going to decrease this
+texture of course cuz we don't want this
+many points.
+Maybe 32x 32 something like this. So
+we're going to create a grid of 32x 32
+points. Uh duplicate this node once
+more. Change the random seed.
+Um we can uh what I really want is again
+to create a list of points like this.
+This time is the list is going to be two
+dimensional not in one row. Uh instead
+of using a pixel processor uh which is
+totally fine. I can just use
+a RGB
+merge. Okay. So this
+this and we need to
+uniform textures maybe absolute
+uh uniform colors sorry not textures put
+a zero for the blue
+channel dock it and then maybe this one
+for
+the okay so this is a list of random
+points but it's stored in 2D and the
+reason for this is because I just wanted
+to use the blur node. The blur node
+doesn't work really good or I think
+doesn't work at all with a 1D texture
+like this, but it works with a texture
+with a 2D texture. So that's the only
+reason that I'm doing a list like so.
+Okay. So I want now to show you how to
+uh use the FX map node to plot this list
+of 32x 32 points. So FX
+map starting again from scratch
+grayscale. Do
+this. Okay. Bring
+the go inside. I mean sorry bring the
+roughness down. Uh going into the tiling
+mode for now and just set it to no
+tiling. Uh this is good. So you will not
+forget that your uh 000 it's actually in
+the middle here. So you need to go in
+the beginning just for debugging
+purposes to uh go and deactivate this uh
+tiling and then you'll know for sure
+where our or where your things are in
+space. So going inside make a dis make
+it
+small maximum uh pattern size
+0.05 0.05
+05 I mean even
+more something like this. Okay. Move it
+such that now the zero zero should be
+here. So move it pattern offset branch
+offset here is where we move this
+generally. So now it moved here and now
+it should move at the top. Great.
+Now uh do
+a loop like
+this. Okay. So in this we're going
+to let me think about it. This is
+columns. This is rows. I will just uh do
+two of those things together. Chain
+them. So this is a nested loop, right?
+And uh we're going to make this is going
+to read um each pixel in a row and then
+this is going to uh go down row by row.
+So this is going to kind of
+um be like the columns but maybe no the
+simplest way to think about it is like
+hey um I mean this is the in the inside
+loop. Yeah. So disregard for a bit
+everything and just let's uh go through
+this again. So this first loop it's
+going to say like okay read pixel by
+pixel from this texture. Uh so I'm going
+to zoom on this one and it's going to be
+the first loop is going to or the first
+iterate node is going to be like this.
+uh read uh each pixel in a row one by
+one and then when it finished itself
+then this loop is going to move to the
+second row and it's going to read one by
+one and then this finishes and then this
+loop goes to the next row and things
+like that. So the the inner loop it's
+going to read all the pixels in a row
+one by one and then the outer loop is
+going to move from row to row. Okay. So
+maybe
+um I don't know how
+to how to name them correctly. Usually
+there are like indices maybe we can put
+like I like in I++ and then this may be
+J something like this. So inner and
+outer loop and I will be leaving this a
+bit above just to say that hey this is
+the outer loop. Good. we need to specify
+how many times this thing should
+iterate. Um let's make it
+um in the correct way. So if I change
+these textures, this updates
+automatically. So this texture is 32 by
+32. Well, in this case, I will be going
+here and just say like, hey, iterate 32
+times. Iterate 32 times. But there's an
+automatic way cuz if things change then
+I also want those variable those
+parameters to to change. So instead of
+manually changing them I will uh use
+variables. So we got uh we get um node
+that's called get
+size get size color. We have 32x 32.
+This is outputting a vector float too.
+need to go into this one, add a
+parameter, then float two, right? Plug
+this thing here and then uh this part
+this uh first component of our vector
+it's going here at the top. So in this
+outer loop get float
+to
+input swizzle float text and then I want
+to put this as an output but I can't.
+This is because again I need to pay
+attention to the required type of
+variable that substance expects it's an
+integer. This is a float. I just need to
+convert or to cast it from float to
+integer. So just to integer. So with
+this one selected, press space and say
+two to integer. Okay, great. This works.
+Perfect. Uh now uh need to output this
+one. Go into this one. Go
+again. Get float to its
+input. Swizzle float one. This is Y. And
+then I need to go with this one. and uh
+two
+integer. Okay,
+great. Perfect. Uh we have those things
+together. Uh let me think about
+something. Yeah. Well, for now, just
+leave it like this. I will cover uh that
+aspect that I wanted to talk about a bit
+later. So, currently we set it up the
+inner and outer loop correctly. Okay, we
+need to go inside and just
+um read these positions. Okay, so where
+should we go? We go into the quadrant
+node. We get into pattern offset, right?
+And we're going to get
+um we going to get the variable. So we
+need to get float and we need to get the
+number and
+um it seems like we only have access to
+this variable which is dollar number and
+uh which one is it? I mean this is
+producing the dollar number. This is
+also producing the dollar number
+variable. Well, which one we're actually
+getting here inside? Well, this one
+here, it's uh reading information from
+this one. But we also need access to
+this thing here that's producing the
+dollar number var variable. So, how can
+we access this? Because we need al we
+also need to access this thing. Well, we
+need to go here inside and take this
+one. get float dollar number and just
+put a different name. So for example, I
+would say like
+um
+set and I will set like
+outer outer loop. And this is like you
+can put whatever name you want. But um
+in order to have access to this to the
+dollar number variable that this is
+produces that this produces you need to
+uh get it one uh level below it and then
+um set it to a different name or maybe I
+can put like just J. I think this is my
+might be simpler. Uh and then next I
+need to uh connect these things together
+because I can't just go here and set
+this one as an output. So for this we
+have the sequence node which is like
+separating lines of code. This is the
+first line of code. It's executing this
+and then uh this is the second line of
+code and this is executing this. And we
+need to plug the the thing that it's
+required as an output in this channel
+needs to be the the last thing that we
+put into the chain of sequence node. So
+currently this is how many times we want
+uh the iterate node to iterate uh which
+is 32. And then we need to set this as
+an output. So now we have this is
+producing the J variable. So this is
+producing the dollar number variable
+which is fine but we need so maybe for
+the sake of consistency we can do this
+here. So now this dollar number it's
+from this thing here and I can go here
+and set it to I. So we have I and J and
+then put a sequence node and then we
+just have like hey we want get float we
+want I we want I it's from 0 to 31 right
+and then we want to divide it and we
+want to divide it well I can put it here
+maybe 32 if I want but I don't want to
+be hard coding numbers so remember we
+have get flow 2
+input right and we want this so this uh
+input x it's reading this part from here
+and I want that so I divided by this and
+then also we want
+j divided by this so y It's the second
+component of this vector. This one
+here. And this is producing us the
+coordinates that we want to read from.
+So we need to make a vector out of
+them. Okay. And kind of this is our
+dollar position variable but in FX map.
+And now we sample from it. And then we
+need to extract the information that we
+want. which is the position here. Okay.
+Now, plug this thing here and set this
+one as an output. So, voila, we have
+read the points uh from our texture. And
+now that we have it here, we can just go
+and do the blur. So, does the blur do
+anything? So, it seemed that it's doing
+nothing, which is weird. Why? Let me try
+and uh figure it out again. So, double
+click here. Maybe sometimes the
+Substance Designer gets weird. I don't
+know. Or maybe I've made a mistake which
+I haven't seen yet. Uh but when things
+uh go sideways, I just double click the
+entire graph and maybe change the seed,
+something like this, and then do the
+blur node, which for some reason it
+seems that it doesn't want to work
+anymore. Just put like another blur
+node. Yeah, this one wants to
+work. This one got upset and it doesn't
+want. Or maybe it's uh maybe the
+intensity it's a bit too low. Probably
+that's the reason. Maybe five. Yeah.
+Okay. This seems to be working. Sorry
+about
+that. Okay. So, let me preview the
+points.
+So voila, we have data and now we're
+currently only working with data and
+when we blur it we get this kind of
+effect which I think it's interesting
+right so again uh we're working with uh
+data separately from the draw and again
+I want to emphasize this so
+data and
+draw and do again the green and the
+red something like this.
+So uh if you uh want to uh make more
+sense of this and maybe in some uh
+future tutorials I'm going to show more
+of why and how to use uh these kind of
+things. ju let's just uh think about
+like hey I want to do a simulations
+where I have points maybe those are like
+I want to do like a particle simulation
+or anything like that and I have those
+points and uh these points are like
+positions but then I can uh take those
+positions and add like velocity vectors
+to them and then update the position
+based on forces and velocities and then
+I can also use like uh maps like
+pearling noise to say like hey uh maybe
+uh those points points are like bigger
+and if they are bigger basically they
+have like more force or they move slower
+or faster and things like that. So you
+can get like pretty crazy and
+interesting just by using with
+information like this. So here I have
+positions and I can add to position I
+can blur them I can rotate them and
+things like that and then after I work
+with my data and I just take the data
+and plot it or draw it. So uh that's why
+I think this work workflow is pretty
+powerful and let me so we currently have
+the done this in which we had the data
+and then we
+um we use the FX map node to just read
+the data. Uh before moving on into the
+last
+um section where uh it's going to be
+like um the most advanced example, I
+want to show you like hey the FX map
+node it's not only for taking in data
+and reading it but you can also generate
+data with the FX map node. So the FX map
+node could up to this point was used to
+draw but it can also be used to generate
+data and also used
+uh to take that information and inside
+Android. So I'll be making um another
+simple example of FX map like so. Make
+it
+grayscale. Make
+it the roughness like so. For now I I'm
+just going to leave the center to be at
+the in the to be the 0 coordinate to be
+in the center. So just bring
+a
+disc. Make the
+disk something like this and something
+like
+this. Perfect. So I have the disk right
+now and uh I want to just create a
+spiral a spiral thing from this point.
+So maybe
+uh use an iterate
+node for now. Maybe just do like 32
+iterations. Set this one as an
+output. Go into pattern offset. Uh I
+will be using
+um this cartesian node which takes in a
+length and an angle and outputs a
+position. So maybe the length will
+always be
+constant. Maybe, maybe
+not. Well, I'll figure it out. So for
+now, I will be just putting like a
+constant
+length, maybe
+0.05, I don't know. This is going to be
+the radius. And then an angle. So for
+the angle, I have 32
+iterations, right? Uh, yep. And then I
+need to take dollar
+number
+divide load by
+32. Hard coding is not good all the
+time. So I shouldn't be doing this uh
+because if this number changes then also
+this need to change. But currently uh
+because for the sake of simplicity of
+this example I will be letting it like
+this and it's not like super wrong to do
+it but just for the sake of making
+things really procedurally make sure
+that you store things in variables and
+then once you update a variable in one
+place then that variable gets updated
+everywhere else when it's called. Right?
+Okay. So this is a radius. This is an
+angle that goes into here. And this
+needs to be now this outputs from 0 to
+one. Right? Uh the the large number it's
+a list of number from 0 to 31. If you
+divide everything in this list by 32,
+you almost get a range from 0 to
+approximately one. Just a bit below
+that. And then this is taking an angle
+which uh this node like to have the
+angles between zero and 2 pi but this
+one goes from zero to one. So in order
+to make it happy we need to multiply
+this by 2
+pi and plug this thing here and then if
+we output this we're getting a beautiful
+circle. As I mentioned, uh this allows
+us to do uh things around the circle and
+then this is the
+radius. Okay. So, what if I want to make
+a spiral? Well, as you can see, what I
+actually need to do is I need to make
+the radius instead of having it a
+constant, I need to make the radius to
+be like some something that changes in
+time. Uh well, I can do that. uh I
+already have this thing here that I
+computed. So also it changes in time.
+It's something that changes from zero to
+one as the number of iteration
+increases. So I can just use something
+like this. Uh maybe I'll start with a uh
+I'll use this one to have like a star
+variable uh radius of 0.1 something like
+this and then from this I want to
+increase. So I can add to this. Adding
+nothing does nothing. But then if I plug
+this link here, you can see that things
+kind of spiraled out of control. That's
+totally fine. Uh if you want to get rid
+of the noise thing going on. Uh this is
+because of the tiling mode. If you
+deactivate it, you can see how or what
+really happened. And maybe this
+increased like really too fast. I can
+just multiply this by zero. This returns
+back to how it was before because
+multiplying this thing by zero, it's
+always zero. But then I can just put a
+number here and increase this number. So
+this is going to let us do this. Okay,
+so we're getting a spiral like that.
+Okay, maybe uh what if I want this to
+wind uh more around the circle? How can
+I do that? Well, uh that's simply like a
+really simple thing to do. I can just
+multiply this by another number. So,
+I'll be putting after this a
+multiply. Multiplying by zero does
+nothing for the angle, but maybe I can
+multiply it by
+two. So, I mean, for now, just leave it
+to one. This returns to what it was
+before. below one it's like this and
+greater than one if I can actually
+manage it's uh do the spiral like this
+okay uh maybe I want to add more points
+I think 32 points are maybe too little
+so I can put like
+256 and um kind of I really like this
+pattern but uh it's not like super
+correct remember that we also need to
+divide by 256
+here. So now it's like this. Now seems
+to be
+uh what we should be getting.
+Okay. So perfect. We made it like this.
+We made a drawing like this. But what if
+I wanted to instead of having the
+drawing here, what if I want the FX map
+node to produce the data and then I can
+work with that data even more. and maybe
+I don't know process that data somehow
+or extract information from it and then
+redraw it. Well, if you remember here we
+had like a list of texture that had 256
+points where currently here I have a
+drawing that has
+256 circles uh or discs that produce
+this spiral. Right? So it means that I
+can uh try and uh do this ethics map but
+instead of drawing it directly I can
+just use it to create for me a list of
+positions that are the same information
+as the spiral and then lately I will use
+another FX map node to read that uh data
+of positions. Right? So how to do it?
+Well, I'm going to do another FX map
+node
+uh which is uh FX map. This one I'm
+going to leave this one as color because
+we are going to create a texture of
+colored pixels. But I want to change its
+format and resolution. So I will be
+setting this to absolute. The width it's
+correct. It's 256. This is how many
+points I want to output. But then I want
+the height to be only a row. So zero is
+going to produce a one pixel row for us.
+Going
+inside I will be
+uh making sure a few things happen. So
+roughness I will be letting this to
+zero. I also mentioned that I want to
+change the format. I usually work
+whenever I work with data I usually work
+with 32 bits precision. So output format
+it's in 32 bits and then uh I'm going
+inside and um for the pattern size I
+will choose a
+square. So everything went white before
+it wasn't white. So if I go here into no
+pattern you can see we have like this
+gray white checker like pattern. But
+then if I go into square then everything
+turns into white. So first of all we
+need to figure out the uh size of the
+square. We want it to be one by one
+pixel. So with the quadrant not selected
+going to pattern size empty function you
+have this variable get float 2 which is
+dollar size. This is the information
+that it's actually the size of the node
+itself which is 256 by 1. And we just
+need to divide uh
+one by this variable. This will always
+produce a square that will have the size
+of one pixel. No matter how much we
+change the resolution, no matter in what
+way, this expression, this division will
+always produce a pattern that has a one
+size pixel, which is what we want. So,
+where is our pixel? Well, our pixel is
+somewhere in the middle of the texture,
+which might be a bit tricky to
+find. So, maybe uh I kind of can't see
+or find Oh, there it is. This pixel here
+is in the middle. But I want it to start
+here at the beginning. So for this just
+go in here and into branch offset. If
+you remember, we need to put like a
+minus.5. So now we should find our pixel
+here which is perfect. And now we want
+to produce our data right. So we need an
+iterate node.
+This iterate node should be like
+256. Make it the output or the root
+node. Then make this one as a max. And
+then uh we will uh be working with two
+channels. So for one we want to take
+this square and move it one by one.
+Right? And then we also want every um
+pixel in this texture we want to
+actually contain the position of the
+dots in our spiral. So for this we're
+going to uh use
+the luminosity channel and here is where
+we're going to produce the information
+the actual positions right so uh what
+we've done before let me
+um how should I do it should I copy that
+thing maybe don't copy it uh try to
+rebuild it from scratch but then for
+exactness we um we might be if we want
+to make it exact. We might be revisiting
+that node just to have a look at of what
+values we used. So, but I remember we
+had like a cartisian node, right? And
+then
+um we had
+uh um we had a
+constant radius which was
+0.1 like so. And then we had something
+that we multiplied by 2 pi an angle. So
+multiply by 2
+pi. And then we also multiply this by
+two after everything. So
+multiply by two. That was like how much
+we want uh the winding around the center
+was our spiral was doing. So maybe float
+uh two something like this. So this is
+our setup for the angle. This is our
+setup for the radius. If I remember we
+added something here. And then we need
+to put stuff here. So our changing angle
+is coming from the get float from the
+get float number. We need to divide this
+by 256,
+right? Sorry,
+256. And then plug this thing here. So,
+this is going to create our uh circle.
+But then we also need to change this in
+order to make our
+um variable radius. So we took this one
+here but we also multiplied it by
+something. Okay. So float maybe
+0.1. I don't know something like this. I
+mean 0.1 but then I actually type 0.2.
+Maybe
+0.1. Okay. So this is the information.
+This is the colors that are going to be
+on the pixels. If I put this one as an
+output node. Well, currently it doesn't
+let me because it wants either a float
+or a float four. This is a float two.
+So, we need to put like another to make
+it a float four and we need to complete
+the stream with information. So, zero
+for the blue channel and then one for
+the alpha. This allows me to do this.
+So, we can see that this pixel here got
+colored with something. But currently, I
+have like 256
+uh squares sitting on top of each other.
+So, I also need to move this thing
+around. So, well, I want to show you a
+cool trick that you can do. And I also
+want you to get used to this. We usually
+find that it's really, really helpful to
+compute everything into the luminosity
+channel. This is the first thing that
+Substance Designer computing the FX map
+node. It computes the luminosity then
+the pattern offset or I mean branch of
+set pattern offset size variations and
+things like that. It's really really
+helpful to set up everything here and
+then just call variables later because
+you might be finding yourself
+recomputing things multiple times but
+you already had them computed here into
+the luminosity. What I'm talking about
+is I already computed this dollar number
+divided by
+256 and uh I don't want to compute it
+here again. So if I will be moving into
+pattern offset empty function then I
+will be needing to get the dollar number
+and divide by 256 here as well which I
+don't want to do. Right? So then I can
+um take uh this thing here and name it
+offset. So I'm going to set this uh as a
+variable. So not the sequence node. I
+mean I will be using the sequence for
+later set. Okay. So I'll be naming this
+computation here just
+offset. I mean X
+offset. And remember how you spell
+things. This is really really important.
+Make sure that you remember the name or
+how you spelled it. So we're storing
+this computation here and then we plug
+this thing here and we lastly in the
+sequence now we plug the thing that we
+want to output. In this case it's our
+float 4 from here setting things as an
+output. Well uh nothing changed but this
+is correct. But now we want to use this
+variable here. Okay. So going into the
+pattern offset, we need to output a flow
+two. We need to make a vector flow two
+for the y component because we're not
+moving nothing up and down. We're just
+going to plug a zero
+here. But here in the x, we want to take
+this square and move it like one by one.
+And we just made the variable for that
+which is X
+of set. Right? So if I've done
+everything correctly, now this texture
+should be filled, this entire row should
+be filled with one by one squares
+containing the positions of our spiral.
+So let me set this as an output. And
+apparently
+uh it looks like so uh which is great.
+Now let me uh try and plot it. So now we
+have this almost the same thing as
+here but it's stored in a data and we
+can take this data and further more um
+play with it like how we've done before
+which is great right but now I want to
+take this data and read it and plot it.
+So, we split everything
+into
+data and draw, which I'm going to do
+next. So, FX map node, make it grayscale
+this time. Plug this information into
+image input zero. Go inside, set a
+disk. I mean, maybe not a disk. Uh,
+because I want to use the opportunity to
+show you something else. Uh just a
+square for
+now. Make the square smaller like
+0.05
+maybe
+155 something like
+this. Iterate. We want to iterate 256
+times. I'm going to hard code for now.
+But make sure that if you want to be
+fully procedural, make sure that you use
+variables instead of by hand typing
+numbers here. Okay. Uh go here inside.
+We just want to read information in
+pattern offset that it's going to move
+our squares around. We want to
+get the not the float too. Sorry about
+that. We want to get the number
+divide by the
+56. Make a vector from this sample our
+input
+data. Extract the X and Y component.
+Then set this as an output. And voila,
+we have our spiral uh which is coming
+from the data itself that we just wrote.
+But uh I also want to show you something
+else maybe and if I'm going here and put
+like um
+05 uh what if I want for example even
+less maybe to
+five. What if I want to orientate uh
+those um
+uh these uh rectangles? What if I want
+to orientate them? So in order so have
+them not sitting horizontal but actually
+being aligned. So this one should be
+going from here to here and this one
+should be going to from here to here and
+things like that. How can I do that? Can
+I even do it? Well, yeah, I can uh do
+this. So uh I can uh just go here and uh
+take this information that I already
+have. So this is my position and I need
+to take the ran 2. So this is giving me
+an angle. Okay. Uh and then this is
+outputting from minus pi to pi. But I
+want it to be from minus pi to pi. I
+want to be in the 01 range because this
+uh pattern rotation here reads only from
+0 to one. So 0 to one turns. Okay. So
+you can see that this is what we need to
+do and then this is from minus pi to pi.
+So first of all we divide by
+pi and now this is uh from minus pi to
+pi. Now it's between uh minus one and
+one and I need to turn this into um one
+and one. So we have this node minus one1
+to 01. Perfect. And I want to set this
+as a
+um
+set. I will be saying like
+rotation. Okay. And then I have this
+sequence node. So I'm computing a
+rotation. But lastly, I want to output a
+position. Nothing changed. But then if I
+go in here into
+rotation and get our variable which just
+computed above and call
+it and then set this one as an output we
+should be seeing uh an alignment. So
+okay so we have it like this which is
+interesting. I kind of like it like
+this. So before was like maybe zero. So,
+it was like this before and now it's
+like this, which I like. But then what
+if I want those things to be uh making a
+line, so to speak. Then I just go in
+here and um do something like this. Add.
+And I it seems like I need to rotate
+90°. Well, remember we are here in uh
+turns, which is like 0 to one. It's a
+360 degrees rotation. Well, a 90 degrees
+rotation is like
+0.25. So now we have it like this,
+right? And everything seems to be like a
+spiral line. So depending on how you
+like it, you can leave it like this or
+like this. I'm going to leave it like
+undecidedly as a diagonal. Right. Okay.
+Perfect. So maybe I want to add some uh
+randomness to to this thing. Well, I can
+do that if I want. So I have the data
+here. I have the plot here. I just want
+to expand the data space more. Make a
+pixel processor
+node. Right. Make this absolute the same
+size. It's important to have it the same
+size. I mean zero here. Also make it the
+same depth.
+uh format I mean 32 bits take this thing
+inside
+uh read the information. So get flow 2
+position sample set as an output. This
+is our information. Nothing changed. If
+I plug this thing here, nothing
+happened. But then I want to take those
+position and move them around randomly.
+Can I do that? Well, yes I can. So, I
+want to do like a thing. Uh, maybe take
+the white noise
+again. Make it a list
+of random
+angles like this. Plug this thing here
+inside. Read this thing again. I mean,
+as well.
+And then I want to add to those
+positions here. So swizzle flow to. So
+in X and Y channel I have those
+position. I want want to add something
+to it. And uh these are going to be some
+random angles coming from this texture.
+And then I want to use those angles to
+create some uh randomly pointing vectors
+uh and add those uh to my original
+position. Uh how to do this? Well, uh
+it's kind of pretty easy. I need to use
+another cartisian node. This goes where
+my angle goes, but this is from 0 to one
+and this needs to be from my from 0 to 2
+pi. So then multiply this by 2
+pi. Perfect. And then lastly uh we need
+to do
+uh certain constant radius. So maybe
+zero for now. Just add this. And
+then load four. Load
+two. Set this as an output. Okay.
+Nothing changed yet because uh this
+radius is uh still zero. But now if I do
+this, you can see like everything it's
+uh randomly pushed around. So I'll be
+leaving this just as like um maybe 0.01.
+Right? So we had this thing where
+um we have data and we basically worked
+with the data. itself uh and then we
+read the data and draw drew it. Uh and I
+think this adds like a really a cool way
+of uh working around and adds a lot of
+new possibilities and
+flexibility. Perfect. So I think we

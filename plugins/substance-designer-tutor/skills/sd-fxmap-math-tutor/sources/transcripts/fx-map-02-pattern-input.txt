@@ -1,0 +1,2329 @@
+the second part and we're going to move
+to to the third part of uh our video in
+which we're going to um make a more
+complex example using the FX map node.
+So see you
+there. Okay, so we're moving into the
+last chapter of this video. Um, and I
+think this one is the the most
+interesting and
+um more useful part. So I think
+definitely this is something that I
+haven't seen um in any substance
+designer tutorials so far and this is
+something that you should definitely uh
+know and understand. And I think for
+these examples I'm going to create
+something like a plant or like a branch
+of a plant. But I think this uh idea
+this concept it's going to be be very
+very useful and very natural for uh
+using FX map and using loops and using
+nested loops and branching and uh
+switches and things like that. So
+uh let's get us started right. Okay. So,
+FX map
+node. Make it
+grayscale. Make I mean go inside
+um make it to a
+maximum blending
+mode. The pattern should be a
+dis. The pattern size should be
+0.05. I mean even less than that
+0.005 and the same for width
+0.005. Okay. So it's a point in the
+middle and then I will be using an
+iterate node for
+this and we're going to start simple but
+build from from that. And you're going
+to see how actually powerful this is and
+uh what really working procedurally
+means. You're going to see the amazing
+amount of control that uh that you could
+uh get by um by using those or these
+ideas and techniques. Right? So
+connecting this set this thing
+as a root. Good. And uh up to this
+point, I think uh you just need to
+probably watch this part a few times.
+This really took me kind of like one
+year to figure out. So I've made around
+50 or 60 examples and literally I just
+had to go through it and try to guess it
+and try to come up with a workflow that
+makes sense. So, I think in the
+beginning it might be
+uh apparently confusing, but I can
+assure you that once you get it, it
+totally makes sense. I think this also
+this part of the tutorial is going to be
+a bit more difficult but uh if you're
+brave enough I think this will
+definitely pay off and definitely will
+raise uh your level of understanding
+uh in substance designer and you'll know
+more if you go through this and really
+fight to to understand the ideas and the
+concepts. So be
+prepared going inside.
+Um I will start to use variables and
+things like that. So first of all um I'm
+going to use some naming conventions. I
+don't know why, but I liked how we have
+in Houdini some variable names. And
+basically, I just borrowed from that and
+used the numpt MP num notation. So, I'll
+be using that. Feel free to use whatever
+you want. You don't have to follow
+exactly what I want, but for some
+reason, I just uh stick with that. So
+uh I'm going to do something like this.
+Um I will be creating like the main body
+of the like the main part of the branch
+which is basically like the the main
+spine. So this is the c the first thing
+that I will do and I will just type like
+a float here.
+So
+load and then I will be maybe using like
+1,24 for this. Uh I will be setting this
+to so I will be naming this
+um
+numpt
+0 and then oh I will be using a sequence
+node out of this and then just turn this
+into integer.
+here. So I created a variable. This
+variable uh just stores the number
+1,24 and then I took this number which
+is a float and then I convert it into an
+integer which is the thing that I want
+to output from here. So this is just uh
+you know a bit more appropriate way to
+do this kind of stuff. So it's kind of
+the same thing like this. Just took a
+iterate node and set it to
+1,024. So
+it's almost the same thing as this but
+not just doing it manually. So currently
+I will be working procedurally and with
+variables. So I set like
+1,024 iterations. I named this variable
+so I can get it later and then I will
+set be setting this as an output. Okay,
+perfect. So now uh nothing changed but
+it executed like 124 times. I need to go
+here into pattern offset and then just
+get it. So I need to get the
+float dollar number. Remember we need
+it. I want to set this. So I'll be
+setting this to pin nam
+zero. Okay. Then I will be using a
+sequence node. So now I
+get pity num
+zero which I can get because I just set
+it. And then I will be divided by
+numpity zero.
+load numpty
+zero. So kind of what happens is like
+this is the I++ this is the uh thing
+that goes from 0 to
+1,023 and this is just uh the division
+by how many iterations we have which is
+a constant number. It's this number that
+we said here. So numpt is0 it's 124
+right numpt0 it's 124 now I just go here
+if I want change this value only here
+and then it will update here as well. So
+this division uh I made it but I also
+want to store it in a variable because I
+will call or use it later. So set I will
+be setting it to
+T0. Again feel free to use whatever
+naming conventions you have but it's
+important to have like I have zero and
+zero. Uh and this is important to kind
+of establish the level at uh where you
+are. So I'll be putting here like zero
+because I will be growing my graph up
+and down. So at least I should know what
+uh level I am at. So I'll be having like
+whatever goes up is going to be minus1,
+minus 2, minus whatever and whatever
+goes down is going to be plus and things
+like that. And this is just my
+convention. You can feel free to improve
+or do whatever you feel like makes more
+sense for you. But you'll also see what
+I mean a bit
+later. Okay. So, currently we made a few
+computations. Uh now we want to also do
+uh some stuff. We need
+a we need um starting position that we
+want to update over time. So go back
+here and
+uh float 0 0 and we want to set this
+as
+zero sequence do this do this do this
+now everything is chained correctly.
+Yeah. So we kind of have three lines of
+code. In this line of code, we assigned
+a 000 to the position variable. Then we
+assigned 124 to numpt zero. And then we
+lastly output uh this as how many times
+we want to iterate. Great. Now we want
+to take this and update the position. So
+we want to get the position which I
+think it was called zero, right? Pause
+zero.
+So going back here, we want to
+get zero. We want to add something to
+it. Add something to it. And we want to
+set it back again. So this is taking
+like every time it iterate is going to
+take the position. It's going to add
+something to it and is going to make
+this one as a current position. And then
+in the next iteration, the information
+from here gets passed into here. And
+then the cycle repeats. So this is now
+the position. This gets uh added to it
+something and then it's right as a new
+position. This new position gets here
+and it repeats this like
+1,024 times. Okay. So set it to pause
+zero and then
+uh do
+this and set this one as an output
+because this is what we want to output
+here. We want to output the position. So
+great, nothing happened uh yet. Uh and
+that's totally fine. This is because uh
+we didn't add anything here. But maybe
+did I think uh maybe it should have
+happened something here. Let me think
+about it for a
+moment. Why didn't it do
+anything? I think it should do
+something. So position zero was
+set. pattern offset. Uh we executed
+this. Oh yeah. No, no, no. That makes
+sense. Yeah, we really added nothing to
+it. So currently it's like
+this. So nothing changes, right? That
+totally makes sense. But then I will use
+this
+cartisian thing.
+And
+um I believe I also need to compute one
+more thing
+here. Okay. Uh get blow two. I need to
+compute the size of one pixel. And this
+is size and then float to one and
+one and
+division and
+swizzle and set.
+And this is going to be one p one
+p. And then sequence this as well. So
+I'm storing this computation in a
+variable called one
+pixel. And you will see in a minute what
+I'm doing right
+now. Go. Great. Go here.
+And into this thing I plug this. nothing
+changed. But then when I get load one
+pig, this is uh the radius or the length
+of the vector. And if I plug this here,
+you can see how we created a line. So
+what happens is that I I have circles
+that I have thou
+1,24 circles that are one pixel apart
+from each other. And this is actually
+creating a line. So this line is created
+by um by very closely uh by very close
+dots or discs uh together. So now that I
+have uh this distance from uh each uh
+disc to uh the other disc, I also want
+to
+uh use this angle to make this line uh
+curve or follow a path. So maybe I will
+do something like this. Uh I will uh use
+uh uh constant number to show you what's
+going on. So if I put this thing here
+and if I change it, you can see how it's
+rotating. So maybe I can rotate it like
+this. And I can go back in here and just
+say like, hey, the position maybe change
+the position and make
+it something like
+that. Just want to make like a branch of
+a plant that starts from here and then
+some somewhere like here maybe. I don't
+know. We'll
+see. So we have it like this. And
+currently because this is a constant you
+can see that it's a straight line but I
+can add to it something that changes in
+time. So this is like the main the
+orientation and then I can add to this
+something that changes and we have this
+thing that changes t0 this p num0
+divided by numpt0 it's something that
+ranges from 0 to one and it's stored in
+uh this t0 variable. So
+get get float and
+t0. It's already here. And if I plug
+this thing, you can see how the entire
+thing curved. And that's great. I kind
+of like it. Maybe I can do it to be like
+so. Okay. Okay. So, we're having
+a a basic shape that it's uh that's
+curving. And this is uh our start point.
+Uh maybe um maybe I can do something to
+it. Uh what if I want for example to
+have it uh wiggling uh a little bit. So
+maybe
+um go like a wavy line, something like
+this. Let me show you what I mean.
+Uh so now I have this thing going on. Uh
+I will ignore this curved f part for a
+bit and uh just put it aside. I will be
+taking this thing that goes from zero to
+one. I will be multiplying it by
+[Music]
+maybe let's say
+18. I mean I need a float for that. I
+can't just type 18.
+And then um this goes from 0 to 18. Then
+I need to put a sign after this. So this
+is turning everything into minus one to
+one. And then maybe I can just add this
+thing here and see what's going
+on. So now I have everything uh which is
+making this curve which it might be
+interesting. I don't know. But uh I want
+to blend between this and this. So you
+remember this was like a curve like so.
+And this was like a wavy thing. And
+maybe I just want to blend between these
+things. So
+uh let me actually do it like this.
+Delete this part here. And I will be
+just blending between those two things.
+So remove
+this. This is curved down.
+This is uh this wavy part and I want to
+make a transition between those two. So
+I can do a linear interpolation which is
+just the blend node. So
+lurp this and this uh and I can put this
+thing here and it requires another thing
+that we want to put here. For example, I
+can put this and this is like exactly
+like the blend node. You have the top
+layer, the bottom layer, and this is
+like the opacity. And then once you do
+this, it changes from the curvy line to
+uh to the I mean this is the curved line
+and this is the wavy line, right? And
+you can blend it like between these two.
+But I also can do another cool thing
+that allows me to blend along this path
+here. So I can make it to be like once
+it starts it can be like this and then
+it end it can be again like this but in
+the middle it can be wavy. So for this I
+need to take this thing and I also use
+color for you to see what's going on
+uh for debugging purposes for you to
+understand what's really going on but
+give me a minute. So this is ranging
+from um 0 to one. I need to multiply it
+by
+pi and then I just put a sign node after
+this. So all this computation what
+actually gives me something that uh
+starts from zero goes to one in the
+middle and then gets uh to zero back.
+Okay. So um if I do this I get this kind
+of effect right where it was like this
+in the middle it was like this in the
+beginning then it turn like this in the
+middle and then return to this uh at the
+end. So, um, maybe I can just multiply
+this by
+more. Maybe, I don't know, 64
+I wonder uh if this is like totally
+correct. Let me just check it because I
+said that I will be uh testing this for
+you. So, let me go into luminosity. And
+we're going to use luminosity a lot for
+debugging purposes. And at this point in
+time, I actually feel like moving all my
+computation in luminosity channel would
+be uh really beneficial. But for now,
+let me just get the dollar number
+variable,
+right? Dollar number. And we want to
+divide it by get float. We have it like
+um it was num it
+zero. So this should be from zero to
+one. If I output this, yeah, it start
+zero and ends with one. But then I want
+to make sure that my if I multiply this
+by pi and then I put a sign after this
+it goes like one uh it goes like zero at
+the beginning one at the middle and goes
+back to zero here as well. So yeah
+indeed. So you can see it's like that.
+So it means that we are currently
+blending between this
+and this based on this uh transition
+like how it's here. Okay. So kind of in
+a way I like it but also it feels a bit
+weird. So maybe I can play uh with this
+a bit more. So maybe I should take this
+range from here and change it. So put
+like a power node after this and
+load. Maybe if I put like a two
+power, it's changing like this. Maybe
+like a four power. So you can see how
+our effect our our wiggly effect start
+to be more concentrated like in the
+middle. Maybe if I put like even eight
+here. You can see how it's getting
+restricted here in the middle, which is
+something that I like and I want to to
+do, but also I want to decrease. So
+those wiggles are a bit like too extreme
+and I want to change them. So multiply
+the amplitude of my my sine wave.
+That's interesting. Why is this
+happening? If I do this, I get I should
+get like a total straight line. This
+makes sense if I do this. And then Oh,
+yeah. No, it makes sense.
+Yeah. Okay. So then I just multiply this
+by a small number. This is going to
+start and uh introduce the wiggles for
+us. Kind of like
+this. And I think uh
+maybe I just want to blend between
+uh this and this. So this is uh my curvy
+line. Okay. And uh I want to also add
+this as well. So curvy
+plus
+this I mean wavy plus the curve should
+be giving me this. Yeah, this is what I
+want. So I want to blend between the
+curved line with the waves and then
+adjust the curved
+line.
+So this is just the curved line. This is
+the current line, the curve curved line
+with the waves. And I want to blend
+between this two things based on this uh
+thing here.
+So this at the bottom, this at the top
+and then now this is the blending. Yeah.
+So this is the effect that I wanted.
+Okay. And maybe I just want to bring
+back uh some of the spread in those
+ways. So, not having them just in the
+middle here, but maybe
+more like Yeah, something like this. And
+then just add Yeah, perfect. So, I have
+my branch like this and I want then to
+rotate it. So, currently it's orientated
+in this fashion. I don't want this. I
+want to just change the
+rotation.
+Okay. Now
+reduce some of this
+winess
+bit. Okay. So again to recap, this is
+producing
+us a wavy and curved line. This is just
+the curved line. This is a blend between
+the wavy curved line and just the curved
+line based on this gradient here which
+is which can be seen uh in the
+luminosity channel. And then at the very
+end we reorientate the entire thing
+together. So we rotate
+it.
+Okay. So this is the position and I will
+be
+doing
+this and uh call it angle.
+Okay, now get back into
+luminosity
+and just output everything as one for
+now. Okay, so this is our uh current
+shape of the branch. And you'll be
+seeing a bit later that we can uh change
+a lot of the aspects like uh the length,
+the um the actual path, the luminosity,
+the thickness, the orientation. We have
+great control over all these things.
+Good. Uh we have this thing already
+happening and I want to branch from it.
+So I want to have
+branches. So for this I will be taking
+this node and move it apart and
+introduce a branch like a switch. Sorry.
+And point this here and point this here.
+So our drawing uh actually
+reappeared. And it's good that we
+already created the the logic here. Uh
+but we want uh now to take it and move
+it from here to here. And you you're
+going to see like this is uh helping us
+to propagate the computation and the
+variables through the tree. So for
+example um the variables that I created
+here will not be accessible or they will
+not exist in this part of the tree. So
+now we need to actually take this
+computation and move it here such that
+the computation and the variables are
+existing like higher up in the tree and
+they are accessible and visible lower in
+the branch and towards the leaves. Okay.
+So you're going to um see what I mean in
+a bit. So for now uh for this to happen
+I just need to take
+this entire computation and um copy it.
+Just copy this code. Go here into the
+selector empty paste everything
+together. Now, if I want to set this
+thing as an output, I can't uh because
+this is wanting us to um output a
+boolean type, which is a true or false
+statement. But, uh no worries. We're
+going to do this in a bit. So, for now,
+I will be just using a dummy boolean,
+which is just a false one. Uh sequence
+node. So we're doing uh this switch node
+in order to create branches from this uh
+main stem. Uh and this allows us to take
+this uh code and branch. We have this
+part here going on which is the main
+thing and then we're going to branch
+from it. Branch is actually off this uh
+main
+stem. Set this as an output. uh you can
+see that uh something changed the entire
+length of everything uh got larger and
+this is because our position got
+computed twice. So now was computed here
+but also was computed here. So I need to
+get back in here and just
+uh take this one and set as an output.
+So now we only need to call this
+variable which we computed above here
+and we can delete everything
+else. Good. So up to this point we
+managed to move the
+computation here into this part of the
+tree and this allows us to have the
+information existing and being reachable
+by other computations lower down the the
+stream. But now we want to make the
+actual branch. So, let's say that on
+this main stem, we have a bunch of
+branches. How do we do this? Well, uh
+we're going to use u this one, this
+node, and we're going to duplicate it.
+So, let me delete it. I took this one,
+duplicate it. Why did I do this? Well,
+it's already having some information or
+some preset. It already has a disk. The
+size is correct. Maybe for this purpose
+I want to do it a bit larger so you can
+see what happens when it happens.
+Okay. And then plug this thing here. So
+nothing happens yet. And the reason for
+nothing happening is because this uh
+switch node only executes this part. So
+this outputs only a false thing. So if I
+go inside you can see this is set to
+false. False only goes into this branch.
+I also need to make it sometimes to be
+true. And when this is true, actually
+the information is going to flow through
+this point here. I mean through this
+wire into this branch of whatever we're
+going to do here. So let us do this.
+Um I already have this pin num zero,
+right? So I want to take like pin num
+zero I mean get
+float. Okay. And I also have this numpty
+zero which I can duplicate. And I want
+like at some point in time this pity num
+zero is like 0 to
+1,024 or maybe from 0 to
+1,023. I want to make it like at some
+point in time this is going to be equal
+to
+um to some numbers and I want to when
+this happens I want to create branches.
+So, uh, how do I do this? Um,
+well, if I remember
+correctly, maybe uh have I how how did I
+do this?
+Okay. So, uh what I need to do is uh
+this uh is a a list of numbers that goes
+from zero to uh
+1,23. And I need to kind of make another
+list of numbers that sometimes is equal
+to some of the values uh in this one.
+So, um I can take this and divide it by
+maybe
+uh a number like 64 for example.
+and then just take the floor of
+this. So maybe I think you can imagine
+that uh this is going from 0 to 1,
+um 23. Dividing this uh list of number
+gives another list of number that uh is
+uh having like a lower bound but also is
+going to have lamb some decimal points.
+So this is a list of integers 0 1 2 3 4.
+If I take this list and divide it by 64,
+it's going to um uh have a list that
+also have like decimal points and
+floats. And then if I take the floor out
+of this, then it's going to remove all
+the decimal points and make integers.
+Again, uh this is kind of like how the
+quantise scale gr uh quantize uh
+grayscale node works where it's taking
+like a smooth gradient and it's turning
+it in into like a stair step effect. So
+I'm currently doing this. Uh so I just
+made the steps right now, but now I want
+to multiply this back by 64 so I get
+back into the same range. And then if I
+do this uh list of number uh equals with
+this list of number at some point in
+times we're going to have those two list
+having equal numbers and then when this
+is happen this entire thing is going to
+be true and then information is going to
+be
+passed on this branch here. So, if I set
+this to here, you're going to see that
+now we have those points here, which
+means that now we're uh viewing uh
+results from this branch here. So, if I
+delete it, no more points. If I put it
+now, I have the points here, which means
+I created like the roots for this new
+branches. And they're like equal
+spacing. It's starting from here to
+here. I may be able to fix this
+uh maybe uh show you how like uh what's
+going on. So currently this 64 uh means
+that I have like 64 points in between
+all this thing. But maybe let's say hey
+what if I wanted to just put like maybe
+eight points in total. Well, how would I
+do that? Well, you just take this numpty
+zero and you divide it by
+this and you just change this from here
+to here. So now I currently have like 60
+points in total. But if I want only
+eight, I just type eight and you can see
+like 1 2 3 4 5 6 8 nine. Well, of
+course, maybe did I count it? One, two,
+three, four, five, six, seven, eight.
+No, it's eight point. I don't know why.
+forgot how to count. Good. Uh, also I
+want to uh move this uh maybe in the
+middle so it doesn't start like in the
+beginning and here maybe I can move the
+entire thing to start or I mean to end
+here and to start somewhere here. So I
+need to take this number divide it by
+two and then add it here at the
+end. Add. Okay. Right. So now everything
+offseted correctly. So I want to u make
+the nodes a bit cleaner. Uh maybe this
+is like
+so and this is like so and just comment
+this is like our
+number of
+branches number of
+branches. Okay. I also want to um use
+this computation to be able to call it
+later.
+So this is position we stored it. Uh we
+need it later. We also want to use this
+thing from here. So
+set and I'm going to call it
+angle zero.
+and uh use another sequence
+node like
+so. Okay, good. So, I can move this a
+bit out of the way. And this maybe like
+this. Well, great. We updated our
+position. We also stored our angle. We
+also made our branches here. Now, uh
+it's time to actually create uh some
+branches. So we have the starting point
+of the branches. Now we want to actually
+make the branches. So uh in order to do
+so we need to put like another iterate
+node that's going to allow us to do the
+same thing here. So do long uh things
+stemming from those points here. So
+iterate and then put this in here back
+and uh at this point we need to do a few
+things here. So go inside this one and
+just want to remember this would be like
+our level
+one. We had level zero here. We're
+having level one here as well. And want
+to go back in here. And to remember this
+was numpty zero. I will be copying this
+part from here. So I went here just copy
+that part. Going back here, paste this
+uh change this to
+nonp1. Also, I need to take uh in the
+position variable and change its name.
+So, we had pause
+zero. Is this a flow two? So, get flow
+two. Pause zero. Now, it needs to be I
+mean pause zero needs to be
+set to pause one.
+Otherwise, you're just going to end up
+overriding the same variable and it's
+not going to do what you want. So,
+critically take now when you do this
+switch and
+you're trying to use this as a starting
+point, you need to take the current
+variable which is called position uh
+zero and you need to change its name and
+to set up into this new position one.
+And we're going to take this new
+position one and update this. Otherwise,
+it's going to give you like a messy
+result. So, position one, it's here. And
+now, we want to go um
+here. Set this one as an
+output. Now, make this uh maybe 512, not
+as long as the main
+stem. And then go in here in pattern
+offset. We want position one. We want to
+add something to it. We want to set
+it. Okay, good. Also, um we want to do
+our things in here as well. So, get
+dollar
+number. We want to set
+it or we want to make it um pity nam
+one. We want to do a sequence node. We
+also want to make our t1 variable. So
+get float
+um p num.
+This one should be divided by numpty
+one. So
+division should be set to
+t1. Okay.
+Um, we need to do this thing
+sequence. Okay. So, if I output this
+thing, nothing happens. But then it
+means that we're missing this part here.
+So, again, we need to put our cartisian
+node here. And then we need to put our
+length here. If you remember, our length
+was that variable, which we called one
+pixel. So get float one
+pics and now we have this thing going
+on. Uh which is a good starting point.
+Maybe at this point in time we could um
+just
+decrease
+um this value and this
+value
+maybe 35 and
+35. Okay. Now we want uh these things to
+follow the original curve. Yeah. And how
+do we do that? Well, we already computed
+and stored that variable. So if we go
+back in here, you remember that we have
+this computation which was called angle
+and it's stored in this thing ang. So
+what happens is that this uh variable
+here stores all those tiny vectors that
+pushes the or construct this line. So I
+have a dot here and then I have like a
+small vector that goes from here to here
+and it stores uh this information and
+then step by step it's constructing this
+line. But then when we have this switch
+node and we have this branch at this
+time point in time this information gets
+passed from here. Which means that now I
+can access this uh variable to just
+orient my line to follow or to be
+aligned with this entire branch. So each
+line is going at its point is going to
+be aligned with the main direction of
+the branch at the relevant point. So
+you're going to see this happening now.
+So get
+float. So it's a N g0, right? I think
+that was So now you can see uh all my
+branches are aligned properly. And maybe
+I can just go here and decrease this uh
+maybe to something like I don't know 64
+for now.
+and uh do this thing uh maybe like
+so. Okay. So you can see how the lines
+are oriented with their direction from
+the point of uh branch. Okay, good. But
+now I want them to
+actually diverge from the main
+direction. So for example, I want them
+to follow like uh to be like a certain
+angle from this uh base angle here.
+Right? So now I can do this and I just
+need to add a value to this like
+add and
+float. So I'm going to add this and see
+what's happening. So you can see like
+how everything went together. And at
+this point in time I want to um show you
+another trick. Let's say that I want to
+have those uh lines be like one in this
+direction
+uh considering the main direction of the
+pattern. This one should be on this
+direction and this one should be in this
+direction. So have them alternating the
+angle. How should I do that? Can I even
+do that? Well, I can do this and I think
+it's a really cool trick and hopefully
+I'm not going to screw it up cuz for
+some reason even though I have like 50
+or 60 attempts and projects like this, I
+still kind of mess it up. So hopefully I
+will not uh be messing it
+up. Well,
+um let me do this. Right.
+So, I need to go in here and I think the
+background music is a bit distracting.
+So, let me go back in
+here. So, what I really need to do is
+actually I need to count how many times
+this
+uh switch actually became true and for
+this I need to create a variable and I
+need to create this variable above this.
+So I will be counting how many times
+this switch was true. So this is false.
+This is true. And I need to count how
+many time it was
+uh uh it was uh it was true. So for this
+I'm going to go here above a level. So I
+need to declare a variable that can be
+updated here. I need to create the
+variable here above it. So float zero
+and I'm going to call
+it float I mean
+set and I usually call this val zero
+from value and it's your val zero. And
+again feel free to come up with a better
+name. I'm pretty sure my naming
+convention it's not ideal at all but I'm
+doing
+this or I'm using this naming. So now I
+have created the value and then one step
+below I need to actually update the
+variable. So I'll be moving this um I
+mean maybe I I think I already have the
+space. So I need to get the float which
+is called val
+zero and then I need to add one to
+it and then I need to do an if else
+statement. So
+if
+else and if this is true. So we're doing
+this is where we're actually doing the
+branching. When this is true, then take
+my value and increase it by one if it's
+true. If it's not true, I mean if this
+thing is not true, just keep my value
+zero how it was. And then after this
+thing just go and put like a set node
+and val
+zero. Okay. So I'll increase my val zero
+by one whenever this thing is true.
+Otherwise leave my val value zero alone
+and then connect it to everything by
+just making it another line of code.
+Okay. So I hope uh this should actually
+create something like this. Uh whenever
+this is true, this is going to be 1 2 3
+4 5 6 7 8. If I should be able to color
+these things, I should be seeing 1 2 3 4
+5 6 7 8. Okay, good.
+Um let me now try to use this thing uh
+to make those um alternating uh stuff.
+So going here into offset I have this uh
+0.78. If I put a minus
+here now they're like on the other side.
+So
+0.78 this is like how initially it was.
+If I put like a negative node, negation
+node, I have them. So I need to kind of
+switch between these two things. Well, I
+will put a lurp
+node. Okay. So maybe it's something like
+this. And then you can see if I put a
+value
+here and play with this value, it's
+actually blending between those two 0.8
+and minus 0.8. But I actually want this
+not to be a constant, but I want to be
+something that changes. And better would
+be something like 0 1 0 1 0 1 0 1 and so
+forth. So I'm expecting if I take this
+val
+zero if it's already working and if it's
+already 0 1 2 3 4 5 6 7 8 or something
+like that then I can take the
+mod two of it load mod
+two and mod two it's actually kind of
+making every even or odd numbers zero or
+one uh so if I just plug this in here I
+have it like
+so. Well, great. We made it. Uh we made
+like alterating branches, right? Um and
+I think this part is uh starting to get
+already interesting. Um what should I do
+next? Well,
+um yeah, I want to make a few uh tweaks.
+I want to
+um make like at the beginning like where
+things uh start together. I want I mean
+uh at the beginning of the branch I want
+those angles to be more spread like
+this. And as they go towards the top I
+want those branches to kind of point
+more into the direction of the the main
+branch itself. And for this I will uh
+just increase uh the number of uh those
+um branches so we can see the effect
+better. So maybe I want like 32 things
+going on. Something like this.
+Right. Okay. And then
+um yeah uh it means that I need to kind
+of uh add something to this. and um how
+to actually do this thing. So, we have
+our initial angle. That's
+good. Uh we also have this uh thing
+alternating. Um where should I play with
+stuff? Well, I think this is the value
+that I should be playing with. So this
+is initially if I leave this to or
+closer to zero you can see like it's
+following more uh the orientation of the
+main branch. If I increase this value it
+diverges. So then what if I could
+actually change this with uh something
+that's not a constant. So this is a
+constant with what if I could change it
+with a variable and I have a variable
+that keeps track keep tracks of how
+things are moving uh from here to here.
+Uh so I have a variable that actually
+keep tracks of uh values along this main
+branch which starts with zero and ends
+up with one. Uh well that variable was
+called tier zero. So I can get it and
+it's called t0 right and what happens if
+I plug this actually it's t 0. So if I
+replace this, what happens? Well, you
+can see I have some effect going on,
+which it's already interesting, but I
+want this to be in reverse, right? So I
+said that things to be spread here at
+the beginning and to be more close
+together here at the end. Well, I can
+just put a one minus
+uh one minus. Well, it's only one minus.
+And now this reverse the effect. and one
+minus it's actually like the invert
+grayscale node. So this is what uh
+what's what it's doing. And I can uh
+maybe here at the end everything is like
+really close together. Maybe I don't
+want that. I can just
+add a bit more spread again with a value
+something like this. So maybe now I can
+spread things. Yep. Okay. Interesting.
+So um what's going on? So I have uh uh I
+have a variable that's changing uh from
+the start of the main branch towards the
+end of the main branch. So I can control
+this already and this is uh assigned to
+the spread. But also I want to make
+these um branches at the beginning. I
+want to have them uh longer than the
+ones at the end. Right? So how should I
+do this?
+Well, where I control the length of
+this? Well, the length of
+the those branches is controlled here.
+So, if I change this value, you can see
+how I change. But as you can see, this
+is a constant, right? And maybe I don't
+want a constant here. So, I will be
+getting again what variable do I want to
+use? Well, t0 t0 is the one that
+controls how things are changing along
+the main branch. So get
+float
+t0 and I want to do a linear
+interpolation between two values along
+this branch. So uh
+lurp and I will be doing this and this
+maybe two values like
+so. So maybe
+64 and
+256. And just for safety reasons, um I
+will be doing something a bit more
+redundant. There should be a better way
+to set things up. I just want to cast
+this to an integer because this uh
+interpolation actually gives not
+integers and I want them to be integers
+like I would have some I don't know like
+some 128.5 or whatever and I don't want
+to have that. So maybe I can just put
+like an integer or maybe like just a
+floor. I don't know maybe a
+floor might be better. Okay. So now if I
+do this, well, I got the reverse effect.
+Uh maybe I can just switch between these
+two. So I'm just selecting these two
+wires. Maybe doing the switch and uh
+stuff like
+this. Okay. So I have the branches here
+at the bottom longer than the ones at
+the top, which I think it's already
+interesting. Maybe do this like 48 or
+32. and then maybe do like
+300. Okay. Uh what if I want to do some
+randomness? Um maybe those things here
+shouldn't be like uh equal all the time,
+right? Uh you can see that they have
+like the same length. Maybe we should
+add some randomness, right? So of course
+I think we could do that. Uh where
+should or how should we do it? Maybe I
+will just add something here. So
+add and um how or when should I add
+randomness? How the how have I done this
+before? Where I add it here? First of
+all, let me try and add a random node uh
+here. I think uh it should be
+appropriate. So what really happens is
+that this
+um this thing I mean all this tree gets
+executed like 1,000 and um 24 times. So
+if I put like a random node here I think
+whenever this gets run that random node
+will generate uh a new random value
+right so let me try it like this. So
+maybe
+float
+one
+random. Okay. So this should generate
+like every time this node it's executed,
+it should generate a a random value from
+0 to one. I want to make this from uh 0
+to 1 to minus one one. Uh I also want to
+multiply it by something maybe 16.
+So, this is going to do like plus or
+minus 16 randomness. And maybe it's too
+much. We're going to see. And then if I
+add this, let's see what happens. Yeah.
+So, things have changed. And you can see
+uh without
+it and with it. Okay. I think it's an
+improvement. Maybe even we can put like
+a
+32. Yeah, maybe 32. I think it's good.
+Uh I kind of uh feel uh these
+um wavy lines here are producing those
+chaos here which in a way I'm not sure
+if I like or not. So I'll be for the
+moment just reducing this wiggle here.
+So the wiggle was controlled by uh this
+parameter here. So if I set this to
+zero, now we don't have wiggles at all.
+And then maybe I can just increase it.
+It was like 0.3. Maybe
+0.1. Maybe like this. Yeah, for now.
+We'll see later. Okay. Uh I still think
+maybe those branches are a bit too
+um too large, but not too large, too
+thick. So maybe we can uh add thickness
+to them but also change the thickness in
+a way that is more thick here at the
+beginning and towards the end they get
+thinner. So I think by this time you
+might be guessing that I will be using
+the T0 parameter again to control this
+thickness and to actually blend between
+a few values. So
+uh great. Well I'm going to uh do this
+here. Uh here is where we can control
+the thickness. But from experience, it
+would be good to just disconnect this
+for a while. And uh now go in here and
+into the pattern size. Go inside and um
+get the T0 parameter plot
+t0 and then I mean it's
+T0 and then lurp
+And then I need to actually put two
+values. So this t0 goes into this and
+those two values that I want are float
+is like uh
+0.005 and I I don't know it was like
+less than that. It was
+3.5 and then uh this is one value and
+then I I could just do another one here
+but what I usually want to do is
+multiply this by a smaller number. So
+let's say that I h I want the other
+value to be half of this one. So I can
+just do like
+0.5 here. So whenever I change this,
+this is going to be automatically just
+half of this one. And I think this is
+uh like a good practice to do and
+then just cast this into a vector flow
+too. Set it as an output and then uh do
+this connection again. So the reason for
+doing this uh for doing this
+disconnection is because if I would have
+this and go inside here um whenever this
+is an empty function it's going to
+automatically do the pattern size to be
+one and one it would be like a disk of
+the
+entire size of this texture and this is
+a 2K texture and uh I think I already
+have maybe 60 or uh around 60,000
+circles here and it would be like 60,000
+large circles on top of each other and
+this might cause Substance Designer to
+crash. So that's why I disconnected it
+first and then went into the pattern
+size itself to change it. So as you can
+see uh now those branches here at the
+beginning of our leaf or stem or plant
+or whatever it is are thicker and then
+towards the end they get thinner. So I
+can even uh emphasize this more and
+instead of 0.5 I can make it like
+0.25. So you can see like at the end
+things get thinner and thinner and I
+think I like this effect right. Good. So
+now I want to do another thing. I want
+to curve uh those branches. So I want
+these branches here to be curved in this
+way downwards and the upper ones to be
+curved upwards like in this
+way. And uh for that um we should go in
+here pattern offset. Here we have our
+angle. And let me think where we
+actually should play around with this.
+So, um I think here we could play around
+with this. So, maybe it's in here. Yeah,
+this is uh where we can add or subtract
+things, right? So, I can take this
+originaler or main thing. And how do we
+curve this actually? Well, we you
+already used T0 to control the
+orientation along the main branch. But
+now we want to control the orientation
+of the vector along the branch itself.
+Well, how or what should we use for
+that? Well, we already computed this
+variable which is called T1. So
+add we should add uh get float and T1,
+right?
+and T1 is just curving uh those things.
+So good. It means that um what we wanted
+is happening here at the bottom. That's
+really good. Then uh we want uh the
+reverse to happen here at the top. So
+maybe if I put a
+negate after this, what happens? They
+curve like this. Uh which I like. let's
+say and then I want to uh blend between
+these two things together. So I'll put
+the
+lurp linear interpolation. So now I have
+this and this and the float
+here. Okay. So now it's like this. And
+then if I play with this, it's making
+the transition between the two, right?
+But
+um instead of this I want to use uh
+something that is changing and not a
+constant. And how do I want to do? Well,
+I want at the beginning to have the uh
+branch pointing down and then I want
+them at the end to point up. Well, it's
+good. What variable allows us to do
+this? Well, zero, right? So, I can get
+the zero again and then just plug it
+here. So now I can see I get like at the
+beginning I get the branches like this
+and then at the top I get them like
+that. Well in a way maybe I don't know I
+like it or I don't like it. I think
+maybe they are curving a bit too much
+here at the end. Maybe I can play with
+this to adjust things
+more for now. I think maybe like this
+can be fine. Uh, I'm not really not a
+big fan of what's going on right now,
+but I think it can be fine.
+Right. Also, I want to say that maybe I
+can change things. So, I have the
+branches here at the bottom not be as
+long, but maybe have them shorter. So,
+let me do this instead. Maybe it's going
+to look more interesting. So, again,
+where I where am I uh controlling the
+length of those branches? Well, here uh
+I'm controlling. So instead of uh
+blending just between these, so this is
+like the longest, right? And these are
+the shorter one. Uh I can
+um tweak this variable here not to go
+linearly from beginning to end, but I
+can make it like start with uh here it
+should start with a length of 32. Then
+in the middle it should reach this
+maximum length and then finish at the
+end again with this. Well, we have
+already done this before, but we're
+going to do it again. So, we need to
+multiply this thing by
+pi and then we take the sign out of
+this. So, this is changing like t0. If
+you imagine t 0 is just like a linear
+curve going from 0 to one.
+But this is doing something else. This
+is taking this curve and making it start
+at zero, go in a curve and arriving at
+one in the middle and then going down to
+zero at the end. So this is what's this
+function here doing. So if I plug this
+in here, I get I'm in the reverse, which
+is interesting, but I don't want that. I
+just need to switch this. Okay. So, I
+mean, I think I like this shape a bit
+more, right? Yeah, maybe not 400. Maybe
+a bit
+less. I think, yeah, maybe 280 might be
+good. Okay. And you can change this all
+the time and have more or less branches
+and change the angles and change the
+randomness. We should also add a bit of
+randomness to the angle itself. So
+currently we have it like this. All this
+follow the uh curvature of the main
+branch. But we can also add uh some
+randomness to the angle in the way that
+we added randomness to the length of the
+branch. Right? So let us do this. Where
+do we do this? Well, I think uh we did
+it correctly here. It seems that this
+worked. So maybe I can just
+um use
+this thing that we already computed here
+and store it and reuse it. Okay, so this
+work correctly and I just want to use
+this
+part. Maybe this part. Yeah. And I'm
+going to set it
+to
+set and I will name it air1 R1. It's
+from for random one or something like
+this. And then use a sequence node. I
+put the sequence node here. I just drag
+the variable here. I like to have my
+variables aligned
+here. And then all the sequence node
+like so. Okay. So everything is
+connecting neatly.
+Then uh here is where
+my angle is computed and then uh I can
+probably add the random here as well.
+Right? So this is where things
+happen and then I want to
+add and then I will add
+R1. We'll get float
+R1. Sorry, not this. Okay, so it's
+working, but it's too much, right? So, I
+want to uh tone down this effect by
+multiplying it by something. Now, it's
+multiplied by zero. Of course, it
+doesn't do anything, but then you can
+just go in here and do this. So, yeah,
+you can see it's adding
+randomness. Okay, perfect.
+So it's working. Uh if you go in here
+and just do like random seed, you're
+getting different
+um configurations of your
+parameters. Okay. Um what should we do
+next? So we have uh everything going on
+so far, but we want to do more. So we
+want to put branches on
+branches. So what should we do? Well, uh
+we kind of already done this. uh before.
+So, we take this one, move it here, add
+a switch, go in here, go to here. Now,
+everything seems to be just fine, but we
+need to take what we've been computing
+here and copy this
+part above. So, we have access to the
+information on this new branch that
+we're going to create. So, we need to
+put everything in here.
+We just pasted it. We made another new
+sequence node. So we can just set this
+as an output for now. We're going to put
+a dummy
+boolean which is false and set it as an
+output. And we should see what we should
+see our branch is getting longer. Why
+did this happen? Well, it happened
+because we computed pause one two times,
+right? So we it means that we can go in
+here and in here and we no longer need
+all this computation. We just need to
+take one and set it as a variable as an
+output and yeah everything can be
+deleted. Well, perfect. We need to take
+this one or we can duplicate
+it and then put it in here. We can also
+take this one, duplicate it and put it
+in here.
+And then we need to change a few things.
+So this was level zero. This is level
+one. This should be what level? What?
+Level
+two. Go inside to this one. Uh we're
+going to uh just do a bit of cleanup for
+now. We don't need
+this.
+Um don't need this. Just do like simple
+stuff for now. Maybe just 32. And we're
+going to redo all this thing back. Like
+all the things that we've been deleting,
+we're going to do them
+again. Uh we need to rename things.
+Pause zero needs to be changing to pause
+one. Pause one need to be changing to
+pause two. Numpty one needs to be
+changing to pity nonp sorry. Okay. Uh
+this can be leave uh left as is for
+now. Then go in
+here pattern size um maybe just reset it
+and then set it like
+0.002
+and
+0.002. I mean, no, maybe just something
+larger so we can see them. That's just
+for preview.
+And
+then since everything is right, I think
+so. Maybe go here inside instead of pose
+one, we need to get pose
+two. Great. So we need to get in here
+and actually decide when we branch from
+this into smaller branches on this one.
+Right. Okay. So let's do this. Go in
+here. Go in here. Move this thing back.
+I mean down. Uh we already have
+position. Uh we want to also store our
+new
+angle. So
+set. Okay. So you can see uh how here we
+had angle zero. Now we're going to store
+it into you guessed it angle one. A N
+G
+G1. Okay.
+Sequence like this. Like this. Like
+this. Okay.
+Good.
+So, we want to branch from each uh and
+every one of these. So, how to do it?
+Well, uh we need to take this
+again. We
+had this configuration. So pt
+num we need to divide this maybe
+like load. How many do we want? Let's
+say that I want maybe
+16. So for each of those branches I want
+16 bifurcations. Right?
+And then I have this. So I need to take
+this thing divide it by
+this lower
+it multiply it
+back and then test for equality between
+these lists of numbers. So I have this
+list and I have this list here. And then
+we check for equality to see when those
+lists are equal to each
+other. And if I put this, we can see
+that we have this result, which I think
+it's weird.
+Why? That's really interesting. Where
+did I screw up?
+Okay. So, it seems that we're not
+getting the result that we want. And um
+but there is a fix for it. And I need to
+um uh probably think a bit um a bit more
+about this cuz in this current setup
+that will allow me to specify exactly
+how many points do I want. Uh but we can
+just change this uh for now and instead
+of do this division I can just uh use
+this 16 here. Right. So what's happening
+right now insteading instead of saying
+like hey I want exactly 16 points on
+each of those branch I can specify that
+I want the spacing between these um uh
+points to be 16 right and uh in a way it
+makes sense cuz if you look uh at things
+this branch has only maybe three points
+and this one which is longer has many
+points and it makes more sense to
+establish or to define find the spacing
+between points rather than for each
+branch do um maybe a certain number of
+points. This should be a a topic uh in
+which I will be looking into or you
+should be looking into and figure out
+how to do for each uh branch. Maybe you
+want exactly to do like maybe 16 points
+for each branch then how you would do
+it, right? Okay. Uh maybe I think the
+density that we currently have I think I
+like it. Uh but we might be changing it
+in the future. Okay. So now we have
+things like this and I want to do
+branches uh from those points. So, I'll
+be doing um I mean I already have this
+loop here. Uh just going inside this one
+and add
+uh
+set pause to set as an output. Nothing
+happened
+yet. That's fine. We need to do a bit of
+housekeeping. So, get float. We need to
+get dollar number and we need to make
+our T2 variable. So set this to P num
+2. Okay, I mean should spell correctly
+pin num
+2 then
+sequence then uh get float and get
+float. So this one should be pity num 2.
+This one should be
+nonp. This one should be
+division.
+Okay. This one should be t2. Sorry.
+Set
+t2. I mean t2. Yeah, it's getting
+tougher
+to type correctly. Sequence
+again. So maybe we're in good shape. I
+will be outputting this. Nothing
+happened yet, but we need to add things
+here. So cartisian
+um that's the node that we want. And
+then once I plug our magnitude or length
+of the vector into here, we're going to
+get things moving. So get float one pix
+one
+p one
+pixel. Now we have it.
+Um, now that we see things, I want to
+just decrease this to one to five. One
+to
+five. Okay.
+going okay so far. Maybe go in here and
+decrease the brightness of those main I
+mean of the secondary
+branches. So maybe uh I don't know for
+this one I just want to show you uh
+another thing that you can try and do.
+So uh for the main branch we have those
+secondary branches alternating. But then
+for this one, what if I want to have
+like double branches? Like I want one of
+them to go like in this direction and
+the other one to be like opposite. So
+not alternating but having from the same
+spot I want to have like one branch here
+and another one here. Can I do that?
+Well, yes I can. But I need to add
+another um I need to add another uh loop
+node or like another iterate node. So
+let us do this. So iterate
+Okay, plug this thing here. This one can
+be just like uh two here. So, it
+executes two times because this is how
+many of those branches I want per uh
+thing. So, I want like two times, one in
+this direction and one in the other d
+direction. Then I need to go in here and
+do something. So maybe yeah I need to do
+not like this go inside I mean I will be
+copying from this. So I will copy from
+this
+thing go in
+here. So we have a numpt2 right that's
+good. This needs to change
+to just two instead of 32. I mean just
+two. We don't need this floor here
+anymore. Set this one as an
+output. And this needs to change here
+inside. So now we have three
+numpt. Also I need to get
+load dollar number. So I need to take uh
+the dollar number from here and store it
+in here below it. So dollar number.
+This is now uh sorry this is now
+set. This is now P number
+two.
+Okay. So because we added things uh now
+this is level
+two I mean two not
+Q and this is level
+three. So needed to change things. So
+here I change this one to P nam 2 this
+one to nump PT3 and then I need to go in
+here and also adjust to that. So here
+the dollar number it's actually pity
+number num
+three and this one is three as well.
+This one is three as well. This one is
+t3 as well. Now it's correct.
+Okay. Well good. Uh now we need to uh do
+something. So for example bloat just add
+like a value here and just do something
+like this. And maybe if I just put like
+a
+negate, I get them like on the other
+side. Uh, but here I think it doesn't
+work this way. So I just want it like
+opposite. So I mean here I think I just
+need to
+add and I need to add like an 180 degree
+which is like just
+um just pi
+So this and
+this. Okay. And I think this is going
+to be I not too painful to adjust.
+That's totally fine. I think I can just
+setting uh
+things not uh the ideal way. Or maybe no
+that that should be totally fine. Uh I
+mean I should get uh yeah that solves
+it.
+I should get uh the
+ang that I have. So the angle one. So
+get
+float a
+ng1 and I should be adding it to it.
+Okay. So I can delete this one. Okay.
+And then if I negate this I get the
+opposite. So
+negate. Yeah. So I want to somehow blend
+between these two
+values and I already have them here. I
+just need to put the
+lur linear
+interpolation and if you remember we had
+a variable stored in pt num 2 which is
+executing only two times. So this is
+executing two times and uh the dollar
+number here it's like zero and one and
+the linear interpolation actually wants
+to have values between zero and one and
+if I put like one I mean if I input the
+pt num uh two here it's going to give me
+exactly what I want because p num 2 is
+like in the first iteration it's zero
+which is going to output this and in the
+other iteration is going to be one and
+it's going to output the other thing. So
+get float pin
+to and then do
+this. And I think if everything is
+correct, we're going to
+have double branches, which we do also.
+I think it's looking interesting. So of
+course, uh we can do more stuff with it.
+And the first thing that I want to do is
+uh we want to adjust like the width. And
+if you remember, we have like those
+branches here, those secondary branches
+are like larger at the bottom and uh
+thinner I mean not larger but thicker at
+the bottom and thinner at the top. And I
+also want this trend to follow with
+those
+um this new level of branches. And how
+should we do this? Well, we already
+computed the
+um we already have computed the
+thickness, but we didn't store it in a
+way that allows to be accessible. So,
+currently the thickness uh for those
+branches, it's in here in pattern size
+and it's not it's on this branch. So,
+this information whatever we computed
+here, this information doesn't exist
+here on this branch. So what we need to
+do is we want to take this information
+from here and move it above. So we can
+take it we can take this thing here copy
+it and put it in here. Yeah. So we can
+just copy paste and then store it set it
+and we're going to name is thickness and
+thickness one because this is the level.
+So every thing we have all the variables
+are like pin nam one t1 pause one ang
+one and this is going to be thickness
+one thickness one well I think I should
+be copying uh this
+thing + c and then use a sequence node
+and then do this and then do this and
+then do this. So now everything is
+connected. We have our our all variables
+all our variables. It's getting trickier
+and trickier to speak. I'm getting
+tired. But we should carry
+on. So in pattern size here, I can just
+get the float and paste this thing. And
+probably nothing changes. I just want to
+look at the top. I'm looking at the
+thickness of this gray thing. And if
+this doesn't change, it means that I I
+did
+good. Well, I I didn't do good because
+it disappeared. Where am I at? Where am
+I? Well, thickness one. Thickness one.
+What did I do wrong? Did I do anything
+wrong? Well, thickness one. It's like
+between T0. T0 already
+exists. Oh yeah, now I totally get it.
+So what I've done wrong is just I took a
+float instead of a a float too. So it
+didn't recognize this one. So in here in
+pattern size, this is just a get float,
+but uh it needs to be a get float too.
+So now
+thickness and then set it as an output.
+Now nothing changed and this can be
+deleted and then I can already take this
+thing copy it and then just go in here
+and into thickness I can paste it but
+remember it might crash if I just do it
+directly. So currently the pattern size
+is manually set, right? And if I go and
+hit or click this one, by default all my
+discs are here are going to be equal to
+one, which is going to create like a
+zillion circles here which might crash
+substance designer and I don't want it.
+So disconnect this thing for now. Go
+inside, go in pattern size and just
+paste this thickness one. Set it as an
+output and then reconnect things back.
+And now surely we have thicker uh
+branches here at the bottom and thinner
+ones at the top. Uh and I can just
+multiply this by half. So scalar
+multiplication load and
+0.5. And now it's cool because
+everything it's interdependent. So if I
+go one level upstairs. So here I control
+the length or the thickness of of the
+those branches. If I just go in here and
+change this
+value, you can see like we can control
+everything together which is fine and
+nice. So we have this
+um going on and I want to do uh the
+following. I want to add
+um well I want to to uh tweak a lot of
+things about it. First of all maybe
+let's uh tweak the length of those uh
+branches. So I want the branches to be
+shorter at the beginning and longer at
+the end. Right? But also maybe have have
+even more control. maybe have the length
+of those
+um have the length of this branches
+being driven by the length of this in
+the first place. So maybe at the bottom
+we have those branches being shorter and
+then at the top we have them how
+currently they
+are. I think maybe the thickness here
+it's a bit too thin. So maybe go back in
+here into size and not five but maybe
+75. So it's like 75%. Yeah, that's
+better.
+Okay, good. So
+now uh let me do
+this. Well, uh where do we control the
+length of the branches? We control the
+length of the branches here in this
+node. So currently we have 32. Uh maybe
+we could have
+like something like between
+16 and
+64. Okay, I think I like this. And then
+we should do a linear interpolation
+lurp between this and this. And
+initially we're going to do uh the
+length is going to be controlled by this
+thing. So get float we have t 0 t0 that
+it's helping
+us. So now we have uh at the beginning
+longer and at the end shorter. I don't
+know maybe it's maybe it's good. Maybe I
+wanted to have like in the middle here.
+So I'll be doing the sign trick. So
+multiply by
+pi and then
+sign and then
+do one
+minus. Okay. So I think this is
+interesting.
+And okay, so this is one thing that we
+want. And then we also said that maybe
+we want to have them be uh shorter at
+the beginning of these secondary
+branches and so on. So now we have it
+like so. We then multiply it by how we
+want them to be small. So maybe float a
+percentage, maybe a quarter. So
+0.25. So now they're shorter, right? And
+we want to blend between this and this.
+So we're going to use again the lurp
+node between this and
+this. And now we're going to mix between
+uh with the
+T1 variable that we have
+T1. And also needs to be maybe in
+reverse. That's interesting. But also
+maybe I wanted
+this.
+Well,
+that's
+not kind quite good, but uh we can do
+this. So, uh the sign trick as well. So,
+multiply by
+pi and then sign.
+Yeah, I think this is better. Yeah, I
+feel like I I like it this
+way. We should also uh do some
+randomness here as well.
+So we can
+add
+float
+zero
+random 01 to minus
+one and then add this
+thing. That's interesting. I didn't
+expect this to happen.
+That's really interesting and
+unexpected. So I currently have values
+between
+um this is doing between zero and one.
+And if I added things here maybe without
+the minus maybe without this I think.
+Yeah, that kind of didn't work.
+So
+[Music]
+maybe yeah, this is just adding a bit of
+randomness. It's not subtracting. It's
+only adding. So it's elongate
+everything. It doesn't shorten existing
+lines. It's just elongating
+everything.
+Okay. Um now what can we also change? We
+want to also add a bit of randomness to
+the angle. We also want to curve uh
+this. We also want to add randomness to
+luminosity. So,
+uh
+let's add first of all randomness to the
+luminosity because I want to show you
+something cuz adding randomness where
+it's important is good. So, what I want
+I want to have each individual blade
+have a random grayscale value. If I just
+go in here where I actually draw them.
+So, here is where I draw them. If I go
+in here and go into this luminosity and
+then just go like float
+random. It's going to color I think uh
+if I'm not mistaken it's going to color
+every single point that makes those line
+is going to be randomly colored which it
+did. So you can see like we have like
+randomness. I mean it doesn't look bad
+but this is not what I want. I want
+every single branch to have like its own
+solid grayscale value which it doesn't.
+So for now I'll be just returning to
+one. And then uh well I need to go and
+figure out where to put things. And I
+think what happens is that uh this is
+where I should put my random values. So
+this is when
+um this is when things are getting
+passed to this one or maybe even I think
+actually I think maybe even at the I
+mean no not at the top definitely not at
+the top. Let's try it here. Do I have a
+random value here already? No. Um do I
+have another random
+value here at the top?
+I know that I already have a random
+value and I don't know how it's
+called. It's R1 or something, but I
+don't remember where I created
+it. Okay, for now I think maybe it was
+here the random value.
+Well, okay, don't worry about it. I'm
+just going to create something here. So,
+float. It's going to be one. It's going
+to be a
+random. It's also going to be stored in
+a value. So, set in a variable. It's
+going to be called
+RR just to make sure that I'm not
+overwriting anything else.
+Sequence. So, this here, this here, and
+this here. Now everything get connected
+this correctly and then go into here I
+want to use that variable. So get
+float
+r and set it as an output. Yeah. So this
+is what I wanted to achieve. Um, and I
+think also you can see that it's doing
+it, but it's doing
+um I mean I have the same thing going on
+for the Vshapes. So I wanted maybe even
+one more randomness. Maybe I want to
+have each one of them random. So okay, I
+tested it here. I tested it here. Um I
+mean no, not here where I actually put
+it.
+I think I put it here. Yeah. Uh, let's
+go downstairs a bit. Maybe here I should
+put it. Yep. So,
+bloat
+one
+random
+set RR2.
+And I can just plug this in here.
+Already I had a set sequence node
+waiting for me. And now here I think
+this might work if I just put R2. Yeah.
+I mean Yeah. or
+not. It seems like it it changed things,
+but it didn't. It still do the same. So
+we're going to try one more. So we were
+here and yeah, I actually think it makes
+sense. Uh I don't know why I think this
+is the place where we actually put
+it. So another one
+here. Load. Yeah, I think here it
+is. Set
+So maybe do the
+RR3. Yeah, this did the
+trick. So if you put like a random
+directly here, it's going to colorize
+each point. If you put it in here above
+it, it's going to colorize each line.
+Okay. Now, the entire effect is a bit
+too strong. Yeah. So I don't want it as
+uh strong as this one. So I'll be just
+uh linear interpolating between one and
+this random
+tree. So
+lurp and then
+[Music]
+load. And here I'm just using kind of
+like a regular uh blend mode. So
+everything is now white. And then once I
+increase this, I'm going to see more
+randomness going
+on. So I think maybe around uh 0
+0.6 might be good. I might be changing
+things after that, but I think it's
+good. So what else should we be uh
+doing?
+Um, well, I think we should be curving
+those a bit and add a bit of randomness
+to the angle here as well.
+So, we currently have this. Where do we
+want to uh add curve? uh the curve nest.
+Well, here we want to this value. Yeah,
+this is uh doing it for us. We can just
+add and uh get float and
+t3. Okay. Uh I think this uh might be
+too much. So, we need to multiply T3 by
+something smaller. Something like this.
+Load.
+Okay. Um
+maybe should we also try uh the
+different ones? So what happens if I
+negate
+this? So it gets fred I think. Yeah,
+this seems to be a bit more interesting.
+But maybe I can do something like this.
+So T3 it's this one. Uh -3 T3 it's this
+one. Uh maybe we can just uh use the
+randomness that we created. So
+uh
+get load and we have the R r3.
+This is coloring all our um branches
+with random values. Um and then uh we
+want to kind of switch between those two
+things together based on this
+randomness. So maybe first of all do a
+lurp and I don't know how this this
+might be looking good or not at all
+good. So, we're randomly switching
+between uh this and this.
+And it looks like this, which I think
+it's not bad. Not at all
+bad. Yeah, I think it looks quite
+natural. Maybe increase
+this. Okay. Maybe it's too much. I think
+it was a bit better
+before. Okay. Something like this. Yeah.
+Okay. So, we have it like so. And then
+uh let me get back to it. And then just
+increase the luminosity of
+the the branch uh the main one a bit. Uh
+go with this one as well and increase
+the luminosity like
+that. So um what else can we
+do? I wonder if we can add some
+like flowers or fruits to this branch.
+Should we try it? And where should the
+fruits
+be? Well, for now, I can do another
+thing uh that I just noticed that might
+be looking good. Well, I want the
+brightness of those uh uh branches to be
+like more bright here uh at the edge of
+the leaf and then more dark inside here.
+So for example, I don't like how
+um bright those small branches are here.
+And uh let me just do that.
+So into luminosity, we already have this
+going on. And I want to multiply this by
+uh something smaller to get it darker.
+Something like this. So everything gets
+dark. Uh and maybe even more
+dark like this. And then I just want to
+blend between this and
+this. And we want to blend along each of
+those secondary branches. And we have
+it. So we have the T2 parameter. So uh
+lurp for linear
+interpolation and then get float to I
+mean get float. It's T2. and then set
+and then
+set. Did it do it? I don't know. Seems
+weird. Let
+me think it's T1 actually. Yeah, we
+never had T2. We only have T0, T1, and
+T3.
+So let me get here and just set the
+one. Okay. And maybe it's in reverse.
+Yeah. So this is what I wanted. So maybe
+I can just even multiply. So yeah,
+everything it's darker toward the
+center. I can darken this as
+well. Maybe here. Just darken it a bit
+more. And also I will darken those
+things as well. So these are this
+one and it's just like get float it's uh
+T1. Okay. And then I just need to
+increase them. So maybe it's like
+lurp between two values that I'm just
+going to
+eyeball set. Now everything is zero. So
+I don't know which one is which. Well,
+maybe this one is 0.17 and then this one
+is going to be like lighter.
+Okay. So, now we have it. And then just
+let put some
+um some fruits at the
+top. But I'm just going to I I don't
+know if it's going to look uh good or
+bad, but I'm just going to do it anyway.
+Maybe if we don't like it, we can just
+remove it. But I will be putting some
+like fruits at the top of some of those
+branches. Right. So
+uh for this we want to just uh do
+another uh branching from here. So
+switch this and this. And I don't think
+at this point I don't think we need to
+do any uh transfer from here to here.
+Maybe we will. I don't know. Just for
+the sake of it, just do
+this. Yeah, let's do it. So,
+copy, go in here, edit,
+paste
+sequence, do this, put a dummy boolean.
+So, it's false. That's good. Set this
+one as an output for now. Everything got
+a double length. Go in here. Go in here.
+Just use this thing. Delete everything
+else. Delete. Delete.
+Delete. Okay, perfect. Uh, and then uh
+what do we want to also do here? We want
+to make things a bit more organized.
+Kind of messy already. And then uh set
+this for good measure as A and G2. So we
+have angle one. We want to set it as A
+and G2 in because we in case we ever
+need
+it. and then
+sequence.
+Okay. And then we need to
+uh maybe take this one, put it in here
+for the size. Just
+do maybe four or five times.
+Okay. And then uh just want to put
+things here like close to the top. The
+fruit should be like very close to the
+top. So for this just going to take PT
+num3 and num
+pt3 and then say like hey equal if this
+equal to
+this
+minus maybe
+10 then I would put
+this. Okay. So, we have a lot of
+fruits. Well, kind of a lot of fruits,
+if you ask me about looking interesting.
+Uh, we should we should use randomness
+to clear a lot of
+this. So, we need to add more uh
+conditions here. Uh, do we already have
+some randomness that we use? I think we
+already have um
+[Music]
+maybe get
+float
+r3
+greater. So what I'm going to say like
+for only for those branches that are
+brighter than some value then I would
+put the fruit right. So maybe I will say
+0.95 and we're going to add this
+additional condition by doing an end. So
+we're going to say like
+hey respect this condition and this
+condition as well. So only if those two
+conditions together are met then you
+show the
+fruits. Well, I think this is already
+better. And maybe we can just add some
+randomness to them. I really like how it
+took the
+um how it took actual size of them, but
+I want this to happen in reverse. So,
+you can see uh that we have like large
+fruits at the bottom and smaller fruits
+at the top. Maybe it make more sense to
+have larger fruits at the top and
+smaller fruits at the bottom. I don't
+know because of light or something you
+should have more of this at the
+top. So,
+uh how to do
+this? Well, um the size itself is
+already conditioned by thickness. Maybe
+we should just invert the
+thickness and uh be prepared to see some
+really really gross large things
+together because these are already
+small. If I invert these numbers, I'm
+going to get really large things. I hope
+it's not going to crash. Yeah, probably
+it's safe. So, one
+minus not this.
+Sorry. One minus why. Oh, it doesn't
+work like that. Yeah.
+So, yeah, maybe just subtract
+this and load
+two. So, I couldn't put a m a one minus
+because this is a flow too and one minus
+only works with floats. This is like
+really really big. But maybe I can just
+dude. Yeah, I think this
+is Well, it seems like it doesn't work
+too
+good. It seems that everything it's like
+maybe thickness one minus
+thickness doesn't seem to like it. Maybe
+I can just swizzle it.
+I can uh make it like not
+dependent on the thickness maybe the
+fruits I don't know maybe X and Y just
+let me try
+this I'm
+just trying to see if this is different
+than
+this. I don't think it should be, but I
+might be wrong. At this point, I am
+retired. Yeah. So, it's not making any
+difference. Uh, well, in this case, I'm
+just going to do use my other things.
+So, what I want to do, I want to use my
+T0 variable to make roots smaller
+um at the beginning and then larger here
+at the top. Okay. So how should I do
+this? Well, I should get the the
+zero and just uh scalar multiplied by
+so make a vector out of it and then do
+this.
+Yeah. Okay. So now we're having
+roots as well at the top. And then if
+you change things
+randomly, everything
+changes. So now you're having a branch
+generator, which I think looks cool. And
+um I want to do a few more things. I
+want to relate the length of um the
+length of the
+branches to the main one to have them
+like a percentage out of it. So
+currently they're individual.
+So, here is
+um where I store
+the where is my length here? Okay. Yeah.
+So, uh I want to relate this uh at this
+uh level here. I uh
+generate the length of these branches
+which is uh in
+here. So it's already I think it's
+already related to
+t0. Let me change the length and see
+what happens. I think they might already
+be linked together which is a good sign.
+And I also need to make this
+um floor to make sure that things don't
+get
+[Music]
+crazy. Okay. Why don't you want to
+work 124?
+Maybe in the
+chair
+124. Okay. To
+float have it like
+so. And then if I play with
+this. Okay. Uh this is not good. But I
+think we might be able to fix it.
+So let me have a look at
+it. Okay. So the problem is that when we
+are changing this number everything
+disappears and the reason for that is
+because uh here uh one level down when
+we do the branching we've done it like
+so. So we're taking the
+uh the numpty and we divide it by 32
+just to uh specify how many of those
+branches we want. Uh but then uh if I
+change this parameter kind of uh it
+doesn't work. Okay. Uh it should be like
+things that are um maybe uh multiples or
+squares of 32. I mean 32 multiplied by
+32 it's
+1,024 if I'm not mistaken. So whenever I
+change this uh kind of it breaks this
+proportionality. So the easy fix is just
+for now you instead of specifying like
+how many uh branches I have just to say
+like spacing between branches.
+just
+spacing and then instead of doing this
+this division we just take this thing
+and put it here.
+So nothing changed currently but then if
+I go here and change this 124 then
+everything is going to
+work. Yeah. Okay. And look at that. It's
+pretty pretty awesome to have a look at
+it,
+right? Okay. So, now the cool part is we
+made it so far and we like it. And then
+this is how you should build procedural
+systems because now that you have this
+thing
+um this system in place
+um you can use it and you can duplicate
+it and you can have multiple copies of
+of itself. And all those copies are
+going to be individual because we have
+randomness uh and um various parameters
+that allow you to uh control the
+individual aspects of each individual
+instance. And this is really powerful
+and amazing. So for example, if you
+wanted to do something uh like this that
+change it in Substance Designer, you
+would have to do like some tricks. But
+now that I have this leaves, what if I
+want to make multiple leaves? What if I
+want to make copies of this? Well, let's
+do it. So,
+um first of all, I'm just going to take
+this and uh orient it a bit in
+um in a more vertical direction. So, I
+think this is what I want to do. And
+then just take this whole one and move
+it down a
+bit. So this is where we move up and
+down. And also move it like I think it's
+good where it's right now. And I want to
+um just decrease its length. So we test
+and we saw that it's working. So now I
+want to just have a leaf like this. And
+I want to make like an evolution. I have
+one leaf and then I want to have them
+maybe two or three or four leaves
+depending or probably three leaves and
+they should be increasing. Right? So how
+should I do that? Well, because I
+already have everything in place, I can
+just go here and do another iterate
+node. So this is another iterate node
+that I can use. Currently, it's only
+doing one, but it can be doing three.
+So, if I'm doing three, it's going to
+generate like three things in place. And
+we should probably see this uh thing
+going crowded more because we have
+randomness. So, maybe three. Yeah,
+everything uh like the main stem remain
+the same, but all the other things uh
+changed. But then uh we can go in here
+and um say like okay we have three
+things. We go in here where we defined
+our position and we can add to it. So
+add well we don't want to move anything
+uh vertically but we want to move things
+horizontally. So we create a float
+to like this. And then we want to float
+zero. So we don't move vertically but
+then we're going to move it horizontally
+like so. So this is moving everything
+all together but we want to move it like
+one instance or one copy or one leaf at
+a time. So of course we have our get
+float dollar
+number. This dollar number that I just
+called comes from this one. Okay. So
+dollar number I want to multiply it by a
+small value. load and uh
+just see what happens when we change
+this
+zero. Okay, so we have three copies.
+Well,
+awesome. Now, I have three copies, but
+what else can I do? Well,
+um well, I want to use this thing to
+change this number here.
+So, we had this and let's do a larger
+one. So, maybe
+this where all the leaves
+grow. Okay. And every one of them is
+different. They look similar, but
+everyone is different. You can see like
+at the fruits, we have three fruits at
+the top. We have one and things like
+that. So now uh we can just uh use
+the number here dollar number we divide
+it by
+three. Okay. And then we use to lurp
+between this and this. So
+lurp. And those things need to be turned
+into loads for this to work. So
+float sorry it's two float cuz we want a
+conversion I mean two float integger to
+float where is
+it this
+one and duplicate
+it and then plug this thing here and
+then like so. And now uh this needs to
+be just like
+this. Okay. So we had three
+leaves. And uh let me do it a bit more
+proper. So I'm going to put this level
+as minus
+one. Minus
+one. and go inside and instead of having
+it like so we're going to do like a
+float maybe four this time instead of
+three cuz I want four
+leaves and I also want to set this as
+numpt minus
+one and sequence and um up to this point
+I didn't encounter any problem which if
+I uh name my variable bus with like a
+math sign or math symbol here. It seems
+that it's doesn't do anything wrong, but
+um I don't think it's a good idea to use
+this for variables, but yeah, I mean it
+worked. So, two
+integer. Okay, set this as an output. I
+get four leaves.
+Then I need to go
+here, get my dollar
+number. Set it to PT now minus
+one. Use the sequence node. Create my t
+minus one uh variable. So get
+float. We have pt num minus one
+already. We duplicate this
+and num pt minus one. We do this
+division. We set this to t minus
+one. We plug this thing in here. We do
+this sequence to chain all the info
+together. Now we get
+um maybe instead of dollar number we're
+going to get
+like get float. I want the minus one
+here. Now this crunched things together.
+That's fine.
+Okay. So we have four leaves. Uh then
+here I want to learn
+between this based on t minus one.
