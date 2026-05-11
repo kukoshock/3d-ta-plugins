@@ -12,5 +12,8 @@
       "note": "Subject of the sd-fxmap-math-tutor skill. Not a code contributor; the skill curates Andrei's publicly available educational content (YouTube channel @andreizelenco4164, ArtStation, 80.lv articles) with per-paragraph citations. Paid Gumroad content is referral-only, never ingested."
     }
   ],
-  "keywords": ["substance-designer", "procedural-textures", "3d", "materials", "tutorial", "adobe", "fx-map", "pixel-processor", "math-expressions"]
+  "keywords": ["substance-designer", "procedural-textures", "3d", "materials", "tutorial", "adobe", "fx-map", "pixel-processor", "math-expressions"],
+  "license": "Apache-2.0 AND CC-BY-SA-4.0",
+  "cite_as": "Substance Designer Tutor — by Anastasia Kukosh (@kukoshock). https://github.com/kukoshock/3d-ta-plugins. Licensed CC BY-SA 4.0 (skills/docs) and Apache-2.0 (code). Built atop publicly available material from Adobe Substance 3D's 'Designer First Steps' course and Andrei Zelenco's tutorials — see ATTRIBUTION.md for per-source citations.",
+  "funding": "https://github.com/sponsors/kukoshock"
 }

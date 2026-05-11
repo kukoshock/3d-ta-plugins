@@ -174,7 +174,26 @@ All major versions include both human creative direction and AI-assisted impleme
 
 ## License
 
-MIT License - Use freely, contribute back!
+This repository is **dual-licensed** to fit the two kinds of work it contains:
+
+- **Source code** (Python build/utility scripts and similar) — [Apache License 2.0](LICENSE). Includes an explicit patent grant and a [`NOTICE`](NOTICE) attribution mechanism that forks must preserve.
+- **Skills, documentation, plugin metadata, guides, and other prose content** — [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](LICENSE-CONTENT). Anyone may use, remix, or build upon the content — **including for commercial work** — provided they credit Anastasia Kukosh and release any improvements under the same open terms.
+
+Upstream source-material credits (Adobe Substance 3D's "Designer First Steps" course, Andrei Zelenco's tutorials, etc.) are documented in per-skill `ATTRIBUTION.md` files and respected with per-paragraph citations throughout the skills.
+
+### How to cite this project
+
+If you write about, build on, or share these skills, please credit Anastasia by linking back:
+
+> *3D Technical Artist Plugin Marketplace* — by **Anastasia Kukosh** ([@kukoshock](https://github.com/kukoshock)). Available at https://github.com/kukoshock/3d-ta-plugins. Licensed under Apache-2.0 (code) and CC BY-SA 4.0 (content).
+
+### Support this work
+
+If these skills helped you ship better materials, faster — please consider:
+
+- ⭐ **Star the repo** so other 3D artists can find it.
+- 💬 **Share** your results on LinkedIn, Twitter/X, ArtStation — tag [@kukoshock](https://github.com/kukoshock) and link the project.
+- 💖 **Sponsor** Anastasia's continued curation: [github.com/sponsors/kukoshock](https://github.com/sponsors/kukoshock) (pending onboarding; additional tip platforms coming in [`.github/FUNDING.yml`](.github/FUNDING.yml)).
 
 ---
 

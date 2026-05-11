@@ -2,5 +2,12 @@
   "name": "whisper-transcription",
   "version": "1.0.0",
   "description": "Audio and video transcription using whisper.cpp CLI with FFmpeg preprocessing",
-  "keywords": ["transcription", "whisper", "speech-to-text", "audio", "video", "subtitles"]
+  "author": {
+    "name": "Anastasia Kukosh",
+    "github": "kukoshock"
+  },
+  "keywords": ["transcription", "whisper", "speech-to-text", "audio", "video", "subtitles"],
+  "license": "Apache-2.0 AND CC-BY-SA-4.0",
+  "cite_as": "Whisper Transcription skill — by Anastasia Kukosh (@kukoshock). https://github.com/kukoshock/3d-ta-plugins. Licensed CC BY-SA 4.0 (skill content) and Apache-2.0 (any included code). Wraps the upstream whisper.cpp project — see that project for its own license.",
+  "funding": "https://github.com/sponsors/kukoshock"
 }

@@ -1,0 +1,36 @@
+name: Check credits footer sync
+
+# Drift detection for the templated Credits & Support footer.
+# Source of truth: templates/credits-footer.md
+# Rendered into:   plugins/*/skills/*/SKILL.md (between BEGIN/END_CREDITS_FOOTER markers)
+#
+# This workflow fails the PR if any SKILL.md is out of sync with the template,
+# so master is always installable via `/plugin marketplace add` with fresh credits.
+# The release workflow (release-skills.yml) runs sync again at package time as
+# defense-in-depth for tag pushes that don't go through PR review.
+
+on:
+  pull_request:
+  push:
+    branches: [master, main]
+
+# Opt-in to Node 24 for JavaScript-based actions. GitHub forces this default
+# on June 2, 2026 and removes Node 20 on September 16, 2026; setting it now
+# silences the deprecation warning and gives us early signal on incompatibility.
+# Safe to delete after September 2026.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify SKILL.md credits are in sync with template
+        run: python scripts/sync_credits.py --check

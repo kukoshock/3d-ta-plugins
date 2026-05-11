@@ -1,0 +1,24 @@
+# Configures the "Sponsor" button at the top of this repository's GitHub page.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
+#
+# IMPORTANT: only uncomment a platform line once Anastasia has confirmed the
+# account exists at that handle. A wrong handle produces a 404 Sponsor link,
+# which is worse than no link at all.
+
+# GitHub Sponsors — requires onboarding at https://github.com/sponsors/accounts
+# (Stripe identity verification, typically ~1 week to approve).
+# Once approved, the Sponsor button links to https://github.com/sponsors/kukoshock
+github: [kukoshock]
+
+# Ko-fi — one-off tips and monthly support. Zero approval needed.
+# TODO(anastasia): create ko-fi.com/<handle>, then replace <handle> below and uncomment.
+# ko_fi: kukoshock
+
+# Buy Me a Coffee — one-off tips, similar to Ko-fi. Zero approval needed.
+# TODO(anastasia): create buymeacoffee.com/<handle>, then replace <handle> below and uncomment.
+# buy_me_a_coffee: kukoshock
+
+# Custom URL — used for a future Anastasia portfolio/landing page or LinkedIn-driven site.
+# Up to 4 URLs may be listed.
+# TODO(anastasia): replace with a real destination, then uncomment.
+# custom: ["https://example.com/anastasia-kukosh"]
