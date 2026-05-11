@@ -83,6 +83,26 @@ Download transcripts from YouTube videos using yt-dlp.
 
 ## Installation
 
+### Via Claude.ai / Claude Chat (for artists)
+
+If you use Claude in the browser (claude.ai) rather than Claude Code, you can install each skill as a single uploaded file — no terminal, no git.
+
+1. Open the [latest release](https://github.com/kukoshock/3d-ta-plugins/releases/latest) and download the `.zip` (or `.skill`) for the skill you want.
+2. In Claude.ai, go to **Settings → Capabilities → Skills** and upload the file.
+3. Start a new chat and ask a trigger phrase — e.g. *"How does Tile Sampler work?"* for the tutor.
+
+Each skill is a separate, independent download. Grab one, several, or all of them:
+
+| Skill | What it does |
+|-------|--------------|
+| `substance-designer-tutor__tutor` | Interactive tutor for the Designer First Steps course (Tile Sampler, Height Blend, embroidery, weaving, export). |
+| `substance-designer-tutor__faq-generator` | Scans Reddit / Adobe Community / Polycount for common artist questions and pitfalls. |
+| `substance-designer-tutor__sd-api-integration` | pysbs / sd.api / sbsrender helpers for analyzing and batch-rendering `.sbs` files. |
+| `whisper-transcription__transcribe` | Transcribe audio/video locally with whisper.cpp + FFmpeg. |
+| `youtube-transcript__transcript` | Pull subtitles/captions from YouTube videos via yt-dlp. |
+
+The same `.zip` files work with any other AI tool that accepts Anthropic Agent Skill archives.
+
 ### Via Claude Code Marketplace (Recommended)
 
 1. Add this marketplace to Claude Code:

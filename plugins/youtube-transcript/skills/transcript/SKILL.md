@@ -13,12 +13,14 @@ Download transcripts from YouTube videos using yt-dlp.
 
 ## Integration with Substance Designer Tutor
 
-This skill provides transcripts for the **substance-designer-tutor** skill. When downloading transcripts for the Designer First Steps course:
+This skill can provide transcripts for the **substance-designer-tutor** skill. When downloading transcripts for the Designer First Steps course, save them somewhere the tutor can read.
 
-**Output Directory:**
+**If both skills are installed via Claude Code** (this repository's plugin layout), save to:
 ```
-../substance-designer-tutor/skills/tutor/sources/transcripts/
+plugins/substance-designer-tutor/skills/tutor/sources/transcripts/
 ```
+
+**If you're using the standalone Claude.ai uploads** (each skill is its own archive), save the transcripts to whatever working directory the tutor is reading from in your conversation — Claude.ai skills do not share a filesystem.
 
 **Naming Convention:** `NN-topic-name.txt`
 - `00-course-overview.txt`
@@ -167,10 +169,11 @@ When downloading transcripts for the Substance Designer tutor skill:
 
 1. **Download VTT** to a temp directory
 2. **Convert to plain text** (remove timestamps, tags, duplicates)
-3. **Save to tutor sources:**
+3. **Save to tutor sources** (Claude Code plugin layout):
    ```
-   ../substance-designer-tutor/skills/tutor/sources/transcripts/NN-topic-name.txt
+   plugins/substance-designer-tutor/skills/tutor/sources/transcripts/NN-topic-name.txt
    ```
+   When running as a standalone Claude.ai skill, save to the working directory the tutor is currently reading from instead.
 4. **Notify the tutor skill** that new content is available
 
 ### VTT to Plain Text Conversion

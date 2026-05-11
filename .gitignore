@@ -13,3 +13,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+
+# Skill packaging output (built by scripts/build-skills.*)
+dist/

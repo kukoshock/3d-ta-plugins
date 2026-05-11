@@ -16,7 +16,7 @@ Created by **Anastasia Kukosh** as a private tutor/co-pilot for 3D artists.
 
 **Current Coverage:** All 22 parts | **Status:** Complete course coverage
 
-See `ROADMAP.md` for future expansion plans. This skill covers the full curriculum from fundamentals through export.
+See `extras/ROADMAP.md` (bundled in this skill archive when distributed as `.zip` / `.skill`, or at the plugin root when installed via Claude Code) for future expansion plans. This skill covers the full curriculum from fundamentals through export.
 
 ---
 

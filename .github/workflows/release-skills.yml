@@ -1,0 +1,62 @@
+name: Package and release skills
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build skill archives
+        run: bash scripts/build-skills.sh
+
+      - name: Show artifacts
+        run: ls -la dist/
+
+      - name: Compose release notes
+        run: |
+          {
+            echo "## How to install"
+            echo ""
+            echo "1. Download a \`.zip\` (or \`.skill\`) from the assets below."
+            echo "2. In **Claude.ai → Settings → Capabilities → Skills**, upload the file."
+            echo "3. Start a new chat and ask a trigger phrase listed in the skill."
+            echo ""
+            echo "Each skill is independent — grab only the ones you want."
+            echo ""
+            cat dist/INDEX.md
+          } > dist/RELEASE_NOTES.md
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.zip
+            dist/*.skill
+          body_path: dist/RELEASE_NOTES.md
+          generate_release_notes: false
+          fail_on_unmatched_files: true
+
+      - name: Upload as workflow artifact (manual runs)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: skill-archives
+          path: |
+            dist/*.zip
+            dist/*.skill
+            dist/INDEX.md
