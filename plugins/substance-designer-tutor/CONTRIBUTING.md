@@ -92,7 +92,7 @@ skills/tutor/
     ├── video-tutorials.md   ← Video index
     ├── node-parameters.md   ← Parameter reference
     ├── troubleshooting.md   ← Problem/solution guide
-    ├── project-analysis.md  ← Ornate_Fabric analysis
+    ├── project-analysis.md  ← Ornamental_Fabric analysis
     └── parts/               ← Per-part documentation
         ├── TEMPLATE.md
         └── part-XX-*.md

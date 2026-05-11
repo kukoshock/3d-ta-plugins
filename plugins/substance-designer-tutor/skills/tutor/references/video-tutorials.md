@@ -109,7 +109,7 @@ Playlist URL: https://www.youtube.com/playlist?list=PLB0wXHrWAmCxBw92VSRjqsbqYXg
 
 ### Project Setup Steps
 1. File → New Substance Graph
-2. Name graph (e.g., "Ornate_Fabric")
+2. Name graph (e.g., "Ornamental_Fabric")
 3. Use Empty template (to learn from scratch)
 4. Default 2048 resolution is good starting point
 5. Save package immediately

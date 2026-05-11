@@ -63,7 +63,7 @@
 
 ### v2.0 (Goal)
 - All 22 parts fully documented
-- Complete Ornate_Fabric material coverage
+- Complete Ornamental_Fabric material coverage
 - Full beginner-to-advanced tutoring capability
 
 ## Source Material Extraction
@@ -71,7 +71,7 @@
 ### Completed
 - Course overview with all video URLs and durations
 - Video chapters for Parts 5, 6, 7, 9
-- Node parameter values from Ornate_Fabric project
+- Node parameter values from Ornamental_Fabric project
 
 ### In Progress
 - Raw transcript extraction from YouTube videos

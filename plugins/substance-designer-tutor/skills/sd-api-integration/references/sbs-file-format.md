@@ -99,7 +99,7 @@ The core graph structure containing nodes and connections.
 ```xml
 <content>
   <graph>
-    <identifier v="Ornate_Fabric"/>
+    <identifier v="Ornamental_Fabric"/>
     <uid v="1737051906"/>
     <paraminputs/>
     <graphOutputs>
@@ -286,7 +286,7 @@ Links between node inputs and outputs.
     <uid v="1737052108"/>
     <connRef>
       <connRefGraph>
-        <graphIdentifier v="Ornate_Fabric"/>
+        <graphIdentifier v="Ornamental_Fabric"/>
       </connRefGraph>
       <connRefOutput>
         <nodeIdentifier v="1737052104"/>
@@ -295,7 +295,7 @@ Links between node inputs and outputs.
     </connRef>
     <connRef>
       <connRefGraph>
-        <graphIdentifier v="Ornate_Fabric"/>
+        <graphIdentifier v="Ornamental_Fabric"/>
       </connRefGraph>
       <connRefInput>
         <nodeIdentifier v="1737052200"/>
@@ -452,7 +452,7 @@ def extract_node_parameters(filepath, graph_id):
                         print(f"  {name}: {value}")
 
 # Usage
-extract_node_parameters("material.sbs", "Ornate_Fabric")
+extract_node_parameters("material.sbs", "Ornamental_Fabric")
 ```
 
 ### 4. Build Connection Map
@@ -489,7 +489,7 @@ def build_connection_map(filepath, graph_id):
     return connections
 
 # Usage
-conn_map = build_connection_map("material.sbs", "Ornate_Fabric")
+conn_map = build_connection_map("material.sbs", "Ornamental_Fabric")
 for source, targets in conn_map.items():
     print(f"{source} -> {targets}")
 ```

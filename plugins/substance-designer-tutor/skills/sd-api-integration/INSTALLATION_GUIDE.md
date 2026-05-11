@@ -151,7 +151,7 @@ The official Adobe pysbs is **only distributed as a .whl file** with the Substan
 
 ## Test Results Without pysbs
 
-### Actual Analysis of Ornate_Fabric.sbs
+### Actual Analysis of Ornamental_Fabric.sbs
 
 Using **only XML parsing** (no pysbs), the skill successfully analyzed:
 
@@ -160,7 +160,7 @@ Using **only XML parsing** (no pysbs), the skill successfully analyzed:
 - Format: 1.1.0.202302
 - Dependencies: 31 external .sbs files
 
-**Graph 1: Ornate_Fabric**
+**Graph 1: Ornamental_Fabric**
 - Nodes: 167
 - Node Types: 31 unique
 - Outputs: 7 (basecolor, normal, roughness, metallic, height, AO, translucency)

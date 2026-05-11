@@ -1,6 +1,6 @@
 # Node Parameters Reference
 
-Comprehensive parameter reference for 45+ Substance Designer nodes, extracted from the Ornate_Fabric.sbs project and course materials.
+Comprehensive parameter reference for 45+ Substance Designer nodes, extracted from the Ornamental_Fabric.sbs project and course materials.
 
 ---
 
@@ -281,7 +281,7 @@ Organic, cloud-like noise pattern.
 | Disorder | 0.0-1.0 | Randomness/chaos level |
 | Non Square Expansion | On/Off | Proper aspect ratio handling |
 
-**Ornate_Fabric Instances:**
+**Ornamental_Fabric Instances:**
 | Instance | Scale | Disorder | Purpose |
 |----------|-------|----------|---------|
 | 1 | 5 | 0.31 | Fine detail variation |

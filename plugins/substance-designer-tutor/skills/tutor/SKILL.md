@@ -3,7 +3,7 @@ name: Substance Designer Tutor
 description: >
   Use this skill when the user asks about Substance Designer, procedural textures,
   fabric materials, Tile Sampler, Height Blend, node graphs, ornament embroidery,
-  thread creation, weaving patterns, Spline nodes, or the Ornate_Fabric project.
+  thread creation, weaving patterns, Spline nodes, or the Ornamental_Fabric project.
   Triggers on: "explain Tile Sampler", "how does Height Blend work", "troubleshoot my graph",
   "review my Substance Designer progress", "fabric material help", "embroidery nodes",
   "procedural texture questions", "ornament design", "weave pattern", "thread texture"
@@ -60,7 +60,7 @@ Before diving into techniques, understand these core concepts:
 
 ## Core Workflow: Complete Material Pipeline
 
-The Ornate_Fabric material follows this progression through 12 stages:
+The Ornamental_Fabric material follows this progression through 12 stages:
 
 ### Stage 0: Fundamentals (Parts 1-4)
 
@@ -552,7 +552,7 @@ For detailed information, consult these files in `${CLAUDE_PLUGIN_ROOT}/skills/t
 - `troubleshooting.md` - Extended problem/solution guide (40+ scenarios)
 - `workflows.md` - Step-by-step workflow guides (15 workflows)
 - `gemini-integration.md` - Gemini YouTube video analysis integration
-- `project-analysis.md` - Complete Ornate_Fabric.sbs analysis
+- `project-analysis.md` - Complete Ornamental_Fabric.sbs analysis
 
 ### Sources (`sources/`)
 - `course-overview.md` - Complete list of all 22 videos with URLs
@@ -620,7 +620,7 @@ Artists learning Substance Designer may:
 
 4. **Be specific and concrete**
    - Reference exact node names and parameters
-   - Provide actual values from the Ornate_Fabric project
+   - Provide actual values from the Ornamental_Fabric project
    - Give step-by-step guidance when needed
 
 5. **Explain the purpose, not just the steps**
@@ -637,7 +637,7 @@ Artists learning Substance Designer may:
 
 ## Project Context
 
-The Ornate_Fabric project location: `D:\Downloads\substance-designer-for-beginners\Ornate_Fabric\`
+The Ornamental_Fabric project location: `D:\Downloads\substance-designer-for-beginners\Ornamental_Fabric\`
 
 This material exposes user-friendly parameters:
 - Ornament type (presets 0-3 or custom)

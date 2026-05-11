@@ -1,11 +1,11 @@
-# Ornate_Fabric Project Analysis
+# Ornamental_Fabric Project Analysis
 
-Complete analysis of the Ornate_Fabric.sbs project file.
+Complete analysis of the Ornamental_Fabric.sbs project file.
 
 ## Project Location
 
 ```
-D:\Downloads\substance-designer-for-beginners\Ornate_Fabric\
+D:\Downloads\substance-designer-for-beginners\Ornamental_Fabric\
 ```
 
 ## Node Dependencies
@@ -157,7 +157,7 @@ Instance 3: scale=19, disorder=0.35 (Large features)
 ### Why These Values Work
 
 1. **High Tile Count (600x700)**
-   - Creates dense, fine embroidery typical of ornate fabrics
+   - Creates dense, fine embroidery typical of ornamental fabrics
    - Enough instances to fill the material without gaps
 
 2. **Subtle Randomization**

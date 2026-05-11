@@ -1,6 +1,6 @@
 # Procedural Cloth via Vector Fields
 
-This reference is the **math route to fabric**. Where the sibling `Substance Designer Tutor` skill teaches fabric via project-anchored Tile-Sampler workflows (the Ornate_Fabric pipeline), this reference covers Andrei Zelenco's approach: build the fabric directly from a vector field that math defines per pixel. Both routes solve fabric. Their trade-offs are different, and one user can want one or the other depending on the project.
+This reference is the **math route to fabric**. Where the sibling `Substance Designer Tutor` skill teaches fabric via project-anchored Tile-Sampler workflows (the Ornamental_Fabric pipeline), this reference covers Andrei Zelenco's approach: build the fabric directly from a vector field that math defines per pixel. Both routes solve fabric. Their trade-offs are different, and one user can want one or the other depending on the project.
 
 ---
 
@@ -32,7 +32,7 @@ In production texturing for a single defined material with predictable parameter
 
 ## Cross-reference: the sibling tutor's fabric pipeline
 
-For the project-anchored, recipe-driven fabric pipeline (Tile Sampler + Height Blend + the 14-stage Ornate_Fabric workflow), see the **`Substance Designer Tutor`** skill. Its `references/workflows.md` covers thread → weave → ornament → embroidery as a single composed material. It is the right starting point if you have a specific fabric to make and want to ship it; this skill's vector-field route is the right starting point if you are designing a *new kind* of fabric or want continuous parametric control over the weave.
+For the project-anchored, recipe-driven fabric pipeline (Tile Sampler + Height Blend + the 14-stage Ornamental_Fabric workflow), see the **`Substance Designer Tutor`** skill. Its `references/workflows.md` covers thread → weave → ornament → embroidery as a single composed material. It is the right starting point if you have a specific fabric to make and want to ship it; this skill's vector-field route is the right starting point if you are designing a *new kind* of fabric or want continuous parametric control over the weave.
 
 A user asking "I want to make fabric in Substance Designer" should be offered both routes and helped to pick. A user asking "explain the math behind procedural cloth" goes here.
 

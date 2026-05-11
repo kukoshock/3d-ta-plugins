@@ -687,7 +687,7 @@ When encountering an unknown issue:
    - Sometimes cache gets stale
 
 7. **Compare to working example**
-   - Reference Ornate_Fabric project
+   - Reference Ornamental_Fabric project
    - Match parameter values
 
 8. **Restart if needed**
