@@ -139,7 +139,7 @@ When a single plugin ships **two or more sibling skills that overlap in domain**
 Skills are matched against a user's prompt by their `description` frontmatter field. If two installed skills both look plausible, Claude will pick one — and you don't want it to be the wrong one. The fix is *vocabulary discipline*: each skill's description leads with terms that are specific to its own subject and avoids terms that the sibling owns.
 
 For `substance-designer-tutor`:
-- `tutor` skill description leads with: `Tile Sampler`, `Height Blend`, `Spline`, `embroidery`, `Ornate_Fabric`, `weave pattern`, `thread texture` — the project-anchored craft vocabulary.
+- `tutor` skill description leads with: `Tile Sampler`, `Height Blend`, `Spline`, `embroidery`, `Ornamental_Fabric`, `weave pattern`, `thread texture` — the project-anchored craft vocabulary.
 - `sd-fxmap-math-tutor` skill description leads with: `FX-Map`, `Pixel Processor`, `math expressions`, `while loop`, `iterate node`, `vector field equations`, `sine patterns`, `procedural cloth via math`, `reaction-diffusion` — the math/systems vocabulary.
 
 The shared term "Substance Designer" appears in both, but the technique vocabulary is disjoint. That's the discipline.

@@ -118,7 +118,7 @@ Once installed, Claude Code will automatically activate the relevant skill when 
 
 ## Example Projects
 
-### Ornate Fabric Complete Guide
+### Ornamental Fabric Complete Guide
 
 A comprehensive written guide covering the entire 22-part "Designer First Steps" video series by Adobe. This guide provides:
 
@@ -127,11 +127,21 @@ A comprehensive written guide covering the entire 22-part "Designer First Steps"
 - **Quick reference tables** for key nodes and troubleshooting
 - **SBS file analysis** of the completed project
 
-**Location**: `Ornate_Fabric/COMPLETE_GUIDE.md`
+**Location**: `Ornamental_Fabric/COMPLETE_GUIDE.md`
 
-**Project File**: `Ornate_Fabric/Ornate_Fabric.sbs`
+**Project File**: `Ornamental_Fabric/Ornamental_Fabric.sbs`
 
-This guide serves as both a learning resource and a reference manual for recreating the ornate fabric material from scratch.
+This guide serves as both a learning resource and a reference manual for recreating the ornamental fabric material from scratch.
+
+#### Renaming your local Substance Designer project
+
+The repo standardizes on `Ornamental_Fabric` (the project was previously called `Ornate_Fabric` — a typo that has now been corrected). If you cloned earlier and have a local `Ornate_Fabric.sbs` you want to bring in line:
+
+1. In Substance Designer, open the project, right-click the graph in the Explorer, and rename `Ornate_Fabric` → `Ornamental_Fabric`.
+2. Save the package, then rename the file on disk: `Ornate_Fabric.sbs` → `Ornamental_Fabric.sbs`.
+3. Rename the containing folder: `Ornate_Fabric/` → `Ornamental_Fabric/` to match the repo layout.
+
+The `.sbs` file is `.gitignore`d, so this is a local-only step — no commit needed.
 
 ## Releasing
 

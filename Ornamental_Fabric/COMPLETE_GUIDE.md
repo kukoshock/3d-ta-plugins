@@ -1,4 +1,4 @@
-# Substance Designer: Complete Ornate Fabric Material Guide
+# Substance Designer: Complete Ornamental Fabric Material Guide
 
 A step-by-step written guide based on Adobe's "Designer First Steps" 22-part video series.
 
@@ -6,7 +6,7 @@ A step-by-step written guide based on Adobe's "Designer First Steps" 22-part vid
 
 ## Course Overview
 
-**Project Goal**: Create an ornate fabric material with woven ornaments, embroidery trim, and gemstones.
+**Project Goal**: Create an ornamental fabric material with woven ornaments, embroidery trim, and gemstones.
 
 **Pipeline Flow**: Thread → Weave → Embroidery → Trim → Gemstones → Colors → Export
 
@@ -53,7 +53,7 @@ A step-by-step written guide based on Adobe's "Designer First Steps" 22-part vid
 **Step 1: Create New Graph**
 ```
 File → New Substance Graph
-Name: Ornate_Fabric
+Name: Ornamental_Fabric
 Template: Empty (for learning)
 Resolution: 2048 (good starting point)
 Save immediately (Ctrl+S)
@@ -717,20 +717,20 @@ The official sample project files for this tutorial are available from Adobe:
 **Tutorial Page**: [Substance Designer for Beginners - Official Tutorial](https://www.adobe.com/learn/substance-3d-designer/web/substance-designer-for-beginners)
 
 This ZIP file includes:
-- Complete `Ornate_Fabric.sbs` project file
+- Complete `Ornamental_Fabric.sbs` project file
 - All dependencies and referenced materials (48 SBS files)
 - Example exports and presets
 
 ### Local Project Structure
 
 If you have the sample files, the main project is:
-- **Main Project**: `Ornate_Fabric.sbs`
+- **Main Project**: `Ornamental_Fabric.sbs`
 - **Dependencies**: Located in `dependencies/` subdirectory (48 SBS files)
 - **Video Sources**: All 22 parts documented in the substance-designer-tutor plugin
 
 ---
 
-## SBS File Analysis: Ornate_Fabric.sbs
+## SBS File Analysis: Ornamental_Fabric.sbs
 
 ### Graph Structure (Frames/Sections)
 
@@ -844,7 +844,7 @@ The graph is organized into 14 logical sections:
 ## Verification
 
 To test this guide:
-1. Open `Ornate_Fabric.sbs` in Substance Designer
+1. Open `Ornamental_Fabric.sbs` in Substance Designer
 2. Follow node chains matching each stage
 3. Compare parameter values with documented settings
 4. Reference video transcripts for visual confirmation

@@ -237,7 +237,7 @@ await mcp__claude-in-chrome__computer({
 Gemini's responses are based on video analysis and may occasionally misinterpret visuals. Cross-reference with:
 - Transcripts in `sources/transcripts/`
 - Node parameters in `references/node-parameters.md`
-- The actual Ornate_Fabric.sbs project
+- The actual Ornamental_Fabric.sbs project
 
 ---
 
@@ -278,7 +278,7 @@ The Substance 3D Designer Beginner Course Gem has been pre-configured with:
 
 - Knowledge of all 22 parts of the course
 - Playlist links and video structure
-- Understanding of the Ornate_Fabric project
+- Understanding of the Ornamental_Fabric project
 - Context about PBR workflows and node-based design
 
 This context persists across queries, allowing for follow-up questions and deeper exploration of topics.
