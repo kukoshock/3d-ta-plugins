@@ -16,3 +16,7 @@ Thumbs.db
 
 # Skill packaging output (built by scripts/build-skills.*)
 dist/
+
+# Python bytecode cache
+__pycache__/
+*.pyc

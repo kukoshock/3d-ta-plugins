@@ -78,15 +78,15 @@ def replace_or_append(skill_text: str, block: str) -> str:
     return before + block + after
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--check",
-        action="store_true",
-        help="Do not write; exit 1 if any SKILL.md would change.",
-    )
-    args = parser.parse_args()
+def sync(check: bool = False) -> int:
+    """Render the template into every SKILL.md (or in --check mode, report drift only).
 
+    Importable from build_skills.py so the release pipeline can ensure credits
+    are fresh before packaging. Returns the same exit codes as the CLI:
+      0 — success / in sync
+      1 — drift detected (only in check mode)
+      2 — fatal error (missing template, no SKILL.md, malformed markers)
+    """
     if not TEMPLATE_PATH.is_file():
         print(f"ERROR: template not found at {TEMPLATE_PATH}", file=sys.stderr)
         return 2
@@ -110,12 +110,12 @@ def main() -> int:
 
         if updated != original:
             changed.append(skill_md)
-            if not args.check:
+            if not check:
                 skill_md.write_text(updated, encoding="utf-8")
 
     rel = lambda p: p.relative_to(REPO_ROOT).as_posix()  # noqa: E731
 
-    if args.check:
+    if check:
         if changed:
             print("Out of sync with templates/credits-footer.md:", file=sys.stderr)
             for p in changed:
@@ -135,6 +135,17 @@ def main() -> int:
     else:
         print(f"All {len(skill_mds)} SKILL.md files already in sync.")
     return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Do not write; exit 1 if any SKILL.md would change.",
+    )
+    args = parser.parse_args()
+    return sync(check=args.check)
 
 
 if __name__ == "__main__":

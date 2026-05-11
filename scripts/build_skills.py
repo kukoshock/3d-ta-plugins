@@ -21,6 +21,8 @@ import sys
 import zipfile
 from pathlib import Path
 
+from sync_credits import sync as sync_credits
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DIST_DIR = REPO_ROOT / "dist"
 EXTRA_DOCS = ("ROADMAP.md", "ATTRIBUTION.md", "CONTRIBUTING.md")
@@ -86,6 +88,15 @@ def human_size(num_bytes: int) -> str:
 
 
 def main() -> int:
+    # Render the canonical credits footer into every SKILL.md before packaging.
+    # Release archives must always ship with fresh credits, even if a contributor
+    # forgot to run `python scripts/sync_credits.py` after editing the template.
+    print("Syncing credits footer from templates/credits-footer.md ...")
+    sync_rc = sync_credits(check=False)
+    if sync_rc != 0:
+        print("ERROR: sync_credits failed; aborting build.", file=sys.stderr)
+        return sync_rc
+
     if DIST_DIR.exists():
         shutil.rmtree(DIST_DIR)
     DIST_DIR.mkdir(parents=True)
