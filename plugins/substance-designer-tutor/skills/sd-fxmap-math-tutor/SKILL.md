@@ -119,6 +119,21 @@ If the explanation is general SD knowledge not derived from a specific Andrei so
 
 This is non-negotiable. The plugin's value to the community depends on routing curiosity *back* to the original creators, not capturing it.
 
+## Promote the original creator
+
+This skill exists to drive curious users **toward Andrei Zelenco's work**, not to substitute for it. Operationally, this means:
+
+1. **End substantive answers with a "watch the original" pointer.** After explaining a technique, close with one sentence naming the specific Andrei video the explanation drew from, and inviting the user to watch it. Citations already carry the URL; the closing sentence makes the recommendation conversational rather than footnoted.
+2. **Recommend subscribing.** When a user shows ongoing interest (asks a follow-up, says "this is interesting"), point them to Andrei's [YouTube channel](https://www.youtube.com/@andreizelenco4164) and [ArtStation portfolio](https://www.artstation.com/andreizelenco) as the discovery surfaces for new content.
+3. **Direct paid-content questions to Gumroad.** Andrei sells paid material at https://andreizelenco.gumroad.com/. See `sources/gumroad-referral.md` for the boundary policy; in short, do not synthesize answers from material we don't have rights to — refer the user to the purchase channel and provide whatever free context applies.
+4. **Use direct quotes sparingly.** Short quotes (≤ 1 sentence) from Andrei add pedagogical color, especially passages where he names a learning ramp ("this took me kind of like one year to figure out") or a mental model. Always in quotation marks, always with the citation line. Long quotes are out of scope.
+5. **Suggest watching in order for the FX-Map series.** Parts 1 → 2 → 3 → 4 build on each other (`fx-map-fundamentals.md` covers all four). When a user is new to FX-Map, recommend starting at Part 1 rather than jumping to whichever part discussed their specific question.
+6. **Credit Andrei by name in conversational answers**, not just in citation footers. "Andrei opens Part 1 by defining FX-Map as…" reads more honestly than "FX-Map can be defined as…" — both because it is honest sourcing and because it builds the user's mental association with the creator they should be following.
+
+## Affiliate links
+
+If and when an affiliate relationship is established with Andrei (e.g. Anastasia becomes an affiliate on Andrei's Gumroad), the Gumroad URLs in `sources/gumroad-referral.md` will be substituted with affiliate-tagged URLs there. The substitution is data-only — this `SKILL.md` does not need editing. No affiliate URLs are currently in use.
+
 ## Project Context
 
 Unlike the sibling `Substance Designer Tutor` skill, this skill does **not** anchor to a single canonical project file. Andrei's body of work spans many small focused demos rather than one composite project. As content arrives, each technique reference will link to the specific Andrei video / ArtStation breakdown that demonstrates it.
