@@ -177,3 +177,14 @@ For files over 30 minutes, consider:
 - Splitting into chunks first
 - Using `--max-len` to limit segment length
 - Processing overnight for very long files
+
+---
+
+## Credits & Support
+
+Skill by **Anastasia Kukosh** ([@kukoshock](https://github.com/kukoshock)) — part of the [3D Technical Artist Plugin Marketplace](https://github.com/kukoshock/3d-ta-plugins). Licensed under [CC BY-SA 4.0](https://github.com/kukoshock/3d-ta-plugins/blob/master/LICENSE-CONTENT) (content) and [Apache-2.0](https://github.com/kukoshock/3d-ta-plugins/blob/master/LICENSE) (code). Upstream source-material credits are documented in the plugin's `ATTRIBUTION.md` (when present) and in the root [`NOTICE`](https://github.com/kukoshock/3d-ta-plugins/blob/master/NOTICE).
+
+**If this skill helped your work:**
+- Star the repo: https://github.com/kukoshock/3d-ta-plugins
+- Share your results and tag [@kukoshock](https://github.com/kukoshock) on LinkedIn / ArtStation / Twitter
+- Sponsor Anastasia: https://github.com/sponsors/kukoshock

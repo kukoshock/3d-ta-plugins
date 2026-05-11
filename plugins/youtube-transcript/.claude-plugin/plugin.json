@@ -6,5 +6,8 @@
     "name": "Anastasia Kukosh",
     "github": "kukoshock"
   },
-  "keywords": ["youtube", "transcript", "subtitles", "captions", "yt-dlp"]
+  "keywords": ["youtube", "transcript", "subtitles", "captions", "yt-dlp"],
+  "license": "Apache-2.0 AND CC-BY-SA-4.0",
+  "cite_as": "YouTube Transcript skill — by Anastasia Kukosh (@kukoshock). https://github.com/kukoshock/3d-ta-plugins. Licensed CC BY-SA 4.0 (skill content) and Apache-2.0 (any included code). Wraps the upstream yt-dlp project — see that project for its own license.",
+  "funding": "https://github.com/sponsors/kukoshock"
 }

@@ -1,0 +1,34 @@
+3D Technical Artist Plugin Marketplace
+Copyright 2026 Anastasia Kukosh
+
+This product includes software and educational content developed by
+Anastasia Kukosh (https://github.com/kukoshock).
+
+The project is dual-licensed:
+
+  * Source code (Python build/utility scripts and similar) is licensed
+    under the Apache License, Version 2.0. See the LICENSE file at the
+    root of this repository for the full text.
+
+  * Skills, documentation, plugin metadata, guides, and other prose
+    content are licensed under the Creative Commons
+    Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
+    See the LICENSE-CONTENT file at the root of this repository for
+    the full text, or visit:
+        https://creativecommons.org/licenses/by-sa/4.0/
+
+Upstream source material credits — including Adobe Substance 3D's
+"Designer First Steps" course and Andrei Zelenco's publicly available
+educational content — are documented per skill in the corresponding
+ATTRIBUTION.md files (e.g. plugins/substance-designer-tutor/ATTRIBUTION.md).
+These third-party works are referenced and paraphrased under fair use
+with citations; they are not redistributed.
+
+If you fork, remix, or build upon this work — whether the skills, the
+documentation, or the build code — please retain this NOTICE file and
+credit Anastasia Kukosh as the original author. See the "How to cite"
+section of the README for the canonical citation string.
+
+If this work helped you in your craft, please consider sponsoring
+Anastasia's continued curation:
+    https://github.com/sponsors/kukoshock

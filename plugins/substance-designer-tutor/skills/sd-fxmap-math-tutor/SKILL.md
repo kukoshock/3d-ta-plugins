@@ -139,3 +139,14 @@ If and when an affiliate relationship is established with Andrei (e.g. Anastasia
 Unlike the sibling `Substance Designer Tutor` skill, this skill does **not** anchor to a single canonical project file. Andrei's body of work spans many small focused demos rather than one composite project. As content arrives, each technique reference will link to the specific Andrei video / ArtStation breakdown that demonstrates it.
 
 When a user asks about fabric specifically, prefer the `procedural-cloth-vector-fields.md` reference (Andrei's vector-field approach) and offer the sibling tutor as the alternative for the project-anchored Tile-Sampler approach.
+
+---
+
+## Credits & Support
+
+Skill by **Anastasia Kukosh** ([@kukoshock](https://github.com/kukoshock)) — part of the [3D Technical Artist Plugin Marketplace](https://github.com/kukoshock/3d-ta-plugins). Licensed under [CC BY-SA 4.0](https://github.com/kukoshock/3d-ta-plugins/blob/master/LICENSE-CONTENT) (content) and [Apache-2.0](https://github.com/kukoshock/3d-ta-plugins/blob/master/LICENSE) (code). Upstream source-material credits are documented in the plugin's `ATTRIBUTION.md` (when present) and in the root [`NOTICE`](https://github.com/kukoshock/3d-ta-plugins/blob/master/NOTICE).
+
+**If this skill helped your work:**
+- Star the repo: https://github.com/kukoshock/3d-ta-plugins
+- Share your results and tag [@kukoshock](https://github.com/kukoshock) on LinkedIn / ArtStation / Twitter
+- Sponsor Anastasia: https://github.com/sponsors/kukoshock
