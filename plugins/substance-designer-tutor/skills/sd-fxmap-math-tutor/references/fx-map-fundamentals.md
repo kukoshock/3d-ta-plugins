@@ -64,12 +64,22 @@ Part 3 puts the Iterate node to work building something visually striking: start
 The same algorithm with a black-and-white portrait as the input height map produces a portrait-as-streams effect — the same code, the same wiring, just a different input image. This is the practical payoff of the math/systems approach: one graph generalizes across many visual outcomes that would each be a separate recipe in a parameter-driven workflow.
 *Source: Andrei Zelenco — Substance Designer Basic to Advanced FX map tutorial Part 3 — https://www.youtube.com/watch?v=nXFZ8nx9y8M*
 
+## Part 4: data lists, point clouds, and graph drawing
+
+Part 4 of the series shifts FX-Map from "scattering shapes" to **drawing from data**. Andrei builds an FX-Map graph that takes a height map, generates a point cloud whose density follows the height map's brightness, converts that point cloud into a list of points, and then draws connections between near-neighbor points to produce a network-of-lines visualization. The same algorithm fed a black-and-white portrait reveals the face as a graph of connected dots. The point-cloud-to-list conversion specifically uses Pixel Processors and a Matrix node — a non-obvious technique covered in detail in the video.
+*Source: Andrei Zelenco — Substance Designer basic to advanced FX MAP part 4 — https://www.youtube.com/watch?v=FCrwogNp5rY*
+
+The pedagogical takeaway Andrei calls out explicitly: *"the FX map node, it's powerful when you think about it like hey I can just uh divide my entire thinking or my entire process in working with data generating the data and drawing it."* Once you separate **generate the data** from **draw the data**, the same drawing logic generalizes across many input modalities — a height map, a portrait, a Voronoi noise — without changing the FX-Map.
+*Source: Andrei Zelenco — Substance Designer basic to advanced FX MAP part 4 — https://www.youtube.com/watch?v=FCrwogNp5rY*
+
+This is the bridge into the Pixel Processor reference (`pixel-processor-basics.md`) and the data-as-images discipline covered there: a Pixel Processor writes the data; an FX-Map reads it and draws.
+
 ## Where to go next
 
-- Watch the three videos in order — there is no substitute for seeing Andrei build the graphs node by node.
+- Watch the four videos in order — there is no substitute for seeing Andrei build the graphs node by node.
 - The Pixel Processor reference in this skill (`pixel-processor-basics.md`) covers the close cousin of FX-Map: same math-expression language, same per-pixel mindset, but no recursion / no Quadrant model.
-- The Math Expressions reference (`math-expressions.md`) covers the expression syntax that makes everything in Part 2 and Part 3 possible.
-- Andrei has at least one further FX-Map tutorial referenced in his channel uploads beyond Part 3; when that transcript is pulled, this reference will be extended with its content.
+- The Math Expressions reference (`math-expressions.md`) covers the expression syntax that makes everything in Part 2, Part 3, and Part 4 possible.
+- Andrei's channel has further videos that build on these foundations — *"Working with data in Substance Designer"* (the data-list patterns), *"Loops with Pixel Processor, FX map and Instance graphs"* (the three-way comparison of loop constructs), and many shorter demos. The video index (`video-index.md`) tracks what has been pulled.
 
 ## Acknowledgments
 

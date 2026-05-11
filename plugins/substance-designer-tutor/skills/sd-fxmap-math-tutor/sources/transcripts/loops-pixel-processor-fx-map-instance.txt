@@ -1,0 +1,2644 @@
+Hello everyone. Welcome to a new
+Substance Designer
+tutorial. We will be covering loops
+inside Substance Designer. I already
+prepared a few examples
+here. Just to briefly u
+mention, we have a few ways to do loops
+inside Substance Designer. The first one
+is with the while loop node inside the
+pixel processor. We also can do uh loops
+with the iterate node inside the FX map.
+And um we can also do loops outside
+uh the pixel processor or FX map if we
+construct
+um a certain kind of graphs for
+ourselves. Okay.
+So let me show you what we are going to
+um recreate from scratch today.
+So we're getting this uh kind of effect
+uh
+by taking a cone gradient and inside the
+pixel processor we're going to do
+something which is very similar to the
+histogram select. So from this gradient
+we're going to select a band and we're
+going to move this band along the
+gradient. We're also going to offset the
+position of this gradient and this will
+produce this kind of effect. If I go
+inside, you have a few things that you
+can play with. So, for example, this is
+the width of the bands. Uh, if I change
+this value, this is going to increase
+the width of the bands. Let me decrease
+it back. Uh, we can also go in here and
+change the number of
+rings. So, more or less rings. Let me
+put it back to
+64. We can
+also play with this parameter, which I
+think it's the main parameter that would
+create an interesting effect. So, it's
+creating this looping behavior, which I
+find really
+interesting. Okay.
+So it's doing this uh swing back and
+forth uh and left to right and also
+changes color. So I think it's an
+interesting
+effect. Then uh we also have a similar
+effect where we take a pearly noise
+um and then we make a map like this out
+of it. And again we are selecting a few
+contour lines from it. And then we
+elevate those contour lines gradually.
+And this is sort of like a 3D print
+effect if you want. So maybe you could
+see these layers. You also have this
+gradient that allows you
+to change um what really go what's
+really going on here. So by default it
+looks like this.
+It's essentially scanning u the ply
+noise level by level and increase uh the
+levels up. Uh I also added here a
+quantise and the blur. If I remove this,
+we're going to get the pearly noise
+itself. And then if I if we add this,
+we're going this we're going to get this
+uh stair step effect. Okay.
+Next, um, we're going
+to have a few interesting examples here
+to show or to try and explain what's the
+difference between the FX map and the
+while loop inside the pixel processor.
+So they are very similar, but pixel
+processor has a few extra things that
+you can do that will allow you to do
+much much more.
+So, for example, um let's uh imagine for
+a moment that this is
+um kind of like a bowl that has three
+holes and then you have a marble that
+starts maybe somewhere here and then you
+want to find out where it's going to to
+land uh depend on the starting position.
+So imagine you you have a bowl and then
+you have a marble ball and then you let
+that marble slide inside this bowl and
+eventually it's going to reach the to
+the bottom and the shape of this bowl
+uh so to speak has like these three
+three holes. So let me go inside the
+effects map and um we can just reduce
+this
+to one. So this is the starting point
+and then as you increase this value then
+the ball is starting
+to roll inside toward the bottom and it
+has um it doesn't go straight to the
+bottom. It has a bit of inertia and is
+going to wander back and forth for a
+while until uh it's going
+to approach its final rest
+position. And this is not uh super
+physically accurate. That that's totally
+fine. It's just for the purpose of uh
+showing some things that you can
+do in the pixel processor.
+Okay. So, we're simulating based on this
+starting position. Uh the marble is
+going to roll down the ball and it's
+going to end up uh for example in this
+um bottom place here. But um I have this
+um parameter. I have this stick here
+that I can change. So for example,
+depending on this on the position, you
+can see that it's going to end up in
+some different places. And the final
+location where this lands, it's uh based
+or it's uh totally determined by the the
+starting position here.
+So then uh it would be nice if we would
+say like hey what happens
+um if we would simulate like absolutely
+all position what would happen? Uh can
+we get a map that would show like um we
+have three different grave uh scale
+values here and we have a starting
+position and we would say hey if I start
+here uh in this position um what would
+be my final position where this position
+is going to land me and then color this
+pixel the starting position by the final
+color here. Okay. So we can simulate
+that for all the pixels here. And uh
+this is a uh 2K image. So we're
+essentially simulating 4 million uh
+simulations. And it's really fast and uh
+it's really interesting. So uh this is
+in the pixel processor node. Uh we have
+a ball this time with six
+um uh with six holes. And then depending
+on the starting position uh we're going
+to color each pixel by its end position.
+Okay. So for example uh these are uh
+colors for each of those
+um button places of the the boat and
+then
+uh from each each pixels is going to get
+colorized by uh the respective color.
+you have the possibility to change the
+random seed. So currently we have four
+uh
+yellow uh dots which it's not uh the
+absolute best. Ideally we would want to
+have this uh individually colored or
+with a distinct color. I think I should
+go in here and instead of using random
+So instead of luminance random I think
+by pattern
+number something like
+this. And
+maybe just add more colors here to the
+green for
+example. Yeah, maybe that's a bit
+better.
+So I'll take this gradient map here
+and use this one instead. Okay. So now
+we're getting this more colorful
+one. Uh this has the qualities of a
+fractile. it's having
+uh a bit of chaos and a bit of cell
+similarity and then for example you can
+go and change with
+um with this parameter. So you would uh
+you will be able to change the number
+of those circles and you can see the
+more you have the more uh noisy and
+chaotic it gets.
+Maybe with five it looks uh not too
+noisy but uh still interesting. I'm
+going to to leave it like this.
+Okay. So uh these are a few
+examples in which we used um pixel
+processor and FX map. But then
+uh these are inside uh these nodes
+themselves. The loops are happening
+inside the
+the pixel processor and the FX map. But
+you can also do um something that it's
+like the while loops but outside uh
+these nodes. So for example uh we have
+this
+uh structure here that takes in a circle
+and then uh just take that circle and
+moves it around and rotates it and then
+adds up all these circles and it's
+creating a a small spiral. So you can
+just go inside of this one and see
+what's happening. We're taking uh the
+circle. We're just moving it around and
+we add the move circle with the previous
+uh input and then we just output this
+thing out. So for example, I can take
+this transfer node and
+um change its properties and then you
+can see uh what's really happening here.
+The cumulative effect of this also
+um this
+uh blend node has its opacity going on.
+So this is going to create for us this
+uh change in uh in color. If I get this
+to absolute one, everything it's yellow.
+If I decrease this, then the color start
+to to
+change. Okay. Uh that was an interesting
+example. Uh you have something uh very
+similar. Next, but has a bit more things
+going
+on. Again, we're taking a a disk and
+then we bring it inside and we move it,
+but also we blur it. And then we add the
+move circle with the blur one. And then
+we output this. And if we uh keep doing
+this, it's kind of like an animation.
+But you can also see how things that
+happened in the past. So the the circle,
+it's doing an animation. It's starting
+here and then moves here, here, here,
+here, and so
+on. But you can see how things in the
+past become more and more
+blurry. And this is creating like a
+trail effect. Or maybe if you want to
+think about it, it's like a smoke
+effect. Like this thing diffuses uh as
+time passes and gets so diluted until it
+almost gets completely
+diffused. Okay. Um we also have this
+effect
+uh
+where we move things around but we also
+move them up and down. And uh this up
+and down movement it's uh selectively
+chosen. Uh so the difference from this
+one uh to this one is uh we now have uh
+this system here of numbers that keep
+tracks of the number of iterations. So
+it's essentially like the i ++ in the
+loops and u based on uh these numbers we
+can decide
+um for example this has been uh this is
+taking every um other uh dot and it move
+it moves uh the dot up and it also blurs
+it. So this is essentially what this
+thing is doing. So we can uh se we can
+selectively apply some uh
+actions to
+uh to the incoming uh patterns based on
+this uh numbering
+system. So the blur only applies to the
+the top ones and uh you can see what's
+going on. So we start here and
+then we change uh this kind uh in this
+kind of
+fashion and it's
+um this system it's a bit interesting.
+It sometimes it becomes a bit
+mindbending to think about it cuz you
+would expect something else to happen.
+So we started with this but then we made
+this things have changed and um
+we probably weren't expecting uh this uh
+initial thing to to disappear and then
+you can see it's more like a switch
+between states which I think is an
+interesting
+effect and then probably you can go
+inside and
+Um, if you do this, uh, then you're also
+going to get the spiral. Uh, how to,
+um, get rid of this calidoscopic effect?
+Um, you need to go here into the
+transform
+node and,
+uh, disable the tiling. So, tiling mode,
+absolute, and no tiling.
+Okay. And then I think I can
+also So this is again making a spiral
+and this is moving
+like up and down. Okay, I'm going to hit
+a couple of
+undos because I think the original
+example was
+a bit more simple to to
+understand. Then we have a a similar
+system um but uh this allows you to
+create fractal tree like structures. So
+you're taking in just uh a single uh
+rectangle and then you copy it twice and
+add uh this to the original rectangle
+and then you keep doing the same
+operation and the tree uh grows more and
+more complex and what's happening inside
+is really simple. So we're taking and
+let me go to the actual beginning. So
+we're taking
+the initial segment, we transform and
+rotate it. Uh we make another copy, we
+add these copies together. And uh last
+lastly, we add everything together. And
+then we just output this. And then we
+just repeat these
+operations. And the trees grows into a
+fractile, which I think it's
+interesting.
+And the last uh example is um something
+a bit different. So up to this point we
+used the transform node and the blur
+node. Uh but let's do something else. So
+let's bring in side the
+uh splatter circular node. And this
+splatter circular node is going to be
+scattered around a few times. And then
+uh we also have this uh pearly noise
+map. So
+the the position where uh this uh let's
+say those are stylized flower flowers
+and uh based on their position into this
+space they're uh sampling
+this pearly noise map and based on the
+luminosity of this pearly noise the
+flowers are going to get
+um more or less petals so to speak. So
+you can see this one uh it's sampling a
+lower value into the pearly noise and it
+has less petals and this one which is
+brighter uh samples a higher value in
+the pearly noise and has more petals.
+And then if you go here and change uh
+the pearly noise you can see
+how the number of pedals changes and
+it's based on uh this pearly noise.
+Okay, we can also change uh the random
+seed and then these uh flowers get
+scattered
+differently. And again uh this is uh a
+system that we have created and it uses
+already existing nodes
+um that you can put inside of this
+system and basically loop over them. So
+we included uh in this looping system we
+included the tile uh splatter uh the
+tile circular grayscale node and we also
+been able to affect some of its
+properties based
+on information that it's fed into this
+looping system externally. So we have
+two things external. We have the
+pearling noise field that allows us to
+change the number of petals. And we also
+have this uh list of random positions
+that it's taking our
+uh scatter flower. I it's taking our uh
+splatter circular flower which is
+position in the center and then with
+this pixel processor we're going to move
+it around into this
+space. Okay. Okay. So these are the the
+examples. Uh let me uh go ahead and
+start from scratch. Okay. So I will be
+taking this
+uh gradient and it's a cone gradient. So
+I mean uh in this case it's a polygon
+but initially I started with
+um with a simple shape node and I
+selected from the list that that node
+allowed us to choose from. I selected
+the cone. The reason for using a polygon
+here is because I found this effect
+interesting. So the polygon has this
+curve parameter. So initially this is a
+hexagon and then you can just play with
+this and
+I I just liked this effect. Okay. But
+let me delete this one and gradient I
+mean sorry
+shape and we can choose a
+[Music]
+cone and um what we're going to do
+inside the pixel processor
+um we're going to create this kind of
+functionality. So, let me bring in
+the histogram
+select. And we're not going to fully
+make the entire histogram select. We're
+just going to mimic a small portion of
+its functionality. What we're going to
+mimic is we're going to have the
+contrast set to one. The range is going
+to be a parameter that we can control.
+So we're going to call this parameter
+uh thickness and uh this parameter is
+going to be position. So we're going to
+create a histogram uh select that only
+has these two parameters and we will be
+able to play with the thickness of the
+ring and then also uh change its radius
+so to speak. But this is actually where
+it's uh sampling the gradient from.
+Okay.
+So, pixel
+processor make it
+grayscale go inside. Uh we need to get
+the position variable. So, it's a get
+plot two. And then from here we need to
+choose the position. And in order to
+bring the gradient inside the pixel
+processor, we need to sample and set
+this as an output. So sample grayscale
+because the image itself it's a
+grayscale. And then uh here if we would
+have multiple images then this list is
+going to have multiple input images. But
+image input
+zero it's uh this one. So you can see
+image input zero. Okay. Good. Now uh
+let's select the ring. Uh so for this we
+will be creating two
+floats. Uh this is going to be uh our
+position
+parameter and this is going to be our um
+thickness parameter.
+And we want to do an addition here.
+So this plus this and then a subtraction
+here. Okay. So those are some values
+that um are around the center value 0.5.
+This is uh a bit larger than 0.5. This
+is a bit lower than 0.5. And we're going
+to say if the brightness of the pixels
+in uh this image here um are going to be
+both
+brighter.
+Um I mean if the pixels here are going
+to be uh bounded the brightness of the
+pixels here are going to be bounded
+between these values here then we want
+to make those pixels fully white and
+everything else will be zero. Okay. So
+let us do this. We will be saying if
+this is
+lower than this then make everything
+white. So let me actually show you how
+this thing
+looks. Okay. So all the pixels that are
+uh lower than uh this value here are
+white. Everything else is black. Then
+let me do the opposite of this.
+So
+greater all the pixels from here that
+are greater than this make them white.
+So it's this. And now we want to say hey
+uh what about the pixels that
+met both these conditions? So we can say
+like hey and the um the pixel respects
+this and this condition. Okay. So this
+and this and if you put this here now we
+got a
+ring. Uh this is um
+maybe it's kind of the intersection of
+those two rules or maybe like those two
+rules combined. And then if we play with
+this thing here, this is uh like the
+position parameter in our histogram
+uh select and this is like the
+width. Okay, good. So the thing with uh
+the the thing with the while loop uh
+node is
+that it
+requires it requires a kind of a
+template
+um for you to to construct in your mind
+and uh follow that template uh all the
+time. And this will help you to just uh
+know how how to start and identify what
+you want to what you want to do. So let
+me create the template first. What we
+have here is we have a procedural system
+that has two parameters already, right?
+So we have these parameters,
+the position and the thickness.
+Uh they're currently constant values.
+It's something that we hardcoded here,
+but we will going to be changing this
+from a constant to something that
+changes in time. Okay. And I really like
+to for all my procedural systems or for
+all my templates, I like to uh frame in
+red the things that I want to to change
+in time. So these are going to be
+variables. Okay. And I'm going to also
+put this thing in a larger frame and say
+this is my procedural
+system. Okay. And it is important to pay
+attention here uh this making of the
+template. Um it's really important. So
+first of all we started with our
+procedural system. We defined that the
+things that are currently constants but
+we want to change them. Okay. So now
+let's build the the loop uh
+infrastructure and the rest of the
+template. So the while
+loop node is going to be put in here and
+it expects uh three things to happen and
+uh it has this in it input. It has the
+exit condition and it has the loop body.
+Uh this is going to be the loop body.
+It's going to be fed in here. uh the
+exit condition it's going to be a
+statement that when it becomes true the
+loop stops and then uh here into init uh
+we need to define and um I mean we need
+to set and declare a few variables okay
+so let me put for ourselves another
+frame and
+say variable initialization
+So, and uh here you would have as many
+variables as you want, but I would say
+uh you can do quite a lot with a number
+of uh with a limited number of your
+variables and I usually or very
+frequently use just three variables. Uh
+so these variables
+are
+I and those are names that you can come
+up with. Just make sure that the names
+are meaning
+uh something that makes sense to
+you. And in order to set a variable or
+to assign it to something, it's you're
+going to use the set node.
+And this is going to be named I. And if
+you've done uh loops before, you'll be
+familiar with the I and I++. And maybe I
+I think I stands for iteration or
+iteration number. Okay. I also uh
+do another one which I like to call n.
+And this is how many times I want to not
+two but n. This is how many times I want
+the loop to iterate. I will be putting
+64 for now. And lastly, I have another I
+need another
+variable that it's going to be called
+luminosity. Again uh this uh can be
+named anything but I was inspired by the
+naming that is in the FX map node. So
+this is going in this variable here.
+We're going to accumulate all the pixels
+and all their brightnesses and things
+like that. So that's why it's called
+luminosity. Okay, good. Now we have
+three variables but we only have one
+input here. So how do we do this?
+because we can't uh connect all of them
+together. So for this we have in order
+to connect everything together we have
+the sequence node and the sequence node
+it's like the semicolon
+uh character in coding. So at the end of
+every line of code you would put a
+semicolon and that would indicate that
+the line of code has ended and you're
+ready to move to the second one. So this
+is uh like the first line of code. This
+is the second line of code. This is the
+third line of code. Okay. So we chain
+them together with sequences. So one,
+two, three. And then we're ready to plug
+this thing here. Okay. Good. Now uh we
+need to move to the next part of the
+template. So we had variable
+initialization. Now we need to move to
+the next part which is the exit
+condition.
+And um what we really do with loops is
+we're going to do a bunch of computation
+with our uh loop body, but also we will
+um
+use i as a variable that keep track
+keeps track of how many time we
+iterated. So we will be taking this i
+and increase it by one every time this
+entire loop iterates. Okay. And the exit
+condition is going to be when this value
+of i became uh equal or greater than uh
+n. Okay. So I will be doing this get
+float I and if I it's greater or equal
+than
+N
+then this statement here be or this uh
+comparison here becomes true and then
+the loop it's going to uh
+stop. Okay. So do this. This is like
+exit
+condition. And lastly uh we need
+to plug in the loop body. Okay. And we
+need to do
+um another thing to our template. So we
+have our procedural system. We have our
+uh variable initialization. We have the
+exit condition and we also need to do
+update
+variable.
+So, and uh I'm going to put this one in
+red. Okay. And in this part, we're going
+to update our variables which are I and
+luminosity. And we're going to let n
+alone. So this is going to say here it's
+going to be our control where we're
+going to say how many times do we want
+to iterate. And basically this is going
+to be the number of rings that we have.
+But here we need to update I and we also
+need to update luminosity. So first let
+me get I get
+float I and we want to add to it because
+we want to increase it. So I it's zero
+right now, but we want to add one to
+it.
+And so this and
+this and then
+set this construction here is important.
+So you're taking a variable get load I
+you do something to it and in order to
+update it you set it again. So get do
+whatever computation you want in between
+and then set.
+Okay good. So we uh updated I and then
+we also need to update luminosity. So
+let me do this as well.
+Get
+float going to take
+luminosity. It's already here. We can
+add uh but uh we can also do a max. And
+max is like the maximum blending mode.
+So it's the same as
+So it's the same as this blending mode
+here like max it's going to be uh
+showing the brightest between uh the
+overlapping pixels. Okay. So here
+luminosity it's going to be
+max with this and also
+set
+luminosity. Okay. So, we had our get and
+set uh that allows us to update
+luminosity. And we're almost there. We
+need to plug uh these things here. So,
+in order to plug them uh in this one, we
+also need to use the sequence node.
+Okay. So, we first update I and then we
+update luminosity. And now they're
+connected together. Okay. So I think
+um we can uh go ahead and set this thing
+as an
+output and we also want to preview the
+pixel processor. So the loop actually
+has executed. Uh but uh it um we are not
+able to see anything going on yet and uh
+that's totally fine because we need to
+go in here and replace this constant
+values with something that changes in
+time. And uh what changes in time? Well
+uh the fact that we use I and I now it's
+updating with every iteration. So now I
+starts from zero and then goes 1 2 3 4 5
+uh until
+um 64 and I also want
+to make sure that I point this thing uh
+to you. So even though I said here that
+the number of iteration is going to be
+64 and uh my exit condition it's set
+like
+that you need to make sure that one more
+thing allows you to do this by default
+in order to not get stuck in an infinite
+loop. The node itself it's set to max
+iteration uh to 32. So no matter what I
+do here and no matter my exit condition,
+this is going to overwrite everything.
+Uh for safety reasons, it's going to
+execute just 32. Now that I have an exit
+condition of my own, I can just go to
+this one and increase it uh arbitrarily.
+I can put for example
+1,000. Okay, so it still have a safe uh
+value. If anything goes wrong after 1,00
+iterations, this is going to stop as
+well. Okay, good. Now I want to replace
+this value here with something that
+changes in time. If I move this, you can
+see that our ring uh it's changing its
+radius. I like to do this kind of thing.
+So on this wire, I want to put a dot
+like this and then connect this thing
+here. So this allows me to plug
+something on this wire. I'm going to get
+I. So get
+float I. And then if I plug this thing
+here, it's going to do something
+interesting. We only seeing this dot.
+And this is
+because these values are really large.
+But I can multiply this by something
+small.
+So okay. So if I multiply this by 0.02
+now you can see we have this uh
+um this concentric circles.
+Let me also do this maybe for uh this
+time
+32. And then uh let me instead of doing
+this, I want to do something else. I
+want to have
+um no matter how many of uh these rings
+I have, I want to have a full uh circle
+filled with concentric rings, not like a
+larger hole here in the middle. Okay. So
+for this I need to take I which is from
+0 to
+32 I need to divide it by
+n something like this. Okay so now I can
+plug this thing here instead. Okay. So
+now uh if I go here and change the
+number of rings, you can see that I
+always have the full thing going on. I
+also want to decrease
+the width of the rings. Maybe put like a
+25. Okay, good. So uh we have this thing
+uh going on which is already interesting
+and we're happy with it but we want to
+add a bit more things
+to the system to make it more
+interesting.
+Okay. So this created a number of
+dynamic rings for us that we can
+change. maybe do
+48. And we also want to to move things
+around.
+So if I add something
+here and then a float
+two, this allows me to to move things
+around. But you see that everything it's
+moving. Uh but I don't want to move the
+entire thing. I only want to move uh
+each ring
+uh individually and this movement should
+be based uh on every
+iteration. Uh so uh we already can uh
+can do this and um let me take this I
+divided by n once more and put this
+thing here.
+Okay, so it doesn't work. And the reason
+for uh it doesn't working is because
+this is a
+float value and this is a vector float
+too. And this uh allows me to move left
+and right. And this allows me to move up
+and down. I only want to move left to
+right. This is a float two. This is just
+a float I need to make. From this float,
+I need to make a vector float too. So ve
+float 2. Plug this into X because I want
+to move horizontally. Put a zero into Y
+because I don't want to move
+vertically. And then replace this thing
+here. So, uh, okay. Now, we're getting
+this effect, which I think it's
+interesting. So, we moved things
+um individually. Now every
+um every ring it's moved uh
+individually based on the iteration
+number. Uh maybe it's too much in order
+to have a control over how much we move.
+We can multiply. So if you multiply by
+zero then it's doing
+nothing. But then you can uh
+multiply like this.
+So now it's like a cone that it's
+pointing in a certain direction. Okay,
+good. So, uh that's also interesting and
+I like it. And let's say that
+[Music]
+um what if we want to move it gradually
+and first it move in this direction and
+then it moves in the opposite direction.
+So let me do it like this. Maybe if I
+put a minus0.5 then it moves in this
+direction. Okay. Um but I can do uh
+something more.
+And I want uh it to start here and then
+uh go here and then return back to this
+thing. Okay. So let me do
+this. This is from zero to
+one. I will multiply this by
+pi because I what I want to do this
+starts at zero and then ends up with
+one. But I want to make this range
+starts from zero be one in the middle
+and then return again to to zero. So if
+you imagine starting from zero to one is
+like zero it's here and then it moves to
+one. But then if I make it to go from
+zero to one and then back to zero I can
+make it that like an inverse curve. So
+it start at zero then it goes like this
+to one and then returns back to zero. So
+I'm going to do this and in order to
+make this range do that uh I need to
+take this thing and multiply it by
+pi and then do a
+sign. So now this is
+um now this is starting at zero and then
+goes to one and then it goes back to to
+zero. Okay. And I also want to blend
+between these values.
+So I will be using a linear
+interpolation. So I want to transition
+between minus 0.4 and 0.4. So let me do
+a linear
+interpolation based on this. And then I
+also use a
+negate. So this is
+minus0.4. This is
+0.4. And then we do
+this and this. And then put this thing
+here. So now we're getting this uh
+interesting
+effect. Also um we can do even more
+things to it. It's already looking
+interesting.
+We to create that uh looping
+um animation effect, we should add
+something here after the
+sign, not after the
+sign, before the sign. So here we need
+to add
+something maybe like
+five. Okay. And then once we change
+this, we're getting this looping effect.
+Okay. Maybe this is a bit
+much. Something like this.
+Okay. So, I think it's doing like an
+interesting uh wavy
+effect. And that's already interesting.
+But we can do one more thing with this.
+Uh so
+uh this again it's between uh zero and
+one and all our rings are currently with
+the brightness one. Uh but we can
+multiply them by this uh changing value.
+So multiply. Now if you multiply by zero
+they all disappeared.
+uh and then we can just take
+this sine wave and put it back. Okay. So
+now when I change
+this value
+here okay so the effect is interesting
+but I don't like the fact that they are
+disappearing al together. So the reason
+for this is because this is strictly
+between zero and one. Uh we can put this
+uh into a linear interpolation like we
+had here. So we can put a
+lurp and not here. Uh, we want this
+thing in here and we want to put two
+values.
+Load zero
+and maybe between one and 0.2 so it
+doesn't completely
+disappear. Okay, maybe even
+more. And one more thing which I
+realized is because
+uh sign goes from uh min -1 to 1. Uh and
+in this case it was initially it was
+correct. So if I put this thing in here
+that's correct that still remains from
+uh 0 to one but then if I added this
+thing here now our sign uh actually
+ranges from minus one to one. That's why
+some of the rings uh disappear. Uh and
+then uh if we want to mitigate that, we
+can put
+a -11 to 01 range. Okay. And then maybe
+we can increase this effect
+more. Something like this. And now if I
+change this then also we have the the
+wave effect and the brightness changing.
+Okay,
+good. Now, uh lastly, what I've done is
+um I just put a uh gradient map after it
+like this and also an FXA
+color. So, what the FXA node does, it's
+uh going to take this very sharp stair
+step effect pixels here and there. It's
+going to do a very smart blur that it's
+applied
+to
+the to the edges. So I
+fix
+grayscale. So before and
+after. Good. We have our first example
+done.
+The second one um is this effect. So let
+me take a pearly
+noise. And then also let me take uh this
+quad
+transform. I mean uh let me just do
+it. Okay. So, I want to make it like
+this. Okay, maybe like so. And then uh
+again I will be using the same idea of
+uh using the histogram select
+but inside the pixel processor.
+So, bring the image
+inside and I could be going inside this
+one and
+copy this part, but I don't want to
+because repetition is good. So, we're
+going to build it from scratch again. So
+what we want uh we want
+um float that it's going to be
+our
+position parameter and then this is
+going to be our
+thickness. And then we want to add this
+with this and we also want to subtract.
+And then we will
+say the
+conditions. So if the brightness of the
+pixel is lower than
+this and
+greater if the brightness of the pixel
+is greater than this and if those both
+conditions are met at the same time. So
+end
+If this and this, if this and this are
+true, then make the pixels white. So,
+boolean to
+float. And now we have this great. So,
+if we change this position, then we're
+going to scan through the values of the
+pearly noise. Okay. Now, great. again.
+Uh let's do our template trick. So this
+gets into our
+memory.
+Okay, this is the things that we want to
+change. This is our procedural
+system. Here is going to be our while
+loop. Okay. Okay. And then we have uh
+the variable initialization.
+Oh. And if you remember
+the the variables that will be totally
+amazing cuz we're going to use the same
+variables.
+So this one is
+I, this one will
+be N and the last one will be
+luminosity. I'm going to shortcut as L U
+M. We need to se sequence things
+together and we're done with
+our variable
+initialization. Right now we need to do
+our exit condition. So
+get
+load I and we want to stop if I is
+greater or equal than N.
+So greater or equal when this becomes
+true then stop. We also want to go here
+and now that we have this thing going
+on. So n should be maybe
+64. And then uh we want to go in here
+and extend this. Now this was
+our
+exit. We have lastly the update
+parameters. The parameters or not
+parameters sorry update variables. The
+variables that we want to update are I
+and
+lum. So get
+float
+I. We want to do something to i. So
+add okay and
+then we add one and now we want to
+update it. So
+set I
+good and we also want to update uh the
+luminosity. So get
+float lum
+We want to put a max
+here and then
+set L
+lum and
+then these are our
+updates. Chain them together with a
+sequence node.
+We should also put the frame as well.
+So update
+variables and then plug this thing here
+set as an output. Now great
+uh we have this thing going on. We know
+that we want to change some of these
+parameters. But also let's uh think what
+happens with if we do something else. So
+maybe what if
+um what if we start and add
+here what's happening? So load
+two. Well, if I move this is going to
+move left and
+right. And if I change this is going to
+move up and down. So, I'm thinking we
+can uh make uh something
+that looks kind of a bit like a 3D
+printing. So, layer by layer we're going
+to move this things up. Okay. So,
+instead of doing this with a constant,
+we need to do this with a variable.
+Okay. And
+um we can take our i divided by n. So
+I divided by n and see what's
+happening. And uh now that I know I want
+to move vertically and not horizontally.
+So remember this is a float and I we
+want to change it. So uh I mean we want
+to put it into a vector but we also want
+to put it here into the y component cuz
+this is the part that it's moving up and
+down. Okay. So we should put this here
+and we don't want to do anything
+horizontally. So now our vector it's
+like this. Okay. Great. Uh now uh it's
+interesting but maybe it's too much.
+Um let's multiply this by a small
+number.
+Okay. Not
+zero. So maybe
+0.3. And this
+uh acts like the height of our extruded
+maybe like
+0.5. Okay. So uh that's one uh thing
+that
+um it's already interesting but we can
+do more of
+course and we want to also change this
+value. Remember this value it's our uh
+lines our scanning of the the pearly
+noise. So maybe we want to start from
+zero and then go to one and see what's
+happening if we do this or what happens
+if we do this.
+So replace this with something that
+changes in time. Well, we can do I
+divided by n and plug this thing here.
+And now we got this result which I think
+looks interesting. Okay. So now you can
+go ahead and play with
+this disorder. So now everything
+changes. Okay. The effect it's looking
+interesting. We can do a bit more
+uh than that. So uh let me actually do
+this.
+We also want to put instead of having
+this
+uh simple transition from zero to one,
+we can put a curve node. So that allows
+us to do our own uh transition.
+So now this is going from zero to one
+but we can make it from uh 0 to one to
+zero and then maybe to something like
+that. We can do something crazy. Okay.
+So we want to read values from this. So
+I divided by uh N is just a gradient
+that
+was I divided by N is just a gradient
+like this where it starts from zero and
+linearly increase to one. But we can
+change that. So plug this thing here
+in now now we have this thing here. We
+want to put it into a vector. So we can
+sample that
+uh sample
+grayscale image input one. This our
+gradient. We can't put this thing here
+because this is a vector and this is
+just a float. So this requires a vector
+and
+vector. So this and this will is going
+to iterate and loop and read values from
+this texture. So this loop is going to
+go here and read values from here from
+here from here from here from here and b
+based on these values is going to change
+the position or our of our histogram
+select so to speak. Right? So let me
+preview this and then do
+this. Okay. So now things have changed
+and I think the reason for this is
+because it would be good not to start
+from absolute zero. Okay. And then
+something like this. So it's already
+another interesting effect. Uh and then
+you can change it like so. So maybe try
+and do this. What happens if I do this
+and this?
+What happens if I do
+this and
+this? So, I like it uh when they connect
+together like this where they kind of
+create this tunnel
+here. Also, let me do one more thing.
+I'm going to need another
+gradient. I will need to rotate this
+one 180°. And I will duplicate the quad
+transform and apply the same
+transformation to this
+one. I don't like these things here. Um
+these are probably because the sampling
+is by linear. Do it to nearest then
+they're gone.
+Okay, this is our pixel processor
+node. I want to plug this thing
+here. Okay, I'm doing a bit of
+graph
+arrangement. Not too much
+though. Okay, great. Now I want
+to to add a bit of uh depth to this uh
+to this drawing. So for this I want to
+bring inside our uh new gradient image.
+So sample
+image two and uh these are the
+coordinates that take the image and lift
+it up. So we need to do to apply the
+same transformation to this one as well.
+So then our gradient it moves up layer
+with layer by layer and then uh those
+are
+uh these lines are
+fully white but we can multiply them by
+that incoming gradient and that's going
+to give us the depth
+effect. Okay. So you can see how
+uh whatever is closer to us is uh white
+and whatever goes
+uh away from us so to speak it's going
+to to be darker.
+Okay. Depending on uh if you like it or
+not. So I think I like how it looks
+right now. We can add one more effect.
+Um so the ones that are
+um uh we can kind of color them by the
+number of iterations. So some of them uh
+go up and down uh and we can uh color
+them by
+uh yeah by the number of iteration which
+might not be so initially I wanted to
+say like it's going to be zero at the
+bottom and the top the ones that are the
+top are going to be white but this might
+not be uh
+uh the case all the time.
+So in order to do so we need to multiply
+this uh again
+by 1 /
+an you can see how I computed uh 1 / n a
+few times that's not absolutely
+necessary it's just like not to make a
+total mess out of the code this is
+totally fine if you do this so you can
+take this one divided by n that we just
+computed it and then put it here. So
+this can be removed and then this can be
+a bit Oh, and maybe if every wire is too
+messy, you can
+do
+this. So again, because I have 1 / n
+computed already, I can multiply it
+here. sub
+multiply and one divided by n here as
+well.
+So okay.
+So now you can see these ones at the
+bottom are darker and the ones at the
+the top are lighter. Yeah. So maybe this
+is interesting as
+well. Okay. So now you can play with
+this and change uh what
+happens. Oh, this is interesting.
+And then also changing the disorder
+gives you like different
+effects. Okay. So you can go in here if
+you want decrease or increase the number
+of
+lines can give interesting results.
+Maybe
+128 looks
+good. And if you want you can put a
+gradient and an FXA at the
+end. Something like that.
+Okay. Uh let's move on to the
+next
+effect. Okay. Right. So I will
+duplicate this setup here.
+I mean uh should I do from scratch?
+Yeah, let me do from scratch. So, but
+this is something that we the the thing
+that we want to achieve, but I will be
+doing it like this.
+So, splatter circular
+grayscale. Okay, we
+want the pattern. We want it to be a
+disk. Pattern
+number pattern amount to be three in
+this
+case.
+Luminosity by pattern
+number. Okay.
+Then I will
+be putting a histogram
+scan then hit
+[Music]
+distance increase it all the way. I also
+want
+to remove the
+tiling. Put an auto levels after
+this. Blur it.
+the intensity of then I think it's okay
+and lastly I want to
+invert something like this okay so
+delete this one rebuild it from scratch
+uh then I think I will put a normal
+after
+this so
+normal and
+then bring it an FX
+map make it
+grayscale so I need So for this one, I
+need to rep replicate this functionality
+where we have a a pin that we can move
+around. So this is where our marble it's
+starting. This is the starting position
+and it goes down all the way to the
+bottom of the let's say the ball that
+has like a threehole bottom or something
+like that. Okay, good. So double click
+in order to make this pin. Double click
+here on this
+graph and uh here into parameters I'm
+going to make a new
+one. It needs to be a float two. It
+needs to be a position and then it needs
+to be
+a have a name. I will be saying or gin
+2. Great.
+I will be plugging this thing here. Go
+inside.
+Uh the blending mode will be set to
+maximum. The pattern will be a
+disk. The pattern size will be something
+small
+0.005. Okay.
+then I will be uh doing a branch
+offset.
+[Music]
+So the FX map considers 0 0 to be here.
+Uh but uh we're going to change that and
+we're going to make the 0 0 to be here.
+So in order to do this we will going to
+into branch offset
+minus0.5
+and minus
+0.5. So now we have it then we need to
+iterate
+this. So we're going to iterate maybe
+256 time. So integer
+256. Okay. And also I want to get the
+origin that we made. So origin two and
+we I want to uh set it to a different
+thing. So set and I'm going to set it to
+O2. And this is necessary. So, it's
+going to access
+um the position of the pin that we
+created. But then in order cuz we want
+to update it. In order to be able to
+update it, we need to take it and this
+is going to be the initial state. And
+then we want to cast it into something
+else. And this variable, it's going to
+be updated. So otherwise, I think it
+will not work. Okay. So, we have this
+and this. I think we should be able
+to chain thing to things together. Now
+we are in the FX map node here into the
+iterate node. Uh the thing that uh the
+iterate node expects as an output is uh
+an integer. So expected output type is
+integer. This is an integer. This is a
+flow to. So we can uh chain a bunch of
+variables and computations together and
+uh chain them with sequence node. But
+the last thing that we connect to the
+sequence node should be uh this uh
+integer. And this is going to tell data
+node how many times it's going to to
+loop. Set this one as an output. Set
+this one as a root. Okay. Currently
+nothing really happened but it executed
+256 times. So we currently have 256 dots
+on top of each other. Now we're going
+here into luminosity. We're going to
+get load two and the variable that we
+want to update it.
+And then at this variable we want to
+sample the normal
+map. So for example at this position the
+normal map is going to um provide us
+with the vector which has a direction
+and that direction is going to tell us
+where to move next. And we're going to
+repeat this a bunch of times. And this
+dot is going to travel along the way
+from light values to dark
+values from uh the high regions of the
+ball to the bottom of the ball so to
+speak. Okay. So we only want the we only
+want x and y from the normal. So swizzle
+float two but we also want to change the
+normal information to range from 01. it
+needs to range from uh 01 to minus11. So
+in doing so we need to multiply it's a
+scalar
+multiplication by
+two. So now range is from 0 to two but
+then we also want to subtract from it a
+float two.
+So this
+minus
+one. Okay. So now this is between minus
+one and
+one. And um
+okay. So we got our
+origin. We sampled the normal vector at
+that location. That's fine. Uh then we
+want to
+add this to this. So we're taking O2,
+we're doing something to it and then we
+redefine it. So set and it's
+again that thing which is get do
+something and set this is the update of
+the variable.
+So we computed the position but um we
+are in the luminosity channel. So the
+last thing that we need to output is
+either a float or a float for a float is
+just a luminosity. A float for it's a
+color. This is a position. It's a float
+too. We can't set this one as an output.
+So no worries for that
+sequence. And then all our dots are
+going to be white. So load one
+white. Okay. Set this thing as an
+output. Again, nothing yet happened. But
+we're almost there. We just need to go
+here and into the actual channel that
+does or that has to do with the
+movement, which is pattern offset.
+We're going to get float two and we're
+going to call in or bring in the
+variable that we just computed which is
+O2 and send an output. Okay, so it seems
+to be working and then let me
+actually test it out. So
+preview and
+then Okay, so it seems to be working.
+We're starting here and we're going down
+the road. Let us also preview what's
+going on. So maybe a
+level
+decrease this and do
+this. So again, as you can see, if we're
+starting here, we're going somewhere. Uh
+we're eventually arriving at the bottom
+of the ball. Okay. But this is like a
+direct thing. So for example, a marble
+if you drop it or if you let it slide
+into a ball, it's not going to go
+directly here. It's going to have some
+inertia and it's going to start here and
+it's going to go here, but it's also
+going to overshoot and then maybe go
+here and then return as it loses energy
+and then do a bunch of until it settles
+in at the very bottom. Okay. So, this is
+not happening uh right now, but we're
+going to make it happen. Okay. So, what
+I'm going to dislike by no means at all
+physically accurate or anything like
+that. It's also not a super complicated
+thing to do.
+Uh making this kind of simulation more
+accurate.
+uh it's something that
+is fairly common uh thing to do um and
+is not like really really uh
+tremendously complicated at least like
+the basic implementation. So what's
+happening is that we're currently only
+updating using velocity and that's why
+we don't have any inertia but we can do
+something else. So we can integrate
+twice and instead of integrating from
+velocity we can integrate from
+acceleration and this is like the uh
+force equals mass times acceleration
+thing. Okay, don't need to go into
+detail too much. I'm not an expert
+myself. I think I've done this kind of
+simulation a few time but never really
+sat sat down and really dig into it to
+to understand it. Okay.
+So uh let us update the uh simulation to
+have a bit more uh of a robust behavior.
+Okay. So currently this is uh serving as
+velocity. Uh but we don't want that. We
+want uh this to be
+acceleration. If you
+um if you might be familiar with uh
+velocity is the first derivative of
+position and acceleration is the second
+derivative of position. We're going to
+do do this kind of thing here. So we
+need a float two. We don't have a
+velocity but we want to create one. So
+for this I'm making a empty uh I mean
+I'm going to initialize with zero uh
+this uh vector.
+So
+set and I'm going to call it v short for
+velocity. Okay. So now we have this
+variable that we can also update. So go
+back here into luminosity
+and here we're going to do this. So this
+is acceleration. We're going to
+get get flow
+to
+v. We need to add something to it. We
+need to set
+it and then we need to plug this thing
+here.
+Okay. So, it seems that it does uh
+something for us, but maybe it's a bit
+too strong. So, you can see the distance
+between point. It's very very large. Let
+me have a look at it just not to waste
+too much time to remember how I've done
+it.
+Okay. So here it seems like I just
+um put a damping factor for the
+velocity. So this is making sure that
+the velocity kind of this is how I'm
+simulating the loss of energy and this
+is maybe like friction or something
+else. So I'm dumping uh the energy of
+the velocity with time. This means that
+with every iteration the velocity loses
+like around maybe I think it was like 3%
+or something of its force and along many
+iteration then the velocity becomes
+really really really small.
+Okay. So go in
+here
+here and maybe after this put like a
+scalar multiplication and
+load and this is like
+0.98. Okay, let me check another thing
+because it still seem to be very
+powerful.
+Oh, also
+here I just decreased the strength of
+the normal
+itself. So I need to do this thing
+here. It I can do this either here or I
+can do this inside of the FX map.
+Actually for the sake of consistency
+let's do it inside the FX map. So going
+here inside the
+luminosity after this step I can also
+multiply
+again. So now I'm uh decreasing the
+scale of the the magnitude of the
+acceleration
+vector and I think it was like
+0.08. Okay. So maybe it's like this. And
+I'm hoping if I change
+things, okay, I'm seeing uh some spiral
+thing going on at some
+times.
+Okay. Just want to make sure that I'm
+using similar values cuz this can be uh
+sensitive. So I'm looking here. It was
+097 and here I think I
+am
+098
+097 maybe like
+this. I'm just intrigued of why
+sometimes I get like really really
+um sharp lines. I think maybe the blur
+here might be stronger.
+So
+blur intensity is 10. Invert gray
+scale. I mean I should be looking into
+this one. So blur it was 16 instead of
+10. So let me get back here. Blur it's
+16. Yeah, it's a bit more rounder. And
+if I go here and now change
+this.
+Yeah, I still don't like how I get this
+um this effect here. Maybe let me try
+and change this one. So, if I bring this
+one
+here. Yeah, that's this seems to be much
+uh seems to be more
+different. Intensity 0.08.
+08 density
+one. It might be this. I think this
+might need to be a bilinear thing.
+That's not like terribly
+um crucial, but still wanted to have a a
+similar uh thing going
+on.
+So it it might also have to do with this
+uh particular setup. I think this also
+matter because I don't have the same
+thing going on. So this is uh my
+splatter circular in my initial case and
+uh my splatter circular here it's uh
+more like so maybe that matters as well.
+So I can change
+it. Yeah. So definitely it made a uh it
+made a difference. So it's not uh
+anymore like a straight line. Okay.
+Good. So now if I change this
+um this ends up in like different uh
+different places based on uh on the
+starting point. Okay. So we only only
+um simulated one but we want to simulate
+like all possible starting positions,
+right? So we can do this but we can do
+the same thing but inside the the pixel
+processor. Okay. So we're not going to
+visualize the path itself but we're
+going to visualize for we're going to
+color each pixel
+itself to with the color where it ends
+up with. So the pixel is going to travel
+and it's going to land on whatever spot
+it likes and then uh whatever the color
+is at the end where the travel has ended
+then the pixel is going to be color with
+that
+um with that color. Okay. So for this I
+will be taking
+the this
+one and instead of making three we're
+going to make five pattern amount
+five. Okay. And then we're going to
+maybe take the same
+thing like
+here also do the
+normal. Okay. So now inside the pixel
+processor we are going to
+[Music]
+do the simulation for every single
+pixel.
+So we need uh to get the
+position and we'll be naming this. We're
+going to make this like set and initial
+position. I mean we can call this like
+starting
+point.
+Okay. And then we can do this like a se
+not a sequence but I think maybe we can
+go directly to the while loop. The setup
+for this
+um I think it's going to be even more
+simple. We only have this variable that
+we want to
+update. The exit condition is going to
+be controlled by this. We need to do the
+body of the loop. So
+get load to we have starting
+point and we want to sample the normal
+map at the starting point. Maybe make
+this like 0.08 or something. I mean I
+would leave it this by default. I think
+here I used one but it seems like I
+blurred it a bit. So I blurred
+the normal
+map with a strength of four.
+Okay. Then go
+inside. I want to take the normals and
+change them
+from the range of 01 to the range of
+minus one to one. So I need the X and
+Y. I need to scale
+them with the value of two.
+But then I want to subtract one from
+them.
+Okay. I also think I need to create a
+velocity vector here as well. Let me
+check. So
+here in the pixel processor, yes, I also
+have a velocity
+vector. So I am
+here. Okay, great.
+So we want to update things together. So
+we have
+our declaration of
+variables.
+We for each position we extracted the
+normal map but then we want to update
+the position. But we want to update the
+velocity first and then the position. So
+get
+float and we get the
+velocity. So we need to
+add we also need to multiply it by
+something that's decreasing over time.
+So velocity is going to all the time
+decrease.
+something like this and then
+set. Okay. And lastly, we want to update
+our position.
+So that's our
+acceleration. This is our
+velocity. Okay. And this
+is our position
+update. So we took the
+position. We've done a bunch of things
+to it and then we set
+it. So I want to copy this thing.
+Starting
+point put it here. starting point. Then
+set this as an
+output. And then uh I want
+to bring in uh this map here that has
+all those grayscale values. These are
+the end
+points or the bottoms of the bowler
+colored with this different grayscale
+values. So here it just sample those
+sample grayscale and image zero set as
+an
+output
+and this is what we
+got. Okay. So uh let me think for a
+while. Let me check a few settings from
+here as well.
+So this was uh
+0.96 and this was bilinear. This was
+also bilinear. Let me
+check. So bilinear is good.
+0.96 it's also good. Uh this also should
+be bilinear.
+How many iterations did this thing
+had? 128 iterations. Let me do the same
+here. This has only 32.
+So 128. Okay. So now, oh, we're getting
+something similar. So we've done and
+also look, it's really fast to
+do. And we've done this sim kind of
+simulation. So, we started somewhere and
+we let the particles slide into this
+bowl and it ended up somewhere like
+this. And uh we've done the same
+simulation for every possible starting
+point. And this shows us if I start
+here, for example, if I start here, this
+is going to tell me where it lands. Um,
+make it
+uh maybe I can do something else instead
+of this. I can put a gradient
+map. I already have one here. So, I can
+use this
+one. Okay. And then instead of making
+this grayscale, I can make it color.
+Instead of this, I can do this. So I'm
+plugging colors
+inside. And instead of sampling
+grayscale, I can sample color. So sample
+color image input one by linear set it
+as an output.
+Okay. So
+now all the colors all the pixels that
+are colored uh the color represents the
+starting point and and where the uh uh
+based on the starting position. It's
+going to tell us where the simulation
+ended. And I think it's pretty cool to
+make patterns like this. It's a really
+interesting idea. Okay, great.
+Now up to this point we made
+um loops inside the pixel processor and
+inside the the FX map node and there are
+a few differences that I want you to
+make. So the FX map node allows you to
+um do take an an input pattern, let's
+say like a circle, and it allows you to
+change its position, change its scale,
+change its orientation and
+luminosity. Um, and you can do quite a
+lot with uh these things together, but
+only allows changing of position, scale,
+orientation, and
+luminosity. The pixel processor node
+allows you to do the same, but also
+allows you
+uh to access every uh it it gives you
+like pixel level access. So not only you
+can take in things and move them around
+up and down uh and things like
+that uh scale them, rotate them, distort
+them or whatever. But also you can do uh
+this kind of stuff where we had an input
+image and we really processed it. So we
+we extracted from this image we
+extracted that contour lines and we were
+able to take them and move them up and
+down. we were able to change their
+brightness and luminosity and things
+like that. So, pixel processor has this
+extra level that allows you to have
+controls for each individual pixel while
+the FX map uh doesn't or is least not is
+not a straightforward thing to to do.
+Okay, good. So we have a few interesting
+um uh other uh procedures that we can uh
+we can make. So let me do
+this. Uh we're having a disk here,
+right? Okay. So we can take this disk
+and we can create kind of like an action
+and repeat the same action multiple
+times. And for this um this allows us to
+encapsulate already existing nodes in a
+functioning or like in a in an
+infrastructure of nodes that can behave
+like a like looping behavior. Okay. And
+uh let me do this first. So what I want
+to do is I want to uh make an action. So
+take the transform node for
+example and uh with the transform node
+selected I am going to right click and
+say create graph from input selection.
+Now I already have created a few things
+I want or I like to name this
+uh instance graphs or subgraphs or
+however you want to name it. I think
+instance graph is more correct. I want I
+like to name the
+iteration. So for example, I have 1 2 3
+4 already. I'm going to name this
+iteration
+five.
+Okay. Now this thing has been created.
+I'm going to drag and drop it. So it has
+the transform node inside of it.
+I'm going to hit Ctrl + E to go inside.
+We need
+to
+input input a
+grayscale and also
+output. So we chained or we put our
+action in between an input and an
+output. Now our node is having input and
+output. If we plug things here then we
+get that. Okay. So then what we can do
+with this? Well, we can go inside and
+then take uh the transfer node and just
+shift it to a
+bit. And that was our
+initial dot which is not moved. And then
+uh this iteration five node has
+performed this action of movement. So
+now I can duplicate this and now it
+keeps moving. I can take these two
+together and now duplicate them and
+chain them together. And I can do this
+once
+more and change things together. So now
+we iterated or we applied the same
+function eight times. Okay. So we
+started here and we moved the circle a
+bit every
+time. Okay. And it's cool because if I
+go inside now and change things then
+everything else changes. Okay. So all
+the um other nodes are going to be uh
+simultaneously modified by the same
+action that I'm doing here. Uh which I
+think is great. So now we have this but
+uh I think we can also do a bit more
+with it. What happens if I this is my uh
+moving action right? But then I can take
+uh and put a blend node and take the
+original input and combine it with the
+moved one. Okay. So put like a
+max and then chain things together and
+then look at the output. Well, all of a
+sudden you can see we have
+a we have a a chain of dots
+together. Now uh what else can we do? Uh
+I think we can uh make like a trail
+effect. So for example where we can uh
+have the latest or the more recent uh
+dot be the brightest and have all the
+past dots to be darker. So for this I
+can um I can for
+example switch these connections
+together and I can just go and decrease
+this
+um I can decrease the opacity here or
+maybe I can put the levels
+node and just uh decrease the
+brightness something like this. It's
+even better right?
+So, it's applying the levels to all the
+nodes in the past, to all the dots in
+the
+past.
+Okay. And then you can also do this if
+you
+want. Now you have a bunch of color
+dots.
+So uh that's interesting but you can do
+even more. Uh you can take the transform
+node and you can uh scale them for
+example inside or
+outside. And then even if I rotate it
+now it's creating a
+spiral. Okay. And I can do even more. So
+now I have uh eight. But I can just take
+all the eight that I already have and
+plug this in here. And now I have
+more. Okay, good. So, this effect was
+interesting and it's a very similar
+effect to this one.
+uh we were going to we'll be creating a
+similar effect but this in this one
+we're going to also add a blur and we're
+going to have more iterations. Okay. So
+I am going to start again with the same
+setup
+uh
+disk that it's uh moved to the left and
+then also let me have a look inside
+here. So what we are doing is we are
+blurring
+uh the input and we also take it and
+move it and we combine these things
+together and let's see what happens over
+time. So again I will be taking a
+transform
+node set this one I mean create a graph
+selection from it. Uh this is going to
+be
+iteration
+six.
+Okay, we need to do
+um
+input
+grayscale and
+output. Okay. And then uh what we want
+to do is we want to move it but also we
+want to blur things. Okay. So, we have
+this this uh then we want to
+blend. We're going to be doing a maximum
+blending mode
+again. And then just a blur
+node. So, maybe not this one. like a
+blur. High
+quality and then I will be moving the
+dot just a tiny bit. Okay, good. So now
+we will be repeating this action many
+times. So duplicate
+And I want to also show you uh how the
+fast the graph actually increases. So I
+duplicate I take everything and
+duplicate it every
+time. So the graph grows
+exponentially. So it's not really too
+much work to do.
+So all of a sudden I have 64
+duplications.
+Okay, good. Now uh let's uh do something
+else. Let's
+decrease the scale of the
+dot and also rotate. So now we're
+getting this uh spiral kind of thing. I
+want to go here into the tiling mode and
+the no tiling. Okay, now it's this is
+giving me this uh kind of spiral effect.
+Also, I think maybe the blur it's too
+much. We can play with it
+and have it a bit more sharp. So you can
+see how the um the dot get blur gets
+blurred and more diffused over time.
+Okay. And also if you want you can do
+this at the end. Just color
+everything based on how you
+want. And again uh you can go inside and
+add more uh instructions or information
+or change things or go here with the
+blend mode and
+uh play with the opacity and things like
+that. So, uh, pretty interesting thing
+to do, I believe. Okay. Uh, next one.
+Uh, let me see what this one does. Okay.
+This, uh, this was the,
+um, the weird one, so to speak. Let me
+do this
+duplicate. And uh I think for this
+example is more important just to
+um to introduce or to show that we can
+introduce this uh setup here where we
+can keep track of the number of
+iterations and based on the number of
+the iteration we can do uh some uh extra
+or we can have some extra more uh
+control. Okay.
+So I'm going
+to I mean I think this one was uh a bit
+more interesting. So how it was? Well, I
+had uh I had one input that I didn't
+want to change. This is the thing that I
+want to change. Okay. So I need first of
+all
+um use a transfer
+node. I mean just for now I will be
+doing
+this create graph from
+selection I think this should be like
+what iteration iteration seven so again
+Okay. So, we want to do a uh get load,
+not get float, sorry, an
+input grayscale. And we want to straight
+output it.
+And this will allow us to just uh take
+an input image like the disk and uh
+don't do uh anything to it directly yet.
+Then we want to do another input
+grayscale and uh we're going to do
+something to this one. So this is going
+to be a transform
+2D something like that. And then also
+output. Okay. Okay. And then we also
+want an input
+value. And then we want to do a value
+processor. Then we want to do this thing
+here. Get float. Oh, it's called the
+input.
+So this is called
+input. You can name it how you want.
+Let's say like
+I. So now this thing it's called I.
+Okay. So then we want to update this. So
+add load. And we're going to add
+one set as an
+output. So it was zero, now it's one.
+And now we also want to output this as
+well. Okay. So our node now has
+uh three inputs and three outputs. Uh
+the input the first thing that we get uh
+is
+this.
+Okay. So now uh this is the part that I
+think we should also plug this thing in
+here as well. So what I want to do is I
+want to move uh I want to move
+the the dot to the left but also move it
+up and down uh sometimes and um I'm
+going to alternate
+uh between the dots that I move up and
+down based on the number of the
+iterations. So for example, if the
+number of iteration is odd, then move up
+and then if it's even move down or
+something like that or vice versa,
+doesn't matter too much. Okay, so
+um good. Well, currently we want to just
+uh do this action where we move to the
+left. And then if we do
+this, this this and this
+uh we should see the dot
+moving. Okay, so it's moving. That's
+good. But we also want to make uh the
+chain. So we want to add the dots
+together.
+So this action should also contain the
+blending. So blend where we
+accumulate the actions together. So
+maybe this is the past. This is the
+current state. We add them together or
+maybe use the max node and put this
+thing here. Okay. So now we have three
+dots. That's good.
+And let me make sure that I'm doing the
+same thing here cuz I'm not
+sure. Okay. So, it has been a movement
+and
+then also I'm doing uh
+this. Okay.
+So I want
+to to take this and move it up.
+[Music]
+So
+transform and move it
+up. And then I'm going to use the blend
+node.
+And this is the original. This is the
+moved one. The blend mode is going to be
+switch. I want to be in this
+one. So the blend mode is switch. I need
+to go
+here, create an input value, put this
+zero here and into the
+opacity going to
+get that value and we're going to
+say that value is going to increase by
+one all the time. Uh and then we're
+going to take the modulo two out of it.
+So
+mod if this is going to be one two 0 1 2
+3 4 this is going to be 0 1 0 1 0 1. So
+every even or every other every even or
+every odd number is going to be turned
+into either zero or one. So this is the
+mode to
+function and the reason for doing this
+is because
+um the blend mode with the
+uh if the blend node has the mode switch
+selected then it's going to execute
+either one
+um either of one of the inputs based on
+this uh uh based on the selection that's
+coming from the opacity channel. So this
+is going to be either zero or one. And
+this is how
+the how the switch uh mode works in the
+blend mode. And it's basically going to
+execute either a branch or the other or
+it's going to execute either uh the
+foreground or the background based on
+the opacity values which is going to be
+either zero or one. So if this is one,
+it's going to execute this. If is going
+to be zero, it's going to execute this.
+Okay.
+So set as an
+output. Okay. And then I think um let me
+check again. Not this uh but this. Let
+me remember how I connected things here.
+So, I have the
+switch and I have a new blend node here
+as well. Okay.
+So, so I think it's like this and like
+this. Yeah.
+So now this is alternating. It's doing
+um every other one it's uh moving it uh
+up. Okay. So, this is another uh
+interesting uh way to do it uh to do
+things. And now you're basing uh you're
+making some decisions based on the
+number of the iteration itself. You can
+also this is the part where we move
+things up. You can also add a blur here.
+So maybe blur grayscale. So
+now the things that are at the top are
+blurred and the things that are at the
+bottom are not blurred. Okay. So you can
+keep continue doing
+this. Okay, great. Now let's move to the
+next one. Uh this next one is pretty uh
+interesting. Uh you can make fractiles
+with it. I think I made a video tutorial
+before about this, but we can uh have it
+once
+more. So, uh I'm having a simple shape
+that I uh went into the size and reduce
+its uh x and y amount and then took a
+transer node and moved it down.
+Okay. So I will be using another
+transfer node and uh I think I will be
+creating a
+new
+iterate 8.
+Iteration
+eight. We need
+again input
+grayscale output grayscale.
+Okay. So, currently it does nothing. Uh,
+and we take um what's whatever it's
+coming in. Uh, we can uh scale
+it. I will be deactivating the
+tiling. I'm going to use a blend
+node. Add them together.
+Take this one. Position it like
+this. That's great. And I also want
+to take
+this. Okay. Reposition it like so. Maybe
+use another blend no
+here. So this and we add them together.
+So
+add then add
+this. So now I want to put this thing.
+So just made like an Y shape and then
+connect this thing here. Okay. So now we
+have it like so. But then we if we
+duplicate and we chain
+these actions together, we're going to
+get a fragree.
+Okay, which I think it's again something
+interesting. And then you can just go
+inside and play with this and change
+the change how it
+looks. Okay, this was interesting as
+well. And I think maybe this is the last
+one. and we're going to have a bonus as
+well. So, the last example was that we
+took um a splatter circular node and we
+uh stuck that
+inside of a looping system of our own.
+So, let us do this again.
+We have a splatter circular
+grayscale. We want to change the
+pattern to a
+square. Then go here into the
+size. Maybe like this. also decrease the
+radius like so.
+Okay. Then we're going to take this and
+let me remind myself we are iterate 8.
+We need to make a new one. Create graph
+from
+selection of iteration 9.
+Okay. And here what do we have? We have
+an input
+uh we have an input that it's
+accumulator. We have an input that takes
+the Berlin noise. We have an input that
+take some po array of positions. Good.
+And we also have uh
+an input that keeps track of the
+iteration number. So first of all, let
+me get uh I mean
+input grayscale and output grayscale.
+This is going where we're going to
+accumulate everything all the graphics.
+Then
+input grayscale again. This is going to
+be where we take in our pearly noise.
+And what are the outputs
+again? So okay, the pearly noise also
+goes like that. Yeah, that's
+good.
+So pearly
+noise. Maybe this. Put this into the
+second input. Now it is here.
+Output fairly nice goes
+there. Okay. Then input
+value this should be
+zero. We should output for now
+again. And lastly input color.
+and output color as
+well. Okay. So then um we want to make
+our list of
+arrays the our array of positions sorry.
+[Music]
+So I'm going to create a random uh list
+of positions by using white noise.
+So and the size will
+be 8 pixels by one. So this is
+uh it's going to generate for us a list
+of eight positions. So I duplicated this
+one and I just change the random seed. I
+will be using a pixel processor. Connect
+these things together. Change the size
+of the pixel processor to match it. So 8
+pixels by
+one. Go inside and put everything into a
+vector.
+So sample sample again bringing the
+first the bringing both images put them
+into X and Y. Now this is a list of
+positions and then we need to output
+them. So I will be completing this
+information
+here. Okay. So now this is a list of
+positions which goes here. Okay. Now we
+need to go inside. This is
+a 2K texture. We need to go and make it
+match the size. So 8 pixels by
+one. Okay, perfect. And now we want to
+add uh something here to increase our
+iteration number. So
+add sorry it's value processor.
+Bring this
+in. Go inside. Get the input. Add one to
+it. Put this as an output. That's
+perfect. So now this is one.
+We connect
+everything. This is
+two.
+Great. Okay. So now uh what do we want
+to do? Uh we want another value
+processor.
+So and we will be connecting the pearly
+noise. we will be connecting the
+positions and we also will be connecting
+this uh iteration number. So in this
+case because we have only eight
+positions we're going to do just eight
+uh iterations but we can do more of
+course if we want. So
+uh going here I want to loop through the
+all through all the position in this uh
+texture here. So I want to read the
+positions from here to here to here to
+here to here to here one by one. Okay.
+So in order to do this I'm going to take
+the
+um this is the iteration number. So this
+is this value here and we need to divide
+it by eight.
+Now we need to put this into a
+vector. Now we need to
+sample. So now uh we're marching pixel
+by pixel into this this texture. This is
+image input one. Make sure that your
+image input
+one. Okay. We want to extract the
+position here.
+So those things are going to be fed into
+a pixel processor later. Uh but also we
+want to sample the pearling noise at
+this position. So the ply noise goes
+into zero and what's going to happen is
+that this value processor is going to
+look into this pixel processor uh into
+this ply noise at this positions and
+sample the value from the ply noise and
+send this value to the splatter circular
+grayscale to inform the number of
+petals. Okay. So we need to pack this
+information. So this is uh our
+positions. We're going to use this to
+move our flowers around. Then this
+information is going to inform the
+number of petals. Okay. So we can pack
+this information into a float three. Set
+it as an output. Now it's like this.
+Okay. So into the splatter
+circular which is like this. We want to
+go
+into first of all
+create. We need to create a new input
+parameter. It needs to be float free. We
+plug this in here inside. And
+then we go here where it
+says pattern amount into this channel
+empty function get float three. That's
+the thing that we just input. We
+need swizzle float one but we need the Z
+component. So in the X and Y we had
+stored the position. In the Z channel of
+the value processor, we stored the value
+from the ply noise that we sampled from
+the ply noise. Now this is something
+that we which is between zero and one uh
+but we a flower has like a an integer
+number or of petals. So we can use a
+linear
+interpolation to blend between some
+values,
+maybe between five petals and maybe
+17. And then we also need
+to cast this to an
+integer. Set this as an output. Now this
+has changed. Okay. So the
+um the system actually functions. If I
+change the pel noise, you can see how
+the number of petals change be uh
+because this is sampling uh the
+iteration. It's sampling
+the the pearly noise and then uh it
+informs the number of petals. Now we
+want to do the moving. So we take this,
+plug it into a pixel processor. So
+this
+Okay. So, we brought in
+the the flower and we can move it around
+based on uh this information here based
+on the x and
+y. So, we need a a float three here as
+well. Sorry, get float
+three. That's the input. But we only
+need the x and y. So, swizzle flow to
+two. And then we want
+to
+add and now uh the flower actually has
+moved around. And we're going to do a
+bit of tweaking. But uh now the last
+thing that we want to do is that we need
+to blend. So this is
+uh this is where we accumulate all the
+flowers. So here we need to
+add so
+this and it's going to be maximum with
+this and then put this thing
+here and now we should
+see two flowers. Okay. And then we
+should see more flowers if we keep
+connecting things
+together. More flowers. Okay. Now, um
+let me do something uh here. Let's scale
+uh this size a
+bit. So now the fl the flowers are
+randomly scattered uh through the entire
+space. But maybe we can
+scale things together.
+something like this. And then I also
+want to go in here into the pixel
+processor itself and maybe add or
+subtract
+something to uh nudge them to the
+center more to the center.
+So I'm going to be
+minus.25 and
+minus.25 something like
+this. And then take this and duplicate
+more and
+connect. Okay. and then see all the
+flowers and maybe change the random
+seed. Also, I want to change maybe the
+brightness. Go into the splatter
+circular.
+Um I think still the the size may be too
+much.
+Maybe
+or maybe
+05. Okay. And then
+also here where it says
+um into the color we
+can get load three input and then
+swizzle not this
+one swizzle and extract the Z component
+where we are sampling from the pling.
+Nice. Okay. So now we're having them
+colored
+by the pearly noise
+itself. Okay. So it's great because now
+uh we actually
+have a full uh node that we brought into
+a looping
+behavior. So we have a full substance
+designer node that we integrated in a
+looping behavior.
+So you can do this with uh every node
+and you can
+basically do a lot of crazy interesting
+setup of nodes here and functionality
+and make it work and you just have it uh
+stuck inside of a looping structure.
+Okay. And it it will work. So, for
+example, now I can change if I want uh I
+can change I only have
+um I only have uh eight flowers, but I
+can change this for example to 32 if I
+want. So,
+five five. This should be also five. And
+then go in here and then this one should
+be five as well.
+And this instead of eight should be
+32. Okay. And
+then the only thing that I need to do
+next
+is increase the number of iterations. So
+currently it's only
+eight. Now it will be 16.
+And now it's going to be 32.
+And maybe I can uh make this case a bit
+more
+extreme just to see
+[Music]
+the maybe just
+one and Maybe
+64. And also the ping noise should be
+like
+fully ranging from zero to
+one. Yeah. So definitely wanted to to
+see really more variation in terms of
+the number of petals and things like
+that. Okay,
+great. So up to this point we have uh
+loops that are inside of pixel
+processor. We have loops that are inside
+the epip map. We have loops that are um
+inside of instance graphs. Uh we have uh
+iterated functions where we repeat the
+same operation
+uh many times. So we repeat the same
+operation many times and we get fractile
+like structures. And the last thing that
+we want to do is the bonus. And uh we're
+going to make the the simple blur note.
+So let me show you which
+one. So let's take a regular square and
+do the blur
+node. And this is like
+the the basic one. I think this is like
+really old and things like that. But
+we're going to make a to make this blur
+node. Okay.
+So I'm taking this
+uh I'm just duplicating this square. I
+will be making a pixel processor. So
+pixel
+processor. Take uh this
+in. We want to bring in the the square.
+So for this we want to do a
+position and the
+sample. So now we have it
+here. Okay. We also want to
+do we want to uh shift things around. So
+for this I want to like move this square
+up, down, left and right by exactly one
+pixel. And for this I need to take this
+uh size variable and divide one by
+it. So this is the entire thing divided
+by the size. This is going to give us
+the size of one pixel which is a very
+small number in this case. So it's 1
+divided
+by48. Okay. I will be extracting only um
+this and then I want to make a vector
+out of this and add
+And I will be zooming in. And uh what
+you should be able to see is if I plug
+this uh thing here, uh the square is
+going to probably move one pixel to the
+left. Yeah. So it did. And uh it was a
+uh significant movement. And this is
+because I'm really uh zoomed
+in. But uh if I do this again, so it was
+how it was initially and then how it was
+right now. So subtle movement one pixel.
+Okay. So that was to the movement to the
+left and then we want to do the movement
+to the right. So for this we're going to
+subtract instead. So
+this minus this is going to
+be sorry not subtract again here sample
+and then this is going to move to the
+right. It did. Now we need to do up and
+down.
+So I will be taking all of this and
+duplicate
+it. I will be putting a zero here. So
+float zero and float zero. But I will be
+switching
+this. And now if I this is like up and
+down. Okay. So left, right, up and down.
+We already have it have them.
+And the last thing that we need to do is
+just to add all of them and divide by
+four. So we're taking the average. So
+add another
+add. And then we divide by four.
+So now it's a bit blurred. Um and this
+is like the first uh iteration. Okay. So
+now uh what we will be doing is we're
+going we we will be repeating this
+operation. Uh before duplicating
+everything, I just want to add uh a few
+more parameters. So I'll be
+um adding I mean multiplying this
+by
+one and I will be coloring
+this or framing this in red because
+we're going to increase this value or
+we're going to double this value every
+time. And I also want to multiply this
+by another parameter which is going to
+be strength. And this is going to be an
+outside parameter. So this is going to
+be the strength of the blur.
+So input
+value for now it can be
+one. Put this in here.
+get
+load
+input
+and plug this in here.
+Okay, great.
+And uh I think this
+um I think we can try this as well. Um
+but just to make sure that I'm doing
+exactly the same thing, I will be
+uh deleting this
+And uh just for now uh we move only left
+and right. So we're doing a kind of a
+directional blur first. This is the
+first part. We're going to do a
+directional blur and then we're going to
+do a directional blur in the vertical
+direction. So we add them together and
+then we divide by two.
+And I think maybe it's just even uh
+easier to take the
+average I mean average float
+one. Okay. So you can see how we have
+like one blurred
+pixel and then we just take this thing
+and uh this is different than everything
+that we've done so far. uh this is
+called like a feedback loop and we need
+uh we need this step in order to do like
+an accelerated blur. So we can't put
+this into a loop uh itself. This is
+another kind of loop and it's a feedback
+loop where you do a computation and then
+you store that computation and then you
+reuse it again. It's a bit subtle and
+it's different than uh what happens
+inside of a of a loop. Okay. So now I
+need to take this and uh this is going
+to be doubled. So the strength of the
+blur increases exponentially. So now we
+blurred four pixels. Um I mean yeah and
+then here it's going to be four.
+And then duplicate again. And then here
+is going to be
+eight. And then duplicate
+[Music]
+again.
+And
+16. And by doubling every time uh the
+strength of the blur is growing
+exponentially. So
+32 and
+then
+64 and
+then
+128 and
+then 256.
+Okay, great. So, that was the horizontal
+pass.
+Okay. And now we're going to do the the
+vertical pass. So I'll be taking this
+one and uh plug uh the output from the
+last uh iteration here and just go
+inside. And instead of doing left and
+right, we're going to just switch this.
+So now it's also going up. And we're
+going to repeat the the process here as
+well. So one and then this is going to
+be
+two and
+then four.
+Then
+eight
+16 32
+64,
+128, and 256.
+Okay. So, uh this is how this is looking
+here. And let me just uh increase the
+strength of this one.
+So let me do this to like uh
+0.5 and then take this one and uh bring
+it
+like you can see there are very this is
+uh the one that uh we just created and
+this is the one that it's uh the
+original. So um this is how um uh
+acceleration structures
+uh can be built and this is a very very
+fast way to uh to build effects like uh
+blur nodes and for example the min and
+max uh node also works the same and
+things like that. You can do non-uniform
+blur and um very recently I made a blur
+that follows a spline and things like
+that and it was based on the same
+principle and you can see like it's fast
+so no uh I mean uh we need to preview
+this one and you can see like it's fast
+no uh no big deal or anything like that.
+So you would be uh uh you might be
+seeing like uh other blurs being done
+with convolutions
+and or like just put into a while loop
+and averaging
+continuously and things like that.
+Um this is something different and this
+is how substance designer is doing
+uh quite a lot of uh its node and it's
+very very fast and this like GPU
+accelerated and things like that. So I
+would say uh this is a new information
+and I haven't seen it uh widely
+understood and it's uh it's still pretty
+amazing what you can do with this kind
+of stuff like the distance node also
+works like that under the hood based on
+this uh this principle and uh
+uh yeah I think uh this
+uh Uh I think this entire tutorial uh
+has presented you with some uh
+interesting and new ideas. We've covered
+uh quite a lot. Um in the future we will
+be
+diving more uh into why loops and what
+you can do with them. But in these
+tutorials we covered a few different
+ideas. So it was way beyond the basic uh
+while loops uh in pixel processor or the
+iteration node in the FX map. We also
+covered uh feedback loops and also we
+covered the instance node. We made uh
+loops infrastructures for ourselves that
+allows us to just uh put or use any kind
+of nodes that substance designer already
+has. We can take them and put them into
+our loop infrastructure. So I think this
+tutorial uh will be useful to you. Um
+and uh yeah uh see you next time. Thank
+you.
