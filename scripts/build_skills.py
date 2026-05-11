@@ -152,6 +152,11 @@ def main() -> int:
         "or to any other AI tool that accepts Anthropic Agent Skill archives.\n\n"
         "Each row links to a `.zip` (universal) and a `.skill` (same archive, "
         "renamed) for tools that prefer the semantic extension.\n\n"
+        "**Want everything in one download?** Grab "
+        "`3d-ta-skills-bundle.zip` from the assets below — it contains every "
+        "individual `.zip` plus this `INDEX.md`. Unzip locally, then upload "
+        "each inner archive to Claude.ai (one upload per skill is a Claude.ai "
+        "platform requirement, not a packaging choice).\n\n"
         "| Skill | Plugin | Version | Description | Download |\n"
         "|-------|--------|---------|-------------|----------|\n"
         + "\n".join(rows)
@@ -159,7 +164,16 @@ def main() -> int:
         encoding="utf-8",
     )
 
-    print(f"\nBuilt {len(skill_mds)} skill archive(s) in {DIST_DIR}")
+    bundle_path = DIST_DIR / "3d-ta-skills-bundle.zip"
+    with zipfile.ZipFile(bundle_path, "w", zipfile.ZIP_DEFLATED) as zf:
+        zf.write(index, arcname="INDEX.md")
+        for zp in sorted(DIST_DIR.glob("*.zip")):
+            if zp.name == bundle_path.name:
+                continue
+            zf.write(zp, arcname=zp.name)
+    print(f"built: 3d-ta-skills-bundle ({human_size(bundle_path.stat().st_size)})")
+
+    print(f"\nBuilt {len(skill_mds)} skill archive(s) + 1 bundle in {DIST_DIR}")
     return 0
 
 

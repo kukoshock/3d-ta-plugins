@@ -91,6 +91,8 @@ If you use Claude in the browser (claude.ai) rather than Claude Code, you can in
 2. In Claude.ai, go to **Settings → Capabilities → Skills** and upload the file.
 3. Start a new chat and ask a trigger phrase — e.g. *"How does Tile Sampler work?"* for the tutor.
 
+**Want everything at once?** Download `3d-ta-skills-bundle.zip` from the same release page — it contains all five `.zip` archives plus the index. Unzip locally, then drag each inner archive into Claude.ai's Skills uploader. (Claude.ai requires one upload per skill — that's a platform constraint, not a packaging choice.)
+
 Each skill is a separate, independent download. Grab one, several, or all of them:
 
 | Skill | What it does |

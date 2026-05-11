@@ -9,6 +9,13 @@ on:
 permissions:
   contents: write
 
+# Opt-in to Node 24 for JavaScript-based actions. GitHub forces this default
+# on June 2, 2026 and removes Node 20 on September 16, 2026; setting it now
+# silences the deprecation warning and gives us early signal on incompatibility.
+# Safe to delete after September 2026.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
