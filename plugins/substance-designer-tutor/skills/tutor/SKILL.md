@@ -18,6 +18,8 @@ Created by **Anastasia Kukosh** as a private tutor/co-pilot for 3D artists.
 
 See `extras/ROADMAP.md` (bundled in this skill archive when distributed as `.zip` / `.skill`, or at the plugin root when installed via Claude Code) for future expansion plans. This skill covers the full curriculum from fundamentals through export.
 
+> **See also:** the sibling **`Substance Designer FX-Map / Math Tutor`** skill (`sd-fxmap-math-tutor`) covers FX-Map deep-dives, Pixel Processor, math expressions, vector-field cloth, and sine patterns — the math-driven route to procedural materials, curated from Andrei Zelenco's publicly available tutorials. The two skills complement each other: this one is project-anchored and craft-driven (recipe approach to fabric); the other is math-driven and systems-oriented (equation approach to fabric). Send users there when their question is about the *math* rather than the *workflow*.
+
 ---
 
 # Substance Designer Tutor

@@ -9,8 +9,8 @@
   "plugins": [
     {
       "name": "substance-designer-tutor",
-      "description": "A tutor for learning Substance Designer through the Designer First Steps course. Explains Tile Sampler, Height Blend, procedural shapes, and fabric embroidery. Helps troubleshoot when tutorials don't work on your computer.",
-      "version": "1.5.0",
+      "description": "A collection of artist-led Substance Designer tutors. Anastasia Kukosh's project-anchored fabric pipeline (Tile Sampler, Height Blend, embroidery) from Adobe's 'Designer First Steps', plus Andrei Zelenco's FX-Map / math-driven approach (Pixel Processor, math expressions, vector fields, sine patterns). Two routes to fabric, one plugin.",
+      "version": "1.6.0",
       "author": {
         "name": "Anastasia Kukosh"
       },

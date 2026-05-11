@@ -130,6 +130,35 @@ The `3d-ta-skills-bundle.zip` rollup reduces downloads from five to one, but the
 
 They're two separate files, and CI doesn't enforce that they match. Always update both in the same PR when bumping a plugin version. (Historical note: `substance-designer-tutor`'s `marketplace.json` entry sat at `1.0.0` while `plugin.json` was at `1.5.0` for several releases — this was finally synced in [v1.5.3](https://github.com/kukoshock/3d-ta-plugins/releases/tag/v1.5.3).)
 
+## Multi-skill plugins: trigger disambiguation
+
+When a single plugin ships **two or more sibling skills that overlap in domain** (the `substance-designer-tutor` plugin is the first such case in this repo, with the `tutor` skill and the `sd-fxmap-math-tutor` skill both teaching Substance Designer from different angles), the release process gains one extra step: confirming the two skills' trigger descriptions are disjoint enough that Claude routes correctly.
+
+### Why this matters
+
+Skills are matched against a user's prompt by their `description` frontmatter field. If two installed skills both look plausible, Claude will pick one — and you don't want it to be the wrong one. The fix is *vocabulary discipline*: each skill's description leads with terms that are specific to its own subject and avoids terms that the sibling owns.
+
+For `substance-designer-tutor`:
+- `tutor` skill description leads with: `Tile Sampler`, `Height Blend`, `Spline`, `embroidery`, `Ornate_Fabric`, `weave pattern`, `thread texture` — the project-anchored craft vocabulary.
+- `sd-fxmap-math-tutor` skill description leads with: `FX-Map`, `Pixel Processor`, `math expressions`, `while loop`, `iterate node`, `vector field equations`, `sine patterns`, `procedural cloth via math`, `reaction-diffusion` — the math/systems vocabulary.
+
+The shared term "Substance Designer" appears in both, but the technique vocabulary is disjoint. That's the discipline.
+
+### Smoke-test probes (run before tagging)
+
+In a fresh Claude Code session with the candidate release installed:
+
+1. `"explain FX-Map"` → must invoke `sd-fxmap-math-tutor` (NOT `tutor`).
+2. `"explain Tile Sampler"` → must invoke `tutor` (NOT `sd-fxmap-math-tutor`).
+3. `"how do I make procedural cloth using vector field math"` → must invoke `sd-fxmap-math-tutor`, ideally with a cross-reference to `tutor` for the project-anchored fabric route.
+4. `"I want to learn Substance Designer end-to-end"` → coherent answer that names both tutors and explains when to consult which.
+
+If probe 1 or 2 fires the wrong skill, narrow the offending description's vocabulary before tagging. Re-run all four probes after the change.
+
+### Adding a third artist tutor later
+
+When a third artist's tutor is added (e.g. Daniel Thiger, Javier Perez), the same discipline applies: the new skill's description leads with that artist's signature vocabulary, and the existing two are spot-checked to make sure none of their terms have crept into the new one. The longer-term plan to refactor the plugin into a meta-plugin with per-artist sub-skills is captured in [issue #4](https://github.com/kukoshock/3d-ta-plugins/issues/4) — execute it when adding the third artist exposes enough duplication pain to justify the churn.
+
 ## Worked example: cutting a hypothetical v1.6.0
 
 You finish a new round of troubleshooting scenarios for `substance-designer-tutor` and want to release them.
