@@ -1,0 +1,3001 @@
+hello
+everyone welcome to a new substance
+designer
+tutorial we will be continuing with the
+fix map
+node I will prepare the few examples for
+you and before starting we will go
+through all of them and see what they
+do the first one uh is a height map that
+generates um a few flowing Lin flowing
+lines that start from a
+grid and they follow the counter
+lines let me show you what it does I'm
+going to go inside this node we're going
+to generate a grid of points and then
+we're going to follow a normal map and
+then draw this lines flowing from uh
+High uh areas in our our height map to
+low areas in our height map okay so let
+me go in here and show you how
+everything
+starts okay so we're generating a grid
+of starting
+points and then if I plug this um level
+noes here which shows us the height map
+we're going to see that whenever we have
+um point starting in the um High regions
+uh or in the areas where the high map
+has bright values then these um starting
+points or these lines are going to flow
+towards uh regions of Darker brightness
+so in a way you can think of this like a
+stream of water um flowing from high
+areas to low areas in a landscape
+okay uh let me go inside and for a brief
+moment I will uh deactivate uh rotation
+parameter that I added so here into this
+quadrant node I will briefly set this
+value to
+zero okay and now when we go back inside
+then use this iterate node
+I mean this one and increase this value
+we can see how the line starts to point
+from the highest values in the height
+map towards the lowest areas in the
+height
+map
+okay I think this effect is interesting
+we have
+the uh options to change the grid
+density
+we can change the position of the grid
+so for example I can double click here
+and one of these two pins control the
+position of the grid oh I think it's the
+other
+one so for example we can change the
+grid we can change its size some shrink
+it or enlarge
+it we can change the density
+so for example have X and Y amount
+currently it's set
+to8 maybe we can change it to a really
+large value if we want maybe
+256 and go in here as well
+256
+okay and then we can enlarge
+everything the entire grid to C
+our space maybe something like
+this
+okay now this is obviously too dense or
+maybe I can tweak a few things about
+it
+maybe I can go in
+here and I think I should um change this
+parameter this will is going to change
+the size of our
+arrows okay but it's still a very very
+dense grid so let
+me go back and instead put something
+maybe like
+32 by
+32 okay and then I should start
+and inre
+increase this number so our line starts
+to
+flow from high regions to low regions
+okay we also have a parameter that
+allows us to stop um if uh the values in
+our height map are uh getting too low or
+we have a threshold value that uh will
+stop our uh lines from from flowing but
+yeah in this example we will create a
+grid and from this grid we will generate
+uh a few flowing lines um that follow uh
+the landscape or the terrain that we
+have or the height map that we have and
+generate the this kind of pattern uh let
+me uh hit a couple of
+undo okay
+to get back to what we wanted so
+this is our current
+state and if we go here and change
+the the disorder parameter of the PE
+noise everything adapts to to it and
+moves
+accordingly okay so go back inside one
+more time into the compete
+node here and just for a brief moment we
+can play with this rotation so initially
+this is set to zero and we have a bunch
+of starting points and they go uh
+towards uh their uh low points in the FX
+map we can also rotate these vectors and
+then now our lines you can see how they
+follow the counter lines of the the
+height map and I think this effect is
+interesting
+we also have uh based on this effect we
+have another interesting one uh which
+takes in an input image it's a grayscale
+image um I don't want to show the image
+because I'm not entirely sure uh I these
+images don't belong to mine they are uh
+2D portraits uh 2D black and white
+portraits that I downloaded from the
+internet I don't want
+Maybe YouTube uh to block the video or
+anything like that just because I used
+um this images it can be any uh
+grayscale image that you have that's
+totally
+fine uh but it's a similar idea we use
+uh this
+uh black and white portrait to generate
+a normal map from it and then we
+generate a
+few uh
+randomly uh walking lines um based on
+this Vector field and they're going to
+create uh this effect which I think it's
+interesting you can play with this
+intensity parameter so you can
+see how you're getting uh various
+effects based on that so what really
+happens is um I start with some uh lines
+maybe go inside here and only reduce
+this to a
+single starting line and then uh this
+line starts somewhere maybe here and
+then reads the uh normal map and then
+moves uh to the next place and jumps
+around based on uh the vectors from the
+normal map okay uh so this is uh what it
+does
+Okay so it just like a random Walker but
+it's informed by the the vector field in
+our normal Map 256 it was before and
+then if we start to add more
+lines uh so this was the starting point
+and then around this point I Generate
+random lines in a circle with a certain
+radius and then you can see that if I W
+another one it's probably starting from
+here or from here the radius it's quite
+quite large so I generate around this
+point I generate randomly starting
+lights in a circle like this and if you
+add more you start to get uh more and
+more uh definition about your portrait
+okay I want to hit UND do a few more
+times okay so I had here as well to 56
+and then if you uh play with the blur
+parameter you're going to get uh
+different effects for example if the
+blur is more consistent you would have
+more uh smoother lines that follow the
+counters of the portrait itself but then
+you kind of lose information about the
+portrait itself because the normal map
+is very blurry but if you make it like
+this now you're starting to reveal the
+portrait so you can get different
+effects based on this one also you can
+see it's fairly fast
+doesn't explode it's nothing too crazy
+even though it's doing around
+60,000 uh
+iterations uh feels pretty pretty
+responsive this one it's a similar
+effect um but instead of
+um randomly jumping around I just create
+um
+Rings a concentric rings uh I'll I be
+I'll be showing you in a minute what I
+mean but also you can play with this
+parameter here so for example if you
+increase the blur then you're going to
+get kind of this cont concentric uh
+Rings okay so leave it somewhere like
+this where I like to have it around
+7.5 in a way I still I think I still see
+some flowing lines here but also I feel
+like I can see
+those
+um those con concentric circles and also
+this uh radial pattern somehow forming
+here which I think it's interesting okay
+and I want to go
+inside um and show you what's going on
+so I currently have 60 4 of uh this
+concentric rings I can just decrease
+this value so you can see what's going
+on so basically I create rings and then
+I have random uh
+lines following the portrait and then if
+you increase this number then you start
+to reveal more or less of the underlying
+pattern okay great and lastly I have
+this example here
+uh which I think um it's very very cool
+and powerful and I think this one is the
+most important and what's happening is
+that uh we're going to generate like you
+can see uh we generated the entire
+drawing here in the FX map node we have
+a few stylized flowers and uh we build a
+procedural system that has multiple
+parameters connected to together and uh
+most importantly everything uh
+absolutely everything here is driven by
+this um perin noise map and uh this
+peroid drives um for
+example
+um the size or maybe the length of the
+flower itself um it drives the number of
+petals it drives uh how many of this uh
+Wiggly uh waves it has also drives the
+number of leaves also Drive the um
+length of those leaves it drives the
+number of petals it drives the size of
+the petals so you can see every single
+uh every single flower here is um in
+this studio array every single flower is
+is unique so what I what it happened is
+that I
+generated one single flower but then
+that single flower gets uh
+duplicated and re-evaluated every time
+when it's duplicated but based on the
+input values from this PE noise so
+what's happening this perly noise is in
+a way uh functioning like a like an
+ecosystem map where let's say this map
+actually um says like hey uh this is
+soil that has maybe water and nutrients
+and whenever we have uh bright values or
+bright regions maybe the soil it's rich
+in water and nutrients and whenever we
+have a dark region maybe that patch uh
+in
+um our area or maybe this in this area
+maybe the soil is like less uh nutritive
+and things like that has less uh
+qualities and then uh this informs our
+plant so for example maybe we can
+interpret it like hey um just I want to
+put a level nodes here decrease its
+brightness like this and then plug this
+thing here so you can see how our
+flowers that are in this regions are
+smaller they have less petals less
+leaves and things like that but then
+other plants that are in regions where
+the soil is have more nutrients they are
+uh well developed and then if I change
+this ply noise so let me preview the
+ecosystem itself then if we change the
+ply noise then everything adapts so it's
+again it's fast but then it means like
+every uh single flower it's redw or
+evaluated based on uh based on this sply
+noise okay so you can get really
+sophisticated with all of this and
+control very very um sophisticated
+systems with maybe hundreds of thousands
+of parameters linked together and have
+everything them controlled by an
+exterior information or like a um maybe
+an exterior map like this where uh High
+means I mean this can be an entire
+ecosystem and uh generate your plants
+based just on this map
+okay uh um going inside we have uh this
+um
+area this part generates the flower
+itself and then this part generates a
+grid and the flower itself it's
+duplicated but every time when we
+generate a new flower uh that new flower
+reads the parameters from the peing
+noise and then gets built based on the
+brightness uh of the PE noise at the um
+at let's say this is the origin of the
+plant or maybe the birth place of the
+plant uh the plant samples the pein
+noise at this position and based on the
+information or the brightness contained
+in the pein noise here then the plant
+itself is generated and it's like
+shorter or taller or has many or fewer
+leaves and then has welld developed
+flowers or just uh some uh small flower
+like this where they have maybe just
+five or six petals and then in this area
+we have maybe 17 or 20 like so
+okay so let's Us return to uh this first
+example okay so I'm just going to
+duplicate uh this part just to have
+something to look
+at I will be uh building everything
+again from scratch but I also want to
+have a simple example that I can refer
+to
+sometimes because um maybe I'll not
+remember every single
+step in those examples so I'll be um
+referring to to these things okay so
+make a new ply
+Noise Okay uh I want to reduce its size
+something like
+this I will be using
+a normal
+map the size or the intensity of the
+normal map maybe put it
+to what I used here
+16 I will also use a blur
+node and set it to maybe 1.5
+five the blur node actually Smooths the
+normals a bit and makes those lines flow
+continuously otherwise you might get
+some jiggling somewhere let me try and
+see if this thing uh this still happens
+so here if I remove the
+blur it seems to be smooth but I had a
+few uh instances where those lines
+started to create some zig zagy patterns
+maybe we will encounter that artifact
+again okay but for now I'll be uh
+leaving it like how it was before
+1.25 and also have my blur here
+1.25 1.25 okay great now let's uh create
+the FX map
+node make it gray scale uh plug our
+normal map
+inside okay and then uh I want
+to uh create like a control uh point
+maybe yeah I want to create a pin that
+allows me to move the grid I already
+have a few here created but I will make
+another one or maybe another uh a couple
+of those pin nodes so I will just double
+click uh this uh grid here in our canvas
+area and you can already see that I have
+two of those pin pins these are from my
+previous examples here uh I'll just
+create a new one so parameters I'll hit
+a plus and I will name this one
+pin
+three okay it needs to be the type needs
+to be load to because it's a position
+into this space and I also want to make
+it a position this is the actual pin
+itself that we can control I will
+default this to to 0.5 and
+0.5 okay that should be it so going
+inside I will uh set this uh blending
+mode to maximum I will create a dis the
+dis size will be uh
+0 5 and
+0.05 actually I will not use a dis uh I
+will use instead uh Arrow because I also
+want to show you how to orient patterns
+so basically we will be reading the
+vector Fields here and we will rotate
+this Arrow to align with the vector
+fields in uh the normal map
+itself okay so I will be inputting our
+Arrow there so instead of a dis go
+inside I'll bring this again back to one
+sorry about it just use an input image
+and the input image should be image
+input
+one I will also change this to nearest
+instead of by linear this is a personal
+preference I'll show you why if I
+remember at the end it's not a really
+big deal but um I want my patterns to be
+not at all filtered because I usually
+use a AIX AA node at the very end after
+we generate the patterns in the evx map
+node
+so I'll be putting this to nearest
+okay then I will be creating a an
+iterate
+node and I want to do
+this I just don't want to um spend too
+much time on this but maybe for some of
+you who uh have
+a background
+programming uh a prog programming
+background you might
+be attempting to think about this like
+hey this is an object that we're
+creating and then we reuse this object
+mul multiple times with different inputs
+and things like that so I like to think
+about it but don't uh it's not like the
+absolute idea of uh objectoriented
+programming I think
+it's it's helpful to think about it in
+this way so for this reason I will name
+this like quote unquote
+object okay and the object it's going to
+be actual let's say that this is a maybe
+flow
+path you can come up with your own name
+for
+this okay go connect everything so the
+quadrant Noe needs to be connected to
+the right input here set this one as a
+root and in the iterations we need to uh
+Define a few things for ourselves so
+first of all I will be um I want to uh
+create uh a constant uh
+length um yeah so I'll be uh I'm mean a
+constant length I just want to I usually
+use all the time um
+one pixel size so in order to obtain
+this value I need to get the size and
+get size it uh the size of the node
+itself which is like uh
+248 by
+248 these are the numbers that will be
+contained
+here in this variable and I want to
+divide
+one by this size
+so the result of this division it's
+actually the size of one pixel which is
+a really really small number because
+it's like 1 divided by
+2,48 it's 0.00 something I don't
+know I will be uh setting this or
+storing this as a float so this is a
+vector float two I need to extract one
+of these components because my image is
+square I can extract either one that's
+totally fine for now I want to set this
+and I usually name this
+one PX from one pixel great uh we
+defined our first variable which is
+called one PX then I want
+to define a few other things so for
+example I'll be defining a
+um a
+position uh where my uh line is going to
+start and remember we want to bring in
+the pin that we just created so get
+float two and from this list uh we
+should be able to find the previous pins
+but I will be choosing the latest one so
+pin three and I want to set this
+as origin Z
+zero
+Okay so this is going to be uh a
+position or or a vector that we
+constantly update we add to it the
+vectors from the normal map and then
+this is going to uh create the flowing
+paths for us because we're going to add
+step by step uh those vectors and um
+this is essentially going to create the
+path for
+us and lastly I want to mention or um
+Define how many many times do we want
+this process to
+repeat basically this is going to be
+um
+controlling the length of our blowing
+paths uh this uh and another parameter
+that is going to be the spacing between
+our arrows but this is basically going
+to control the number of steps and the
+length of our path so I will be using
+another sequence node
+I will be using an
+integer maybe I want
+to repeat this process 64 times for
+now I usually um take this integer and
+uh convert it to a float and then set
+this
+float uh maybe I mean actually assigning
+a value to it not a value but assigning
+a name to this value so I like to uh
+borrow from Houdini notation so I'll use
+n PT
+zero feel free to uh use whatever names
+make sense for you you can for example
+use I or i++ or something like
+this okay and
+lastly I need to actually out output uh
+this number here as an integer so this
+is going to generate the dollar number
+variable for us and the dollar number is
+going to be 0 1 2 3 4 5 6 up to uh 63 n
+minus one okay good and now we need to
+set this one as an output now even
+though we haven't seen it yet this
+executed 64 times which means we have 64
+triangles on top of each
+other um I think maybe I should go here
+and reduce the size of our um triangles
+so here in in pattern size
+maybe or maybe not yet okay let me think
+uh how should I do
+this uh I'm not going to do yet I'm not
+going to deal uh with the pattern size
+yet and the reason for this is because I
+want to show you uh that it's very
+helpful to work uh and do all your
+computation here in this uh Luminosity
+Channel and then set or assign variables
+to your computation and then just call
+the variables into the relevant channels
+so for example if I wanted to change the
+pattern size I will be uh already
+working with this channel separately
+from the Luminosity which I don't want
+to to do yet okay
+so I will leave it like so for now I
+just want to uh do another thing the
+branch of set needs to be set to minus
+uh5 and minus 45 and the reason for this
+is because the FX map node considers Z Z
+to be here in the center and that uh
+fine uh most of the times but then when
+we actually want to work with uh images
+that we input into this one and want to
+sample information from these images
+then the actual z0 it's here so we want
+uh to have like the correct uh space in
+both cases so if Z zero in this space
+it's here then I also want to be Z 0
+here as well so for that you just go
+into this branch of set so you have
+P branch ofset and pattern ofset this
+one of this maybe this one is like a
+global offset and the other one is like
+more like an individual one so I'll be
+just putting Z minus
+0.5 and minus 0.5 okay great so
+everything offset it
+there and now I want to um go
+here I mean for now maybe just did like
+this
+okay so our error now sits in the in the
+corner
+okay now I will go here inside the
+luminosity and empty function and I will
+just get the variable that we have our
+position zero so I need to type it POS
+zero make sure that you type this
+correctly as you define it so just to
+double check go where you define the
+variables here for example and then uh
+actually we named it origin zero instead
+of post zero so I will be copy pasting
+this
+copy and then go here and instead of Po
+zero it's origin zero so
+paste then I want I want to add
+something to this and then I want to set
+this
+origin
+zero so this procedure here it's taking
+the um original information the original
+position then adds something to it and
+then updates the original position and
+then in the next iteration this
+information goes here and then the
+process repeats so then to this uh
+origin new uh a new velocity Vector
+coming from the normal map it's going to
+be added then this is going to update
+our current position this is going to be
+stored as uh the origin zero again and
+then in the next iteration this is going
+to be passed here and then this is going
+to be update it every uh single time or
+every single iteration and this is going
+to dot by dot create our continuous P or
+like Arrow by Arrow it's going to create
+our our continuous P okay so this is
+like our uh position
+update then uh what I want to do I want
+to uh realize that I am in
+the Luminosity Channel and the
+Luminosity Channel ones um just to have
+as
+the last information in a sequence of uh
+in the chain of sequence node the last
+information that gets plugged into the
+sequence node needs to be the actual
+Luminosity of the pattern which can be a
+float or a color so a float one or a
+float 4 we're going to be just gray
+scale images so for that I just need to
+put a sequence
+node and then I will be putting a value
+of
+one and then set this as an output
+great uh so nothing yet changed uh but
+now I can um enlarge this thing a bit so
+uh currently this origin is starting at
+0.05 I mean 0.5 and 0.5 here in the
+middle I want to sample my normal
+map I also want this to uh set this um
+filtering mode from nearest to bil
+linear just want to make sure that I'm
+sampling the correct image which is
+image input zero right this is our
+normal map then our normal map needs to
+be um to have its range change from 01
+to minus one1 and from this I just need
+to use the X and Y vectors I only need
+these components so X and Y it's going
+to give us the vectors that point in
+different to the directions here and I
+need to multiply this by two so if I
+want to multiply a vector by a number I
+use scalar
+multiplication Lo this is going to take
+our range of vectors between zero and
+one and is going to put it between zero
+and two and now I just need to subtract
+one from it so because this is still a
+vector I need to subtract the vector
+from it so loot two one and one
+and then
+um
+subtract
+okay good so now we have the information
+that we want this is our position this
+is our
+Direction because we want to tell our
+points or arrows how to move so this is
+a
+direction and then just plug this thing
+here okay still nothing happened yet the
+last thing that we need to do remember
+we computed our variable we computed our
+origin zero we just need to take that
+information and put it in the channel
+that actually wants uh to see that
+information which is pattern offset so
+empty function and I just get PL two and
+origin
+zero okay and if I have the this as an
+output now we should see things going on
+so okay currently we have something
+going on which I think is good uh let us
+uh try and make sense of what's going on
+I will be using a levels
+node here and here and then maybe just
+decrease this uh I mean sorry decrease
+the
+brightness
+okay so uh let's try and understand
+where we start and what's
+happening so 604 iteration maybe we if
+we decrease them it seems like we're
+starting here right and then in the next
+iteration we do that this really really
+big jump onto here and then in the next
+iteration we jump another uh big step
+here and things like that okay so it's
+not bad but what we're really want is
+that uh we want those um arrows to be
+equally spaced right so we want to
+create a continuous path and these
+arrows should be uh touching each other
+uh tip to tail or something like that
+so at this point in time we need to
+um use uh our
+size channel uh and also we want to
+choose how long uh the arrows are and or
+what the distance between uh the arrows
+is
+okay so what's really going on here is
+that the normal map uh has uh vectors
+that uh do two things for us
+one thing is the normal map provides us
+with vectors that act as a Direction but
+also these vectors have a magnitude
+which tells us how uh long or how strong
+the push from that current Vector is and
+those vectors have different lengths and
+uh in this case we don't want uh the
+vectors to have different lengths we
+want all the vectors to have uh equal
+length
+and we're going to only use the normal
+map just for direction and not for the
+magnitude of the
+vectors so how to do this well we have
+our normal uh vectors here from the
+normal
+map this is Direction and we need to
+normalize it first so we have a
+normalized v two uh what happened in
+this case is that the normalized vector
+made all the vectors from the normal map
+um have a length of
+one but then uh here at this point in
+time we can take this length of one and
+resize it how we want and uh this is
+also where our one pixel is going to
+come in if you remember we created the
+variable one
+Pix One PX uh this is just one pixel I
+want to multiply this Maybe by FL by 16
+so now I want the distance or I want the
+yeah the distance between my vectors
+from the normal map to be 16 pixels now
+this is one and I just need to multiply
+this by this okay so this is a vector
+this is a float I need to scaler
+multiply this okay so now it seems that
+we're having
+um equal distances between vectors now
+now I need to also um change the scale
+itself of the arrow so the distance is
+constant but I also need to resize the
+arrows themselves okay so uh sure enough
+we can do this what is the size that we
+have well it's this one pixel multip by
+16 so the current distance between the
+vectors is 16 pixels I also want the
+size of the arrow to be 16 pixels so I
+can uh set this value here 16
+pixels
+set and name it Arrow
+size okay make sure that I copy this
+variable uh and uh plug this new
+variable into the chain of sequence
+nodes great okay so go into the re
+relevant Channel where we have our
+arrows here and then I hope it's not
+going to crash crash let me show you
+what happens uh if I just go here
+directly uh into pattern size if I click
+this button here and I want to use an
+empty function then all my um arrows got
+uh resized
+to uh to one okay but I have get
+float I have this Arrow size and I need
+to make it into a vector PLO to set this
+one as an output so great right now our
+arrows and the distance between the
+arrows is the same I can change it if I
+want so for example I can go in here
+into pattern size sorry here and maybe I
+can do instead of 16 maybe I can do 32
+Okay so you can see now everything is
+correctly chained
+together there is one thing that we want
+to do still which is we want to orient
+those arrows correctly yeah they
+currently form a pad but they are not
+aligned properly so I want to each Arrow
+to point with its tip to the next Arrow
+itself so we need to do this
+and it's also a really simple thing to
+do we already have this information from
+here remember we're treating this as a
+Direction so uh we want to extract an
+angle from this and for this we have the
+a t 2
+node okay so a tan two our tangent two
+this is going to take our Vector as an
+input and is going to return an angle
+value but this is from minus pi to Pi
+and we want to make it from minus pi to
+Pi we want to make it to 01 okay so
+first of all we
+divide by
+pi and
+then
+we uh change the range now this is uh
+minus one to one we change this to
+01 so min-1 one to0 1 and then we set
+this as
+rotation okay then sequence
+node and then rotation it's plugged in
+chain the nodes together correctly and
+then go into the re relevant channel
+here into pattern
+rotation get loo rotation
+okay so now our arrows are correctly
+oriented and then let's test if things
+work properly uh let me double click
+make a preview we have this so it seems
+like uh it functions as uh we're
+expecting if we're starting anywhere
+from like a high uh area then the arrows
+are going to point to a lower uh
+area maybe let's
+increase the iterations currently we
+have only five then if we increase them
+then we get our pad okay so now uh what
+happens is maybe uh we have like too
+many uh iterations here so you can
+imagine that some lines are going to be
+longer some of them are going to be
+shorter maybe if our line starts
+somewhere closer you can see how in this
+area they just don't know or they have
+nowhere else to go and then start to
+pile up and I don't want this effect to
+happen so in order to there are
+different ways to solve this I will just
+be using um like
+um like a thresholding effect on the
+Luminosity channel so for example I'll
+be saying like hey if the value from the
+height map itself where the arrow sits
+is lower than a value then just make the
+Luminosity of the arrow make it zero
+otherwise leave it to one okay so let us
+do this go here into the Luminosity
+Channel we currently output everything
+as one so all our arrows are controlled
+by this but we can do something else so
+remember we have
+uh this is our position we want to
+sample
+our pearly noise and our pearly noise
+it's not plugged it in yet so it should
+be as a gray Scale map as well so we can
+sample from
+it okay so now we say like
+hey at the position of the arrow look
+into the uh height map itself which is
+on channel image input two and then if
+uh
+this is um lower than a certain value
+then make the arrow completely invisible
+otherwise leave it white so
+lower
+than maybe 0.2 something like that then
+if if this condition is true then the
+Luminosity of our Arrow should be
+zero which means that it's going to
+disappear otherwise the Luminosity of
+our Arrow should be one okay and then
+put this in here
+and nothing happened yet maybe if I
+increase this value you can see how we
+start to get rid of unnecessary arrows
+that we have now we can see this
+transition is pretty abrupt maybe
+two 3 five something like this uh just
+wanted to say that you can have a bit
+more sophisticated ways to do it I think
+at this point in time I just want to
+leave it uh simple like this so you
+could have more
+um interesting or more yeah more robust
+way to solve it like really what happens
+the the solve for this would be to say
+like hey if my arrow stays in the same
+position too much then it means that
+it's not Progressive so don't dra don't
+do it like for example you can see that
+this is the current position and then
+the in the next situation the position
+updated here but then when when we
+arrived here all the arrows were sitting
+in the same place just having different
+orientations so it would be good to say
+like hey if we don't really move too
+much then it means that we're not
+progressing anymore we converge to the
+minimal point in our landscape so we
+don't update and uh this is going to
+change we're going to have multiple
+lines so that condition is going to
+change for um uh individual uh streams
+or lines so what we we doing here in a
+way it's kind of the same not exactly
+but it's like a a simple thing maybe
+six seven
+four just want to make it a bit longer
+three yeah I'm guessing values right
+now 3
+five okay no more of this good so we
+have our uh we have our object right so
+we have a thing that functions in a
+certain way we uh have a line that no
+matter where it starts it's going to end
+in a um in a lower point right okay so
+now what we want to do is we want more
+of these lines we already created one we
+want to um have more lines and each line
+is going to do its own thing depending
+on where it starts in this uh in this um
+per noise or in this landscape okay so
+let us do this um so for this so we
+going to make another frame and name
+this Frame
+grid okay and we're going in this grid
+to put
+two iterate nodes and I only want them
+to be connected like
+so and again I will be using a different
+uh notation or naming convention
+here uh I
+think uh
+maybe for the sake of trying to have
+something in common with normal
+programming I will be using I and J this
+is an inner loop this is an outer loop
+this entire thing it's a nested Loop so
+what we're going to create we're going
+to create a grid and the first Loop is
+going to create a row so it's going to
+create uh starting points in a row here
+here here here here here here how many
+times we want and then the outer loop is
+going to just repeat this row uh so we
+have like one row two rows three rows
+and N rows depending on how many things
+we want and I like to call this I and
+J this is also something that you will
+encounter in math when you want to well
+you'll be using sums you're going to
+have those things uh with I and J as
+indices also you're going to have like
+neighboring pixels uh with the same
+notation I and J so I I think it's it
+would be good to use I andj for notation
+okay so first of all I I set this one as
+an output I'm going to go here into the
+first one go inside and make uh an
+integer let's say we're going to create
+a
+an 8 by8 grid for now
+integer
+8 then set this to a variable I mean uh
+what I usually do is convert it to a
+float set it to a
+variable which I will be
+calling I and then
+sequence and output
+this
+here
+okay and then I will be copying the same
+thing and put it
+above but instead of I I will be calling
+this J set this as an output now I need
+to do something so uh whenever those
+iterate nodes produce the dollar number
+variable but we want to be able to
+access it from every of these notes now
+this produces the dollar number variable
+this is also producing the double the
+dollar number variable well I we can't
+have the same name for those things
+together some of one of those variable
+is going to be overwritten by the other
+so then it means that I need to take
+this one cuz if I want to access this
+information later in my or lower in My
+Graph I need to access it so for example
+this can be dollar number only here
+below it then uh if I uh call Dollar
+number here then dollar number is going
+to read be read from this not from this
+okay so then here I need to take dollar
+number and name it uh j++
+and this is the thing that goes from uh
+go 01 to until
+7 chain everything
+together and then uh go in here as well
+and get the dollar
+number and this is going to be i++
+so we have i i++ j and
+j++ and with those um variables we're
+going to make our grid So currently we
+have our um initial
+position uh driven by this pin here okay
+and we want to make our grid around this
+um pinpoint so our grid is going to be
+centered here okay so let us do this so
+we need to add something to it uh we
+need to add the vector float
+to but this Vector float is going to be
+made of variables instead of constants
+right so we need to take our uh I and J
+uh and plug those things in so get
+float first of all I because I it's
+going to make our uh first
+row
+I so i++ is uh 0 1 2 3 4 whatever until
+uh n minus
+one and we need to divide this uh to
+normalize this thing so we want things
+to be between zero and one because our
+spaces between zero and one so this is
+going to create like a row of uh vectors
+here and here and here and here and here
+equally space if I just plug this thing
+here then because this is like zero zero
+it's here and then one one it's here and
+then two it's here three it's here and
+so on so that's why I need to make this
+division to put everything into the 01
+range so plug this thing here we already
+started to have things going
+on uh let me uh just do this um into
+this iterations
+here leave this to one so we can all at
+this point in time I want us just to see
+the grid
+happening okay so currently our uh grid
+is not set to uh have its middle in this
+area currently the grid actually starts
+here here in the corner but that's fine
+we're going to fix this okay so we made
+the row and now we want to make the
+columns so we get
+j++ and
+J okay so now we have the grid that we
+can move around let me uh deactivate the
+tiling for a bit absolute no
+tiling okay so now you can see that
+we're moving our grid
+and we have it our pin sitting in the
+corner uh let me fix
+this I'll go
+here I mean
+here and uh we want to I think here we
+want to subtract something we want to
+subtract 0.5 and
+0.5
+subtract load
+two5
+.5
+okay now our grid is uh sitting in uh in
+the middle and I also want to be able to
+to scale the grid okay
+so where should I do
+this here as
+well so we can uh scale this uh scaler
+multiplication
+okay just want to make sure yeah this is
+oh now everything get here scaled down
+into a single point the entire grid but
+now if I increase
+this we have our grid here okay perfect
+so now we have
+it I just want to increase this
+size and then I also want
+to go here into this one and also make
+the lines flow so they currently only
+have one iteration but now if I increase
+this they start to to
+flow okay maybe
+32 great so what else can we do uh well
+uh in our previous examples we also
+added a rotation which created some
+interesting effects for us so we can
+take
+the the grid itself and move it
+around we can increase its scale if we
+want and lastly uh let me go here and
+add rotation to it so here into this one
+where we do
+computation here where we have our
+direction we want to also add rotation
+so after this one just add rotate Vector
+two and then only you need to add an
+angle so now if you change this all the
+vectors are going to rotate and become
+like
+swirly okay
+and lastly I want to just uh I mean
+remember you can uh change the density
+of the grid you can change the um the
+size of the grid you can also go
+here and change the size and the spacing
+between the arrows so go here and say
+like maybe
+32 you have arrows like
+this and I want to before moving from
+this example I want to say like hey the
+last thing that I want to do is either
+generate a
+random
+um a random Luminosity for each stream
+or uh I can use um
+the the PE noise itself to color the
+entire stream with the
+the color that the stream is starting
+from for example the stream it's
+starting here it's going to
+sample uh it's going to sample this
+thing here and then uh it's going to
+color the entire uh the
+entire path with the value from here
+itself so how to do
+this well we need to go into
+luminosity and our lum Minos it it's
+already here and then we want to uh
+multiply our next uh Luminosity by this
+so first of all let's do R the
+randomness I need to well this uh this
+node gets executed this many times which
+is the size of our grid and in this node
+I want to create a random variable so
+float
+one
+[Music]
+random set
+it
+to I will be uh just putting like random
+zero and
+then add it to the
+mix and then calling it
+so again here I want to get load random
+zero and if I plug this thing
+here we're getting everything uh let me
+just get this out of the way for
+now and yeah it seems to be doing
+uh uh it
+correctly and the reason that I wanted
+to say that we want to multiply with
+what we already have it's because uh the
+uh
+that this part here got helped us get
+rid of
+um of the arrows that were piling up but
+now because we changed the angle they
+are no longer piling up let me return
+this to zero so yeah I'm talking about
+this uh areas where arrows are piling up
+which I don't like maybe for example
+here so this helps us get rid of those
+and this gives us the randomness and
+then we we just multiply those things
+together we're going to get the best
+of from both so random and getting rid
+of those converging arrows maybe still
+if we feeling like hey here is too much
+we can just play with this value
+increase it and it's going
+to make things
+disappear I would leave it like this for
+now or R return the rotation maybe back
+to
+0.25 okay and then
+[Music]
+um I want to use the uh PE noise to
+color
+the uh the streams based on their
+starting value um okay
+so how to do this well instead of using
+the instead in instead of using the
+random zero we need to do the following
+so I mean I think we already have this
+information here and uh maybe we can
+plug this here
+right well it seems like it's doing its
+thing but actually if you would look
+closely you wouldn't have like constant
+values here it seems like uh I mean it
+it doesn't seem but actually it's uh for
+each Arrow it's sampling
+the it's sampling the perly noise and
+change the value for each Arrow but what
+I really wanted was to have um
+to have the entire stream uh with the
+same uh gray scale value that was from
+the PE noise at the starting point not a
+different value for each Arrow so how do
+to you do this and also let me show you
+what's going on because I think it's
+difficult to see but maybe I can just
+put a uh gradient map after this and
+then just use some color some red and
+then maybe here some um
+blue and then maybe some other colors in
+between okay and I think uh let's focus
+on this
+pth I think we should be able to see if
+I start to crank or maybe bring those
+values close together I think we should
+be able to see um multiple values
+happening yeah so this is what I'm
+talking
+about so you can see like this path
+itself has multiple values that's why
+I'm getting like green and also uh this
+pink and things like that so I didn't
+want this to happen I want to have like
+each stream to have just a constant uh
+value not a gradient along its side well
+I need to create a variable that only
+samples the peing noise only at the
+beginning and use that so well I think
+we can do this and the problem is that
+we use the variable that we're
+constantly updating so go back to
+Luminosity well I use origin zero right
+and I origin zero gets updated all the
+time for each of this uh but then um
+when we computed this or when did we
+created this variable well we created it
+here it's pin 3 plus all this gitty part
+all this grid
+part and then with set it as origin and
+then we currently update origin all the
+time but if I only want the values at
+the beginning when we created the grid I
+just need to create a new variable from
+it so maybe set and I will say like
+initial
+origin or any pause
+maybe okay any pause so initial position
+bring this to the
+sequence and then chain
+it so now go back here into luminosity
+and instead of using the origin we'll be
+using
+inos okay so now you can see that our
+thing it's
+constant okay well perfect so we have
+it like this
+I will be sharing the the substance
+designer file I want to move to the next
+example but in our previous example here
+uh I made uh this Graphics which um I
+think I'll I think I like how it went
+and I just want to show you that I use
+the diffusion color node and I really
+love this node uh it gets or creates
+some really interesting glowing effects
+so you can have a look at how I use this
+node to create this uh this effect so
+the diffusion node it's uh uh like a
+blur Noe but it's a bit more advanced
+what really happens is that you're
+um I mean I can show you let's make a
+shape
+like this and then you blur
+it something like this and then you add
+the shape
+back okay so kind of this is what it
+does but multiple
+times so it's taking now the Blurred
+version and adds on top it and it's
+doing this multiple times
+so kind kind of this is what the
+diffusion now doing but is doing it in a
+really fast and clever way so definitely
+not like this but it's different than
+the the regular blur okay and it's
+actually um blending uh between um it
+can be blend between like different
+colors and different values and things
+like that it's a really really cool and
+interesting notes so it gives super
+amazing and beautiful results so I I
+like like to use it all the time okay
+moving on to the next
+example okay well I'll be uh duplicating
+this part
+here where I have uh where I have my uh
+image again I don't want to have any
+kind of problems with YouTube that's why
+I'm not zooming too much on it is not
+any kind of crazy image is just that I
+don't own the image and download it from
+the internet and I don't really want
+to use it so I'll be putting a uniform
+color on top of it okay and then avoid
+clicking it okay so maybe for now just
+take this uh out of the way or maybe it
+Zoom really far okay and then
+make an fix map
+node uh I want to plug the image
+itself in there in the image input one
+then also use the normal map double
+click
+it make it gray scale
+okay get back here zoom in so now we can
+see the image
+go
+inside I will change this for now to a
+disk make it
+maximum the pattern size we're going to
+change later but for now make it like
+0.05 and 0.05
+okay uh move this uh branch of set to
+minus
+0.5
+and minus
+0.5 okay
+good then use uh iterate
+node I need to also create another
+pin so
+parameters P
+four it needs to be a float
+to it needs to be a position also needs
+to be defaulted in the
+center good now
+would be going in
+here empty
+function get our pin
+4 set
+it
+to was Zero maybe I can use different
+names for my initial
+variables also want to get float to do
+my one pixel size
+do I use this here not sure maybe maybe
+for now now don't create the one pixel
+variable because I don't think I'll use
+it
+sequence specify how many times do we
+want to repeat this is something maybe
+like 4,000 times 496
+to
+float
+Set n p
+z and
+lastly do
+this and
+this set this as a root go here into
+luminosity get the position
+zero add something to it set
+it
+sequence I would put
+the
+Luminosity or now we're going to do
+everything by one but then we're going
+to actually sample from the image
+itself say set this as an output go in
+here go here into pattern offset empty
+function get flow
+to position
+zero set this as an output now our DOT
+moved in the middle and if I double
+click here going to preview now we can
+move the dot itself with this
+pin I know all these pins are kind of
+distracting but um maybe it's not too
+bad okay uh so now uh go inside here and
+want to update the position so we uh get
+in our normal map
+Sample just want to make sure our normal
+map it's image input one so sample image
+input one also I set it to bilinear I
+only need XM why from it I need
+to normal I mean not to normalize it but
+I need to um change its range to minus
+one one so for this multiply by uh
+two I mean float and it needs to be a
+two and then subtract one from
+it one one needs to be a vector one and
+one and I also multiply something here
+um that's like not absolutely necessary
+to do but I'll just use a scalar
+multiplication and then for this I need
+to create a new variable here at the top
+so here I can just put a float maybe
+make it 0.75
+and set it like magnitude as a variable
+so set
+magnitude sequence change this
+in into the
+mix and
+then here we need to get it so get float
+mag so this is going to multiply
+our vectors so it's doing something it's
+already cool it's creating this point
+clouds you can kind of already see this
+is maybe like an eye and this is like
+the nose and this is like the mouth uh
+so definitely already looking good but
+uh what I want to to do instead is
+instead of using points I want to
+connect these points with lines so we uh
+need to adjust a few things so here into
+this luminosity
+uh I want to uh in order to do lines
+there are multiple ways to do it but a
+simple one is instead of using circles I
+can use a square and uh I can use a
+square like for example I let me uh just
+go here and play with uh those things
+and show you maybe if I decrease uh
+these things a
+bit maybe when I Rise
+somewhere I in the beginning
+yeah between this point and this point
+so you can see these two
+points I have them so instead of drawing
+like a line from here to here what I can
+do is I can just place a rectangle that
+has its length as the distance between
+this and it's placed here in the middle
+so instead of drawing the line I can
+just put a rectangle between these two
+points I just need to compute the
+average of those two points put the
+rectangle in the middle and then also
+compute this distance just to make sure
+that I can elongate the
+rectangle uh with the distance between
+two uh these two and then this is also
+going to happen to this point as well
+it's going to create put a rectangle
+here in the middle of them and then also
+it's going to compute the distance
+between this and this and then it's
+going to scale the rectangle to match
+this distance okay so let's do do this
+uh change the dis from uh disk to square
+now we have squares go back into
+Luminosity how do we get this average
+well remember this is our initial
+position and this is after we updated so
+initial and update well we want the
+average of this so we have a average
+float too if you if you don't want to
+use this average node you can just add
+them together and divide by two initial
+position updated one take the average
+and
+um just name this uh in a different way
+cuz I don't want things to mess up so I
+still want to have my computation uh
+happening like my position to be updated
+but now I can just go here and say like
+hey set this to maybe average or I'm
+going to just say
+midpoint okay and
+then add this to the mix I mean put it
+in the sequence so I have position and
+then I want midpoint and then chain also
+this so I have all things together all
+my variables position
+midpoint okay so then what will happen
+is instead of using position we're going
+to use midpoint and looking at this to
+points I'm expecting that when I will be
+using this midpoint I'm going to get a
+point here between these two and between
+this two I might be getting a point here
+so let me do this so here in uh offset
+instead of Po zero we should use
+midpoint and if I hit enter yeah indeed
+this one moved in between so okay uh
+first step out of the way we did it now
+we need to compute the length so so
+going back
+here well
+[Music]
+um how should I do this I think I should
+do like a subtraction so again the
+previous position the update position I
+just need to take the difference between
+them
+okay so what's really going on here uh
+how are vectors actually like a current
+Vector in substance designer those two
+points you you see them here those two
+points but really what's happening is
+that in substance designer those two
+points are an arrow from the origin to
+this point here and another arrow from
+this origin to this point here and you
+only see those uh patterns placed at the
+tips of the ve those
+vectors if you subtract these two
+vectors what you're actually getting
+you're going to get the vector that
+points either from this to this or from
+this to this depending on the order of
+the subtraction and now if I have this
+Vector here if I just take this length
+it's giving me exactly the distance
+between these two things okay so that's
+happening so then
+length and then set this
+as L en short for
+length add this to the mix
+okay now we have it computed but want to
+go in here into to pattern
+size so don't want my computer to
+explode I will be deleting for now this
+one go
+inside get
+float l n and then Vector float 2 so
+this is going to be the length and this
+is going to be the width of the pattern
+so we computed the length and the width
+something that we can
+decide something like this and then just
+output this one set as an output and
+plug this thing back in okay so we got a
+bunch of uh lines and the very last
+thing that we need to do is uh compute
+their orientation so such that they will
+be connected and con make like a a line
+that's fragmented but continuous so all
+those segments are going to be linked
+together okay uh so we need to do this
+go back here into Luminosity we computed
+uh midpoint we computed the length we
+also need to compute the rotation well
+from this subtraction here we need to
+take the r tangent this is going to give
+our angle so a on two this thing here
+and we this is from minus pi to Pi we
+want to bring it to 01 so
+divide by
+pi and then
+uh 0 1 - one 1 to 01 and lastly set
+it to
+rotation r r o t short sequence
+this this
+this now we have
+it great uh so we need to go here into
+pattern rotation get
+float not float to but get float
+R
+set okay so now we have like a
+continuous uh I mean like a linked line
+of segments good uh now let's increase
+this uh number of segments and see
+what's
+happening okay so we created like our
+random Bucker and maybe I can put this
+to 256 for now it's giving me this uh I
+also want to color those segments based
+on uh uh the value of our image at their
+midpoints so if you remember each
+segment has its placed here
+uh in the middle of segments itself and
+then at this position we can look into
+our in input image which is a portrait
+and then color this entire segment by
+that uh value from the image itself at
+this
+point so for that it's pretty simple to
+do we already have the
+position with
+sample we need to make sure that we
+sample image input zero so image import
+zero it's right and plug this thing here
+and now we get it like this okay so good
+for now we're seeing this
+line
+um we might need to add a rotation here
+so
+rotate from practice I uh noticed that
+uh this works interesting but we can
+also play with this but for now we're
+just going to
+rotate
+and 90° rotation is
+0.5 something like this
+okay good so we have one line uh now we
+want to uh add more lines for now I will
+be just uh decreasing these two only
+one and then maybe two just for
+visibility something like
+this and then we will iterate
+again going here how did I name this I
+name this n pt0 I'll be just copying
+this empty function
+paste I will be naming this PT now minus
+one so whenever I have this is my
+Convention feel free to adjust it but
+whenever I I started with this
+um with this node and whatever I put if
+I put like
+um iterate nodes below this I name they
+like this is 0o 1 two three whatever
+whatever it's above this I name them uh
+minus one minus 2 minus 3 okay um this
+is just a personal preference not a big
+deal so n PT minus one
+and I want this to be for now
+maybe
+32 probably increase this to more
+iterations set this as an
+output
+okay set this as an output as well like
+as a root and then in
+here when we created
+our position we want to add something to
+this so this is like the middle of our
+thing we can add to it we can um do a
+cartisian
+node and we want to add like
+uh we want to add starting points in a
+circle around this okay so for this I
+need to take
+my
+npt1 NP minus one
+sorry I also need to get my dollar
+number
+I will be doing my uh T minus one
+parameter which I like to do so dollar
+number
+set P9 minus
+one
+sequence get
+float P minus
+one should be divided by n PT minus one
+and by the way n PT means number of
+points or at least in my head it does so
+that's what it stands
+for so NP number of points and pamit
+point number so the current number
+assigned to each
+point okay and then I will name this set
+T minus
+one this is just the normalized range so
+this is going from 0 to 3 this one is
+going from 0 to 31 this division makes
+everything between zero and one plug
+this thing
+here add everything to the mix so
+this this and
+this so we have everything
+connected okay so then I will be putting
+a float here just a radius maybe
+0.1 and then also I need to put like an
+angle so for this I need get float T
+minus
+one multiply by 2 pi just to make a
+circle I mean 2 pi it's
+already varable
+so okay so now you can see we're uh
+doing
+uh a circle around our
+pinpoint okay great uh and maybe I can
+just add more of this so currently we
+have 32 but maybe I can put like 2 five
+six something like this okay so now if I
+start to
+increase this number so this I have
+like 256 starting points around the
+circle and now I need each line to go on
+its path and explore and reveal
+the portrait okay so just increase
+this okay so now you can see how it's
+revealing the the image and the portrait
+itself so maybe two five six okay
+so I think this effect is really
+interesting uh definitely you can take
+this point and move it
+around also you can play with the blur
+node and change its intensity so now we
+getting like line following the cter and
+things like
+that also maybe play with the rotation
+so curious to see what happens if I go
+here into luminosity remember that we
+added this rotation here if we change it
+you get something like this if you add
+it back it's more like this I think uh I
+noticed that
+um it works good if you rotate um 90°
+the normal map vectors so this is
+0.25 I think this is revealing the
+portrait okay
+good so we made a second example as
+well and also let's make this
+one because I also think it's
+interesting so for that it's uh it's
+almost the same as this one I'll just
+duplicate
+this so have it like this and then um
+uh I was thinking if I showed you not or
+not sure if I put a magnitude here I
+think I put
+mag here I was thinking if I totally
+forgot about the magnitude parameter
+yeah so uh I'm currently seeing this
+one and then if I go inside and play
+with this magnitude it's going to change
+the length of of the segments so I think
+this also might be interesting so what
+really happens is that the segments
+between the lines are getting multiplied
+by this value larger value means like L
+longer segments and things like that
+I'll leave it back to 0.5
+0.75
+okay and then I'll get back to this one
+uh what I need to do here instead to
+have the other effect is go here
+uh bring this back to one or two maybe
+two so we have uh Rings like this maybe
+one yeah maybe one also go here into the
+magnitude and I think I decreased it
+something like that okay uh change its
+position okay so currently we're
+affecting both with this uh pin that's
+fine and then I need to add another one
+here another iterate
+node I can copy from this one
+copy go inside of this one sorry not
+this one aiming this one and then n p
+minus two in this case I will be doing
+maybe 32 for
+now set this as an
+output okay great set this as a root
+okay great as well going in here get the
+dollar number make our T minus 2
+parameter here
+so number
+set 9 minus
+2 two
+sequence
+sequence now we need to do our division
+get
+float num I mean 18 N - 2 ided by n tus
+2 is the T minus 2
+parameter
+division
+set T minus
+2
+sequence and uh another sequence node
+it's needed so this goes here this goes
+here and this goes
+here okay great now we should go in this
+one because this we where we have
+[Music]
+our is this here where we have our
+radius no I'm sorry here we need to
+go so this is where we have our radius
+where currently our radius is a constant
+so we can do it like this this but
+instead of doing this we can just like
+use our get
+float T minus 2
+parameter something like
+this and it generates the Rings for us
+okay which I
+like this effect and if you want more or
+less just go here and play with this
+thing so less
+more something like that okay maybe go
+here
+Luminosity maybe change the
+rotation if it does anything interesting
+it seems to be rotating everything all
+together I don't know maybe you can go
+in here as
+well increase this number of
+iterations it seems to just do a very
+similar thing to what it was before I'll
+be leaving this to one just to get the
+the Rings also at this point you can
+play with this blur intensity so
+something like this I think it's also
+interesting you can see like how the
+nose it's
+um indicated by these lines and stuff
+like that also maybe just blur it less
+like total noise
+I think that's okay for now with this
+one great now we should move on to the
+last and the most interesting but also
+difficult example which was this one
+okay so we created our fields of
+flowers and then we input um a peing
+noise to drive all the parameters
+together so the parameters are linked
+together and they're driven by the
+values coming from the par noid and then
+if we change things then everything also
+changes with with that good
+so I hope I remember how I've done this
+um if not I'll be looking into the node
+itself
+which uh has a few things moving on
+already um
+okay uh let me start directly FX
+map going inside gray
+scale So currently I mean firstly we're
+going to make the flower
+itself we're going to use a dis uh we
+will
+be doing this uh dis smaller
+okay uh move everything uh so we don't
+forget about it move
+everything into the branch of
+set by minus5 and by minus5 sorry minus5
+and
+minus5 then create an iterate
+node and in this iterate node we will
+have uh we will declare a few things for
+ourselves so first of
+all load to uh will be making a An
+Origin
+so set I'll be naming this
+Orin
+0000 okay I also need to make my one
+pixel size so get Flo to
+size load
+to one and
+one
+division get one
+component
+DX
+set I mean sequence it's fine but I want
+it
+set and then one PI right change change
+these things together
+would sequence
+again
+integer 512 for
+now the
+float
+set this is n pt0
+okay and then sequence
+then this and
+this okay great we have it for
+now set this one as a root go here into
+Luminosity channel the function get
+float
+I'm getting the origin 0000 I want add
+something to it I set it back
+again this is our update then I use a
+sequence
+node then I put a float for Luminosity
+one uh I mean a one for the Luminosity
+for now set this one as an output
+and then move it here into pattern
+offset empty function get load
+to
+Orin 0000 0 something like this I might
+be changing the name later I think it's
+a bit too long again not a big deal
+maybe move this to 0. five and 0. five
+okay so it's working now we can change
+the origin to be in the middle but we
+also want to update it so in order to
+update it we need to add something here
+so cartisian
+again and then for the magnitude or for
+the length of the vector we need the one
+Pig so one
+p and then we're going to get this line
+and also we want to orient this line
+upward
+so um we
+multiply by 2 pi because this is what
+this node likes it's in radians so 2
+pi and 2 pi it's
+uh it's
+360° and then if you multiply 2 pi by
+something smaller than it like for
+example 0.25 it's like a 90° rotation
+but it went down and I want it to point
+up so
+minus okay so it's pointing up well
+great uh now we have this part and I
+want to make uh like how we had
+here our lines were uh a bit Wiggly and
+they were like a
+sign wave making them left right left
+right and things like that so we want to
+do the same and then I want to get in
+here get my uh t0o parameter which I
+always want to do so
+number set
+to Pam
+zero and then
+sequence and then get float Pam
+zero
+divided by an
+np0 so this division it's going to give
+us our
+set d0
+parameter okay great now we have this as
+well uh chain things together so this
+this and
+this so we can use our uh t0 parameter
+so what is actually t0 well I can show
+you t0 get load and maybe in this case I
+will be trying to use the Luminosity
+Channel a bit more to like for debugging
+purposes or for visualization so if I
+plug this t0 here you can see like uh it
+starts from zero and ends up in one
+along the the length of our line itself
+so for now I'll be leaving it like so
+but I want to make this line go like in
+a sinusoidal way so where do we change
+directions where we change directions
+here uh but this is our main Direction
+so I kind of want to keep it but also
+add something to it so I'll be adding
+and I want to add like this wavy
+Behavior which is coming from a sine
+wave so I'll be getting my
+t0 and then I'll be multiplying it
+by pi or 2 pi maybe 2 pi and this is
+because a trigonometry functions are
+multiple of Pi or multiple of 2 pi so if
+I do it like this and say like hey I
+only want four
+Wiggles and then do this and then do
+this
+like sign and then plug this in here now
+everything went like really really small
+but I can multiply this by a small value
+to decrease the amount of this effect or
+the strength of this effect so float and
+maybe like this so plug this thing here
+and then just
+increase okay so you can see I have four
+I have like one two three four uh waves
+so this is I multiply by 2 pi if I just
+do four like this I get something that I
+kind of don't really understand but now
+if I multiply by 2 pi whatever I put in
+here I'm pretty sure that I get the
+number of wav that I want so good we
+have our waves like this uh now we need
+to uh move and make the uh leaves
+so that's the original shape we have
+maybe
+where just disconnect this for a moment
+so this is our initial shape and then we
+want to add leaves so let's do the
+leaves
+now go here and um we need to to do a
+branch
+so for this we need
+the the switch
+node and also at this point I will um
+encourage you if you haven't seen the
+previous uh two videos you should also
+watch them when I use the switch node um
+and things like that because the only
+way to really get used to this is just
+by repeating it multiple times and
+seeing it's kind of a back and forth and
+I take I make things the graph doesn't
+grow linearly so I add things up and
+down and in the middle and move
+information and move parts of the graph
+from one node to another and things like
+that so it seems to be a messy process
+and the only way really to understand
+what's going on is just to repeat it
+multiple times it took me uh I mean
+because I was was guessing it and I was
+like not sure how to properly make this
+workflow and um it can be Pro but it
+really took me about like maybe 10 or 15
+uh different examples or attempts until
+I came up with an nor workflow that made
+sense for
+me and after a while I feel more
+comfortable like in the end I made
+around 60 of this really uh intricate
+graphs where I had like multiple uh
+iterate nodes and Branch nodes and uh
+quadrant nodes like really really uh
+hairy graphs uh with a lot of parameter
+links together and stuff like this so
+definitely encourage you to watch this
+and do those example multiple times and
+also try to do it on your own and come
+up with your own way of doing things
+because definitely this has a lot of
+room for
+improvement okay but let's do the the
+the branches so I need to take the
+information that I computed here in the
+Luminosity copy it and then put it here
+the reason for this is because we want
+to uh use this information to be able to
+use the information that we computed
+here we need to move it up so we have
+the information and the variables and
+all the computation available to this
+Branch but also to this Branch as well
+if we kept it here every and all the
+computation would be available further
+down the road if we use it but now if we
+move it up we can use it either on this
+way or either on those uh on this Branch
+as well so this is the
+reason okay so now uh for the Luminosity
+we have t0 which is already computed I
+can delete this part and then use a for
+now a dummy Boolean
+uh if it could be a Boolean it would be
+great so get boo should be false for now
+that's totally okay I mean just bullan
+not
+get yeah this one sorry about
+that
+okay and the reason for using this one
+uh this or no this switch know that
+expects a true false statement so that
+why it's here expected output type is
+bull so that's why the last thing that
+we want to Output to this it's going to
+be uh true false statement and whatever
+it false goes to this path and whatever
+is true goes to this path so this is
+where we're going to make a condition to
+say like hey from this path select a few
+points that are going to be the starting
+points of our
+branches okay great uh well uh let me
+set this as an output I think uh this
+thing got uh twice as large because
+we're Computing the origin two two times
+so at this point I think I can just
+delete this so now it went back and
+that's good and then here just reset
+everything together which is again
+fine now I want to take the same note
+just duplicated it and put it here the
+duplic at it's control+ D for visibility
+reasons I will be maybe just decreasing
+this and this one is going to be one so
+now when I'm going to put my condition
+here we going to see some brighter
+points appearing here those are the are
+going to be the starting points of our
+branches so selector and I will be
+using um
+get float
+so what I want to do is I want to add
+equal distances and probably somewhere
+around here and here and here and here
+and here I want to create a starting
+point for our bench so in order to do so
+I need to take our dollar not dollar but
+our P
+zero okay variable and I want to divide
+it by something
+maybe
+32 okay and then I want to take the
+floor out of this just to get out to get
+rid of the floating points or decimal
+point
+so and then multiply this back by 32 and
+this what I'm doing here it's very
+similar to the quanti G gray scale node
+so
+multiply okay and
+then set these things equal to each
+other so this
+list with this list when they are equal
+to each other information is going to be
+passed on this Branch itself so if I
+plug this thing here you can see those
+points
+appeared okay great it means that we
+have Su successfully created the seeds
+for our branches so to speak I mean uh I
+think I have too many I only want uh
+maybe this to be 64 so I have points
+here and here and I might end up moving
+those points around
+[Music]
+um for now leave it like like this uh
+just want to have a look at here and see
+how I've done it here as well so where
+is that it's here so I had a few
+conditions yeah I I added this 31 with
+okay so let me do it like
+this add and 31 so what this is doing is
+just offsetting the points
+further up so instead of starting here
+it's going to start uh later and it's
+going to finish towards the end I think
+this is what I done oh I mean it's
+actually going in the middle right yeah
+I also think I've done the same thing
+here yeah so the leaves are actually
+starting in the middle not at the yeah
+not here at the furthest part on the
+curved part of the sine wave okay good
+now I need to go in here and do a few
+more things I need to set one variable
+that I computed but I also want to be
+able to access it so go into the switch
+node and we already have this part
+here and I will be framing this
+and name name it
+angle drag it a bit back and
+then go right but also I want to set it
+set
+so a n g0 in short for angle zero
+sequence connect
+this okay so now we have this
+information great now in order to
+actually create the lives themselves I
+need to put another iterate node so we
+can do from those points we can start
+and add points close together in order
+to form the the line for the leaves
+themselves so
+iterate this and this and then I think I
+can copy from this a few things I will
+be copying this part go here empty go
+here I want to change the name one and
+then do this to maybe 64 for now and
+only
+this oh I mean no I think that was
+good so
+I have this uh but I also need to do one
+thing
+so we computed origin 0000 0 so now I
+need to take it and replace it with
+something so get float
+to as I mentioned before in previous
+examples when you do this branching you
+need to take the variable that you
+computed here for example position uh
+take it and then uh set it to a
+different name otherwise it's going to
+be uh overwritten here as well so then I
+actually I'm going to show you what
+happens if you don't do it it's not
+going to uh do anything I mean it's not
+going to explode or anything is just not
+the effect that we wanted so first I'm
+going to show you what uh we need to
+achieve and then I'm going to show you
+what happens if you don't uh do this um
+re assignment of the variable so I'm
+going to take this origin 0000 0 and set
+it
+to I mean I already have a sequence no
+that it's waiting for me I just want to
+set this one to a new
+name
+so origin one just plug the thing in
+here and then set this as an output
+great now go inside here and into or in
+0 you should put or
+one go into our Luminosity Channel and
+compute our things so first of all do my
+T1 parameter so get float uh dollar
+number set to hting number
+one sequence now get
+float 9 n 1 ided by
+N1 okay
+division
+set
+T1 sequence
+get float we need um origin
+one add to
+it
+something set it this is our
+update sequence
+finally we want to
+Output mean we should output T1 as well
+so get float
+T1 set as an output okay so currently
+nothing happened yet and the reason for
+nothing happening is because we haven't
+added anything here yet so we need a add
+on two not sorry a cartisian
+that we always add here and why okay
+sorry about that actually needs to be a
+float two get float
+two
+Orin one that's
+good and also I think this one needs to
+be deleted and replaced now this this
+okay and then get float one p need our
+magnitude or our
+length and now we get it we get the
+list and
+um definitely we will be uh orienting
+them properly but for now I just want to
+say like hey uh we used the Cor
+variable here I mean we changed it from
+original origin 0000 0 to origin one
+yeah so if we do this instead origin
+0000 0 and origin 0000
+0 we get this effect right so it's kind
+of uh creating a line with that length
+in between this uh fragment here and
+maybe I should put it
+like should I put a one
+here so it doesn't matter so it's it's
+just creating this Gap and what's
+happening is that it's over overwriting
+our origin 0 00 0 and creates this uh
+Gap in um in between so we don't want
+that right we want it to be like this
+and like this
+okay well good now that we have this we
+need to add um the angle that we just
+computed so get float and it was a n
+g0 and if we plug it here now we get it
+like this okay so it's interesting
+already uh going here maybe do a bit
+more instead of 36 maybe do
+64 okay looking uh cool and I want want
+to curve uh those
+um to make these leaves a bit curvy so
+let me do this just now uh when or where
+should we do it well currently we have
+this angle and this angle here aligns or
+make sure that our leaves align with
+the with the main spine of the plant for
+example if I go here and change the
+spine of the plant with this parameter
+you're going to see that everything ad
+thats which it's interesting and
+cool so we also want to curve them a bit
+so how should we do it
+well I'm going to use again the T1
+parameter and you can see the T1
+parameter we used it for Luminosity so
+it's like a uh starts from zero and ends
+with one here if we
+add the T1 parameter it's kind of going
+to curve our uh
+Branch from very little to uh more and
+more addent so get float and
+D1 okay so it's um adding it like this
+then how did I manage to
+to do this part here because you can see
+if I add things now uh it's
+uh it's rotating them in like One
+Direction but I wanted those not to be
+rotated up but also be rotated in this
+direction so how to to solve for this
+well if I put like a a one minus
+here it's doing this direction which is
+not what I wanted maybe NE negation yeah
+so I want to blend between these two
+things and I think I've I've didn't do
+the same um in our previous
+example I'm going to test it and then if
+it doesn't look close to what we have in
+our original example I might be getting
+there as well but also it's looking
+interesting already right so anyway uh
+let me fix this
+what I need to do is I need to count how
+many times uh this
+uh or how many times we created branches
+and then um use that information to to
+make this uh to orient this like in this
+way and then in this way uh things like
+that so let me do
+it I need to create a variable here
+that will allows me to keep track how
+many time we created branches
+so set I will be naming it Val
+zero
+okay then I'm going here when we do the
+branching and say get the Val
+zero and then uh we add something to
+it which is one because we want to
+increase it by
+one and then
+if this thing here if when we branch is
+true then we want our value zero to be
+increased by one other wise we want it
+to be left alone and not change okay so
+we do this and then set it
+to Val zero okay and then
+sequence chain everything
+together okay that's already there and
+now
+this perfect so hopefully everything
+should
+work now I need to go here
+and then switch between these two so
+linear
+interpolation okay between this and this
+and we want get float we want Val
+zero so this should be the Val zero
+should be like hey 1 2 3 4 5 6 78 eight
+but then if we take the mod two of
+it then it should be um something like 0
+one 0 1 0 one 0 one something like that
+or maybe one Z one zero but anyway it's
+going to be an alternation between zero
+and one and then if we plug this thing
+here then this might be helping us with
+the switches okay so uh looking good uh
+maybe I can switch like
+this so if I select wires and then hit
+the x button it's going to switch the
+input like this good so I think this is
+already interesting for us and I want to
+uh make those even more curvy so I can
+multiply this and if I multiply then
+they go back to straight because
+multiplying this curving parameter by
+zero it's reducing it to nothing but
+then maybe if we increase its strength
+to maybe three it's going to do this uh
+effect okay uh and then uh
+maybe I want to even do it even more
+maybe four okay but also you can see how
+it's kind of like a circle we can also
+play with this and put a power
+and then float
+maybe
+four so you can see how now it's instead
+of curving uh from the beginning it's
+only curving at the
+end okay so then if we play with this
+parameter it's doing this or this if I
+play with this parameter it's doing this
+or this
+okay maybe this should be left to a
+three and then I want to uh change this
+parameter right so I want to uh instead
+of using a constant here I want to use a
+variable and I want to do it like this
+based on the length of
+the the spine of the plant itself so I
+can use uh the t0 parameter here and
+also let me preview what's going on into
+Luminosity empty function get float t
+z okay it's like that and then if I go
+in
+here so I can use the zero
+to drive this information from here so
+maybe or blend between two Val so let's
+say that uh I want to blend between
+this which is
+U more curled and maybe this Which is
+less curled something like that and I
+can blend between the parameter
+t0 not
+T1 so t z is like this gradient going uh
+from dark to White along the spine
+itself and uh it means that whenever we
+have the zero as a low value it's going
+to be more of this or more of this and
+vice versa so
+lurp
+okay so I think it's doing uh maybe
+maybe let's switch things I want to have
+more curled curled leaves at the top so
+increase this parameter and then less
+curled leaves at the bottom U maybe like
+so so I think this plant it's different
+than what we had before but maybe I'll
+leave it like this uh just to have a
+different
+example I'll leave it like so okay good
+now I want to do one other thing I want
+to decrease the width of the plant stem
+so maybe the
+thickness make it uh like that go back
+to
+Luminosity or reset it and then just
+make it a
+bit
+darker okay maybe 0.2 something like
+that
+I also want to have
+a
+variable width or thickness for our
+leaves so let me just do this so our
+leaves are here I'm going to delete this
+part uh
+briefly and I will
+be going into the pattern size empty
+function get float I think you already
+know that I will be using the T1
+parameter and then I will be using a
+linear interpolation because I want to
+blend between two values so linear
+interpolation and I want uh my initial W
+uh width to be something like
+float
+0.0 five Ian
+maybe I have no idea maybe something
+like
+this and then I want the uh the thin
+part to
+be half of this or maybe a quarter of
+this so then I can just multiply this
+value by something like
+0.25 which is going to say like hey
+whatever this value is this other value
+is a quarter of this one
+okay and then set this as an output well
+I kind of can't yet I need to have this
+as of vector float to now I can do this
+need to plug the thing back and see the
+results so what's happening is that it's
+thicker here at the starting point and
+then it's thinner at the end uh I want
+to have it uh in a different way I want
+it to be thin at the
+beginning uh have the maximum width in
+the middle and then again thin at the
+end so let's do that well um here where
+we do
+size uh I do instead of this T1 here I
+just multiply this by
+pi and then and put a sign so what this
+is going to do is going to instead of
+creating a transition between zero and
+one is going to create a transition that
+starts with zero at the beginning
+reaches one at the middle and ends with
+zero back at the end so now if I put
+this here we have it like
+so which is weird why it seems to be oh
+no it's in Reverse right now so maybe I
+can just switch this together okay and
+maybe it could be
+more
+less
+okay and then even this maybe 0.1
+to5
+okay so those are my
+leaves and at the end I want to to make
+a flower okay
+so
+lastly we have our leaves uh and I want
+to make a flower at the end so I need to
+do a switch
+here and then in this
+thing I want to put a condition empty
+function get flow I want to select the
+very very last point of this um spine of
+the plant so for this I need to get
+the Pam
+zero and also n PT
+Z and I need to subtract one from
+this well PT n uh n pt0 is currently let
+me check
+is
+512 okay
+so this n p this PT n z starts with zero
+and ends with
+511 uh and then this is 512 so I need to
+subtract one from it and this is going
+to be 511 and then if I do this like
+equal now whenever this list here ends
+or reaches 511 then this is going to be
+true and it's going to be transferred
+into this Branch so now I can go in here
+and say like hey we selected the tip of
+this thing and we're ready to create our
+flower because we have the starting
+point for
+it uh good so for the flower we're going
+to do uh two nested Loops uh we have one
+nested nested Loop which is going to
+create for us the petal itself
+and then the other uh loop is going to
+create the number of p p petals around
+the circle okay so two nested Loops like
+this okay this and this and
+this and we need to maybe we can already
+copy something from this here I think we
+can take this part and put it maybe
+here and also maybe put it
+here okay um I'm just going to delete
+this
+thing keep this
+one n p one it's
+good uh this is the number of our petal
+so definitely 64 I think it's too much
+maybe put 17 and we will have
+a we will have
+a random number of petals for each plant
+itself so this uh value here which is a
+constant it's going to replaced with the
+variable also go inside here get load
+thear number we need to make our T1
+variable here here as well
+so
+set Pam
+one
+sequence get
+flow divided by N1
+so
+division set s
+D1
+sequence okay set as an
+output go into here oh I already done
+that go in
+here into the empty into Luminosity make
+our T2 and I think at this point I I
+might be just faster to copy this part
+yep go in here and do it like
+this this is
+two this should be two
+this should be
+two this should be
+E2 okay let me check if I name this this
+should be
+npt to okay and we are updating origin
+one perfect so go here go in
+here get loow to
+origin
+one add
+twet set origin
+one that's the update
+sequence set not set yet sequence again
+here we are in the Luminosity channel so
+we will be outputting one for next
+now okay and then uh let's update things
+so well we need our cartisian
+node and then we need our magnitude
+which is the one pix get
+float One X One
+pixel and then it seems like it didn't
+do it why
+well that was true which is
+good then this is doing like 17
+pixels which is
+good just to make sure
+I think um I think it's correct and it's
+still not showing it so Luminosity it's
+one origin one
+maybe what do I have here origin z00 Z
+okay
+maybe I'm trying to make sure that uh
+it's not a problem with
+the the name of the variable so I was
+expecting to see at least uh one long
+pedal but
+maybe uh or maybe I haven't put this no
+it's 64 that should be good so the
+pattle should be like 64
+long okay and here in oh now I
+understand what's happening yeah of
+course um
+sorry or at least I think I know what's
+going
+on well yeah this is uh the problem so I
+just need to update here as well sorry
+about that that was it okay so now it's
+doing this part uh and then I want it to
+be aligned with the tip of my of the
+spine of my plant so going here as
+well
+um get float
+a0 okay so now it's aligned to the
+tip uh
+then I need to add to
+it and then I need to add uh in order to
+make it uh span the entire circle I need
+to
+multiply my T or which t i created
+here T1 I need to multiply my T1 by 2 pi
+see1 multiply by 2
+pi I mean 2 pi it's already
+there and then it's creating the flower
+all right uh I also want to show you how
+the T1 and T2 look so the T1 looks like
+this
+it's starting every single pattle has
+its own brightest and T2 looks like this
+like uh every single pattle has its
+gradient from zero to one which is like
+super useful that we have it
+okay now the flower itself it's uh I
+think too big so maybe we can just go
+here is where the we control the length
+of the flower so maybe put this two 32
+instead yeah I think this is a bit
+better I also want to um use
+the T1 for the Luminosity or T2 for the
+Luminosity so maybe like this I think
+this looks a bit more interesting as a
+flower we could also add Randomness but
+I I will
+um I will add a bit of randomness to the
+length of the petals but we can also add
+it to the Luminosity itself I think it's
+a bit more clear right now without the
+randomness for Luminosity of the petals
+but if we want we can do
+it uh I want to add a different
+condition so we can get rid of some of
+those leaves that intersect with our
+flowers so when we do the leaves here we
+should add another condition
+and say like
+end and here we have our
+t0o so t z is uh the length of our uh
+spine and we can say like hey um we want
+you to create lives for us only when
+these conditions are met but also when
+the length of our spine is lower than
+maybe 90% or something like that so I
+can uh say hey the length of my spine is
+lower
+than 0.9
+maybe and I might need to change this
+value but we can test it here and here
+so then we should replace the entire
+thing okay so the last Li disappeared
+okay so if I decrease this value lifs
+are going to be
+disappearing okay I leave it to 8.
+85% and then
+um yeah I want to add uh a bit of
+Randomness to the length of the p Metals
+themselves
+well here we generate the the length of
+the petal so I can just I think I can
+just say instead of
+32 I can do maybe like
+float
+32
+and load
+one
+[Music]
+random
+zero uh 0 one to minus one one I created
+the random number between minus one and
+one I want to multiply it maybe by
+six so this is either going to increase
+or decrease every battle with uh six
+points and then do this and then I want
+to cast this to integer so two integer
+and now replace this constant 32 with
+this so you can see now we're getting a
+variable number for the petals maybe six
+is too much maybe
+three kind of like it how it was
+distorted but anyway I leave it like
+that well we have our uh flower right so
+at this point this is our
+object so object
+now we want to create a grid out of
+this so for this a new
+frame move it
+grid this this and this and do
+one and another one
+okay so I'll be naming those uh again
+like inner and outer Loops this will be
+my
+I this will be my
+J going inside the first Loop empty
+function
+integer maybe
+four to
+float set this will be
+I
+sequence
+okay that's
+one I want to copy the same
+thing go here at the top empty
+function this will be
+J set this as an output go back in here
+and uh retrieve our variable so get loow
+dollar number we need
+it
+set I will be naming this
+j++
+sequence here here and
+here great
+right I mean it looked better
+before okay also set this as a
+root it executed them uh I need to
+also get the dollar number from this one
+to here and name it i++
+so get float dollar
+number
+set
+i++
+sequence and then change it and then
+chain this okay so now we have our
+original origin so to speak and we want
+actually make a grid uh of multiple
+plants right so we need to change uh
+this thing
+so I'm going to add to it because I want
+this to be like my main or my original
+offset but then I will be able to also
+work with my grid so I want to add the
+vector float two to
+it I mean float
+two I know need to make
+a yeah I need to compose a VOR okay and
+then get float I need to get
+my i++ I need to get my j++
+okay and then I need to also get my I
+and
+j i not this this one and also
+J okay so
+j++ um and i++ are the range of numbers
+and we need to divide them by their
+counter part so divide I ++ divided by I
+it's going to give us a range B between
+0o and one also divide like
+this okay plug those things into the
+vector now we get a row now we also get
+a column so we get the
+grid okay uh I want to scale
+this scaler
+multiplication okay
+and then let me go in here and maybe
+just have
+three oh this is okay maybe this one
+should
+be well seems like I
+don't yeah here I wanted to go so maybe
+three of them or maybe
+two okay two for now
+and we will be changing this later okay
+so have it here this is where I can move
+things around so I can kind of Center my
+grid of
+flowers then I want to use my ply noise
+to drive parameters of those plants
+right to link the parameters of those
+plants with the p so
+it's this maybe just make it like that
+throwing on outo
+levels and then just plug this thing
+in so uh first of all let me uh Drive
+the the number of petals let's start
+with the number of petals and it can be
+driven by the ply Noise Okay so go here
+where do I do my petals well my petals
+are here and the number of petals it's
+here right so go inside and I only need
+to do what I computed and what I
+computed here is uh this so it's origin
+0000 0 so I need this thing this is
+where I generated the positions of my
+plant so those are the starting points
+like this this this this this this they
+are holding this um a variable okay
+so I mean uh just because I know we're
+updating VAR this variable let me rename
+this and say like hey
+definitely need the sequence but what I
+wanted was was a
+set so I'll just name this
+grid CU I know that these are the
+locations of my plans in the
+grids
+okay so this doesn't get updated this is
+just like the really the basic Point
+here here okay so it's sampling the it's
+sampling the perim correctly okay so
+based on this value I can just go in
+here and say like hey where we have
+petals instead of having 17 petals I
+want to do something else instead so get
+flow two
+grid and then sample the perly noise and
+then linear
+interpolate between Maybe
+float and another float and maybe the
+maximum number of petals would be 17 but
+the minimum would be five and then PL
+those thing here and then cast them to
+an integer so to integer and then
+replace that constant 17 with this
+variable so now we have PL with
+different PS okay that's one I'm going
+to copy this thing
+and also go here where we can control
+the length of the petal so this is the
+length of the petal so uh maybe the
+maximum length of the petal will be 32
+but the minimum length would be
+12 and then just do
+this so you can see not only we have uh
+less petals but also they are like
+uh less longer let's do the same thing
+with the
+leaves so the length of the leaves it's
+here and we have 64 currently but maybe
+we can do
+between
+24 and
+64 and to integer
+and just replace
+this so maybe even um maybe let's do a
+bit more here like
+8 something like
+this I can also decrease
+the the thickness of the Le based on the
+same parameter coming from the PE noise
+so I'll be copying this going to the
+size and have it like this
+so what we want to do we want to use the
+current thing that we have and then this
+and multiply it maybe by
+half so this is the current um
+width that we have so it's starting th
+going maximum WID and it's going back
+again thing this is here but then we can
+take this and multiply it by a lower
+value let's 0.5 for
+example and if we preview this you can
+see like how everything got thinner and
+now we can uh blend between those two so
+that was the
+original with the this is the new one
+and then this is the
+latest
+okay and I think it maybe needs needs to
+be
+switched maybe like uh 0.1 just to make
+sure that I see what's going
+on oh this is like the yeah this is the
+entire plan so the ones that are longer
+should be
+thicker yeah this is correct uh
+definitely exaggerated just to see them
+but it's good maybe do here a bit more
+like
+one okay well definitely not the best
+lives in the world
+I can TW their length a bit more here so
+the minimum seem to be 24 maybe it's a
+bit too little maybe
+32 okay didn't want
+that yeah I think this is
+better so we can also take this and copy
+it and affect the length of the entire
+plant so the length of the entire plant
+is here it's
+512 and we can change it between maybe
+512 and
+maybe I don't know maybe
+256 put this to an integer and then
+replace this
+value okay so we have different
+um lengths for the
+plant okay also we need
+to uh do this thing to the waviness of
+the
+plant so it should be affected by uh the
+early
+noise as well so the waviness of the
+plant is here in this
+parameter that's the strength but here
+it's like how many uh of those waves we
+have so so I want to play with this
+parameter so
+[Music]
+maybe and
+between
+four and
+one okay
+I think this didn't work maybe put like
+zero and I think needs to be in
+Reverse yeah yeah this is okay
+I also think
+the some plants should be longer so I
+think we should change
+the the range here so maybe make this
+one lower and this one
+Higher and this one even lower Maybe
+28
+okay I am not satisy I don't think I get
+like enough
+variation
+and there seem to be like they all the
+same so
+maybe I can also yeah I know I can also
+play with this as
+well so here is how many waves do I
+have but here is like the
+strength so I can do another linear
+interpolation here between these values
+instead of four I can just do this and
+see what's happening
+okay maybe add a bit more plant
+so at this point I'm just adjust
+adjusting
+things um maybe just
+decrease the plants yeah I think in this
+case uh seems to be uh more readable
+defect definitely you can at this point
+in time you have plenty of
+parameters to change and to adjust and
+to make it uh look more interesting uh
+just don't want to spend more time than
+needed uh on this part so also I think
+did I scale this yeah I scaled the grid
+so I can rescale back and reposition it
+like
+so okay
+so now if I change this I I should be
+seeing
+differences happening to my plants so
+changing the disorder here yeah you can
+see how it's affecting the the
+plants which I think it's interesting
+also I want to say that maybe um
+maybe we can try this as well I think in
+my other example um I have a slightly
+different set setup which is not good or
+bad or wrong or anything like that but
+uh remember that I also created this um
+variable here
+grid uh maybe I can just put this here
+okay so now it doesn't change anything
+um but I instead of using the grid if I
+use origin 0000 I think I get a slightly
+uh different
+result
+okay the last thing that I want to to
+add is just I want to add a slight
+random orientation for each
+plant so where do I have my uh
+orientation for the plant well it was
+here so this is the how my plants are
+oriented well I can just
+um I can put a a random variable here so
+for example this is I want every time a
+plant is created in my grid I want to
+generate a random value where where
+should I generate this or where should I
+create this
+variable well this is executing the grid
+So Below this in in this node I need to
+create that random variable okay so
+load and
+one and
+random and
+zero 01 to minus one one
+set this is from random angle
+and then put this thing here okay and
+then now back here when we actually did
+your rotation I want to add and then get
+float and then
+rang so now everything should go
+absolutely nuts but then we multiply
+this by a
+number not the minimum sorry it's
+looking interesting but not that
+so
+multiply okay something like
+that okay so there there you have it I
+think the last one um is a really
+interesting result um and also not only
+interesting but also powerful definitely
+please uh play with it and make it a bit
+more interesting and beautiful I think I
+had a uh slightly more beautiful version
+here I'm not entirely sure depending on
+what you want or what you like like in
+the end I don't even pretend this to be
+beautiful but more interesting uh rather
+than beautiful and useful I'm pretty
+sure you're going to come up with
+something much much cooler than than
+what I did but the try try to do these
+examples once or twice or multiple times
+and rep repetition is going to be key I
+know things might be confusing and you
+kind of don't know understand why do I
+do things I will be making more
+tutorials and then uh by repetition
+you're probably going to start and uh
+see uh or understand what needs to be
+done and when needs to be done okay
+thank you so so much much for your
+patience I hope this tutorial is going
+to be useful for you also if you feel
+like this is useful uh please share it
+um with your friends or maybe with your
+peers I think they might find it um
+interesting thank you
