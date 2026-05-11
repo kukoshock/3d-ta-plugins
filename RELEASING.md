@@ -2,6 +2,8 @@
 
 How releases are cut for this repository and where version numbers live. Read this before opening a PR that touches a `SKILL.md`, a `plugin.json`, or anything under `.github/` or `scripts/`.
 
+> **For end-users (artists installing a skill into Claude.ai, Claude Code, ChatGPT, etc.):** you don't need this doc. See [`INSTALL.md`](INSTALL.md) instead.
+
 ## TL;DR — cut a release in three steps
 
 1. **Update the version** in `plugins/<name>/.claude-plugin/plugin.json` if the skill content changed. (For doc-only or distribution-only changes, see "How we version" below.)

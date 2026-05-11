@@ -83,17 +83,18 @@ Download transcripts from YouTube videos using yt-dlp.
 
 ## Installation
 
-### Via Claude.ai / Claude Chat (for artists)
+**👉 See [INSTALL.md](INSTALL.md) for the full step-by-step guide.** It covers Claude.ai, Claude Desktop, Claude Code (CLI / desktop app / IDE), and workarounds for ChatGPT / Gemini / other chat AIs.
 
-If you use Claude in the browser (claude.ai) rather than Claude Code, you can install each skill as a single uploaded file — no terminal, no git.
+The fastest paths:
 
-1. Open the [latest release](https://github.com/kukoshock/3d-ta-plugins/releases/latest) and download the `.zip` (or `.skill`) for the skill you want.
-2. In Claude.ai, go to **Settings → Capabilities → Skills** and upload the file.
-3. Start a new chat and ask a trigger phrase — e.g. *"How does Tile Sampler work?"* for the tutor.
+- **Claude Code (any platform)** — one command installs all five skills:
+  ```
+  /plugin marketplace add kukoshock/3d-ta-plugins
+  ```
+- **Claude.ai / Claude Desktop** — download a `.zip` from the [latest release](https://github.com/kukoshock/3d-ta-plugins/releases/latest) and upload it under **Settings → Capabilities → Skills**.
+- **ChatGPT / Gemini / other** — copy a skill's `SKILL.md` into a Custom GPT or Gem. Detail in [INSTALL.md](INSTALL.md#chatgpt-gemini-or-any-other-chat-ai).
 
-**Want everything at once?** Download `3d-ta-skills-bundle.zip` from the same release page — it contains all five `.zip` archives plus the index. Unzip locally, then drag each inner archive into Claude.ai's Skills uploader. (Claude.ai requires one upload per skill — that's a platform constraint, not a packaging choice.)
-
-Each skill is a separate, independent download. Grab one, several, or all of them:
+### Available skill archives
 
 | Skill | What it does |
 |-------|--------------|
@@ -103,28 +104,7 @@ Each skill is a separate, independent download. Grab one, several, or all of the
 | `whisper-transcription__transcribe` | Transcribe audio/video locally with whisper.cpp + FFmpeg. |
 | `youtube-transcript__transcript` | Pull subtitles/captions from YouTube videos via yt-dlp. |
 
-The same `.zip` files work with any other AI tool that accepts Anthropic Agent Skill archives.
-
-### Via Claude Code Marketplace (Recommended)
-
-1. Add this marketplace to Claude Code:
-   ```
-   /plugin marketplace add kukoshock/3d-ta-plugins
-   ```
-
-2. Install the plugin from the Discover tab, or search for "substance-designer-tutor"
-
-3. Restart Claude Code to load the skill
-
-### Manual Installation
-
-```bash
-git clone https://github.com/kukoshock/3d-ta-plugins.git
-cd 3d-ta-plugins
-
-# Copy plugin to Claude plugins directory
-cp -r plugins/substance-designer-tutor ~/.claude/plugins/
-```
+Or grab `3d-ta-skills-bundle.zip` to download all five at once.
 
 ## Usage
 
