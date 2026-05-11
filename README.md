@@ -153,6 +153,10 @@ A comprehensive written guide covering the entire 22-part "Designer First Steps"
 
 This guide serves as both a learning resource and a reference manual for recreating the ornate fabric material from scratch.
 
+## Releasing
+
+For maintainers and contributors: see [`RELEASING.md`](RELEASING.md) for the version strategy, where versions live in the repo, and how the GitHub Actions release workflow turns a `vX.Y.Z` tag into a published GitHub Release with all skill archives attached.
+
 ## Contributing
 
 Have a 3D tool you'd like tutoring support for? Open an issue or PR with:

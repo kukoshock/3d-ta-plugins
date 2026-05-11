@@ -10,7 +10,7 @@
     {
       "name": "substance-designer-tutor",
       "description": "A tutor for learning Substance Designer through the Designer First Steps course. Explains Tile Sampler, Height Blend, procedural shapes, and fabric embroidery. Helps troubleshoot when tutorials don't work on your computer.",
-      "version": "1.0.0",
+      "version": "1.5.0",
       "author": {
         "name": "Anastasia Kukosh"
       },
