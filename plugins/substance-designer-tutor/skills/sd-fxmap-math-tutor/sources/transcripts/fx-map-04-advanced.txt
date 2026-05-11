@@ -1,0 +1,2705 @@
+Hello
+everyone. Welcome to a new Substance
+Designer tutorial. This is uh part four
+in which we are going to talk about the
+FX map node. I created a few examples.
+We're going to uh build them from
+scratch. But before jumping in, I want
+to uh show you what they do.
+So uh this uh first example creates
+uh a grid of dots and then it creates a
+graph of lines that connect
+uh dots that are closer together. Uh the
+input is an early pearly noise. You can
+uh change the pearly noise uh disorder
+parameter and get uh different effects.
+So uh what's going on is uh in this
+texture you generate uh point clouds
+then this point cloud uh gets
+transformed into a
+list of points which is uh stored in
+here. So more or less points are going
+to be stored in this list and I think
+this part is interesting. Um we're
+basically covering a point cloud to list
+conversion.
+uh which I think it's a neat and cool
+trick to to learn about and it involves
+using pixel processors and matrix map.
+So for example I can go inside uh this
+pixel processor here I can increase this
+value which is going to uh increase the
+number of points and uh that in turn
+it's going to increase the um number of
+pixels stored in this list. So for
+example, you can see if I play with this
+uh we populate this list with points and
+uh also let me show you what's going on.
+So this is our 2D image of points and
+then this is the parameter that controls
+the density. So this parameter when it's
+low low density of points uh higher
+value greater density of points.
+Okay. And then uh this uh list of
+points which is uh here gets uh passed
+into the FX map node and the FX map node
+is going to create a
+graph. So the more uh the more points we
+have the denser the graph is. Uh we have
+a few parameters that we can control.
+For example, the graph itself uh the
+density of the graph itself is driven
+either by the density of the point cloud
+or it can be driven by a parameter that
+I have here in the quadrant node and
+when we will going to reach this uh
+we're going to explain what's going on
+but this value control like how far um
+from let's say from this current point
+uh this value here determines how far uh
+this point looks around it and creates
+uh connections with neighboring points.
+So if I reduce this value even more,
+we're getting uh less connections. If I
+increase it, we get more connections.
+So this is uh our uh graph so far. We're
+going to draw the graph of lines. We're
+also going to draw a graph of points.
+We're going to merge them together in
+something like this. And also depending
+on what or how you like, you get the
+chance to color uh this uh segments
+based on their length uh and also if you
+want you can uh add uh some u glow or
+diffusion based uh on this mask. This is
+totally aliatory um or yeah up to to
+your choice. Maybe the final effect
+we're going to uh stop with this uh
+graph here and feel free to color it uh
+however you want. So the key idea is
+that you're going to have a grayscale or
+a height map that you input uh to a
+point cloud generator and then you turn
+take this point cloud generator and turn
+it into a list and then this list gets
+into the FX map node that reads this
+data list and uh creates the drawing.
+Okay. And this is again coming back to
+what we've been discussing ethics map
+node. Um it's powerful when you think
+about it like hey I can just uh divide
+my entire thinking or my entire process
+in working with data generating the data
+and drawing it. So separating those two
+things uh it's very uh interesting and
+powerful and we we're going to see
+exactly what I'm talking about uh just
+in a minute. Okay. I have another
+similar example. Uh
+so you can um input for example
+uh like any kind of black and white
+image uh can uh go into this um into
+this algorithm and then it's going to
+generate on those value density of
+points and then you have the possibility
+to control
+uh the number of connections from each
+point to its neighbors. And this entire
+thing uh this entire network of lines is
+going to reveal the the image itself. I
+have a two I have a black and white
+portrait uh that I'm using. Feel free to
+download any image that you want or uh
+take a photo of your own and use it. I
+just downloaded this image from the
+internet. I don't own the rights to it.
+So uh I'm not sure if that's okay to to
+show the image itself. But uh if I go
+here, you can see the point cloud uh
+density based on the portrait itself.
+You can uh barely see a face. You have
+like eyes, nose, mouth, and the entire
+face. Okay, great. Uh so those two
+examples here are
+similar but just have a different input.
+Uh in one case we have the ply noise as
+an input and in the other case we have a
+black and white portrait. Uh in this
+example uh we're going to create uh or
+we're going to use um a pearly noise
+node to distort a 2D grid of uh of
+squares or rectangles u more likely. And
+then we want
+to resize this uh rectangles such that
+they don't overlap. So you can see that
+uh they're like very close together but
+they are not touching. You can just go
+here and uh change the uh pearly noise
+itself and also you can go here into the
+normal map and play with the string.
+So no distortion and then um more
+distortion. Okay. So I will leave this
+to
+six. And what's happening here is that
+I'm generating a list of points stored
+in a one dimensional texture. So this is
+a grid of 32x 32
+uh point positions stored in this
+texture. Right? So I have my data here
+and then uh I can just take the FX map
+node and draw this data. So maybe let me
+do
+this. I will need to probably simplify
+this FX map a
+bit. Also take this one and just use the
+points
+themsel just to show you the grid.
+Plug this thing here
+inside. Double click to see what's going
+on. Focus. Nothing happened. No worries.
+Uh, we need to simplify a few things
+into luminosity. I will want to put a
+one
+here.
+Okay. Still we don't see anything.
+That's because we're missing size. Let
+me go in here and just do something like
+this. Yeah. So currently uh this is what
+we
+have and I don't want to see the
+distorted
+field. Okay, it seems that I
+was doing something maybe here or here.
+Okay, so I just want to see the points
+themselves. So yeah, this is a grid that
+I creating a grid of uh squares and then
+uh I use the normal map to distort their
+positions. Okay, so this is what's going
+on. And let me get back to here to see
+if I broke anything. I haven't. That's
+really good. Okay, so this list of
+points here gets into a process that
+allows me to compute for this list of
+points uh I uh need to compute its
+closest uh neighbor for each and uh
+everyone of those points and then um
+based on the closest neighbor I can
+compute uh distance and I will use that
+distance to scale these patterns. So for
+example uh this pattern here uh this
+square here looks uh in this direction
+and in this direction and in this
+direction and find uh the closest
+neighbor to uh itself and then uh stores
+or computes this distance and then uh
+it's scaled based on that. So you can
+see some of those uh rectangles are
+larger, some of them are uh uh smaller
+and things like that. Also, I use um the
+direction between the current uh point
+and its closest neighbor to orient them.
+So, you have this interesting flow. Uh I
+kind of really like how this
+uh are oriented and they create those uh
+gaps that sort of follow some
+u paths and things like that. So I think
+this uh effect also it's interesting. Uh
+you can also color uh things based on
+their uh direction. The direction it's
+stored as a grayscale value. Each
+pattern it's colored by I mean uh has a
+brightness based on its orientation. And
+then you can use this to throw it into a
+gradient map and choose some uh
+beautiful colors to uh colorize the
+grayscale map. Also based on this if you
+want you can create an interesting
+um voronoi diagram. And
+maybe for this one instead of using
+uklidian distance maybe we can change it
+to Manhattan or
+chbbyev doesn't seem to have a huge
+difference. I leave it to ukidian
+distance. All right. So then you can get
+again to change this configuration. It's
+not absolutely perfect. It has some of
+um this process generate some missing.
+Sometimes you're going to have one or
+two missing squares and also has
+um a fix that I need to do. But 99% of
+the time it works and I think it
+generates an interesting pattern. So
+maybe you can use this to generate an
+interesting um I don't know stone with
+stone with grass patterns and stuff like
+that. Okay. And lastly, uh in our last
+example,
+uh we're going to use the uh a similar
+technique to what we've been doing so
+far. In our previous um sessions, uh we
+learned how to draw
+um with the FX map node and we used uh
+most of the time math functions but in
+this case I want to show you that you
+can use the spline uh quadratic node uh
+and this is of course generating a
+spline but then you can take this
+information from the spline itself. So
+you can take the data coordinates and
+the data uh tangents or uh basically the
+velocity vectors and use this
+information to scatter or to generate
+new drawings that sit on top of your uh
+spline itself. So now you can just go
+here and change the uh drawing or the
+path of the spline and everything uh
+adjust accordingly. So I think this is
+uh neat and of course uh you want to be
+able to draw complex drawing fast. Let's
+say that you have some really crazy
+ornament that you need to draw and then
+you don't want to draw it manually or
+anything like that. Uh and also you want
+to have control over it. So for example,
+what if uh you want to change things?
+Maybe people are saying, "Yeah, I really
+like this pattern, but uh can you make
+it such that uh I have
+um longer leaves at the end of the
+spline itself and shorter leaves at the
+beginning of the spline where you have
+this control like right now. So for
+example, you can do uh all sorts of
+things. Not to mention that you still
+have control. You can go inside and say,
+well, I want uh maybe more or le less
+leaves. So, you can just go in here and
+play with this parameter. So, instead of
+64, you can put 32 and then you get more
+leaves or maybe less less leaves
+depending on what you want. I'm going to
+leave it back to
+64. Okay. And then you also get to play
+uh with all the parameters that I uh set
+here as well. You can change the length,
+you can change the curvature and and
+things like that. So I think this is
+also an interesting result. I'm going to
+hit a couple of undos just to bring back
+the original shape of the spline. Okay,
+I think it was like this. Great. So
+let's jump in. Uh we're going to start
+with this um example where we create
+this beautiful uh
+graph. I want to show you a few things.
+It uh maybe it's uh we can uh divide
+this part into a few subp parts. This is
+the actual point cloud generation. So
+I'll do this or maybe density point
+cloud I would say.
+Okay, that's the density point cloud
+part. This part is point cloud to data
+list. Okay. And then this part
+here, it's the drawing itself. So let
+me just frame
+this.
+Okay, this is the drawing
+itself. And maybe this is
+post-processing, which we're not going
+to dive into because here is where you
+can get creative and uh do a color it
+and do all sorts of amazing effects.
+So, post process
+simple. Okay. So, uh we're going to use
+the blue noise. I don't think you used
+it
+often. So, the blue noise um allows us
+to sample some u points from it that are
+almost um evenly spread apart. So, the
+noise itself have a noisy configuration.
+So, it's not a grid. the points uh are
+randomly distributed into this space but
+somehow they seems to be uh like um
+almost have um equal spacing between
+them. So it's the blue noise 256. I
+always confuse them. Not sure which one.
+I think it's the second one. Let me try
+and do this link. Um yeah. Okay. So
+yeah, this is the the noise. And I want
+to show you briefly the difference
+between the blue noise and a regular
+white noise. So white
+noise, I want to make them the same
+resolution. So both of them are 256 by
+256. And if I uh put a histogram scan
+after this histogram scan and then
+increase the contrast to maximum and
+then use like a 0.01
+01. Uh you see uh we're catching some uh
+dots that seem to
+be almost evenly spread apart. It seems
+like they're respecting each other
+boundaries. But instead, if we do the
+same to white noise, you see how how we
+have like a less even distribution. So
+it seems this seems to be more patchy.
+Okay. So for this um I for this example
+I'm going to use the uh blue noise which
+seems to be more evenly
+distributed. Okay. And I'm going to take
+this blue noise and uh throw it instead
+of throwing it into a u histogram scan I
+will be throwing it into a pixel
+processor. Okay. Uh, I need to change
+the output size to absolute. So, it's
+the same size 256 256. Go inside this
+one. Okay. Get flow
+to in order to go inside a pixel
+processor or an FX map node, I hit Ctrl
++
+E. Also, they have this edit function,
+but I got so used to
+it that I don't think about it. Okay, so
+I need to bring the information inside.
+That's my blue noise. And I'm going to
+say like
+um if the pixel if the current pixel is
+lower than a certain value, make it
+white. Otherwise, make everything black.
+So
+lower
+than
+0.01 and I I just talked about using an
+if else statement. So I say like if my
+current pixel is
+lower then do something else do
+something else. Uh this means in code
+that uh based on this condition we
+should use an if else statement. So if
+this is true then make the pixel
+white. Else make the
+pixel black. So white black. Set this as
+an
+output. Okay. And then if I change this
+value then I get more or less points.
+Good. But uh there's like sometimes I
+like to use a shortcut for this. When
+you have this um thing here, it's
+basically storing or computing a true
+false statement already. So this is
+saying um true or false. And you can
+convert this thing into
+um into a float value. This is a boolean
+and you can convert into into a float.
+So true is one, false is zero. You can
+just say to float, I mean boolean to
+float. So you can do this as well. Set
+as an output node and it's the same
+thing as this. So in this case, I'll be
+using this shortcut uh just to show you
+um that you have multiple ways of doing
+doing things. Okay? But um instead of
+using a constant value here, I can use
+um a gradient. And this is what I want
+to do. So I'm just going to use a
+gradient for
+now. Maybe this one. The gradient itself
+doesn't matter. Uh you can make it the
+same size, but it doesn't matter if it's
+not the same
+size. I'm just going to bring it inside.
+So I already have a get float. I will
+select this one. Hit Ctrl + D to
+duplicate it. Change it to image input
+one. So this is my gradient and I want
+to uh blend between
+values. So uh this is uh 0.01. 01 maybe
+I want five times more density so 0.05
+05. Okay. So, I have these two values
+that gave me different densities. But
+then I can use a lurp node which is the
+same as the blend
+node without all the math
+functions. I mean, uh you have some
+blending modes that are not the same.
+This is just blending between two values
+based on a gradient or on a mask.
+So this this and
+this. Okay. So now you see that we have
+uh the density of points being
+controlled
+by the input gradient that we have. We
+can throw a curve node after
+this and play uh with this and see that
+we can change the the density.
+You can also if you want maybe put a
+quantized
+grayscale. Okay. And then
+maybe four steps and put a auto
+levels. So you can see uh the density
+now it's not like very smooth transition
+but it has some visible steps. Okay. So,
+this is an interesting effect and I just
+wanted to show you, but we're going to
+use a pearly noise, of course, because
+it is my favorite
+noise and then plug this thing here. So,
+we're getting some
+densities based on the pearly noise. I
+will decrease its size or scale to
+maybe three or four. I think three might
+be interesting. I I don't think I uh
+used this
+scale in my previous examples. I will
+set this to zero and then maybe this to
+a lower density like five something like
+this. Okay. So, we have a grid of
+points.
+Um this is good. Now, uh we're going to
+move to the next part. This is the
+density the point cloud density. Uh I
+want to move to the next part where we
+create the point uh the point list or
+the data list. The first thing that we
+will do is um go through this texture
+and we're going to index all these um
+single points. So for example, this one
+is going to be one. This will be two,
+three, four, and things like that. I
+think you can
+um you can also use the flat field to
+index. That's going to do the trick. Uh
+but I want to actually do
+uh do it in a different way using the FX
+map. So you can just put a flat field uh
+to index after this and it's going to
+take every single point and count it. Uh
+and that should work. Uh the only
+problem is that flatfield uh takes into
+account if you have connected islands.
+Um for example, let me increase really
+the number of points. So in this region
+where you have these three points is
+going the flatville is going to consider
+maybe this entire island. uh it's going
+to assign one index to it. But we really
+want each individual
+um pixel to be
+um to be named with this value. And I
+think uh I mean uh not named each
+individual pixel to have its own value.
+I think there are a few ways to do it.
+Um maybe the one that I will use might
+be a bit too complicated I realize right
+now. But still uh it would be good
+because we we're using the effects map
+node and I want you to
+um to see
+it. Okay. So let's decrease uh this
+density
+back. Hit undo. Maybe hit undo. Yeah,
+this is it. So an FX map
+node grayscale.
+I will uh at this point switch to 32
+bits. This is
+important to have precision. So and also
+uh if I want
+to create this indices and have values
+that are above one, I need to change
+this to 32
+bits. So in 16 bits, you can only store
+values between zero and one. If you have
+values below zero and above one, you
+need to switch to 32
+bits.
+Good. I will go inside.
+Um this is the FX map node. It's needs
+to be 256x 256 as resolution as well. So
+output size absolute. Now it's the same
+size as my pixel
+processor. We're going to use a square
+as a pattern. We want to change the
+blending mode to
+max. We want to use the pattern size to
+make it one pixel.
+So for that we need to take the size
+which is 256 x 256 and divide
+one by the size
+division. Set this as an output. Now we
+have a single pixel in the center. We
+want to move the pixel into this corner.
+So go here into branch offset minus
+0.5 and minus
+0.5. Okay, we have it in the
+corner. Then the next thing that we want
+to do is we want to populate this
+entire drawing with uh to fill this
+entire space with points one by one. So
+this will be the first one and then add
+another one and another one and another
+one and so on until we fill the entire
+space. So let us do this. I will use
+two iterate nodes. This one another
+one. I will use
+the maybe
+the regular convention. So this is my
+comment. I will say this is my I
+iteration and this is my J
+iteration. Okay, I and
+J go
+inside empty function
+integer. We want to repeat two uh we
+want to do like uh 256 iteration and
+another 256 iteration.
+256 and where am I? I'm
+here to
+float
+set. This is my I
+sequence and I would put this as
+well. Set this one as an output.
+Copy this
+thing. Go
+here. Paste it. Change the name to
+J. Set this as an output. Okay. Now, I
+also want to be able
+to get my uh dollar numbers. So, I need
+to take the dollar number from this one
+and change its name and put it here. So,
+go inside this one. Get the dollar
+number. So get float dollar
+number and I will name it
+J++
+sequence.
+Okay. And then I will go here and into
+my pattern offset I will get also
+the I mean at this point
+I I think I'll not use the pattern
+offset because I think I will be
+computer computing a few things more so
+I'll use the luminosity channel for
+this. So get float dollar
+number set this will be my J++ I mean
+the I++ sorry set it to I
+++
+sequence. Okay. So I want to compute the
+position for each point. These positions
+are going to fill my entire grid with
+points. And then I want to also use this
+computation to uh do something to the
+lum luminosity of each individual pixel.
+And what's going to happen is we're
+going to look uh pixel by pixel. We're
+going to look into this texture itself,
+this one. And whenever we have zero,
+we're going to leave it as zero. But
+whenever we uh encounter a white pixel,
+we're going to um assign one to it. And
+then we're going
+to read every other pixel. And then when
+we hit another one, we're going to say,
+"Okay, this one should be two." And read
+again pixel by pixel until we encounter
+another one. This is going to be three,
+four, and so on until we reach the end.
+And we're going to have all the pixels
+indexed. So we have this. And then we
+want to make a vector flow too. We want
+to set it to I'm going to name this
+grid. This is holding the position for
+uh the grid of
+pixels. Let me double click this one to
+see what's going on
+here in the luminosity
+channel. And then I want to do get
+float
+a++ we want to divide it. So I ++ is
+from 0 to 255. We want to divide it by
+256 or by the I itself. So get
+float
+I not I ++ just I.
+This makes it to
+range zero and
+one.
+Then I duplicated that part and replace
+I with J. So J and J. Plug this thing
+here. We computed it. And lastly we want
+to output luminosity.
+So now I think my entire grid should be
+filled with points is if everything uh
+was
+correct. Um not yet because I haven't
+used this. So we generated this uh grid
+variable but we need to provide it where
+it's needed and also I need to set those
+two the last one as a as a root and go
+here into pattern offset get load two
+and then I should get the
+grid. So I think now everything should
+turn white. It does. uh then it means
+that if I go here into luminosity and
+change this value
+uh this is what I'm outputting. So every
+single pixel it's colored by by this.
+Okay, great. We uh we have this point
+but now we want to
+uh we want to count how many uh pixels
+we have in this map. So to do that uh we
+need to create a variable here at the
+top and uh initialize it with zero and
+set it and I'm going to name this
+index. Okay. And then we'll go here into
+luminosity. And I hope I remember how
+I've done this.
+[Music]
+So get load to I'm going to use my
+grid position to sample the texture
+itself.
+So this is when I read from the texture.
+And then um if this is equal to
+one
+then so it's going uh this one is going
+to read my uh point cloud density and
+then if it finds finds a pixel that it's
+equal to one. Then it's going to
+get the index
+variable and it's going to add one to
+it. Okay? So in case a pixel from the
+image itself it's equal to one otherwise
+we're just going to leave the index
+alone. So don't do anything with it. And
+lastly, we want
+to
+set or update the index
+itself. And now um if I plug this in
+here, I should see um the entire thing
+or almost the entire uh texture space
+filled with white.
+And I think we're almost done. Uh, it
+didn't happen yet. So, let me try and
+figure what's going
+on. Oh, it did. I was uh seeing I was uh
+having this um pixel processor as an
+active. So now everything happened here.
+It started with zero. Let me decrease uh
+the density for a bit maybe to
+one. Okay.
+So if I go here and activate uh this
+panel that shows me the values from the
+pixel. Now uh you should look here at
+the V. Uh V says zero. Now it says one.
+Now it says two. I mean yeah actually
+not here to V but to those value RG and
+B. So this is uh zero. This is one. This
+is 2 3 4 and things like that. So it
+seems that it's counting. Uh let me
+throw in a auto levels node after
+it. So you you can see actually these
+bands going
+on. Maybe decrease things even
+more. So you can see what's uh what's
+going on really. It's going and whenever
+it's encountering a new pixel, it
+assigns the value to it. then it keeps
+in memory that value and goes pixel by
+pixel and pixel by pixel until uh it
+reach another one. Okay. And then here
+uh the index increases once more and it
+keeps the same value until it gets
+another one. Okay. So we're almost
+there. we just need to multiply uh this
+texture by um the pixels themselves in
+order to get rid of all this space uh
+that it's filled with extra information
+that we don't want. So for example, here
+we have the pixel that has the index
+increased. I only want that pixel to
+hold this index, not all the entire
+space until we get to the next one. So
+that's simple to do. You just go in here
+into luminosity and multiply this
+thing by the image itself. So that's the
+image that only contains pixels with the
+value one and then you multiply this and
+you get only this stuff. So now we have
+it. I will delete the auto levels node.
+But with my FX map node selected, I will
+go here and look at the values. So this
+is uh with index
+one. This is with index three. Uh this
+is with index two and so on. Maybe the
+last one. I think the last one it's
+here. This is the index 36. So we
+currently have like 36 points. Okay. Uh
+I will get back here and increase this
+back to one. So we have more points.
+Okay. We had uh successfully made
+the point uh cloud. We indexed the
+points. Now we want to do uh something
+else. We want to use this information to
+use the index to convert it to a
+position. So uh once more let me explain
+what we're going to do. We're going to
+take these pixels and we use the their
+index to move them to move the first
+pixel the f the pixel with the first
+index or with index one we're going to
+move it here into the position one and
+then the next pixel that has index two
+is going to be uh moved here next to it
+in the position two and three and four
+and five and so uh we're going to use
+this index to uh shift the pixels to one
+by and fill continuously
+uh row by row this entire texture or how
+many positions they actually need. So
+for this we want to convert index to
+position. So pixel processor make it
+absolute color it's good make it 32
+bits take uh this information
+in get it inside get float
+to position sample
+color and then we're going to take this
+part the x component
+Let me actually get back to it. And
+instead of sampling the color, we don't
+have a color here. We have a black and
+white image that contains indices. So
+sample grayscale. Okay. So this contains
+the number from u one to whatever the
+last one here is. Maybe the last one. I
+think it's
+this around
+329. So, um let's convert this to
+position. So, we need to uh take this
+and we will
+be using a few math functions. And at
+this point, I think
+um it might be just easy to follow me
+through this and then think about what
+happened. Uh but I will do a
+mod 256.
+And what this does it's it's taking uh
+this list of number that goes from uh
+one to whatever uh maybe to a thousand
+and then whenever it's it's leaving it
+like untouched and then uh it goes like
+1 2 3 4 5 6 da da da until
+255 and then it starts to wind back. If
+uh the values here are larger than 256
+then it starts to count again to 1 2 3 4
+5 and it repeats multiple times. So this
+is kind of like a wrapping around. Okay,
+this is one thing. And then I want to
+now I have my list of numbers
+um winding back to
+256. And I want to also divide
+this by 256 to change it into the range
+uh 0 to one. And then put this thing
+into a vector float too.
+So these are going to be uh my rows and
+then I also uh I mean this is going to
+populate my row and then I also want to
+populate columns. So in this case I will
+be taking uh the same 256
+value
+divide this by 256. put a
+floor and then divide this again by
+256. Okay. So this part here, this part
+of the vector, it's filling my rows with
+pixels one by one. And this part here
+it's filling uh every other row. Once
+the first row is full then this part
+here ensures that things move to the
+next
+row. Okay. So we got it like this. And
+then we need to output a float
+four and I'm just going for the blue
+channel. I will leave it like this for
+now, but I might be populating this uh a
+bit later. And put this thing here. Set
+this as an output. And let's preview
+what happened. Okay. So you see uh we're
+having
+um kind of red dots and then we have
+suddenly this line uh where from bright
+points from bright red points we start
+again with
+u darker red points. And this means that
+at this point in time this um index to
+position found out that we already felt
+uh we already filled a line and it's
+switching to the next one. And if I go
+here and increase the points the number
+of points you'll see that we're having
+more of this. So every single of these
+bands going on, it's pointing out that
+we will be um moving to
+um to a next row. Okay, let me also make
+sure that this has uh the right
+values. So zero is lower than
+one. Lower than one. Okay, I think this
+should be right. we will be testing it.
+Let me also have a look at uh here and
+see what I've put in the blue channel as
+well. Okay. Yeah. So in the blue channel
+itself I put I mean in the blue and uh
+alpha I put the position itself because
+we're going to use this information. So
+let me do the same
+here. Okay. So instead of doing
+this, the
+RNG contains the um index to position
+information and uh Z and W are
+containing the actual uh position
+texture itself. Okay, good. Now we have
+this part. Uh we need to take all these
+pixel and actually move them into their
+respective positions, right? So, we're
+going to use a FX map for this and we're
+going to use another interesting
+technique. So, it should be color. It
+should be absolute 256x 256. I will do
+the roughness to zero. I will also do 32
+bits. Plug this thing here inside.
+go
+here. Uh, for the pattern, we're going
+to use a
+square. For the blending mode, we're
+going to use a
+max. For the luminosity channel, uh,
+we're going to leave it like this for
+now, but we will plug we'll be doing a
+function that will change the position
+of the pixel and move them around in
+this channel. Okay. So I need to do
+eight of these quadrant nodes after
+this. And those eight quadrant nodes
+correspond to the resize resolution
+here. So the log base 2 of 256 is eight.
+That's why we need to do eight things
+like that. So let me just do it.
+And uh this uh technique has been showed
+to me by Nicola Wman. I hope I'm doing
+the exact same thing. He showed it to me
+a few years ago. So I don't remember if
+I'm doing exactly exactly the same thing
+or maybe if there are better ways to do
+it. I mean I'm pretty sure you can do it
+with the
+um regular uh iterate nodes. Uh but
+we're going to do it like uh this. So
+let me do this stuff. And here inside we
+want to do the following. We want to
+get load uh we want to get the
+position. We want to
+sample our um texture. We want to
+swizzle things. So here um this
+xycoordinates is going to contain the
+position where our pixels are going to
+move. So here we store the position that
+is going to fill pixel by pixel, row by
+row this texture. And then what we want
+to actually uh move uh it's the
+information
+uh held
+in Z and W. This is the actual position
+of the pixel. Okay.
+And then we want to
+subtract I think this from this and this
+from this. We probably should switch
+between these two. I want to set this as
+a variable. I'm going to say like uh
+maybe
+offset. Okay. So uh this is the shifting
+pixels stored in this value. And this is
+the actual values of the pixels
+themselves. This one's either a float or
+a float for. This is just a float two.
+So I need to add it to it. So vector
+float for float two for the blue channel
+nothing. But for the alpha I can put the
+one do this.
+Now uh this uh the entire grid was uh
+filled with position
+uh vectors. But now if I go here into
+pattern
+offset and get the offset
+variable. I think if I've done
+everything correctly, the pixels should
+be moving at the top. Okay. So they
+moved
+here. I always get a weird pixel here in
+the top corner. Don't know exactly where
+it's coming from. I should be uh fixing
+this. I will
+investigate. But currently we have uh
+our point cloud uh stored as a list
+which is uh good and cool. So now I want
+to do uh one more
+thing. put this in a
+frame and said we had
+our point cloud to
+list and also I want to move this
+example here to the side.
+Then I want to use the minmax node to
+um get the number of points from
+here. So min
+max the maximum it's telling me how many
+points do I have and I will use this
+information to tell or to inform the FX
+map node that is doing the drawing. So
+up to this point we use uh pixel
+processor and FX map to work with the
+data but now we're starting to do the
+drawing itself. So FX map this can be
+any resolution maybe put it like a 4K
+resolution make it grayscale for now.
+Um plug the position information and
+also from this max channel that says how
+many points do we
+want or we have uh should put this
+information here as well. Okay. Go
+inside blending mode set to max pattern.
+Uh the pattern for now we'll be using a
+disk but later we will change it
+to a square. So the disk itself pattern
+size
+0.005 and 0.005
+005 like so. Then move um the point
+itself to this corner. So branch offset
+minus 0.5 and minus 0.5. Okay, we have
+it moved. Then we want to use an iterate
+node and inside we're going to get load
+and our input this input here it's this
+value coming from here. So this
+specifies for us um how many times the
+iterate uh the FX map node iterates and
+then if we change the density of points
+then this value here changes and then
+the iterate or the FX map node also it's
+going to change the number of
+iterations. Yeah. So everything is
+dynamic and it's based on this uh ply
+noise. So if I change this ply noise,
+you should be seeing this value here
+changing right and also this value here
+is fed into the FX map and is going to
+change how many times do we iterate.
+Okay, set it as a root but uh go here
+input
+uh
+set. Let's do our naming convention. And
+I would be saying this is PT num
+zero I mean numpt0
+sorry
+sequence and also I want
+to convert this to an integer. So to
+integer and do
+this set this one as an
+output. Okay good.
+I think we have it. Now we want to draw
+the points themselves. So go here into
+the quadrant node because I will be
+computing a few things and then um put
+those computation in some variables and
+from those variables I'm going to send
+them into the relevant channels. So from
+luminosity I'll be sending into pattern
+offset into pattern size and into
+pattern rotation. So for this reason I
+want to go in here and uh do my
+um preparations. So get float uh dollar
+number set
+it to pum
+one. I mean it's zero I think. Let me
+double check. I need to make sure that
+numpt is zero p n
+zero zero then
+sequence and for now I don't think I'll
+do my t0 parameter
+uh maybe I'll do I just don't know yet
+but I want to read my
+um I want to read from my positions
+texture from this one and up to this
+point if you remember we had all the
+time when we had a grid we use a nested
+uh loop but now we only have one uh
+iterate node one loop uh and that's not
+too bad I also want to show you how to
+do how to use the number of iterations
+to go uh pixel by pixel onto the end of
+the row and then move back to the next
+row and continue and things like that.
+Okay. So we need to go here and read
+from this texture and then uh based on
+the information that we get here, we
+need to draw the points into this space.
+Okay. So I have the point uh the pin num
+zero. So get pin num
+zero and my texture itself is
+um 256 by 256. I think you already
+you'll start to recognize what I'm
+doing. We've done a similar thing when
+we created um
+our index. I think yeah it's exactly the
+same thing when we did the index to
+position right so uh kind of this is the
+index of the current pixel and we need
+to convert it to position such that it's
+going to go one by one into the uh space
+itself. Okay. So let me do
+it. So I
+mod
+256 and then
+divide by
+256. Put this into a
+vector.
+Then divide
+this by
+256. Put a
+floor and divide again by
+256 to bring it into
+the 0ero to one range.
+Okay, we store this as position. So
+that I mean let's name it a little bit
+shorter pause
+zero and because we are into the
+luminosity channel let's do it as well
+let's define
+it to be one. So currently I think uh we
+should be able to see uh points I mean
+not yet because I haven't used the
+variable itself into the offset. So I
+created the pause zero but I haven't
+used it. So I need to go here into
+pattern offset and get it and use it. So
+pause
+zero
+set.
+Okay. So it seems that
+uh it's doing for us
+um a thing. It's it's basically doing uh
+the same thing here. But I don't want
+that. So instead I want to read from it.
+Okay. From the texture. So the texture
+it's the texture here it's organized
+like this. But I'm uh interested in the
+information that it has. So what I need
+to do here
+is into this
+thing I want to
+sample the actual information sample
+color and swizzle flow too. So this
+part that it's currently stored into the
+position did the same thing as here. So
+did uh point by point build row by row
+uh the space but that part was meant to
+actually read from this texture and then
+I'm reading the information from this
+texture and each pixel in this texture
+has actually uh a different information
+and now if I plug this thing here and
+visualize what's going on then I get my
+point into this space okay and also This
+uh actually kind of can work like
+increasing the resolution of the image.
+Uh this up to this point this part is
+the same as
+this. This is 256x 256. This is
+4K. Okay. So we just uh read the points
+and use a larger texture. And at each
+point in this texture we placed a dot.
+Okay. Good. But now we want to instead
+of having these dots, I'll be leaving
+this because maybe we will use it. Uh
+and I'm just duplicating. So instead of
+the dots, I want to create connections
+between
+um between the points. So between the
+current point and its neighbor. Okay.
+So it would be amazing if I remember how
+I've done it. Um, I might just be
+sneaking into my example here. So, I
+know that I have a nested loop, but just
+want to first of all give it a try. Uh,
+cuz all the time maybe if you think
+about it, I mean, I came up with the
+idea seems to be like I've done a few
+ideas today and don't remember exactly,
+but I think I remember how I've done it.
+So first of all, I think I need another
+iterate
+node because I already uh went through
+the list of points and then I want to go
+again through all the points, right? So
+I need to do the same things
+again and I will be copying this
+part put it
+here and I will be changing the numpt to
+numpt minus
+one. Set it as an output. Set this one
+as an output. I mean set as
+root. Go here. Get the dollar
+number. Set it to Bina minus
+one.
+Okay. So now uh we can go into the
+luminosity and uh this part here is
+where I went through uh the entire list
+of
+points and uh I read their positions and
+then I drew uh I store
+that information into this variable. But
+now I want to do the same
+thing but instead of using the pin num
+zero I'll be using the pin num minus
+one. So I just duplicated
+this spin num minus
+one. Okay. Now I need to do the average
+of these
+things. And the reason for doing this
+average is because as I explained in a
+previous tutorial, if I want there are
+many ways to create lines between the
+points. But for example, let's say that
+I want to create a line between these
+two points. Well, instead of uh making
+the line with one by one points and
+things like that step by step, I can
+just compute the average between them.
+So I'll get a position here in the
+middle. But then I will need to um
+compute the distance between them and
+I'll get a length. And then I also need
+to compute the orientation like how is
+this orientated into in relationship to
+the other one and then just drew a
+rectangle. So the rectangle would be
+with its position here in the middle.
+The length is going to be given by this
+distance and the rotation is going to be
+given by the relative angles of these
+two things together. So I'm currently
+computing the uh average and I can I
+think I can only already put it
+here. Okay, that's totally fine. That
+was
+expected. Let me uh to make sure that
+nothing really really crazy goes is
+going on. Let me decrease this to
+0.01. Okay, so we have less points.
+Okay, good. Uh, then we need to do the
+next part. Um, we have the actual
+position of the rectangle. We have it.
+Then we want to compute the distance
+between this. So
+distance between this and this uh I will
+be storing this as length set
+to
+len then
+sequence plug this thing here. Plug this
+thing
+here. And lastly, we need to compute an
+orientation. So I will be doing
+a
+subtract. I really want to also arrange
+uh this
+graph something like this. Okay.
+Position length and then lastly do a
+subtraction.
+This subtraction is doing
+um the difference between this vector
+and this vector is going to give you
+like this vector exactly from this to
+this or from this to this. And then we
+can use this information to compute the
+orientation of this vector. So for this
+we have the r tangent 2. So a tan
+2 and this is ranging from minus pi to
+pi. But we want it to be from 0 to one
+cuz this is what the rotation channel in
+the FX map it expects or wants to work
+with. So in order to do so we need to
+divide by
+pi and then we need to set
+uh not yet we need to change this. Now
+this is from minus1 to one. So we have
+this minus1 to one to 01 range. Now we
+can set
+it to rotation.
+So
+rot then
+sequence then this then this and this.
+Well now we computed things. We need uh
+to apply those computations into the
+relevant channels. Okay. So first of all
+we're going to do the length. For now, I
+will be um disconnecting this just to
+make sure substance doesn't crashes. And
+into the pattern size here, I will be
+inputting a an empty function. So, get
+float. We have
+len that's the length of our rectangles.
+Then, we need to use uh a
+weight. So, a weight, it's going to be
+something that we decide. So, it's going
+to be
+0.0025. Something like this. Maybe we
+can change it. Then set this one as an
+output. And if we plug it back, we see a
+bunch of horizontal lines. That's a good
+signs with um we're close. Lastly, we
+need to go into rotation empty function
+and get our rotation. So,
+rot. I just got the float and put the
+rot here. Okay, so it did. And now uh
+this is like uh quite heavy to compute.
+This is a 4K texture and it has tons of
+lines. Um we can uh at this point we can
+either decrease the number of points
+here but also maybe reduce the the
+number of lines. So how to reduce the
+number of lines? Well, currently I'll be
+using maybe
+the the
+luminosity and I already computed the
+length. So currently if I want to just
+select uh lines that are for maybe let's
+talk about this point and this point
+right now has lines from itself to all
+the other points. But maybe I want only
+a few close points to it to have
+connections. Then um I will be using
+this value here that I computed the
+length right and I will be saying like I
+only want some
+short lines to be draw uh otherwise uh
+if the line is longer than a certain
+value just don't do it or don't draw it
+okay uh well let's just do this so I
+will say be saying
+greater so if what we compute it here.
+It's greater
+than maybe
+0.1 then
+[Music]
+then so whatever is greater than 0.1 I
+want to disappear then make it
+black otherwise make it
+white. Okay let's see what's happening.
+So currently this is the lines that we
+have. Too many everything is
+white. But then if we put this here now
+we have a
+graph and it's also much faster to
+compute. So I can go in here and play
+with this disorder and everything
+changes. Okay,
+good. Now the last thing that I want to
+do is currently all my lines here are
+white.
+Um I think this is also interesting.
+Maybe I can leave it as this. Um we had
+in my previous example I had it
+here. I had it like line
+segments. So you can just if you want to
+use line line segments uh you can just
+go in here and instead of a disk you
+should use a square. But for now, I'll
+be uh leaving uh these bits because I
+like how they kind of are getting
+thinner where the connecting points
+happen.
+Okay. So,
+um let me allow you to color the edges
+based on their length. So, you can go in
+here and it's instead of plugging one
+here, you can just plug the length
+itself. So, it's going to be uh dark
+because these lines are
+shorter. But maybe you can put an auto
+levels after
+this. And then you can put uh throw in a
+gradient
+map. And then choose something maybe red
+for some things and maybe blue for other
+things. Okay.
+Not sure if I should throw like a third
+color
+here. Colors are difficult.
+Okay. So maybe uh this is fine. I'll
+be throwing a gradient map here as well.
+So we have also the dots and
+then we can blend them together. So I
+mean
+blend and this is on top and this is on
+the bottom and then this should be the
+mask. Okay. So now we have the um the
+graph itself with the dots. I may be
+increasing the dot size maybe 75 and 75
+to make them a bit more visible. Okay.
+So now you can plug anything in here. Uh
+I currently use a ply noise.
+Um you can play with the disorder. The
+graph changes based on that. You can
+play with the scale. The graph changes
+on that. You can play with the density
+here and add more points if you want.
+And uh the graph changes of course. Uh
+then you can go here if you want to
+further tweak things. Maybe you feel
+this is too dense. Uh you go here and
+say this is your parameter where you say
+how many of the neighbors uh I mean how
+many connections happen between your
+neighbors and between your current
+position and its neighbors. So,
+let's It's doing like this. Okay. It's
+looking like stars. I don't know. That's
+definitely like if you're into
+astrology.
+Okay. Okay.
+Good. So, definitely feel free to to
+play with this. Uh I will be duplicating
+this one.
+Um, so feel free feel free to plug in uh
+different uh patterns here or even
+masks. Maybe you can if you want you can
+just put in a letter. So text and maybe
+a I mean I just said a but I wrote this.
+That's
+fine. Increase it. Then replace it here.
+And
+then this looks interesting already. I
+love it. Maybe
+um change
+this density and see what happens. Not
+the auto levels itself, but here. Uh and
+change the number of
+connections.
+Okay. Don't know exactly where why this
+thing here happens. I think this part
+here, it's exactly this
+one that I was talking about, this
+yellow pixel. So, let me actually fix it
+now. Maybe I can fix it. Uh, I will be
+putting a pixel processor here. Make it
+the same resolution. Absolute. Make the
+output format 32 bits. It's a color.
+That's good. And first of all, I just
+want to make that single to make a
+single pixel here in the corner and
+delete that one. So get float to
+position
+uh needs to be multiply by
+size. This
+multiplication and then maybe equal I
+wonder if I can put an equal. Oh yeah,
+that's good. So if it's equal to
+zero, I
+think I need to turn this into
+turn I mean to
+float. If I've done this correctly, I
+should get a pixel a white pixel here in
+the
+corner, which I didn't.
+Okay. Well, the reason for this might be
+that I need to put a floor here.
+Okay. So now I got one pixel
+there and that's fine. And then I want
+to bring my image inside. So sample
+color set this as an output. I have it.
+And then I just want to subtract
+that. So
+subtract or maybe instead of subtraction
+I can just go here. I want to invert
+this. So one
+minus. So it's everything is white
+except this one. And then uh multiply
+this swizzle flow to I'm interested in
+the position scalar
+multiplication. So this multiply by
+this. And then I want to use the Z and W
+information to recompose back my vector
+float for. So that was an image. It has
+X and Y components. I multiply the X and
+Y with this mask to get rid of that
+pixel. Then recompose things back. And
+now it's there. This is
+zero. So I think that this might not
+solve the problem. Okay, let me
+see. Yeah, it did. Okay.
+Well, great. Uh, let me decrease
+the Or maybe you can go here and change
+the colors if you
+want. I think it's too much
+red. Okay. Well, not sure. I'm going to
+uh let you come up with a cool design.
+So, go here into the luminosity and just
+decrease everything.
+So, I think it's a cool
+effect. Great. And remember, instead of
+using So, I used a letter, I use a
+pearly noise, but you can do a black and
+white photo if you want. And you're
+going to uh get uh this kind of
+effect. Well, good. Now let's move on to
+this
+part where we have um our um grid like
+so grid of rectangles I mean yeah
+rectangles. So I will be uh duplicating
+only these two
+things. So a pearly noise and the normal
+map. The normal map has its intensity
+set to six. Then I will create
+um a pixel processor that it's of
+size so has
+1,024 pixels as width. So for this I
+need to put 10 here. And then for the
+height it's only has one row.
+Then I want to output the format to 32
+bits. And in this texture we're going to
+[Music]
+um create a grid of points. So we're
+going to draw or I mean we're going to
+write the coordinates of these points.
+We're going to write the information
+itself. So for that I need to get the
+float to this is the position. And I
+also need to get the
+size. I want to make uh the the size of
+the texture itself is not random. Uh 124
+um row of pixels can uh let me create a
+grid of 32x 32. So 32 * 8 by 32 is uh
+1,024.
+Okay. So my size variable it's uh
+1,024 by 1. I want the
+1,24 part which is stored in this x
+variable. So x is the width of my
+texture size and y it's the height. So
+the width is
+1,024. And I need to take the square
+root of
+this. This is just an automatic way to
+get the size of the grid. Um, if I
+change the size of this texture, this
+square root is going to be meaningful
+sometimes, not all the time, but right
+now it is. Uh, because 32 by 32, it's
+exactly
+1,024. Well, I have this
+already. And I want my
+um, let me do this for now.
+If I output this, I get a gradient from
+zero to white. Uh I want to multiply
+this position by size. So
+multiply. Okay. Now this is currently
+between 0 and
+1,24 or
+so. Okay. And then I want to do a
+mod. So this gets modded by 32. Set this
+thing. You're going to see like a
+repeating like a winding happening. And
+then I need to divide it again. So this
+is kind of from 0.5 to
+31.5 something like that.
+uh I need to divide this by 32 again to
+put it into a range 0 to one. Okay, so
+this information currently holds
+um the x positions of my grid and now I
+want to do the other stuff where I uh h
+have my uh number of rows. Okay, so let
+me do this as well.
+Well, I have the same thing here that I
+want, but this time I want to
+divide this by this. Take the
+floor and then divide
+again by this square root. The square
+root is 32, remember? So if I set this
+as an output now we're getting it's uh
+somehow difficult to see but we have
+like constant band of value. So this
+band from here to here it's constant and
+then it changes and from here to here
+it's constant. Okay. So now we have this
+uh let me create the vector with it. So,
+vector float
+2 and vector float 2. We also want to
+output this, but we currently can't
+because this is a float two and we can
+only do a float or a float for. So,
+vector float 4 and then float two and
+then put something into the alpha
+channel. It's always good to have
+something there. And now we get our list
+of positions. Let's draw it and see what
+we've got. So FX
+map plug the thing inside this the data
+make it
+grayscale
+roughness throw in a
+dis make the disk smaller
+0.05 and we're going to change l later
+to squares but for now we will be
+leaving it to discs. Okay. uh just to
+see what we're doing. Iterate for now I
+will be
+um doing more like instead
+of
+good programming so to speak I will be
+hard coding stuff. So maybe I can just
+go in here and say like
+1,024. But I usually would do a variable
+go inside and name things correctly how
+I've done it so far with PT num and
+things like
+that. Set this as a
+root. Preview what's going on.
+move the disc to its
+corner in the branch offset minus0.5 and
+minus0.5. Okay, late
+lastly go here into pattern
+offset get float dollar
+number. So we want to read the
+information from this texture. So, we
+need to make something that goes pixel
+by pixel and starts at the beginning of
+the texture and goes pixel by pixel and
+read the information and then draw or
+place discs at this location indicated
+here by the color of the pixel itself.
+That's simple to do. We go here into the
+pattern offset dollar number
+divide by
+again
+1,024. Plug this into a vector that
+allow us to
+sample and then from the sample we only
+want position X and Y. Set this as an
+output. Review what went or what
+happened. Now we have our grid
+happening. Great. Let me turn the
+tiling to no tiling. Okay. And also we
+can go
+here. So uh now we can have we can work
+with the information. So we have our
+grid or we can move it around. I want to
+scale it inwards a tiny
+bit.
+So scalar multiplication. This is
+multiplying by our coordinates allows us
+to change things. I will be multiplying
+by one. This means that I don't change
+anything. But then if I decrease this
+value, you can see how our grid shrinks.
+But instead of shrinking from this
+corner, I want to shrink it from the
+center.
+So we all the time when we scale we can
+throw in a pivot of scale and it's going
+to be like this. I will be putting this
+into a frame and maybe you could use
+this to remember that it's good to try
+when you scale all the time to scale
+with a pivot. So for this you need to
+subtract a
+vector which in this case is going to be
+the middle. So 0.5 and
+0.5 but then you also need to add it
+back. So
+add back here. Okay. So now things
+change from the
+center. Now I worked with my
+data. Uh and then I also want to do a
+final thing.
+So I want to distort my
+grid which is currently like a super
+regular thing. I want to distort it by
+the vectors coming from the normal map.
+So we have a normal map and we want to
+distort the grid based on that. Well uh
+just want to do again a larger frame.
+This is our
+positions. I mean let's say grid
+position.
+Okay. And
+then this defines the location of these
+points. Well, at these points I want to
+sample the normal map. So this is the
+information. This is my points. I want
+to sample the normal
+map. I want to extract the relevant
+components. These are the direction.
+Remember all the time the normal map
+needs to be remapped from 01 to minus11.
+So for this we need to
+scale and then scale it by
+two. Then also we want to
+subtract one from
+it. Okay. Now this is my direction.
+Okay. And then we just add the things
+together and then our grid should be
+distorted. Okay, good. Now I also want
+to do another thing. I want to throw in
+a
+rotation. So, uh, this will get slighted
+slightly swirly. So,
+load. Yeah, something like
+this. Okay.
+Well, now we have
+uh our data and we drew our
+grid. We want from this data we want to
+find for each single point for this
+point for example we want to find its
+closest neighbor. So this is entire the
+entire list and we want to look into
+everything and for each point maybe for
+this one we want to find its closest
+neighbor. Maybe it's this, maybe it's
+this, maybe it's this. um we don't know
+for sure but we want to find it. Okay.
+Uh so for this we going to do a cross um
+how to say it? We're going to do a cross
+reference check in which we're going to
+take every single um we're going to take
+every single uh pixel and measure the
+distance from itself to every other
+pixel. And for this we we're going to do
+a nice trick because pixel processor is
+amazing. It can it could or it can do
+this computation almost in uh
+instantaneously. So how to do it? Well,
+I need a pixel processor for this. I'm
+going to make it the size 124x
+124. So absolute and then 10 and then
+10. Uh this will be grayscale but I will
+be outputting in 32 bits just for
+precision and I need to do uh to input
+this texture
+here. So this is a 124x one and this is
+124x 124. Get
+float position and
+sample. Okay. And then if we preview we
+get this for now. Let leave it like
+color. Okay. So, uh this is one thing
+that I want to do. That's good. This is
+one
+thing. And then I also want to do this
+to just rotate the texture
+90° or maybe transpose it. If you are
+like into matrices, it's just a
+transpose of that. So, switch between
+this and do this again.
+Okay, I mean y and x. Okay, so this is
+how it was. This is transposed. Uh then
+we want to extract the x and
+y values and just throw in a distance.
+So this cross distance ma matrix that
+you see here holds the information from
+every single point. This is the point to
+itself. The distance between the points
+to itself. This is u the uh point itself
+to its uh next neighbor in the list and
+things like that. Okay. Now when you uh
+measure the distance to the from the
+point to itself, you're going to always
+get zero. We don't want that to happen
+because we're not interested in uh that
+would be of course the closest distance
+the distance from itself to itself. We
+don't want that information. So in this
+distance we're going to say
+if I mean equal if this is equal to
+zero I mean zero. Sorry about
+that. Then make that value one.
+So this is our condition. This is our if
+else. If this is true, make that one.
+Otherwise, just output the distance.
+This will produce a white line on the
+diagonal where we have all the distances
+this between the pixels and itself. So
+set this as an output. Now we have this
+line here. Well, perfect. Now we want to
+find the actual minimal distance. So
+here at the top the first row
+it's our uh original list of points and
+then we want to find on each column we
+want to find the minimal value. Okay. So
+we're going to do that. Change this to a
+grayscale. Make a pixel
+processor. Make it grayscale. The output
+format should be 32 bits. The output
+size should
+be 10 by 9. And you're going to see why.
+So uh this uh next chain of nodes, it's
+uh somewhat similar to how the minmax
+node works. Okay.
+get float
+two
+position sample
+grayscale. So it seems that we took the
+image itself and uh we shrked it into
+this uh rectangle. But we don't want
+that. We want to rescale it back again
+so we don't have it squished. So for
+that we need to multiply by a float two.
+For now just put one by
+one. Okay. We don't want to do any
+multiplication in X. X is just fine.
+Horizontally it's fine. We don't want to
+change that. But maybe we can do this.
+So if we do something like
+0.5, I mean if I can type 0.5, it would
+be good. We uh distorted it back. So you
+can see we have back squares. It means
+that it's not distorted anymore.
+And that's uh one texture. And we want
+to compare this top part of the texture.
+So currently we're only seeing this half
+of the texture. And we want to compare
+this half of the texture with the uh
+bottom half of the texture. Okay. So for
+this I will be duplicating this part but
+also set it one this one as an output.
+Go here and add something here. is the
+multiplication it's always scaling the
+add it's always offset so we again don't
+want to offset anything in X but maybe
+in Y we can just offset it by one so
+this is the top half of the image this
+is this is the bottom half of the image
+and then we want to take the minimum out
+of those
+things okay so we're getting this new
+texture and now we will continue until
+we shrink the entire thing onto uh one
+row of pixels. Okay, so bear with me.
+You're going to like this process. Now,
+we're going to do
+eight. Now, we duplicate this. We're
+going to do
+seven. Duplicate
+this. We're going to do
+six. Duplicate
+this. We're going to do five.
+Duplicate this. We're going to do
+four. Duplicate
+this.
+Three. Duplicate
+this. Two.
+And duplicate this one. And the last
+one zero.
+So here we have managed to find it's a
+bit difficult to see but if you zoom in
+you would be seeing some uh variations
+in the gray values of the pixel. This is
+the these are the minimum distances.
+Okay. Now uh we have our original cross
+distance matrix and we uh have the
+minimum distances and we want to create
+a mask out of it. So pixel
+processor again make sure that
+everything it's 32 bits that's
+critical. The size also should
+be 10 here and then here to have like a
+124x 124. Now plug this
+uh thing here and also plug this thing
+here. Okay, good. Get
+float position sample. This is our cross
+distance matrix if we see
+it. And
+then we also want to
+sample the minimum distance which is
+this bands here. And then if we do like
+an
+equal and do
+float, we should get the
+mask. Okay. So on this
+uh on this white pixels, we're actually
+having the indices where the closest
+point it has. So now we have this mask
+which is good.
+We need to bring in the uh actual
+positions
+themselves and it needs to be this
+texture want to see it. So sample
+color and it's image input two set it as
+an output. Okay. Make this color for now
+color. And I want to actually transpose
+this. So swizzle float
+[Music]
+two and y and
+x. I want to take the uh components that
+I'm interested in which are x and y
+scale or multiply
+them this and
+this. And then lastly I want to
+recompose my float
+for with Z and W from here vector float
+for this and this. If I set this as an
+output now we get this
+part. So those are my uh closest points
+and I want to turn this thing into a
+list. So another cool trick. So, uh,
+this is now it's it's kind of a list,
+but it's large. I want to have all of
+this projected into this top
+line. Well, we have a trick for that.
+So, just use the transform node.
+Um, and
+then for the out uh output size, I need
+to do an
+absolute 10 and zero.
+Uh let me check to see if
+the filtering here should be bilinear.
+It's important. So go back to my example
+here. The filtering is bilinear. That's
+good. Need to bring this thing into a
+pixel processor of the same size.
+Absolute 10
+0 32
+bits. Go inside. Get the
+information. Sample
+color swizzle flow to we need to
+multiply it by um
+1,24. So our uh texture itself was h
+having a height of 1,024. Now when we
+squished it, we basically divide
+everything or made like an average. So
+we need to multiply this back
+again
+1,024 and
+then vector float for float two.
+Nothing for blue but one for
+alpha. Set this as an
+output and then preview this. So now
+this is actually our list of closest
+points. This is the list of original
+points. This is the list of closest
+points. Okay. So it's not too visible.
+They're almost the same. But if I have
+this and
+this, okay, you can see like some of
+those points have disappeared. And this
+is the list of original points. And this
+is the closest point. Okay, good. Now we
+have the list. I want to basically do
+this entire
+thing. Put it in a
+frame and say closest points.
+So from this information uh we can um I
+mean why did I delete my FX map?
+No. Okay, I should leave it like
+this. Just wanted this back.
+Now put this entire thing again into a
+frame and close this
+point. Okay, good. We have our original
+points, we have our closest points, we
+have the thing that draws it. Now I want
+to compute first of all I want to
+compute uh the size of the pattern
+because I have the current point and its
+closest I can compute that distance and
+use that distance between uh the current
+uh dot and its neighbor to scale uh the
+dot itself by that size. So a pixel
+processor again absolute size it's going
+to be 10 by zero. It's going to take the
+original position. It's going to take
+the closest
+point. And I will be naming this as
+pattern
+size.
+Okay. Go inside. Get plot to get
+position sample one and sample
+two. Actually, let me do it like this
+first and then I can just take this
+entire thing and duplicate it. Okay,
+that saves me a bit of time. Then take
+the
+distance.
+Okay, and I want to also multiply this
+by a small value like
+multiply load like 0.8
+maybe. Set this as an output node.
+grayscale. Okay. So, this has the
+distances I think. Maybe does it or does
+it not?
+Information. Yeah, it seems like it has
+values, but we're going to also see if
+it actually functions or
+not. Go here.
+Focus on
+it. Pattern
+offset. I'm going to take this. Copy
+it. So I uh I am taking the information
+stored in the
+texture that contains the size of the
+images. I'm reading that texture pixel
+by pixel and then I'm plugging the
+information into this thing. Uh that's
+fine. I'm getting uh some errors. That's
+expected. Again, I just need to clamp uh
+the sizes. So I will say if I mean
+greater if this is greater than
+0.1 then make it zero. So
+if load if this is true then make it
+zero otherwise make it this and then
+plug this here and
+here.
+Okay. So now you can see the
+uh the dots are scaled based on the
+distance between themselves and their
+neighbors. Uh we have a few of those
+meetings. Those were the missing those
+were the real large ones.
+Okay. Now now let's turn this into
+squares. So going here into instead of
+disk use square and then go back into
+size itself and
+maybe
+load and just something
+like 0.01.
+Okay, maybe
+this I also want
+to apply a
+rotation. So for this, this is the
+pattern size. I'm going to duplicate
+this. If I could do it, it would be
+amazing. Duplicate
+this. This is the pattern size. And this
+will be
+the pattern
+orientation. This will be uh 32 bits
+color. Do this. The same should be
+output format 32
+bits. Okay. Then uh this should be a
+color output format 32 bits.
+So instead of doing a distance, we're
+going to do a
+subtraction. This is the list of u
+original points. This is the list of
+closest points. Uh do a subtraction. You
+get the direction between them.
+We need to put this thing into a stream
+of blood
+for zero for blue one
+for
+alpha. Okay, this is the
+information. Going to put this thing
+here. I will be copying this
+part and going to rotation. So you can
+see uh that if I would uh do this entire
+computation thing into luminosity
+channel, I would only need to compute
+this part here once, right? This the
+dollar number by division and uh I only
+need to do it once. But now because I
+have it working in separate channels,
+then I need to go in here and take this
+and also need into size and also do this
+thing.
+So I'm going to do the same computation.
+So basically I did this computation
+three times. Uh it's not too bad but uh
+you can do better of course and in
+previous examples we did better but just
+also want to show you you can work like
+uh like
+this. Okay. So I need to sample the
+second one and this is x and uh y. I
+need to take the r tangent two of this
+uh this is
+um from minus pi to pi. So
+divide by
+pi k
+0
+one.
+Okay. So now we have those patterns
+oriented which I like the flow. And
+lastly, I need to take the same thing
+here. Sorry, copy it and move into my
+pattern
+luminosity. And if I output this, uh,
+we're getting,
+um, this, but I have some really dark
+values which I want to brighten up.
+So I can
+lurp based on this between
+[Music]
+float maybe
+0.5 and
+one set as an output. Okay, good. I
+really like uh how
+um how we have this inflow of of
+patterns. I think it's really good. So
+now you can throw in, if you want, you
+can throw in a gradient up and color it.
+I'll be just doing some default red and
+maybe some blue. Something like
+this. And then feel free to go here and
+uh play with the disorder and get
+different configurations.
+Okay, now let's go to the last
+example where we had our spline. So I'm
+just going to take the spline and
+duplicate
+it. So the spline is like this and it
+gives it gives us information. So you
+have spline coordinates and spline data
+here in X and Y you have the tangents.
+Um and we we'll be we're we will be
+using this information to draw uh
+additional splines or additional paths
+or drawing on our spline itself. Okay.
+So an FX map
+node
+grayscale I will be using spline data.
+This is where the position are uh I mean
+spline coordinates in spline spline
+data. I need to iterate like
+um 248 times. Uh this is the size of the
+texture.
+So go here
+iterate
+248 I mean uh for now yeah let's do it
+correctly go in here empty function get
+float not get float sorry
+integer 204
+48. Set it I mean to float.
+Set
+it nonp
+zero then
+sequence and output the actual value
+itself. Set as
+root. Set as root.
+Go
+disk was quite slow to do. Currently, we
+have like
+2,000 circles on top of each other,
+which those circles are large. So, the
+smaller the pattern, the faster it is to
+draw. So,
+0.05, 05, and 0.005.
+Well,
+great. Also want to offset my entire
+drawing to the
+corner. Okay. So, we're starting from
+here
+now. Now, let's uh read the data from
+the spline itself and draw it. So, into
+luminosity, get the dollar
+number, set it
+in um zero make our t0 parameter I think
+you already got bored about
+this pt num zero that's really
+repetitive task I also got bored about
+of
+it num p zero division
+It's good that once you have it once you
+can just copy it but
+still a lot of
+repetition get it to the zero but we are
+doing it because um I want you to see
+and maybe by this many
+repetitions you will start to notice
+um kind of the main idea Yeah, I mean
+after a while we repeat it so much that
+you can see like oh we're doing this
+again now and we're doing this again now
+and again and again. So that's the idea
+behind
+it. Okay, we need a new
+sequence and we need to
+read so get
+float. We have our
+T0 we can throw it into vector flow too.
+We can sample the information coming
+from the texture. This is the position
+we want to name it.
+Set position zero and then do this. And
+lastly, because we are in the luminosity
+channel, we need to put a luminosity
+value. So for now, everything should be
+one.
+Okay, set this as an
+output. Then go here into pattern offset
+and get load two and post
+zero. Okay, so we have our spline into
+the FX map node. So go in here, change
+it. It changed the spline into the FX
+map node. Great. Now that we have it
+here, we want to add
+branch. So a switch node. It's our
+favorite. And I want to say that this is
+the not the only way to do branches, but
+I think it's interesting. I really
+wanted to show you to involve all the
+three nodes, iterate, quadrant, and
+switch. Uh there are a few different
+ways in which you can do branches. This
+is one uh way. It has some it's
+sometimes really powerful but also has
+some limitations. So, uh maybe next time
+I'm going to show you how to uh like a
+different way of doing
+branches. Okay, but let's continue with
+this one. Now, if you remember, uh we
+always do this. We want to move the
+information that we computed. We want to
+move it up to have it accessible on this
+branch and also on this branch. So take
+the computation, copy
+it, move it
+here, paste
+it, add the boolean. I mean, instead of
+this, just throw in a boolean. Set it.
+Now my spline should get bigger. It
+didn't. That's
+fine. I just need to reset this. And
+that should be it.
+Okay, move this part
+here. Maybe just decrease the luminosity
+of this
+one. The blending modes, I forgot. Uh,
+they should be set to max. And this one
+should be also set to max. Okay, so this
+one, we're currently not seeing anything
+from this branch. We only see this
+branch, but this is because we haven't
+put anything that allows this sometimes
+to be true. So, get float num
+zero. We're going to divide
+it by
+64. Okay.
+floor
+it. Well, I wanted the floor, but I
+can't multiply it
+back. And then these are two lists of
+numbers. And whenever it happens for
+them to be equal, then we're going to
+get some white
+points on our spline like
+this. Okay,
+great. Now I want to uh start and grow
+the branches. So for this I will be
+duplicating this
+node and I will be throwing this and
+this and change a few things inside of
+this node. First of all I want this to
+become num1. I want this to be for now
+maybe
+64 and I think oh I need to also get
+yeah don't forget about this. I need to
+get flow to my pose zero. My position
+zero needs to be
+changed reassigned to another variable.
+So set to pose
+one. Throw in a sequence
+node and this and
+this. Okay, now we have it.
+Also, I want to go back here and I will
+want to add my one pixel variable. So,
+size float
+to one and one division.
+Three float one
+set one the
+X and then this and then
+this. Okay, good.
+So we have uh things going on. Uh let me
+go here into pattern luminosity and
+start adding
+things. I want to copy this
+part and paste it. So now dollar number
+should be pin num
+one pum one p num zero should be p num
+one n pt1 should be n1 t0 should be
+t1 sequence we want to update something
+meaning we get lo
+one we add something to
+it we set it
+And because we are in the luminosity
+channel, we need to add another sequence
+and output the actual luminosity
+itself. Okay. Now we need to add here
+cartisian get
+float. This is our
+magnitude. And lastly uh we still
+haven't seen anything changing and this
+is because we need to use this pose one
+here. So currently we have pause zero
+but we need to change it to pause one.
+Okay. Okay. So now we have things
+sticking out of the spline as branches.
+But where is actually where do we get
+the direction from? So our spline
+actually has a direction. Where do we
+get it? Well, that's why we use this uh
+spline data where it has on the x and y
+channels. It has the tangents x and y.
+So we're going to use that information
+here. We need to uh do this. We need to
+duplicate this
+part and
+the actually needs to be this because we
+are sampling from the image input one.
+So image input one X and Y instead of PO
+zero we should say 0
+0 from direction zero. Okay. Sequence
+Okay. So, I am
+um I'm expecting to have a bit of back
+and forth
+uh with this, but maybe we're going to
+figure it out um without a problem.
+So, we need to convert this direction
+from vectors to
+um to an angle. Oh, and let me figure
+out how to to do it. Okay, maybe it's
+not too
+bad. So, we need to get plow two. Get
+plow two. It's direction
+zero. And because this is expecting
+already angles in 2 pi, then I think I
+only need to do the arc tangent of the
+aan
+2. Yeah. So you can see my
+uh branches follow uh the path itself.
+Now that we have this going on, we can
+add to
+it. This is our let's say main
+direction, but we want this to
+oscillate. So we want to have uh this
+one on this side of the pad, but this
+one we want to have it on the other
+side. So maybe we should put a
+negate. And then we need to switch
+between this and this. Okay. So for that
+we need to count how many times this
+uh statement or this computation here
+went true. For that we want a
+variable
+[Music]
+load value zero as we usually do. So set
+it to
+val zero. then add it to the chain
+sequence.
+Okay. Now go here into this one and
+update.
+So get float I mean it's a float not a
+float do get
+float val zero we want to add something
+to it which is one to increase it by
+one and then if
+If this is true then do this to our
+value add one to it
+otherwise let the value
+alone
+set val
+zero sequence add this also to the
+X.
+Then go here into luminosity. And we
+want a linear interpolation
+here. This and this.
+Get
+loads value
+zero and then we need to this is like 1
+2 3 4 5 6 and so on. We need to make it
+like 1 0 1 0 0 1 0 1 0 1. So for this we
+want to do a mode
+two. Okay. So now we have those things
+alter
+alternating. And maybe you wonder what
+happens if you do like mo mode three.
+Well, it's doing
+um a different kind of alternation. So,
+it's keeping
+uh maybe I can put a floor after this.
+Um yeah, I think I I should
+divide by this minus one.
+Okay, it is like this. But then also put
+a floor
+here. Okay, so now you see that it's
+doing one on this side and two on this
+other side. Then maybe if I put this to
+four, now it's doing three on one side
+and then one on the other side. So you
+can be playful with that if you want.
+I'm just going to leave it at two. Okay.
+So it's alternating between
+them.
+Good. Now what do I want? Well, I want
+to control their length along this path.
+Where do I control the length? Where the
+length is here. And the path itself is
+parameterized by the T0 parameter. So I
+can do
+a and I will be using maybe a curve node
+for for
+this. So it's giving me this gradient. I
+want to put this thing inside and I want
+to control the length of the branches
+given this uh curve node here. Okay. So
+now I want to see the FX map node
+itself. Here is where I control the
+length. Get float the T0
+parameter. Make a vector out of this.
+Plug it into X. This allow us to read on
+the horizontal side of our gradient.
+Sample
+it. Its image input
+two. Then use it to lurp between some
+values. Linear
+interpolation.
+Then get float. I mean not get float,
+just
+float
+64 and maybe
+256. And I might need to switch between
+these
+things. But for now,
+just turn it into an integer and replace
+this. Okay, I'm holding shift and
+dragging here. Okay, so you see that at
+the beginning we have like smaller
+branches and at the end we have larger
+one. I can just go in here, click on
+this one and we have the largest thing
+in the
+middle.
+Okay, now I want to curve things. Uh so
+let me do it.
+This is where we uh do stuff. And I
+think I want to add things here. So this
+is where I change the
+angle. And I want to add and I want to
+add my T1 parameter. The T1 parameter is
+the length of the branch itself. So for
+each branch you have like a T1 parameter
+assigned.
+So load T1. If I have a T1, I think I
+have it. Yeah, I computed it
+here. Now they are curving.
+Okay. And I want them to curve more.
+Maybe if I
+multiply
+load then maybe
+four. Okay. So maybe
+six. You can see how we're almost making
+a circle. That's looking interesting.
+But uh I want not to constantly
+um create a circle. I want um this
+to start curving slow and then towards
+the end of the branch itself the curving
+I want to be more and more pronounced.
+So for this I need to change this uh
+transition between linear to something
+which is curved. So for that we can use
+the power
+node and then put in a float maybe to
+the power of
+four. So we're getting this effect which
+I find
+interesting. I'll be leaving it like
+this. And then maybe decrease the width
+of
+this of the branches.
+Well, good. We have them. And lastly, I
+want to finally add some branches on
+this uh some secondary
+branches. So, our switch friend
+again. We need to take this whatever we
+computed in luminosity, copy
+it and then instead of one here just do
+a
+boolean set it as an
+output. Okay, my branches got twice as
+long. This is because I
+compute the position one two times. But
+then I just need to go in here and reset
+this so everything goes back to normal.
+Now I can duplicate this
+part. Okay, I'm going to go to this one
+and decrease the luminosity.
+And I will be adding a condition here
+that uh allows us to um spawn secondary
+branches.
+So I just want to copy from this. Don't
+want to rebuild this from
+scratch. Going to take this part.
+[Music]
+Copy and paste.
+So instead of p num zero I need to put a
+pin num one and then do
+this and then you see some points have
+appeared but they are like too spread
+apart. Maybe I can put a
+16 maybe
+eight. Okay. So I'll uh use this uh
+distancing. I also want to
+save this
+uh
+direction I mean angle in this
+case a
+ng1
+sequence this this and
+this.
+Okay. So we need to add another iterate
+node here. I will be taking this
+one. This and
+this. I'm not sure why things have
+disappeared. Let me try and do this
+again.
+Well, it seems like if I use this node,
+the entire thing disappears. That's
+really weird. No
+worries. Oh, I think I should just take
+position
+one, set it to position two. That was
+why. And then take this
+num PT1 and change it to num PD2.
+Uh for now I'll be leaving this as a
+default but then maybe adding a variable
+there as
+well. So we have uh things going
+on. I will be going to copy from here
+again. So maybe I can take this entire
+thing.
+Copy into
+luminosity.
+paste and then we need to change things.
+So this will be two pan 2. This will be
+pan two. This will be
+[Music]
+nonp again. Pause
+[Music]
+two. And then we should delete this
+part. And then we should just get the
+angle one. So get float NG1 A N
+G1 put
+this add another sequence
+node and then load make it one for the
+luminosity set as an output node and the
+last thing we go
+here and in the offset we actually use
+the pose two. Okay, so we have things
+going on, which is good. I want to go
+and maybe
+add something
+here into luminosity. Maybe here
+add
+float zero
+again. And then just increase this value
+maybe like this. Then I want to decrease
+the length for now
+32.
+Okay. I also want to do the same thing.
+I want this not to be on one side, but I
+want to be them one on one side and the
+other on the other
+side.
+So here we need to I mean I can I'm so
+lazy right now. I want to take this and
+copy
+it. Ctrl + C and I need to put this
+above
+the above the switch above the switch
+node. So paste here and instead of val
+zero I will be putting val
+one and you can see how things are
+actually matching depending on the level
+where I match. So val one pause one NPT1
+you can see that being consistent it's
+really good and helpful.
+So uh I also want to copy code from
+here. I will be taking this part. Sorry
+not this but
+copy.
+Copy. And then
+here
+paste. Instead of val zero we should put
+val
+one. Val
+one. Okay. And add this to the mix.
+sequence
+this this I mean what am I even
+doing this and this and then we need to
+plug this part in
+here.
+Okay. So I to be completely honest I
+don't know if this is going to work. Let
+me try and test it.
+So uh this is our angle. We want to do a
+negation. And then we want to lurp
+between
+this this and this. And we need to bring
+in our
+valu I mean it's val one. Sorry not val
+two. And then we need to put a
+mod load to after
+it. And then if everything gets correct,
+then we should have the alternation. I
+really want to do this correctly, but it
+seems that I can't. This and this. Put
+this into the linear interpolation. And
+then this adds here. Okay, now we have
+it. So we want to do another thing. Um,
+do we have the one? P1 is the parameter
+that goes from zero to one along each uh
+of these curly brand branches. And I
+want to use that parameter to change the
+size of
+our of our secondary branches cuz I
+think they're like too too long. Okay.
+So, this is where I control the length.
+This is a 32. I need to get
+A1 and then uh I need
+to for now I'll be doing a linear
+interpolation between I mean the T1
+needs to be here. This needs to be here.
+This needs to be maybe
+eight.
+And replace
+this. So, it seems like it's doing a
+smaller one at the beginning, larger one
+at the end. U but I want to change
+things and maybe I want to do the
+largest one in the middle. So, I'll be
+using a different gradient.
+So here instead of directly using T1 we
+can just plug it into a vector flow 2.
+This will allow us to sample from a
+texture. And this is our image input
+three. Okay. So we have now we have
+the longest ones in the middle. But I
+can do even more than
+this. Okay. So
+maybe like
+this and like
+this and even more than that instead of
+eight maybe
+four. Okay.
+Make them a bit thinner as well. One to
+five. One to five.
+Okay. Well, I think I like it. And you
+can definitely go and do more with this.
+But now you can just go
+here and change the spline if you want.
+And then everything uh gets adjusted to
+it. Uh then you can go inside and if you
+want add more or less branches. So go
+here and instead of 64 do
+32 then you can do even
+more if you want
+um you can go and increase the
+length. So here you're uh lurping
+between 256 and 64 but then you can also
+increase this
+You can also decrease even more the
+length here. So you look how uh those
+secondary branches seems to be too large
+here. You can adjust that if you
+want. So okay, this is where you control
+this, which I think it's
+cute. This is where you control the
+other
+ones, which I also think it's cute.
+Maybe this is even more interesting. I
+don't
+know. And then I want to lastly fix this
+part which I don't like.
+So this is where I control the length of
+the secondary
+branches. And I have this current
+size. And I just want
+to maybe decrease the entire thing all
+together. So multiply
+by
+float 0.5. This is uh 25% of the
+original. So if I plug this thing here,
+you're going to see
+this. And then I want to linear
+interpolate between these values. But I
+want to interpolate between these values
+along the entire path. So the entire
+path was parameterized by
+t0. So I need to bring in t0
+here. And also I want uh this to be be
+using this map here which is image two.
+So image input
+two. So we're linearly
+interpolating between these values here.
+Okay. And I think it just needs to be
+switched. Okay. So, lower branches here,
+larger ones here and things like that.
+Okay. I think this is really beautiful.
+I I really like it. And imagine now if
+you want, you can go and add randomness
+or you can go even crazy and add leaves
+to this and ornaments or make them curly
+how we did it here. and all sorts of
+possibility. It's really endless. Uh you
+can go with this structure. You can
+string how many of this you want.
+There's really no limit to to this. And
+then you can take this one and uh change
+it. So not only that, but you can uh if
+you have another spline, you can just
+use this as an existing um filter that
+takes in splines and on whatever kind of
+spline you have. Maybe you have a really
+really complicated one. You you you just
+plug that spline inside and it's going
+to
+uh stick these leaves onto onto
+itself. Okay. So, let's make an N letter
+shape
+somehow. Okay. And then maybe change
+this
+I don't
+know.
+Okay. So, I think this is everything for
+this part. We covered a few interesting
+things. Uh maybe this one
+um this tutorial was uh maybe the most
+advanced of all so far because it had
+multiple techniques and ideas. Uh I
+would say take your time and try to dig
+in into all of these uh techniques and
+try to really understand what's going
+on. Uh I would say
+again you need to practice with this uh
+if you want to understand. I've been
+practicing with this uh for a long time
+especially understanding when and why
+can you use a certain techniques when do
+you want to use pixel processor when do
+you want to use a fix map uh how to
+generate data how to convert for example
+from position or index to pixels why do
+I even do this how do I do this and
+things like that that's like
+um a difficult question in a way. I want
+to figure out how
+to classify some of these techniques and
+make uh them more accessible cuz I think
+it feels random like wait where this
+idea even comes from and to be
+completely honest I don't remember where
+some of the ideas that I use come from
+somebody or maybe I saw it somewhere or
+maybe I just working like on a totally
+different problem try to solve it and I
+came up with the technique and then I
+totally forgot about the problem that I
+was trying to solve or or things like
+that. So yeah, but I think
+the the techniques that I shown you uh
+even if you don't fully understand
+what's going on, you can still use them
+so for achieving pretty cool effects and
+powerful um procedural nodes or systems.
+So yeah uh I hope this was uh helpful to
+you. I will be also sharing uh this file
+with you and I hope I see you next time.
+If you feel this is useful, please share
+it with your friends and your peers and
+see you next time. Bye.

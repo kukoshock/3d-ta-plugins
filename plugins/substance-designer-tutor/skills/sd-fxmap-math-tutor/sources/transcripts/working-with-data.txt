@@ -1,0 +1,980 @@
+hello everyone my name is Andre and in
+today's tutorial I want to show you some
+techniques of working with data inside
+substance
+designer we have four examples here the
+first example is um scattering a bnch a
+bunch of pointing to this space their
+position is
+random uh you can
+change some of their properties like for
+example the scale and uh their
+Luminosity based on some input
+map then we will use
+uh the pixel processor node in such a
+way to write a list of values or in
+order to generate this kind of
+spiral then the next example we will
+create a spiral like
+this where we where we will
+have one larger spiral one smaller
+spiral and then we will draw lines that
+will
+connect the
+points and you also have this
+option of changing or what points are
+connected to what
+points
+okay and in the last
+example we will draw a list of 16 points
+and then we will
+generate
+um another 16 points radiating or uh we
+will generate uh for every of those 16
+points we will generate a ring of other
+16 points and the main focus of these
+tutorials is working with data in
+substance designer if you are familiar
+with software like Grasshopper And
+Houdini you probably know that uh those
+are similar this list in substance
+designer PA lists of data in substance
+designer might be similar to the lists
+of data that you have in Grasshopper And
+Houdini and this lists of data contains
+like attributes like position and
+velocity and scale and color and things
+of this nature okay so let's get it
+started uh we will use pixel processor
+and FX map with the pixel processor and
+some nodes we will generate the data and
+with the fix map node we're going to
+read the data and draw uh something
+using the fix map node okay so I want to
+generate a list of random positions in
+order to do that I will I will use
+the white noise
+node White Noise
+fast I will resize
+it to be 256 by 1 so it's a
+long uh row of 256 values I will
+duplicate this change it seed to have a
+different set of random value
+I will use another pixel processor node
+to bring these two lists together into a
+list of vectors so those black and white
+values are
+scalers and colors are
+vectors we're going to use this of
+variable to be able to create space
+coordinates and then read in or bring in
+the values
+so right now our pixel processor looks
+like this so it's reading the first
+texture and then actually copies
+or yes it copies the same row over and
+over again we don't want this we want to
+resize this texture to be of the same
+size and also we want it to remain color
+when we want to change the format from
+16 bits to 32 bits go
+inside sample
+the the other incoming
+image compose a
+vector and set this as an
+output always remember to look uh here
+so it's here this text is going to tell
+you inside the pixel processor what is
+the type of value that it's expected as
+an output so float one or float 4 so we
+can right click on things that are float
+one and set them as an output node this
+one for example is a float two we can
+right click but we can't set this as an
+output because this is not either a
+float one or a float 4 okay
+so we can output this so right now every
+single Pixel in this texture or in this
+list represents a position into this
+space and we're going to use thefix map
+node to read every single Pixel one by
+one and it's going to read the first
+pixel and place a position into this
+space at this location then it's going
+to go and read the next position and is
+going to draw a circle in the 2D space
+at this position and so on and so forth
+256 times good fix
+map make it gray scale plug the
+positions into the image input zero go
+inside double click on the fix map node
+to see the result right now nothing
+happens go and change the pattern to
+dis change the size of the
+dis not like this but
+here okay
+good now we're going to iterate use the
+iterate
+node plug the quadrant node to the right
+side of the iterate node right click on
+the iterate node set it as a
+root set the number of uh iterations to
+256 go into the quadrant
+node into this channel where it says
+pattern
+offset empty function get the number
+we're going to get
+float then from this drop down let's
+choose dollar number we're going to
+divide this by 256
+then make this a
+vector for the Y component we're going
+to input zero then sample and then
+extract the flow to so again we want to
+Output this out and the type that this
+channel is expecting is float to and
+what we're doing right now is uh the
+dollar number variable generates a list
+of values from 0 to
+255 if we divide this by 256 we're
+roughly getting something from zero to
+one and it's what is happening uh thefix
+map node it's actually going into this
+texture and it's going to one by one
+move and read every single Pixel
+here
+okay and then I want to actually
+visualize before uh hitting before
+outputting the result I want to
+visualize this
+and disable temporarily the tiling
+because I want to show you
+something and now as we output this we
+get the scatter random points into the
+space and the reason I deactivate at the
+tiling is because I wanted you to show
+you that we're getting only this corner
+being populated by points and the reason
+for that is uh thefix map node considers
+z0 coordinate to be here in the center
+and in order to fix this we're going to
+go here into the quadrant node and we're
+going to use this Branch offset to fix
+this so 0 minus-
+0.5 Min -
+0.5 and minus
+0.5 okay so now we're
+good
+excellent and the second uh thing that I
+want to achieve is I want to change the
+size of these points based on
+um based on uh gradient okay so I'm
+going to choose a radial
+gradient
+this one and I will temporarily plug
+this here to explain what is going to
+happen I want just to decrease its Lum
+Luminosity a little
+bit okay like
+so so U you are familiar with how the uh
+tile sampler node works you will plug in
+a a gradient and this gradient is going
+to control the size of your pattern
+so whenever we will have uh black value
+like this here uh this dot here is going
+to read the black value from this map
+and it's going to be decreased to zero
+its size is going to be zero and
+everything uh every Point here that it's
+inside this gradient is going to go from
+small to large as the values of these
+gradients are higher and higher so this
+is what is going to happen but I want to
+show you how to do it in an interesting
+way and for this I will create an fix
+map another pixel processor node which
+is going to be again the size of our
+list of
+values uh it's going to be a color node
+I'm going to make it 32 bits
+and what I will do is I will use this
+texture this coordinates to look into
+this space and extract the values of
+this gradient that correspond to these
+positions okay so this is a very
+interesting technique you are looking
+with the set of values into this map and
+extract the relevant uh the relevant
+values for each position in this list
+okay so plug this in plug this
+in and notice this map is uh
+1,24 by
+1,24 this texture here is 256
+by1 okay going
+to get flow to position in order to read
+our list of positions
+then I want to only extract the X and Y
+and then I want to sample with these
+values I want to
+sample our circular
+gradient great so you can see you get a
+bunch of scattered black and white
+values and those correspond to the uh
+radius or to the Luminosity of the
+gradient of at each of those random
+positions into this space and we're
+going to feed this list of radius in to
+our fix map node I want you to be aware
+that the FX map node uh has the size of
+the pattern controlled by two parameters
+width and height so for this reason we
+will output a vector of float to that
+contains the two values for width and
+height and also I want to make you aware
+that uh High values like bright pixel
+like this uh is going to draw like large
+pattern so a bright pixel like one is
+going to draw a circle that is large as
+the entire image so in order to avoid
+cluttering the image with too many large
+circles we want to multiply this by
+small
+value like
+0.05 okay then make this into a float
+two so the width and the height are the
+same and this will cause our circles to
+remain proportional and to be circles
+and not ellipses and then we need to pay
+attention to the fact that we need to
+Output a float for okay
+so great so I think you can barely see
+but we still have some uh pixels here
+that are colored okay
+good so now this is our list of um sizes
+we want to plug this into our fix map go
+inside
+the FX map node and go into the pattern
+size empty function everything is right
+now very it's white because all the
+circles are very large and they overlap
+each other but we're going to
+use the same technique in order to read
+every single Pixel in our list of sizes
+and then output that okay so get float
+we're going to take the dollar number
+divide it by
+256 make it a vector looat
+two only read the first row
+in our texture then sample it then
+extract the uh X and Y coordinates and
+then we're going to
+sample
+the image that contains sizes and then
+set this as an output actually don't
+want to do this uh this is what I need
+to do I need at this point I need to so
+let me uh explain again so I created
+this is uh the list of coordinates that
+allows the FX map node to read pixel by
+pixel our list of sizes and then I need
+to sample that so sample color image
+input one because image input one is the
+one that has
+the sizes and then we pay attention to
+the output here so output is float too
+so I need to extract the X and Y
+component X is the width Y is the height
+and then set this as an output okay
+great so you can see that our list of
+uh sizes here correctly reflects what
+happening what is happening in this
+map okay and I want
+to make an interesting effect I will use
+a pixel processor or note to modify this
+gradient in an interesting
+way go to bring the image inside this
+pixel
+processor like so multiply this by high
+value like maybe
+th then we're going to pass
+this gradient to a sign
+function set this as a new output so you
+can see that the effect of this is
+creating uh a set of concentric rings
+and this parameters control how many
+rings do we have uh the sign function
+outputs values from one to minus one I
+want to change that to the range of Zero
+from minus one and one to
+01 like so and um there is another
+parameter that we can use and this is
+called the phase or the offset of the
+sine
+wave so we're going to
+add a value like maybe
+10 and we if we play with this value
+we're getting this effect which is
+interesting great so now instead uh of
+plugging this in we're going to plug
+this inside the fix m note for the
+radius we need to make this gray
+scale and see the
+result okay so we have something like
+this and if we play again with this
+value we're getting this effect which I
+think it's
+interesting now uh the last thing that
+we want to do is we want to create a
+list of
+uh luminosities for every single point
+here okay
+so we will do we will create another
+list of luminosity and in order to do
+that we're going to make it based on
+this same image here but you can change
+this with whatever you
+want I only duplicate uh this node to
+create the list of luminosities go
+inside delete everything after here and
+just output this so this is containing
+our list of luminosity this make this
+gray scale plug this inside the FX map
+node and go into the quadrant node under
+Luminosity repeat the process again get
+the
+number divided by
+256 make it a vector that reads pixel by
+pixel from uh in the X dire Direction
+but then it only goes one row so reads
+only the first row and then sample the
+Luminosity which is contained in the
+image input too and set this as an
+output and you can see everything
+changed and I also want to make this
+uh maximum so the quadrant node it's the
+blending mode it's maximum for it right
+so going back here and playing with this
+value you can
+see how size and Luminosity changes
+based on uh our mou so we can use like a
+barely
+noise not the 3D
+one and this is only going to be for the
+Luminosity okay okay something like this
+and
+then yeah so the our discs are right now
+picking Luminosity values from the
+barely noise right this is the first
+example in the second example we will
+create a spiral like this and initially
+we're going to create a circle and then
+we will modify it such that it becomes a
+spiral and we're going to again generate
+the dat with the pixel processor and
+then we will read and draw it with the
+FX
+map good
+so pixel
+processor again resize it into a list of
+256 by one change the output format to
+32 Bits And the reason for using 32 bits
+is because
+the other uh depth of the node or
+outputs values from zero to one but
+changing uh this depth into 32 bits is
+going to allow us to Output values from
+or or negative values and larger than
+one positive values
+okay I'm going inside the uh the pixel
+processor not and I want to uh create a
+a set of 256 positions and I want these
+positions to be around the circle and oh
+uh I want to introduce you to the fact
+that you can specify positions into this
+space by specifying the x coordinate and
+the
+y-coordinate of a point but you can also
+specify uh a position into this space by
+by specifying a length and an angle so
+we're going to
+do this length angle thing in order to
+place points around the circle and the
+node that will allow us to do this is
+the cartisian node the cartisian now as
+you can see um has as input a length and
+an angle and outputs a vector or a to
+dep
+position uh good so we need to create a
+a list of increasing angles because we
+will start from uh a position around the
+circle and by increasing the angle we
+will place dots at increasing angle
+along the along the
+circle good so how to do that we're
+going to get the
+position we're going to extract the x
+coordinate such that we're getting a
+list of increasing
+values um the cartisian node expects or
+wants values or or expects values for
+the angle in radians which are from 0 to
+2 pi and our current set of values right
+now is from 0 to one and we need to
+multiply this by 2
+pi and plug this in here and then for
+the length we're just going to use a
+constant value so far like 0.2 as the
+radius of our Circle great so this list
+is going to contain 256 points around a
+circle we need to Output this so for
+that we need to Output a vector float
+four and this is our list of points
+around the circle and we need to read it
+and draw it so for this I will make
+another fix map Noe from scratch just to
+repeat the process and I think you'll
+get used to it so FX map
+node make it gray scale plug in the data
+into image input zero go
+inside make change the blending to
+Max make the
+pattern a
+dis change the size
+okay great then use the iterate
+node plug the quadrant node into the
+right side of theate set theate as root
+change the number of iteration to
+256 go inside the pattern
+offset get the dollar
+number divided by
+256 so this is uh how we're creating a
+set of vectors that are going to go
+pixel by pixel into our list of values
+and read them and then Place circles at
+those
+positions so like
+this and then just
+sample the list of positions and then
+output the and Y because we Define this
+positions by an X and a y coordinate and
+then set this as an output so you can
+see we're getting uh we're getting a
+circle and this is the data and this is
+what it's drawing the data going back
+here we need to change this value this
+is a
+radius and it's constant so that's why
+we're getting a circle but for example
+if we will were if we were to replace
+this by something that that's changing
+then we're going different radius and
+depending on how we set this we can
+create like a spiral thing so to make
+this interesting I'm going to use a
+curve
+node and it's important that the
+gradient is from left to right it
+doesn't matter that this texture it's
+larger U the FX map I mean the pixel
+processor node which has one row is
+going to read one row I think it's
+either in the middle or at the
+top so plugging this in here and then
+just read the
+image going into the fix map node to see
+the result and if we replace this with
+this we're getting a
+spiral
+okay something like this so the reason
+we're getting this um
+uh result is because tiling it's
+activated that's why uh and then the
+radius it's too large so we can multiply
+this by a number and this will control
+the how fast our radius is
+growing something like this and I want
+to do another thing it would be cool if
+we would have a possibility to have this
+spiral winding multiple times
+around itself and in order to do that we
+need to multiply this by
+something like a larger
+number great I'm happy with that and
+what I want to show is that right now
+you can change the radius with this
+curve node and get various
+results
+great something like this is
+interesting now the third
+example in the third example we created
+uh two uh spirals with two set of points
+one is larger the other one is smaller
+and we add them together and the final
+step is to create lines that connect uh
+both uh points from both from both uh uh
+spirals good so in order to do that I
+will uh just
+duplicate uh this here so our first
+spiral I want to just go back and delete
+this and make it like a regular
+spiral then I will duplicate
+this and just make
+the the second spiral a little bit
+decrease its radius a little bit and the
+reason for working with data I want to
+say to take the advantage or the
+opportunity right now and to talk about
+advantages so in these simple examples
+you can go and uh make those spirals
+directly in the FX map node but uh
+separating it Al separating the drawing
+and the data it's may be a crucial thing
+to do because you actually have access
+to the data right now and you can use
+every node in substance designer in
+order to change this data however you
+want so what for example if I will place
+a transform node here
+and place the transform node here as a
+result and then get into the transform
+node
+change the mid map mode to manual
+and starting to change the MIP map no is
+giving us like really interesting
+results so yeah that is cool
+actually so this is the reason why oh
+separating the data from the node might
+be interesting because between this node
+and this node you can plug a number of
+other nodes that will allow you to
+modify the data how however you want
+okay so uh I right now just want
+to shrink this
+spiral uh a tiny bit and for this I
+will input a levels node in between
+these two here so levels node and I will
+decrease the
+Luminosity or the
+brightness
+so this is the second spiral and this is
+the level node and if I decrease the
+Luminosity you can see the spiral is
+decreasing plug this here and you can
+see we have the spirals
+together and right now if you change
+this those two spirals are
+changing in the same
+way good the last thing that I I want to
+do is use this list of points to create
+lines between the corresponding points
+of the Spiral so we will create uh lines
+from this point to this point and this
+point to this point and this point to
+this point good so we will start again
+with another FX map node from
+scratch make it black and white plug in
+the first list of position the second
+list of
+positions go
+inside um in this case we're going to
+use a square instead of
+a instead of a dis iterate
+node 256
+times set this as an output or set this
+as a
+root and in this case we're going to uh
+do things uh
+differently and a bit more efficiently
+so in the quadrant node we are going to
+um compute everything that we need into
+one single Channel and then output
+or declare some variables in this
+Channel and then call those variables
+into the re relevant subsequent channels
+so we will compute uh a position a
+length and an angle uh
+for every line that is going to connect
+the two points of every SP of those two
+spirals so going inside the Luminosity
+first of all we're going to compute uh
+the
+point where the center of those lines
+will
+be we need to get in
+the the dollar number divide it by 256
+make a
+vector bring in the first
+list extract the only X and Y components
+because this is what it's interesting
+for us duplicate this read the second
+image now uh this is the first point in
+the spiral in the first spiral in the
+larger spiral this is the first point in
+the uh second spiral and in in the one
+that was shrink and we want to compute
+the point that it's in the middle of
+this two because that is going to be the
+center or our line that is going to
+connect the two points so we have the
+average
+average float to so this is going to
+compute the midpoint between the two
+points of the Spiral we're going to
+set this and we're taking this result
+and we're saving it and giving it a name
+so I'm going to name this
+position then we need to compute the
+distance between the the pairs of points
+from our two two spirals so that's easy
+to
+do we have the points here in this and
+this we need to compute the
+distance set
+this as another variable which we're
+going to name distance or length length
+I think it's more
+appropriate
+and then the last thing that we want to
+compute is uh the rotation or the angle
+of the
+line I mean uh we and in order to do
+that we need to
+subtract the first the points in the
+first spiral from the points in the
+second
+spiral and then take the r tangent two
+of that
+and the r tangent to outputs value from
+uh Min - pi to Pi and we need to bring
+this into the range 0 to one so dividing
+by pi will move us to minus one to one
+and then we have another node which
+takes minus one to 1 and turns it into 0
+to one so this is our rotation or angle
+we're going to set this as
+angle great uh and uh in order
+to Output these things or to make them
+available we need to chain them somehow
+and for this we're going to use the
+sequence node and the sequence no is
+kind of like the lines of code so this
+is the first line of code and then if
+you put the sequence node this is the
+second line of code and if you put the
+sequence node this is the third line of
+code and right now we computed
+everything that we wanted but the last
+thing that we need to Output is the
+Luminosity because we are in the
+Luminosity Channel and another sequence
+note is
+needed here and then
+float this is the value for the
+Luminosity one
+which is white okay good so we computed
+everything now we need
+to call each of these variables into the
+relevant channels we computed them we
+need to access them right now so going
+into the quadrant node under pattern
+offset let me decrease the scales of the
+patterns in order to see how things are
+changing so in the pattern of set we're
+going to get a float to and we need to
+call position
+here and set this as an output and you
+can see everything it's around the
+spiral then we will go here into the
+pattern size empty function everything
+is white because all of our squares
+are large as the image itself and they
+are overlapping each other we need to
+get in the length the length is a
+float so this is the length of the line
+and we will also want to specify a width
+of a line so the width is going to be
+something like
+0.0
+five
+maybe 05 something like this okay output
+this
+so right now you can see the length of
+the line is computed and the width of
+the lines can be controlled with this
+parameter so 0 five and then the last
+thing that we need to do is plug in
+the the angle or the rotation so under
+the rotation go here get
+float
+angle set this as an output
+great so right now our line seems to be
+correctly aligned and if we plug this
+here you can see we have lines
+connecting all the
+points good I want to show you um a
+small trick maybe we want to offset the
+connections between uh the points so we
+can make this line here connect not with
+from this point to this point but we can
+make it to connect from this point to
+this point so in order to do that we
+just need to offset or shift or from
+left to write this uh set of values and
+we're going to use again the pixel
+processor node we can use the transform
+node if you want but I think using the
+pixel processor it's better because
+repetition is good changing the
+size like so getting inside bringing in
+the
+values okay and then what we want to do
+is move this from left to right in order
+to do that we need to add something to
+it a vector float
+to and if we change the X component you
+see that we're moving this from left to
+right okay we are here I want to see the
+results pluging this in it's giving us
+this result which looks messy but it is
+correct
+so or is it I mean if I plug the
+zero let something's Chang oh yeah so
+you need to do uh to do this 32 bits
+pixel so that's why I'm getting
+oh an unexpected
+result
+okay so right now everything is
+correct great and the last thing that I
+want to do is for example I don't like
+those lines that are very long is there
+a way to delete them and there is we can
+go inside the FX map node go into the
+luminosity and instead of using a
+constant value for every line we can
+change that
+and the way we're going to do this is if
+you remember we already computed the
+length of the line so we can see that
+those are longer than the others and in
+order to delete them so to speak we will
+change their Luminosity from white to
+black and we're going to say that if the
+length so if the length is greater than
+some value then make uh the Luminosity
+zero otherwise make it one so we need to
+do a
+comparison
+greater if the length is greater than
+some value that we can modify
+0.3 and now it's going to we're going to
+use a conditional so if this is
+true then the Luminosity is zero
+otherwise the Luminosity it's
+one and instead of plugging a constant
+value we're going to plug the result of
+this comparison so you can see those
+lines
+disappeared
+good and the last uh example is this one
+and I'm going to I mean not this one but
+this one and I'm going to show you how
+you can generate uh 16 points and then
+generate 16 rings of other points around
+them and then you'll have the
+possibility to change the radius of each
+ring good
+so
+uh
+mobile
+commercials really annoying the
+apologize about
+this
+good okay uh so I want to create I'm
+going to create uh 16 a list of 16
+random
+position and to do that I will use again
+the white
+noise and this time I'm going to resize
+this to a resolution of 16 pixels by one
+so this is a tiny tiny texture
+I will duplicate this node and change
+the random seed make a pixel processor
+node plug the two values in change the
+size
+to the same 16 by one go inside read the
+two list of random
+values this is the first image this is
+the second image make a Vector out of
+them then I would put a float
+4 good another pixel processor
+node this time we're going to make this
+uh 256x one bring the image
+in Sample
+color okay so uh this is a cool thing
+that it's happening and I want you to uh
+be careful at one aspect so we have a uh
+an image which is 16 by one and then uh
+if we input this image into a larger
+texture you can see that uh the first
+value that we have this yellow Vector
+here we have it here but it's uh repeat
+it 16 times and the reason why this is
+working is because our sample color
+nowed uh the filtering mode it's on
+nearest so I want this to happen so be
+careful to choose nearest here if it's
+bilinear you can see there is a
+transition between them but I want this
+to be nearest okay and I want to take uh
+a node that reads these values and
+output this
+uh like
+so so uh right now we're getting a list
+of 16 points in fact we have 256 points
+and at every dot here you have like 16
+points sitting on top of each other but
+the results that I'm getting visually
+it's what I want so I'm not going to
+bother with this uh too much okay and
+the next thing that I want to do is I
+want to create a ring of other points
+around every single of these points so
+we need to create another list or
+another list of values okay good so
+another pixel processor of course change
+its
+size to 256 by one make it 32
+bits bring in the initial position so we
+will need these positions here and we're
+going to uh create points around these
+initial
+positions So reading the initial
+position so get float
+to then
+sample and then only extract the X and Y
+component and to this we want to add
+something so these are kind of the
+centers of our
+rings and this the centers of our rings
+are defined by this parts and right now
+we need to
+add uh to add the uh other all the other
+Rings here and we're going to add
+something to this node here okay
+so let me do this duplicate this node
+here we're going to extract the X value
+like so we're going to multiply this by
+16 because we want in this list we want
+to create a set of
+16 sub lists of uh positions so multiply
+this by
+16 and then our gradient is going to be
+very very bright but we will take the
+fractional part of this and you can see
+we have have right now we will have 16
+repeating gradients and if we remember
+from our past example where we created a
+circle and then uh we Chang the radius
+in order to create a spiral we're going
+to do the same thing here using the
+cartisian node so these are the list of
+angles and we're going to multiply this
+by two Pi because this is what our
+cartisian node
+wants
+and then cartisian
+node
+and this is our list of
+angles
+okay and
+then we will plug a constant value for
+the radius for
+now so this is angle this is length or
+radius and we're going to Output
+this
+great so uh going back here I will out I
+will plug this in here to see what's
+happening and we're only going to see
+one ring like so what is happening right
+now is that we're having 16 rings
+sitting on top of each
+other and
+this is the radius of the ring and if we
+add this if you remember this contains
+the center of the ring and this contain
+the ring itself if we now
+add this together so this Vector with
+this vector and make this as an output
+now we're having all the 16 rings
+sitting at their appropriate POS
+position I'm going to duplicate this
+node draw the centers and draw the Rings
+going to decrease the size of the
+circles defining the
+Rings like so and the last thing that I
+want to do is is there a way to change
+the
+radius uh for each ring to have a random
+radius so of course this is possible
+we're going to make a
+uh a list of random radius for each ring
+so in order to do that we have how many
+rings 16 rings so it means that we need
+16 different values we will duplicate
+the White Noise change its seed plug
+this in here and instead of having a
+constant radius we we will have a radius
+based on those values here okay so not
+like this like this and then just sample
+the image one that it's
+containing the
+radius I will output this and let's see
+the result and then explain what is
+happening so plugging this in looks like
+a total mess and the reason for that is
+because some of the those values here
+are quite high and this means that the
+radius of our circles is again High and
+the value of one means that the radius
+of our Rings is like the entire image
+and we don't want that so then going
+back to see the
+result we need to multiply this by a
+value in order to have a parameter that
+will allow us to further control the
+radius of the Rings so multiply by zero
+shrinks all the Rings to one point and
+then plugging this value allows us to
+control further control the radius of
+everything and then changing the seed
+here changes the radius so yeah these
+are the four exercises that I wanted to
+show I will delete the previous examples
+and leave you with what we created from
+scratch and this uh techniques of using
+pixel processor and eix map to generate
+data with pixel processor and then draw
+this data with eix map are really cool
+and interesting and they will allow you
+a lot of a great deal of flexibility so
+uh try to practice with this for
+example uh change this to color try to
+go uh in those examples and change theop
+Luminosity change the size the width the
+length of everything play with this
+until you uh get yourself uh
+familiarized with all these processes
+and those techniques are very the very
+are very important building blocks that
+will allow you to create things for
+yourself depending on the situation that
+you have so this kind of small exercises
+will allow you to will give you the
+basis of knowledge that you need in
+order to solve various real world
+problems that you'll encounter during
+your work or during your experiments and
+things like that so yeah uh thank you
+for uh watching this tutorial and see
+you next time
+bye
